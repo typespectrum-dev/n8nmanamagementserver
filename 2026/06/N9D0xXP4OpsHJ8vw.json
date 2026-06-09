@@ -1,0 +1,48 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-06-07T02:22:11.190Z",
+  "id": "N9D0xXP4OpsHJ8vw",
+  "isArchived": true,
+  "meta": null,
+  "name": "Script Sub Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e274b366-749e-432c-a457-99aa0739fda2",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-06-07T02:22:11.190Z",
+      "createdAt": "2026-06-07T02:22:11.190Z",
+      "role": "workflow:owner",
+      "workflowId": "N9D0xXP4OpsHJ8vw",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-06-07T02:37:24.167Z",
+  "versionId": "28af772a-8adc-42c1-97d7-f501aee0536e"
+}
