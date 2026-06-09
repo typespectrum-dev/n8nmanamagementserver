@@ -1,0 +1,34 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-06-09T06:40:11.552Z",
+  "id": "yPYHUFiBB5wRbU6d",
+  "isArchived": false,
+  "meta": null,
+  "name": "Video Generation Workflow",
+  "nodes": [],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-06-09T06:40:11.552Z",
+      "createdAt": "2026-06-09T06:40:11.552Z",
+      "role": "workflow:owner",
+      "workflowId": "yPYHUFiBB5wRbU6d",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-06-09T06:40:11.552Z",
+  "versionId": "1f13da7c-2ae8-4034-9a72-1a7def6f91ad"
+}
