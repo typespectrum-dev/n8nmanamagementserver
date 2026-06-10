@@ -61,6 +61,17 @@
           }
         ]
       ]
+    },
+    "Chunk Settings": {
+      "main": [
+        [
+          {
+            "node": "Ping Worker Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-06-10T04:20:51.377Z",
@@ -130,6 +141,36 @@
               "name": "title",
               "value": "={{ $json.title }}",
               "type": "string"
+            },
+            {
+              "id": "3d1ea015-8dc9-4f19-b84e-5749e4c5a689",
+              "name": "BASE ID",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+              "type": "string"
+            },
+            {
+              "id": "ab939dfe-6012-4af4-9f45-1ce292261456",
+              "name": "Worker Sheet ID",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+              "type": "string"
+            },
+            {
+              "id": "8759f2e3-bb9f-4161-98b1-63eef6c0be55",
+              "name": "Character Reference URL",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
+              "type": "string"
+            },
+            {
+              "id": "c3fd1165-eff2-4d5b-bf27-c2461940e599",
+              "name": "Storage Bucket",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+              "type": "string"
+            },
+            {
+              "id": "13c9fccd-7786-42af-96c3-04f9f867e27a",
+              "name": "Videos Path",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}",
+              "type": "string"
             }
           ]
         },
@@ -143,6 +184,41 @@
       ],
       "id": "922df8c2-4b3c-4253-98ca-0ba687ecaf89",
       "name": "Chunk Settings"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "workspaceId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "projectId": {
+          "__rl": true,
+          "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+          "mode": "id"
+        },
+        "id": "="
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 4,
+      "position": [
+        784,
+        96
+      ],
+      "id": "7267707d-ff54-479a-9eec-41f328aa7e57",
+      "name": "Ping Worker Status",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "1gvRq0BbKFPkQsOh",
+          "name": "NocoDB Token account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -220,6 +296,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-10T04:59:18.275Z",
-  "versionId": "22f171dc-cf27-49d2-9112-a0f925cbe605"
+  "updatedAt": "2026-06-10T05:09:56.410Z",
+  "versionId": "70ae301f-fb5e-47ad-9e5e-16e0b16f2a78"
 }
