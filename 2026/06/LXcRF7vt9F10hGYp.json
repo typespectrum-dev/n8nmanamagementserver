@@ -117,7 +117,29 @@
       "main": [
         [
           {
-            "node": "Call 'Script Subworkflow 2'",
+            "node": "Execute Script Subworkflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Script Subworkflow": {
+      "main": [
+        [
+          {
+            "node": "Video Workflow Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Workflow Settings": {
+      "main": [
+        [
+          {
+            "node": "Execute Video Workflow",
             "type": "main",
             "index": 0
           }
@@ -138,7 +160,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -896,
+        -3872,
         -16
       ],
       "id": "e9487805-4dcf-4408-b54d-90a1c42c8923",
@@ -191,7 +213,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -672,
+        -3648,
         -16
       ],
       "id": "22f3b756-1510-42a1-b2fc-6e3cbe674385",
@@ -222,7 +244,7 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
       "position": [
-        -464,
+        -3440,
         -16
       ],
       "id": "979787bf-9d23-4360-b33b-f51ef3e17a95",
@@ -261,7 +283,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -112,
+        -3088,
         -16
       ],
       "id": "5f5db230-3abc-4bc0-a0ac-a2d4a5d32f49",
@@ -275,7 +297,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -272,
+        -3248,
         -16
       ],
       "id": "3b61fc6a-ee8f-42b9-9c11-55c671e3db1c",
@@ -289,8 +311,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        144,
-        -32
+        -2880,
+        -16
       ],
       "id": "c61d4a80-f8b2-4f28-8b6e-6d0354036613",
       "name": "Split Out"
@@ -322,7 +344,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.3,
       "position": [
-        320,
+        -2656,
         -16
       ],
       "id": "014d8a6f-35b2-4da7-b7aa-a0131f914bfa",
@@ -333,7 +355,7 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        512,
+        -2464,
         -16
       ],
       "id": "2100a5b0-992a-4532-ba4a-e800680ca88b",
@@ -400,7 +422,7 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
       "position": [
-        704,
+        -2272,
         -16
       ],
       "id": "1dcd4e9b-8260-4456-98bb-665fe3e9eb29",
@@ -474,7 +496,7 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
       "position": [
-        992,
+        -1984,
         -16
       ],
       "id": "312ce447-ffc6-40cd-820e-477302fba69b",
@@ -503,7 +525,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1200,
+        -1776,
         -16
       ],
       "id": "1ad7e118-450f-4ec2-8570-94a0eadce701",
@@ -532,11 +554,97 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1424,
+        -1552,
         -16
       ],
       "id": "b25c60c5-8d0e-4528-9015-88886ea92d3d",
-      "name": "Call 'Script Subworkflow 2'"
+      "name": "Execute Script Subworkflow"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "E7U3Fx9FuUFTp7u8",
+          "mode": "id",
+          "cachedResultUrl": "/workflow/E7U3Fx9FuUFTp7u8"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1024,
+        -16
+      ],
+      "id": "ec834155-2085-40f0-85ab-0a43658ab111",
+      "name": "Execute Video Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34260f35-f5de-4224-ad15-d0cbe28e3b0a",
+              "name": "Base ID",
+              "value": "p3l64neoyynn30b",
+              "type": "string"
+            },
+            {
+              "id": "01d1ea45-d28d-4805-bfc2-c04e46055a3f",
+              "name": "Channel Sheet ID",
+              "value": "m5s88g69xzb08wl",
+              "type": "string"
+            },
+            {
+              "id": "3e3a1572-912f-474e-85e8-d08a857e928c",
+              "name": "Worker Sheet ID",
+              "value": "mh5uzwjzhyyaim7",
+              "type": "string"
+            },
+            {
+              "id": "d0168d49-8817-400e-be6f-94daf001b43a",
+              "name": "Character Reference URL",
+              "value": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+              "type": "string"
+            },
+            {
+              "id": "066be89a-a614-421d-9b73-8746f50275ce",
+              "name": "Storage Bucket",
+              "value": "pov-guy",
+              "type": "string"
+            },
+            {
+              "id": "cff569af-5d5c-426e-b890-4844ac8a7d0d",
+              "name": "Videos Path",
+              "value": "pov-guys-channel/videos",
+              "type": "string"
+            },
+            {
+              "id": "a8cbd5ac-f0f7-4fc2-a05e-7d2290049179",
+              "name": "",
+              "value": "",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1280,
+        -16
+      ],
+      "id": "e246f138-e2be-4cea-a9a6-c77e83f106c3",
+      "name": "Video Workflow Settings"
     }
   ],
   "pinData": {
@@ -923,7 +1031,7 @@
         }
       }
     ],
-    "Call 'Script Subworkflow 2'": [
+    "Execute Script Subworkflow": [
       {
         "json": {
           "output": {
@@ -982,6 +1090,18 @@
           }
         }
       }
+    ],
+    "Video Workflow Settings": [
+      {
+        "json": {
+          "Base ID": "p3l64neoyynn30b",
+          "Channel Sheet ID": "m5s88g69xzb08wl",
+          "Worker Sheet ID": "mh5uzwjzhyyaim7",
+          "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "Storage Bucket": "pov-guy",
+          "Videos Path": "pov-guys-channel/videos"
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -1003,6 +1123,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-08T04:25:44.677Z",
-  "versionId": "8022ac8e-41a0-4fdc-aeb9-49de98c76f31"
+  "updatedAt": "2026-06-10T04:29:42.194Z",
+  "versionId": "3230b071-1606-424d-93e0-aa8580f5ad9a"
 }
