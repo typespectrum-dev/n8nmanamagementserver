@@ -104,13 +104,7 @@
     },
     "Update Project URL": {
       "main": [
-        [
-          {
-            "node": "Script Workflow Settings",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Script Workflow Settings": {
@@ -525,11 +519,12 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1776,
-        -16
+        -1616,
+        -192
       ],
       "id": "1ad7e118-450f-4ec2-8570-94a0eadce701",
-      "name": "Script Workflow Settings"
+      "name": "Script Workflow Settings",
+      "disabled": true
     },
     {
       "parameters": {
@@ -558,7 +553,8 @@
         -16
       ],
       "id": "b25c60c5-8d0e-4528-9015-88886ea92d3d",
-      "name": "Execute Script Subworkflow"
+      "name": "Execute Script Subworkflow",
+      "disabled": true
     },
     {
       "parameters": {
@@ -585,7 +581,8 @@
         -16
       ],
       "id": "ec834155-2085-40f0-85ab-0a43658ab111",
-      "name": "Execute Video Workflow"
+      "name": "Execute Video Workflow",
+      "disabled": true
     },
     {
       "parameters": {
@@ -644,10 +641,435 @@
         -32
       ],
       "id": "d2f5a133-6e1b-4946-aa0c-1151e4444536",
-      "name": "Settings1"
+      "name": "Settings1",
+      "disabled": true
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Settings": [
+      {
+        "json": {
+          "Base ID": "p3l64neoyynn30b",
+          "Channel Sheet ID": "m5s88g69xzb08wl",
+          "Worker Sheet ID": "mh5uzwjzhyyaim7",
+          "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "Storage Bucket": "pov-guy",
+          "Videos Path": "pov-guy-channel/videos"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Get Video Ideas": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-11 05:08:03+00:00",
+            "Progress": "Queued",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 2,
+          "id_fields": {
+            "Id": 2
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:38+00:00",
+            "UpdatedAt": "2026-06-01 04:48:57+00:00",
+            "Progress": "Queued",
+            "Video Title": " POV: You're an Agent for the Agency That Doesn't Exist",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 3,
+          "id_fields": {
+            "Id": 3
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:39+00:00",
+            "UpdatedAt": "2026-06-01 04:49:00+00:00",
+            "Progress": "Queued",
+            "Video Title": " Your Life as Every Level of Military Sniper",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 4,
+          "id_fields": {
+            "Id": 4
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:40+00:00",
+            "UpdatedAt": "2026-06-01 04:49:02+00:00",
+            "Progress": "Queued",
+            "Video Title": "POV: You're a Corrupt Cop on the Cartel's Payroll",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 5,
+          "id_fields": {
+            "Id": 5
+          },
+          "fields": {
+            "CreatedAt": "2026-06-11 04:48:02+00:00",
+            "UpdatedAt": null,
+            "Progress": null,
+            "Video Title": null,
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Aggregate": [
+      {
+        "json": {
+          "data": [
+            {
+              "id": 1,
+              "id_fields": {
+                "Id": 1
+              },
+              "fields": {
+                "CreatedAt": "2026-06-01 04:39:36+00:00",
+                "UpdatedAt": "2026-06-11 05:08:03+00:00",
+                "Progress": "Queued",
+                "Video Title": "Your Life as Every CIA Black Ops Rank",
+                "Project URL": null
+              }
+            },
+            {
+              "id": 2,
+              "id_fields": {
+                "Id": 2
+              },
+              "fields": {
+                "CreatedAt": "2026-06-01 04:39:38+00:00",
+                "UpdatedAt": "2026-06-01 04:48:57+00:00",
+                "Progress": "Queued",
+                "Video Title": " POV: You're an Agent for the Agency That Doesn't Exist",
+                "Project URL": null
+              }
+            },
+            {
+              "id": 3,
+              "id_fields": {
+                "Id": 3
+              },
+              "fields": {
+                "CreatedAt": "2026-06-01 04:39:39+00:00",
+                "UpdatedAt": "2026-06-01 04:49:00+00:00",
+                "Progress": "Queued",
+                "Video Title": " Your Life as Every Level of Military Sniper",
+                "Project URL": null
+              }
+            },
+            {
+              "id": 4,
+              "id_fields": {
+                "Id": 4
+              },
+              "fields": {
+                "CreatedAt": "2026-06-01 04:39:40+00:00",
+                "UpdatedAt": "2026-06-01 04:49:02+00:00",
+                "Progress": "Queued",
+                "Video Title": "POV: You're a Corrupt Cop on the Cartel's Payroll",
+                "Project URL": null
+              }
+            },
+            {
+              "id": 5,
+              "id_fields": {
+                "Id": 5
+              },
+              "fields": {
+                "CreatedAt": "2026-06-11 04:48:02+00:00",
+                "UpdatedAt": null,
+                "Progress": null,
+                "Video Title": null,
+                "Project URL": null
+              }
+            }
+          ]
+        },
+        "pairedItem": [
+          {
+            "item": 0
+          },
+          {
+            "item": 1
+          },
+          {
+            "item": 2
+          },
+          {
+            "item": 3
+          },
+          {
+            "item": 4
+          }
+        ]
+      }
+    ],
+    "Split Out": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-11 05:08:03+00:00",
+            "Progress": "Queued",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 2,
+          "id_fields": {
+            "Id": 2
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:38+00:00",
+            "UpdatedAt": "2026-06-01 04:48:57+00:00",
+            "Progress": "Queued",
+            "Video Title": " POV: You're an Agent for the Agency That Doesn't Exist",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 3,
+          "id_fields": {
+            "Id": 3
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:39+00:00",
+            "UpdatedAt": "2026-06-01 04:49:00+00:00",
+            "Progress": "Queued",
+            "Video Title": " Your Life as Every Level of Military Sniper",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 4,
+          "id_fields": {
+            "Id": 4
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:40+00:00",
+            "UpdatedAt": "2026-06-01 04:49:02+00:00",
+            "Progress": "Queued",
+            "Video Title": "POV: You're a Corrupt Cop on the Cartel's Payroll",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 5,
+          "id_fields": {
+            "Id": 5
+          },
+          "fields": {
+            "CreatedAt": "2026-06-11 04:48:02+00:00",
+            "UpdatedAt": null,
+            "Progress": null,
+            "Video Title": null,
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Filter for Queued": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-11 05:08:03+00:00",
+            "Progress": "Queued",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 2,
+          "id_fields": {
+            "Id": 2
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:38+00:00",
+            "UpdatedAt": "2026-06-01 04:48:57+00:00",
+            "Progress": "Queued",
+            "Video Title": " POV: You're an Agent for the Agency That Doesn't Exist",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "id": 3,
+          "id_fields": {
+            "Id": 3
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:39+00:00",
+            "UpdatedAt": "2026-06-01 04:49:00+00:00",
+            "Progress": "Queued",
+            "Video Title": " Your Life as Every Level of Military Sniper",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "id": 4,
+          "id_fields": {
+            "Id": 4
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:40+00:00",
+            "UpdatedAt": "2026-06-01 04:49:02+00:00",
+            "Progress": "Queued",
+            "Video Title": "POV: You're a Corrupt Cop on the Cartel's Payroll",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      }
+    ],
+    "Limit to 1": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-11 05:08:03+00:00",
+            "Progress": "Queued",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Set Status Queued -> Processing": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-11 05:08:11+00:00",
+            "Progress": "Processing",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": null
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Update Project URL": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-11 05:08:11+00:00",
+            "Progress": "Processing",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": "https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "repo_name": "n8nmanamagementserver",
   "repo_owner": "typespectrum-dev",
   "repo_path": "workflows/n8n-second/",
@@ -667,6 +1089,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-11T04:51:02.063Z",
-  "versionId": "708873d1-cf9d-4aed-9242-92faa6c3ccff"
+  "updatedAt": "2026-06-11T05:20:10.951Z",
+  "versionId": "c1baaa85-ad46-4933-a881-d92f78d01b4a"
 }
