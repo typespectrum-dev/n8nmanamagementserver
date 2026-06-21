@@ -307,7 +307,7 @@
         "text": "=Script:\n\n{{ $json.output }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "You are a precise data-extraction assistant. Your task is to parse the provided text and split it into structured chapters based on the defined \"Level\" headings.\n\nFor each level found in the text:\n1. Identify the level number (e.g., extract \"1\" from \"Level 1\").\n2. Identify the level's title (e.g., \"The Prospect\").\n3. Extract the entire body text associated with that level. \n\nCRITICAL INSTRUCTIONS:\n- Do not summarize, shorten, or omit any part of the narrative text. Keep the full text content, including spacing and paragraphs, intact.\n- Process every level present in the input text, adapting dynamically to the total number of levels provided.\n- Format the final output matching the requested JSON Schema."
+          "systemMessage": "=You are a precise data-extraction assistant. Your task is to parse the provided text and split it into structured chapters based on the defined \"Level\" headings.\n\nFor each level found in the text:\n1. Identify the level number (e.g., extract \"1\" from \"Level 1\").\n2. Identify the level's title (e.g., \"The Prospect\").\n3. Extract the entire body text associated with that level. \n\nCRITICAL INSTRUCTIONS:\n- Do not summarize, shorten, or omit any part of the narrative text. Keep the full text content, including spacing and paragraphs, intact.\n- Process every level present in the input text, adapting dynamically to the total number of levels provided.\n- Format the final output matching the requested JSON Schema."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -380,6 +380,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-21T02:57:14.817Z",
-  "versionId": "eb27674c-b367-4535-a822-230db55f7904"
+  "updatedAt": "2026-06-21T03:59:31.725Z",
+  "versionId": "73763c23-03e6-4f23-a60f-b947e5db6bcf"
 }
