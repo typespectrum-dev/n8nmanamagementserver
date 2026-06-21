@@ -115,18 +115,18 @@
     },
     "Script Workflow Settings": {
       "main": [
-        []
-      ]
-    },
-    "Execute Script Subworkflow": {
-      "main": [
         [
           {
-            "node": "Settings1",
+            "node": "Execute Script Subworkflow",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "Execute Script Subworkflow": {
+      "main": [
+        []
       ]
     },
     "Settings1": {
@@ -548,12 +548,11 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        -1744,
-        -304
+        -1584,
+        -32
       ],
       "id": "b25c60c5-8d0e-4528-9015-88886ea92d3d",
-      "name": "Execute Script Subworkflow",
-      "disabled": true
+      "name": "Execute Script Subworkflow"
     },
     {
       "parameters": {
@@ -636,8 +635,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1296,
-        -32
+        -1136,
+        -256
       ],
       "id": "d2f5a133-6e1b-4946-aa0c-1151e4444536",
       "name": "Settings1",
@@ -1096,6 +1095,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-21T01:56:24.306Z",
-  "versionId": "3573f5a2-e4d7-463f-b98d-32de0cc6afd6"
+  "updatedAt": "2026-06-21T02:17:05.112Z",
+  "versionId": "c25034e6-80c1-4f0c-9104-791d1c56664c"
 }
