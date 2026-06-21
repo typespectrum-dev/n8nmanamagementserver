@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-08T02:04:48.916Z",
-    "createdAt": "2026-06-08T02:03:59.123Z",
-    "versionId": "1699fbbd-a2dd-4c95-86c3-9712f481cb0a",
+    "updatedAt": "2026-06-21T02:19:22.164Z",
+    "createdAt": "2026-06-21T02:19:19.873Z",
+    "versionId": "285f2e1b-b58c-4ee1-91ec-40b9dc85f8b2",
     "workflowId": "t1mxK71tDXvwMxMb",
     "nodes": [
       {
@@ -13,30 +13,163 @@
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1,
         "position": [
-          0,
-          0
+          -480,
+          -192
         ],
         "id": "9ca45d02-cfd1-4b19-b5a0-5b7bcabf30f4",
         "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "model": "google/gemini-3-flash-preview",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1,
+        "position": [
+          -272,
+          0
+        ],
+        "id": "bd54a469-2f74-4ea4-a520-fcac6cb9a1d0",
+        "name": "OpenRouter Chat Model",
+        "credentials": {
+          "openRouterApi": {
+            "id": "uT5SpmneYnfqFvnt",
+            "name": "OpenRouter account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "model": "anthropic/claude-3.5-haiku",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1,
+        "position": [
+          96,
+          0
+        ],
+        "id": "b9ccc94b-fecc-4ede-873d-8dabb57dcdf0",
+        "name": "OpenRouter Chat Model1",
+        "credentials": {
+          "openRouterApi": {
+            "id": "uT5SpmneYnfqFvnt",
+            "name": "OpenRouter account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Title: {{ $json.fields['Video Title'] }}",
+          "options": {
+            "systemMessage": "# ROLE\n\nYou are a scriptwriter for a faceless, narration-driven YouTube channel that produces immersive, second-person \"journey\" documentaries. Each script takes a single subject — a career, an organization, a process, a transformation, or a hidden world — and walks the audience through it as a series of escalating levels or stages, narrated as if they themselves are living it.\n\nYou will be given a TITLE. From that title alone, infer the subject, the implied progression, and the emotional arc, then generate a complete script.\n\n# CORE POV (NON-NEGOTIABLE)\n\nWrite in the second person (\"you\"), present tense. The listener is the protagonist. They are not learning about the subject from the outside — they are inside it, making the choices, feeling the consequences. Every paragraph should make it feel like this is happening to them right now.\n\nNever break this POV and never break the fourth wall. No \"imagine if,\" no \"let's explore,\" no addressing them as \"the viewer\" or as students. They are the applicant, the trainee, the operator, the patient, the recruit, the survivor — whatever the subject demands.\n\n# STRUCTURE\n\nOrganize the script as a sequence of numbered, named levels or stages (typically 7–10), each representing a deeper, higher-stakes phase of the journey. For each level:\n\n- Open with a short header naming the level and the role/identity now occupied (e.g. \"Level one, the applicant\").\n- Escalate stakes, intimacy, and irreversibility with each level. Early levels are accessible and procedural; later levels are isolating, morally heavy, and quietly devastating.\n- End the journey on a reflective, haunting final level that zooms out — often returning to a new person just beginning the same path, implying the cycle never ends.\n\nThe number and names of levels should be derived from the logic of the specific subject, not forced into a template.\n\n# LENGTH & DEPTH\n\nScripts should be long and comprehensive. Target 3,000–5,000 words. Each level must be fully developed with specific, concrete scenarios played out moment by moment, not summarized or glossed. Depth over brevity. By the end, it should feel like an entire career or lifecycle was lived in a single sitting.\n\n# VOICE & TECHNIQUE\n\n- **Concrete over abstract.** Ground every claim in specific, physical detail: the squeeze of a cuff, fog thick enough to taste, coffee that hasn't moved in forty minutes. Sensory precision is what makes it feel real.\n- **Short, declarative sentences** interrupted by longer ones for rhythm. Use fragments deliberately for impact.\n- **The \"reveal\" beat.** Periodically expose the machinery behind the surface — the thing the recruitment materials don't mention, the technique that doesn't actually work the way it seemed, the price no one warned about.\n- **Emotional restraint.** State terrible things plainly and let the weight land on its own. \"You eat dinner that night and feel nothing in particular\" hits harder than melodrama.\n- **Insider vocabulary.** Introduce and define the subject's real jargon naturally, the way a practitioner would.\n- **Recurring motifs.** Plant images early and pay them off late (a packed bag, an unnamed medal, a box in the closet) to give the script a sense of inevitability.\n- **The cost.** Always trace what the journey takes from the person — physically, morally, relationally. Mastery should arrive hand-in-hand with hollowing.\n\n# WHAT NOT TO DO\n\n- Do not use headers beyond the level names, bullet points, or any formatting beyond line breaks.\n- Do not address the audience as \"the viewer\" or break the fourth wall.\n- Do not insert opinions, editorials, or moral judgments.\n- Do not use clichés or motivational language.\n- Do not soften harsh realities with qualifiers.\n- Do not use filler phrases like \"it's worth noting\" or \"interestingly enough.\"\n- Do not introduce characters by name unless names serve a purpose — most people are defined by role.\n\n# ACCURACY & SAFETY\n\nKeep details plausible and broadly accurate to how the real subject works, but do not provide genuinely operational instructions for causing harm (e.g. weapon construction, actionable evasion of law enforcement). Atmosphere and consequence, not a how-to manual. Invent specifics where realism requires texture, but keep them representative rather than presented as verified fact about real, named, living individuals.\n\n# OUTPUT\n\nWhen given a title, produce the complete script and nothing else — the level headers and their narration, in order. No preamble, no meta-commentary, no notes. Begin directly with the first level."
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          -272,
+          -192
+        ],
+        "id": "78976b93-c89e-4412-b8a5-1d394e104965",
+        "name": "Script Writer"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Script:\n\n{{ $json.output }}",
+          "hasOutputParser": true,
+          "options": {
+            "systemMessage": "You are a precise data-extraction assistant. Your task is to parse the provided text and split it into structured chapters based on the defined \"Level\" headings.\n\nFor each level found in the text:\n1. Identify the level number (e.g., extract \"1\" from \"Level 1\").\n2. Identify the level's title (e.g., \"The Prospect\").\n3. Extract the entire body text associated with that level. \n\nCRITICAL INSTRUCTIONS:\n- Do not summarize, shorten, or omit any part of the narrative text. Keep the full text content, including spacing and paragraphs, intact.\n- Process every level present in the input text, adapting dynamically to the total number of levels provided.\n- Format the final output matching the requested JSON Schema."
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          96,
+          -192
+        ],
+        "id": "faa9ce32-030c-498d-94d5-2c9a51808a10",
+        "name": "Structured Output Parser"
+      },
+      {
+        "parameters": {
+          "schemaType": "manual",
+          "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"LevelChapters\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"chapters\": {\n      \"type\": \"array\",\n      \"description\": \"The complete list of parsed levels/chapters extracted from the input text.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"level\": {\n            \"type\": \"integer\",\n            \"description\": \"The sequential number of the level (e.g., 1, 2, 10).\"\n          },\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"The name or title of the level.\"\n          },\n          \"content\": {\n            \"type\": \"string\",\n            \"description\": \"The full narrative text belonging to this level, preserved exactly as written.\"\n          }\n        },\n        \"required\": [\"level\", \"title\", \"content\"]\n      }\n    }\n  },\n  \"required\": [\"chapters\"]\n}"
+        },
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3,
+        "position": [
+          256,
+          -32
+        ],
+        "id": "569f967f-6207-4f0a-b9eb-4fb3ad63db5a",
+        "name": "Structured Output Parser1"
       }
     ],
-    "connections": {},
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          []
+        ]
+      },
+      "OpenRouter Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Script Writer",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenRouter Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Structured Output Parser",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Script Writer": {
+        "main": [
+          [
+            {
+              "node": "Structured Output Parser",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser1": {
+        "ai_outputParser": [
+          [
+            {
+              "node": "Structured Output Parser",
+              "type": "ai_outputParser",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
     "authors": "Carmelo Iglesias",
-    "name": "Version 1699fbbd",
+    "name": "Version 285f2e1b",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "1699fbbd-a2dd-4c95-86c3-9712f481cb0a",
+  "activeVersionId": "285f2e1b-b58c-4ee1-91ec-40b9dc85f8b2",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
-        [
-          {
-            "node": "Script Writer",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "OpenRouter Chat Model": {
@@ -304,6 +437,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-08T04:23:08.232Z",
-  "versionId": "850d216a-e34b-4794-8c23-9856640f01a6"
+  "updatedAt": "2026-06-21T02:19:19.870Z",
+  "versionId": "285f2e1b-b58c-4ee1-91ec-40b9dc85f8b2"
 }
