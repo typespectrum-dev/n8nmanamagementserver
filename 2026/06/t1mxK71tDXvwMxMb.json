@@ -169,7 +169,13 @@
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
-        []
+        [
+          {
+            "node": "Script Writer",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "OpenRouter Chat Model": {
@@ -307,7 +313,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        96,
+        32,
         -192
       ],
       "id": "faa9ce32-030c-498d-94d5-2c9a51808a10",
@@ -316,7 +322,7 @@
     {
       "parameters": {
         "schemaType": "manual",
-        "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"LevelChapters\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"chapters\": {\n      \"type\": \"array\",\n      \"description\": \"The complete list of parsed levels/chapters extracted from the input text.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"level\": {\n            \"type\": \"integer\",\n            \"description\": \"The sequential number of the level (e.g., 1, 2, 10).\"\n          },\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"The name or title of the level.\"\n          },\n          \"content\": {\n            \"type\": \"string\",\n            \"description\": \"The full narrative text belonging to this level, preserved exactly as written.\"\n          }\n        },\n        \"required\": [\"level\", \"title\", \"content\"]\n      }\n    }\n  },\n  \"required\": [\"chapters\"]\n}"
+        "inputSchema": "={\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"LevelChapters\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"chapters\": {\n      \"type\": \"array\",\n      \"description\": \"The complete list of parsed levels/chapters extracted from the input text.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"level\": {\n            \"type\": \"integer\",\n            \"description\": \"The sequential number of the level (e.g., 1, 2, 10).\"\n          },\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"The name or title of the level.\"\n          },\n          \"content\": {\n            \"type\": \"string\",\n            \"description\": \"The full narrative text belonging to this level, preserved exactly as written.\"\n          }\n        },\n        \"required\": [\"level\", \"title\", \"content\"]\n      }\n    }\n  },\n  \"required\": [\"chapters\"]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
@@ -350,69 +356,6 @@
           "item": 0
         }
       }
-    ],
-    "Structured Output Parser": [
-      {
-        "json": {
-          "output": {
-            "chapters": [
-              {
-                "level": 1,
-                "title": "The Prospect",
-                "content": "You are sitting in a nondescript hotel room in northern Virginia. It is 3:00 AM. You have been here for twelve hours. There is no television, no clock, and your phone was taken at the door. You are a decorated Marine, a linguistics expert, or perhaps just a very bright, very bored systems analyst with a specific kind of psychological profile: high openness to experience, low neuroticism, and a moral compass that points toward whatever the mission requires. \n\nThe door opens. A man in a suit that fits like a second skin sits across from you. He doesn't introduce himself. He doesn't ask how you are. He starts by telling you a secret about your father—something even your mother doesn't know. Then he asks if you're ready to stop being a person and start being an instrument. \n\nYou don't say yes right away. You wait for the catch. But there is no catch, only a polygraph test that lasts eight hours. They ask if you've ever cheated on your taxes, if you've ever thought about hurting someone, if you've ever felt a moment of true, unadulterated disloyalty to your country. You sweat. The needles jump. But you're telling the truth: you want in because you've realized the world is a chaotic machine, and you want to be the grease. By the time you walk out into the sunlight, your old life is already starting to blur. You are officially \"cleared for processing.\" You are a ghost in the making."
-              },
-              {
-                "level": 2,
-                "title": "The Farmhand",
-                "content": "You are at Camp Peary, better known as \"The Farm.\" You are no longer your name; you are a pseudonym. For the next six months, you live in a simulated world of paranoia. You learn the \"Box 5\" method of surveillance detection. You spend fourteen hours a day driving a beat-up sedan through the backroads of Virginia, checking for a \"tail\" that may or may not be there. You learn that if you see the same car three times, it's a coincidence. If you see it four times, it's a problem. \n\nYou learn how to load a dead drop—placing a microfilm or a thumb drive behind a loose brick in a park—without breaking stride. You learn the \"brush pass,\" the art of transferring an object to a stranger while walking past them in a crowded mall. You learn how to pick locks, how to hotwire cold engines, and how to identify twenty different types of shoulder-launched missiles by the shape of their casing. \n\nBut mostly, you learn the art of the \"pitch.\" You are dropped into a local bar and told to recruit a total stranger. You have to find their vulnerability—money, ego, ideology, or coercion. You learn to listen for the \"hook.\" When a man complains about his boss, you don't sympathize; you store it. That's his ego. You learn that everyone has a price, and your job is simply to find the currency. You pass your final exam by \"disappearing\" for forty-eight hours in a major city while being hunted by your instructors. You realize you've stopped looking people in the eye. You're always looking at their hands, their mirrors, and the exits."
-              },
-              {
-                "level": 3,
-                "title": "The Case Officer (NCS)",
-                "content": "You are posted to a Third World capital. On paper, you are a junior economic attaché at the embassy. Your office is a cubicle filled with boring reports on coffee exports. But your real office is a smoke-filled café at midnight. You are now a member of the National Clandestine Service. \n\nYou have three \"assets\"—local officials you have bribed or blackmailed into providing intelligence. You are their priest, their best friend, and their god. You spend your nights listening to their fears, handing them envelopes of crisp, non-sequential bills, and pushing them to take bigger risks. You learn the heavy weight of the \"burn.\" When an asset gets nervous, you have to decide if they are still useful. If they aren't, you cut them loose. You watch from a distance as a man you've worked with for a year is arrested by his own secret police. You don't intervene. You go back to the embassy and write a \"Contact Report\" explaining why the loss of his intelligence is \"acceptable within parameters.\" For the first time, you realize that people are just data points. You go home and drink until the ceiling stops spinning."
-              },
-              {
-                "level": 4,
-                "title": "The Black Site Tech",
-                "content": "You've been promoted, but not to a corner office. You've been moved to the \"Special Activities Center.\" You are flown on a Gulfstream jet with no tail numbers to a nameless compound in a desert you aren't allowed to map. You are a technician of the \"Rendition, Detention, and Interrogation\" program. \n\nThe world doesn't know this place exists. Your job is to keep the \"High-Value Targets\" (HVTs) alive and talking. You aren't the one doing the heavy work, but you are the one standing behind the glass. You manage the logistics of \"enhanced measures.\" You learn the rhythm of sleep deprivation—how to use white noise and strobe lights to break a man's perception of time until he begs to tell you anything, even lies, just for ten minutes of silence. \n\nYou see things that weren't in the training videos. You see the human mind unravel like an old sweater. You are told this is necessary to prevent \"another sunset.\" You believe it because you have to. You stop writing letters home. There's nothing you can say that isn't a federal crime to speak aloud. You start to feel like the walls of the compound are the only reality that matters."
-              },
-              {
-                "level": 5,
-                "title": "The Ground Branch Paramilitary",
-                "content": "You are no longer wearing a suit. You are wearing a sterile uniform with no patches, no country flags, and no serial numbers on your weapon. You are Ground Branch. You are the CIA's private army. \n\nYou are inserted via HALO jump into a \"denied area\"—a country where the U.S. is not officially at war. Your mission is \"Direct Action.\" You are there to snatch a scientist, sabotage a centrifuge, or \"neutralize\" a cell leader. You operate in cells of four. If you are killed, the State Department will deny your existence. Your family will be told you died in a private plane crash or a hiking accident in the Alps. \n\nYou live in the \"gray space.\" You move through a village at 2:00 AM using GPNVG-18 quad-eye night vision, looking like a four-eyed demon. You enter a house, shoot a man in his bed before he can reach for a rifle, and are back in the helicopter within six minutes. There is no adrenaline anymore, only a cold, professional boredom. You are a surgeon, and the world is a patient with a lot of tumors. You realize you have more in common with the men you're hunting than the people back home. You both live in the dirt. You both know the truth about how the world actually works."
-              },
-              {
-                "level": 6,
-                "title": "The Station Chief",
-                "content": "You are back in the light, but the light is Dim. You are the Chief of Station (COS) in a major European or Asian capital. You are the shadow ambassador. The actual Ambassador takes the photos, but you are the one who meets with the head of the host country's intelligence agency in a soundproof bunker beneath the city. \n\nYou manage the \"Station.\" You are responsible for dozens of case officers, analysts, and paramilitary teams. You are the one who signs off on the \"Ops Cables.\" When an operation goes sideways—when a drone strip kills a wedding party or an asset is caught with a suitcase full of poison—it is your job to \"clean\" it. You negotiate with foreign ministers. You trade secrets like baseball cards. \n\nYou realize that diplomacy is just a polite word for controlled betrayal. You have a direct line to Langley, and sometimes, the Director. You see the \"Big Picture.\" You see how a famine in Africa is being used to manipulate a vote in the UN. You see how a corporate merger in New York is actually a front for a Chinese cyber-espionage ring. You are the conductor of a global orchestra of lies. You realize you haven't told a simple, unvarnished truth to anyone, including your spouse, in fifteen years."
-              },
-              {
-                "level": 7,
-                "title": "The Targeter",
-                "content": "You are moved to the \"Counterterrorism Center.\" You are a Targeter. You spend your days in a room with no windows, staring at a wall of screens. You are the one who connects the dots. You track a phone signal in Yemen, cross-reference it with a bank transfer in London, and match it to a face caught on a CCTV camera in Istanbul. \n\nYou are the judge and jury. When you \"package\" a target, you are essentially signing a death warrant. You spend weeks building a \"Pattern of Life\" for a human being. You know what time he wakes up, what he likes to eat, and the name of his youngest daughter. You wait for him to be away from his family—usually. You wait for the \"window of opportunity.\" \n\nThen, you pick up a secure phone and say the words: \"Target is positive. Kinetic strike authorized.\" You watch the grainy infrared feed as a Hellfire missile transforms a moving car into a blooming flower of heat. You don't cheer. You take a sip of lukewarm coffee, check the timestamp, and start building the next package. You are a god of lightning, operating on a government salary."
-              },
-              {
-                "level": 8,
-                "title": "The Directorate of Operations Polymath",
-                "content": "You have reached the inner sanctum. You are a \"Senior Intelligence Service\" officer. You no longer run operations; you design them. You are the architect of \"Long-Term Influence.\" You don't just kill a leader; you plan the ten-year collapse of a regime. You orchestrate \"Deep Cover\" penetrations that will take a decade to bear fruit. \n\nYou move through the halls of the CIA headquarters—the Original Headquarters Building (OHB)—and see the stars on the wall for the fallen. You know the names behind three of them. You are one of the few who knows where the bodies are literally buried. You have \"compartmented\" your brain so thoroughly that you sometimes forget which version of history is the real one. \n\nYou spend your weekends at a quiet suburban home, grilling burgers for neighbors who think you work for the Department of Agriculture. You smile at their jokes about government bureaucracy. Inside, you are thinking about the coup you triggered on Friday. You feel a profound sense of isolation. You are the only person at the party who knows that the world is about to change, and that you are the reason why."
-              },
-              {
-                "level": 9,
-                "title": "The Custodian of the Stars",
-                "content": "You are the one who decides whose name gets a star on the wall and whose name is forgotten. You are at the top of the \"Black Ops\" food chain. You are the person who briefs the President in the Oval Office, giving them the \"PDB\" (President's Daily Brief). \n\nYou don't tell them everything. You tell them what they need to know to make the decision you've already decided they should make. You understand that Presidents are temporary, but the Agency is forever. You are the guardian of the \"Deep State,\" not out of a thirst for power, but out of a conviction that the public cannot handle the truth. \n\nYou see the world as a series of threats to be managed, not problems to be solved. You have lost your shadow. You have no hobbies, no real friends, and a heart that beats with the cold precision of a Swiss watch. You are the ultimate patriot because you have sacrificed your soul to keep the machine running. You look in the mirror and you don't recognize the person looking back, but it doesn't matter. The person in the mirror is just another cover identity."
-              },
-              {
-                "level": 10,
-                "title": "The Legend",
-                "content": "You are retired. Or rather, you are \"off the books.\" You live in a small house in the woods or a high-rise in a city where no one knows you. You have a pension that comes from a shell company. You have a medal in a velvet box that you can never show anyone. \n\nYou spend your days reading the newspaper, seeing the \"official\" version of events, and smiling to yourself because you know the three phone calls that actually caused the headlines. You see a young man at a coffee shop—alert, scanning the room, checking the exits—and you recognize the look in his eyes. He is \"The Prospect.\" He is you, forty years ago. \n\nYou want to walk over to him. You want to tell him to go home, to marry his girlfriend, to take that job in marketing, to stay in the light. But you don't. You take a sip of your coffee and look away. Because you know the machine needs grease. And you know that, despite everything it cost you, you'd do it all over again. The cycle continues. The stars on the wall await their next name. You are finally, truly, a ghost."
-              }
-            ]
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -437,6 +380,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-21T02:19:19.870Z",
-  "versionId": "285f2e1b-b58c-4ee1-91ec-40b9dc85f8b2"
+  "updatedAt": "2026-06-21T02:57:14.817Z",
+  "versionId": "eb27674c-b367-4535-a822-230db55f7904"
 }
