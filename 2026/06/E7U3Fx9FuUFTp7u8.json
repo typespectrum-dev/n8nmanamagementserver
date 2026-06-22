@@ -361,6 +361,7 @@
     {
       "parameters": {
         "authentication": "nocoDbApiToken",
+        "operation": "search",
         "workspaceId": {
           "__rl": true,
           "mode": "list",
@@ -373,9 +374,13 @@
         },
         "table": {
           "__rl": true,
-          "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
-          "mode": "id"
-        }
+          "value": "",
+          "mode": "id",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "returnAll": true,
+        "options": {}
       },
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
@@ -571,6 +576,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-22T02:00:10.274Z",
-  "versionId": "2062c421-df2c-4f36-bf7c-b305e9286c04"
+  "updatedAt": "2026-06-22T02:16:03.238Z",
+  "versionId": "b738f821-1329-4b49-b3e1-28ee7b3c8e57"
 }
