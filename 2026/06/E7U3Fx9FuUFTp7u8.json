@@ -284,6 +284,58 @@
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e899409e-3da5-4c6a-86f1-60695d31950c",
+              "name": "script",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "cb34a319-c1d3-494f-a121-cc4b1a9d37c6",
+              "name": "level",
+              "value": "={{ $json.level_number }}",
+              "type": "number"
+            },
+            {
+              "id": "a285cb3a-6d3b-4124-a30a-3e3e17fd423e",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "1a37d44b-90e1-4ba6-9103-2836d4ef7ca8",
+              "name": "Base ID",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+              "type": "string"
+            },
+            {
+              "id": "63644497-8977-4d73-9141-e259acd98d90",
+              "name": "Worker Sheet ID",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+              "type": "string"
+            },
+            {
+              "id": "ff8a873c-f34c-4b19-8292-5001c3ca24d9",
+              "name": "Character Reference URL",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
+              "type": "string"
+            },
+            {
+              "id": "baabcd60-1766-4a09-8891-fef79729010f",
+              "name": "Storage Bucket",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+              "type": "string"
+            },
+            {
+              "id": "d7e87e16-870e-407f-a3fe-305ebd747c20",
+              "name": "Videos Path",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}",
+              "type": "string"
+            }
+          ]
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.set",
@@ -378,6 +430,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-22T00:42:39.929Z",
-  "versionId": "207e7f07-0b73-4df6-9bea-97fc9cb3f60d"
+  "updatedAt": "2026-06-22T01:12:17.557Z",
+  "versionId": "409e07e9-acac-45a4-9e26-d9abea49a9ea"
 }
