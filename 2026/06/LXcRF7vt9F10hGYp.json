@@ -126,10 +126,16 @@
     },
     "Execute Script Subworkflow": {
       "main": [
-        []
+        [
+          {
+            "node": "Video Workflow Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
-    "Settings1": {
+    "Video Workflow Settings": {
       "main": [
         [
           {
@@ -635,11 +641,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1136,
-        -256
+        -1312,
+        -32
       ],
       "id": "d2f5a133-6e1b-4946-aa0c-1151e4444536",
-      "name": "Settings1",
+      "name": "Video Workflow Settings",
       "disabled": true
     }
   ],
@@ -1150,6 +1156,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-21T05:01:28.248Z",
-  "versionId": "c25034e6-80c1-4f0c-9104-791d1c56664c"
+  "updatedAt": "2026-06-22T00:29:48.531Z",
+  "versionId": "605b8a53-391b-444a-92d0-51bef8242442"
 }
