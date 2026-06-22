@@ -1,0 +1,46 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-06-22T03:50:22.802Z",
+  "id": "EB6ZxVBh9wX1Dixp",
+  "isArchived": false,
+  "meta": null,
+  "name": "Video Generation Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "97407ac6-7d3d-4310-a69e-ad38e939b3b9",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-06-22T03:50:22.802Z",
+      "createdAt": "2026-06-22T03:50:22.802Z",
+      "role": "workflow:owner",
+      "workflowId": "EB6ZxVBh9wX1Dixp",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-06-22T03:51:00.870Z",
+  "versionId": "9d86cb0f-5e59-43ab-938e-60db27fcaa0d"
+}
