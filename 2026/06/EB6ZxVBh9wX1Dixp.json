@@ -397,36 +397,19 @@
         "fieldsMapper": {
           "mappingMode": "defineBelow",
           "value": {
-            "Progress": "Processing"
+            "Worker Status": "Processing"
           },
-          "matchingColumns": [],
+          "matchingColumns": [
+            "Worker Status"
+          ],
           "schema": [
             {
-              "id": "Progress",
-              "displayName": "Progress",
+              "id": "Worker Status",
+              "displayName": "Worker Status",
               "type": "string",
               "display": true,
               "defaultMatch": false,
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Video Title",
-              "displayName": "Video Title",
-              "type": "string",
-              "display": true,
-              "defaultMatch": false,
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Project URL",
-              "displayName": "Project URL",
-              "type": "string",
-              "display": true,
-              "defaultMatch": false,
-              "readOnly": false,
-              "removed": true
+              "readOnly": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -531,6 +514,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T04:26:46.348Z",
-  "versionId": "160c5231-9a27-489c-9109-28a48ddf63b2"
+  "updatedAt": "2026-06-24T04:58:51.150Z",
+  "versionId": "25ce38ee-32a5-42ab-b5fa-2c7d0a60d7fc"
 }
