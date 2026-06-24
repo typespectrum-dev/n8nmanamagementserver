@@ -462,8 +462,7 @@
     },
     {
       "parameters": {
-        "mode": "chooseBranch",
-        "useDataOfInput": 2
+        "mode": "chooseBranch"
       },
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
@@ -557,6 +556,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T05:59:17.915Z",
-  "versionId": "42414e75-9926-4b15-825c-b6cffdd3ffbb"
+  "updatedAt": "2026-06-24T06:03:10.850Z",
+  "versionId": "cef16614-58dc-4f15-84b7-b84f06cdea10"
 }
