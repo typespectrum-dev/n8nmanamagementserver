@@ -72,6 +72,73 @@
           }
         ]
       ]
+    },
+    "Ping Worker Status": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Call 'Chunk Subworkflow'",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update Project URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Ping Worker Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Chunk Subworkflow'": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Project URL": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-06-22T03:50:22.802Z",
@@ -87,8 +154,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -576,
-        -16
+        -1888,
+        -48
       ],
       "id": "97407ac6-7d3d-4310-a69e-ad38e939b3b9",
       "name": "When Executed by Another Workflow"
@@ -101,8 +168,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -368,
-        -16
+        -1680,
+        -48
       ],
       "id": "3ad6f78c-d30c-4d13-9776-33bdfadb2b0c",
       "name": "Split Out"
@@ -114,8 +181,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -160,
-        -16
+        -1472,
+        -48
       ],
       "id": "60f3f8cb-24f2-493f-a589-e1584007d221",
       "name": "Loop Over Items"
@@ -179,8 +246,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        144,
-        16
+        -1168,
+        -16
       ],
       "id": "3adcfaba-5c29-466e-bf45-77f08d85a731",
       "name": "Chunk Settings"
@@ -210,11 +277,170 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
       "position": [
-        384,
-        16
+        -928,
+        -16
       ],
       "id": "a38f50da-4da0-41a3-a4c5-98cd9db49ff5",
       "name": "Ping Worker Status",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "1gvRq0BbKFPkQsOh",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "83229cac-306b-4c76-b644-757ac86894a5",
+              "leftValue": "={{ $json.fields['Worker Status'] }}",
+              "rightValue": "Ready",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -720,
+        -16
+      ],
+      "id": "f72a2724-74be-40a0-a423-4c7f86c3e184",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -512,
+        192
+      ],
+      "id": "91e0277a-a99c-4de4-a82a-7bb11b63adfe",
+      "name": "Wait",
+      "webhookId": "4c285fd2-f18c-4da1-9a86-bd6fe0110bcd"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "oKcy6HGCCMQOaouA",
+          "mode": "id",
+          "cachedResultUrl": "/workflow/oKcy6HGCCMQOaouA"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -512,
+        -240
+      ],
+      "id": "8e0947ea-e3fb-4ab9-add0-4b79d491fbbb",
+      "name": "Call 'Chunk Subworkflow'"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -256,
+        -48
+      ],
+      "id": "b23732c6-a2c7-4d1a-9735-0fdcbd2fd6dc",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "workspaceId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "projectId": {
+          "__rl": true,
+          "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+          "mode": "id"
+        },
+        "id": "={{ $json.id }}",
+        "fieldsMapper": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Progress": "Processing"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Progress",
+              "displayName": "Progress",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Video Title",
+              "displayName": "Video Title",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Project URL",
+              "displayName": "Project URL",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 4,
+      "position": [
+        -496,
+        -32
+      ],
+      "id": "8ce897ab-3c34-432e-b2f6-b1c0ee62cbcd",
+      "name": "Update Project URL",
       "credentials": {
         "nocoDbApiToken": {
           "id": "1gvRq0BbKFPkQsOh",
@@ -305,6 +531,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T03:51:46.884Z",
-  "versionId": "caf0ed25-3fa5-49dd-a0e6-45ae999aab13"
+  "updatedAt": "2026-06-24T04:26:46.348Z",
+  "versionId": "160c5231-9a27-489c-9109-28a48ddf63b2"
 }
