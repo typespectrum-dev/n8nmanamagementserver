@@ -27,7 +27,53 @@
     "autosaved": true
   },
   "activeVersionId": "6ce13af5-d68b-4d33-b30f-bece3488b35d",
-  "connections": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Chunk Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chunk Settings": {
+      "main": [
+        [
+          {
+            "node": "Update Project URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2026-06-22T03:50:22.802Z",
   "id": "EB6ZxVBh9wX1Dixp",
   "isArchived": false,
@@ -41,11 +87,177 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        0,
-        0
+        -576,
+        -16
       ],
       "id": "97407ac6-7d3d-4310-a69e-ad38e939b3b9",
       "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.levels",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        -16
+      ],
+      "id": "3ad6f78c-d30c-4d13-9776-33bdfadb2b0c",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -160,
+        -16
+      ],
+      "id": "60f3f8cb-24f2-493f-a589-e1584007d221",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8f1dbc75-9144-4fae-8cad-5a4c50962603",
+              "name": "script",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "e1e8d4f5-fe71-410a-a145-fafff15e92b2",
+              "name": "level_number",
+              "value": "={{ $json.level_number }}",
+              "type": "number"
+            },
+            {
+              "id": "d6c3a4b1-8e0d-40c2-9259-7eee640d355d",
+              "name": "Title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "d9a4ae6a-5921-455e-ba6e-211de4b6174b",
+              "name": "Base ID",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+              "type": "string"
+            },
+            {
+              "id": "9514ce15-317a-40f6-bc98-b276f8325f65",
+              "name": "Worker Sheet ID",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+              "type": "string"
+            },
+            {
+              "id": "7bcc4ae5-bcdb-4fb1-849f-9b6577789a34",
+              "name": "Character Reference URL",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
+              "type": "string"
+            },
+            {
+              "id": "45814488-27ba-4e5a-b4d3-458a75088eaa",
+              "name": "Storage Bucket",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+              "type": "string"
+            },
+            {
+              "id": "6508af4c-0097-4a4d-8013-79ec9b8a340c",
+              "name": "Videos Path",
+              "value": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        144,
+        16
+      ],
+      "id": "3adcfaba-5c29-466e-bf45-77f08d85a731",
+      "name": "Chunk Settings"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "workspaceId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "projectId": {
+          "__rl": true,
+          "value": "={{ $('Settings').first().json['Base ID'] }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Settings').first().json['Channel Sheet ID'] }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Limit to 1').first().json.id }}",
+        "fieldsMapper": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Project URL": "=https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2F{{ $('Limit to 1').first().json.fields['Video Title'].replaceAll(\" \", \"_\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Progress",
+              "displayName": "Progress",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Video Title",
+              "displayName": "Video Title",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Project URL",
+              "displayName": "Project URL",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 4,
+      "position": [
+        384,
+        32
+      ],
+      "id": "a38f50da-4da0-41a3-a4c5-98cd9db49ff5",
+      "name": "Update Project URL",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "1gvRq0BbKFPkQsOh",
+          "name": "NocoDB Token account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -109,6 +321,23 @@
           "item": 0
         }
       }
+    ],
+    "Update Project URL": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-21 01:47:08+00:00",
+            "Progress": "Processing",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": "https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank"
+          }
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -130,6 +359,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-22T04:03:38.834Z",
-  "versionId": "6ce13af5-d68b-4d33-b30f-bece3488b35d"
+  "updatedAt": "2026-06-24T01:59:54.261Z",
+  "versionId": "37fec1d2-1721-49dc-a5d9-5388308a206e"
 }
