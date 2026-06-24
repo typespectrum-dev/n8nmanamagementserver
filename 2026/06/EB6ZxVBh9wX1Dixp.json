@@ -69,6 +69,11 @@
             "node": "Ping Worker Status",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Chunk Settings1",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -88,14 +93,14 @@
       "main": [
         [
           {
-            "node": "Call 'Chunk Subworkflow'",
+            "node": "Change Worker Status to Processing",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Update Project URL",
+            "node": "Chunk Settings1",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ],
         [
@@ -129,13 +134,35 @@
         ]
       ]
     },
-    "Update Project URL": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Change Worker Status to Processing": {
       "main": [
         [
           {
             "node": "Merge",
             "type": "main",
             "index": 1
+          }
+        ]
+      ]
+    },
+    "Chunk Settings1": {
+      "main": [
+        [
+          {
+            "node": "Call 'Chunk Subworkflow'",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -357,14 +384,16 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        -512,
-        -240
+        -432,
+        -336
       ],
       "id": "8e0947ea-e3fb-4ab9-add0-4b79d491fbbb",
       "name": "Call 'Chunk Subworkflow'"
     },
     {
-      "parameters": {},
+      "parameters": {
+        "mode": "chooseBranch"
+      },
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
@@ -423,13 +452,27 @@
         -32
       ],
       "id": "8ce897ab-3c34-432e-b2f6-b1c0ee62cbcd",
-      "name": "Update Project URL",
+      "name": "Change Worker Status to Processing",
       "credentials": {
         "nocoDbApiToken": {
           "id": "1gvRq0BbKFPkQsOh",
           "name": "NocoDB Token account"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "useDataOfInput": 2
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -608,
+        -336
+      ],
+      "id": "006df79b-0c1a-4095-bf61-276ecd8ae3a6",
+      "name": "Chunk Settings1"
     }
   ],
   "pinData": {
@@ -514,6 +557,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T04:58:51.150Z",
-  "versionId": "25ce38ee-32a5-42ab-b5fa-2c7d0a60d7fc"
+  "updatedAt": "2026-06-24T05:59:17.915Z",
+  "versionId": "42414e75-9926-4b15-825c-b6cffdd3ffbb"
 }
