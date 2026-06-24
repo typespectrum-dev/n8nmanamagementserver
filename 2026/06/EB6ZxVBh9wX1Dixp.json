@@ -66,7 +66,7 @@
       "main": [
         [
           {
-            "node": "Update Project URL",
+            "node": "Ping Worker Status",
             "type": "main",
             "index": 0
           }
@@ -188,7 +188,7 @@
     {
       "parameters": {
         "authentication": "nocoDbApiToken",
-        "operation": "update",
+        "operation": "search",
         "workspaceId": {
           "__rl": true,
           "mode": "list",
@@ -196,62 +196,25 @@
         },
         "projectId": {
           "__rl": true,
-          "value": "={{ $('Settings').first().json['Base ID'] }}",
+          "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
           "mode": "id"
         },
         "table": {
           "__rl": true,
-          "value": "={{ $('Settings').first().json['Channel Sheet ID'] }}",
+          "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
           "mode": "id"
         },
-        "id": "={{ $('Limit to 1').first().json.id }}",
-        "fieldsMapper": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Project URL": "=https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2F{{ $('Limit to 1').first().json.fields['Video Title'].replaceAll(\" \", \"_\") }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "Progress",
-              "displayName": "Progress",
-              "type": "string",
-              "display": true,
-              "defaultMatch": false,
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Video Title",
-              "displayName": "Video Title",
-              "type": "string",
-              "display": true,
-              "defaultMatch": false,
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Project URL",
-              "displayName": "Project URL",
-              "type": "string",
-              "display": true,
-              "defaultMatch": false,
-              "readOnly": false,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
+        "returnAll": true,
+        "options": {}
       },
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
       "position": [
         384,
-        32
+        16
       ],
       "id": "a38f50da-4da0-41a3-a4c5-98cd9db49ff5",
-      "name": "Update Project URL",
+      "name": "Ping Worker Status",
       "credentials": {
         "nocoDbApiToken": {
           "id": "1gvRq0BbKFPkQsOh",
@@ -321,23 +284,6 @@
           "item": 0
         }
       }
-    ],
-    "Update Project URL": [
-      {
-        "json": {
-          "id": 1,
-          "id_fields": {
-            "Id": 1
-          },
-          "fields": {
-            "CreatedAt": "2026-06-01 04:39:36+00:00",
-            "UpdatedAt": "2026-06-21 01:47:08+00:00",
-            "Progress": "Processing",
-            "Video Title": "Your Life as Every CIA Black Ops Rank",
-            "Project URL": "https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank"
-          }
-        }
-      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -359,6 +305,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T01:59:54.261Z",
-  "versionId": "37fec1d2-1721-49dc-a5d9-5388308a206e"
+  "updatedAt": "2026-06-24T03:51:46.884Z",
+  "versionId": "caf0ed25-3fa5-49dd-a0e6-45ae999aab13"
 }
