@@ -1,0 +1,34 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-06-24T04:09:55.729Z",
+  "id": "oKcy6HGCCMQOaouA",
+  "isArchived": false,
+  "meta": null,
+  "name": "Chunk Subworkflow",
+  "nodes": [],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-06-24T04:09:55.729Z",
+      "createdAt": "2026-06-24T04:09:55.729Z",
+      "role": "workflow:owner",
+      "workflowId": "oKcy6HGCCMQOaouA",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-06-24T04:09:55.729Z",
+  "versionId": "3a4d8668-6290-4dea-a309-f6f0df0c8d41"
+}
