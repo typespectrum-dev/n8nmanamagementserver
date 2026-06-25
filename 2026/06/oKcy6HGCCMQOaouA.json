@@ -27,7 +27,19 @@
     "autosaved": true
   },
   "activeVersionId": "75134415-733d-478f-99d9-7721251629b5",
-  "connections": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Convert text to speech",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2026-06-24T04:09:55.729Z",
   "id": "oKcy6HGCCMQOaouA",
   "isArchived": false,
@@ -51,16 +63,31 @@
     },
     {
       "parameters": {
-        "options": {}
+        "resource": "speech",
+        "voice": {
+          "__rl": true,
+          "value": "vr5WKaGvRWsoaX5LCVax",
+          "mode": "list",
+          "cachedResultName": "Cherie - Smooth, Fluid and Advertisable"
+        },
+        "text": "={{ JSON.stringify($json.script) }}",
+        "additionalOptions": {},
+        "requestOptions": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
+      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+      "typeVersion": 1,
       "position": [
-        240,
+        208,
         0
       ],
-      "id": "349d098a-13c9-4773-a1e6-5a7eee2f44ea",
-      "name": "HTTP Request"
+      "id": "0f3702b9-3ee7-4de6-a945-318635b165cb",
+      "name": "Convert text to speech",
+      "credentials": {
+        "elevenLabsApi": {
+          "id": "Aw8Z3cWnQltwLIkR",
+          "name": "ElevenLabs account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -101,6 +128,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-25T00:53:32.423Z",
-  "versionId": "45e259de-f00c-49b8-b866-3a0f0c232115"
+  "updatedAt": "2026-06-25T01:22:14.814Z",
+  "versionId": "af0f82ce-8b5d-4370-bd89-c2c72c336e70"
 }
