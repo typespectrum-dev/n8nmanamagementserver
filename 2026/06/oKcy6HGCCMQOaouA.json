@@ -46,6 +46,39 @@
       ],
       "id": "17bf584e-a551-4989-8184-1214963cebc3",
       "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        144,
+        144
+      ],
+      "id": "349d098a-13c9-4773-a1e6-5a7eee2f44ea",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "speech",
+        "voice": {
+          "__rl": true,
+          "mode": "list",
+          "value": null
+        },
+        "additionalOptions": {},
+        "requestOptions": {}
+      },
+      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "dcb964f1-227f-4d59-a6f2-24057e057b57",
+      "name": "Convert text to speech"
     }
   ],
   "pinData": {
@@ -86,6 +119,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T06:04:55.352Z",
-  "versionId": "75134415-733d-478f-99d9-7721251629b5"
+  "updatedAt": "2026-06-24T23:49:56.037Z",
+  "versionId": "26656553-cd89-486f-8ae7-0fb9066219b3"
 }
