@@ -176,7 +176,8 @@
         96
       ],
       "id": "85097bcc-4ffc-40f8-9b47-fef1df2117aa",
-      "name": "HTTP Request1"
+      "name": "HTTP Request1",
+      "disabled": true
     }
   ],
   "pinData": {
@@ -217,6 +218,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-25T02:21:01.214Z",
-  "versionId": "867c28e8-7590-4c5e-8ff0-50a052ea3021"
+  "updatedAt": "2026-06-25T05:10:44.445Z",
+  "versionId": "ae32cd9a-0183-43a4-8dc9-cd4d0900b2d3"
 }
