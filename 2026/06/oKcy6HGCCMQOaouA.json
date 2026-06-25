@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-24T06:01:17.440Z",
-    "createdAt": "2026-06-24T06:00:59.750Z",
-    "versionId": "75134415-733d-478f-99d9-7721251629b5",
+    "updatedAt": "2026-06-25T01:42:45.488Z",
+    "createdAt": "2026-06-25T01:42:33.059Z",
+    "versionId": "4d140756-b992-4af9-9977-9f1b808bd3fd",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -18,21 +18,79 @@
         ],
         "id": "17bf584e-a551-4989-8184-1214963cebc3",
         "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "resource": "speech",
+          "voice": {
+            "__rl": true,
+            "value": "vr5WKaGvRWsoaX5LCVax",
+            "mode": "list",
+            "cachedResultName": "Cherie - Smooth, Fluid and Advertisable"
+          },
+          "text": "={{ JSON.stringify($json.script) }}",
+          "additionalOptions": {},
+          "requestOptions": {}
+        },
+        "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+        "typeVersion": 1,
+        "position": [
+          208,
+          0
+        ],
+        "id": "0f3702b9-3ee7-4de6-a945-318635b165cb",
+        "name": "Voiceover Request",
+        "credentials": {
+          "elevenLabsApi": {
+            "id": "Aw8Z3cWnQltwLIkR",
+            "name": "ElevenLabs account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          512,
+          48
+        ],
+        "id": "f3a087e0-c261-494a-8e9c-f141777ee4e0",
+        "name": "HTTP Request"
       }
     ],
-    "connections": {},
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Voiceover Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Voiceover Request": {
+        "main": [
+          []
+        ]
+      }
+    },
     "authors": "Carmelo Iglesias",
-    "name": "Version 75134415",
+    "name": "Version 4d140756",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "75134415-733d-478f-99d9-7721251629b5",
+  "activeVersionId": "4d140756-b992-4af9-9977-9f1b808bd3fd",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
         [
           {
-            "node": "Convert text to speech",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -63,31 +121,55 @@
     },
     {
       "parameters": {
-        "resource": "speech",
-        "voice": {
-          "__rl": true,
-          "value": "vr5WKaGvRWsoaX5LCVax",
-          "mode": "list",
-          "cachedResultName": "Cherie - Smooth, Fluid and Advertisable"
+        "method": "POST",
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "output_format",
+              "value": "mp3_44100_128"
+            }
+          ]
         },
-        "text": "={{ JSON.stringify($json.script) }}",
-        "additionalOptions": {},
-        "requestOptions": {}
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "The first move is what sets everything in motion."
+            },
+            {
+              "name": "model_id",
+              "value": "eleven_multilingual_v2"
+            }
+          ]
+        },
+        "options": {}
       },
-      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
       "position": [
         208,
         0
       ],
-      "id": "0f3702b9-3ee7-4de6-a945-318635b165cb",
-      "name": "Convert text to speech",
-      "credentials": {
-        "elevenLabsApi": {
-          "id": "Aw8Z3cWnQltwLIkR",
-          "name": "ElevenLabs account"
-        }
-      }
+      "id": "f3a087e0-c261-494a-8e9c-f141777ee4e0",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        560,
+        96
+      ],
+      "id": "85097bcc-4ffc-40f8-9b47-fef1df2117aa",
+      "name": "HTTP Request1"
     }
   ],
   "pinData": {
@@ -128,6 +210,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-25T01:22:14.814Z",
-  "versionId": "af0f82ce-8b5d-4370-bd89-c2c72c336e70"
+  "updatedAt": "2026-06-25T01:58:56.404Z",
+  "versionId": "00ca2b74-ae6a-4cf1-b90b-d172a5962c9c"
 }
