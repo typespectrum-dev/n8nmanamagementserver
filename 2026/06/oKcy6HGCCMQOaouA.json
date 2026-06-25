@@ -121,7 +121,7 @@
     },
     {
       "parameters": {
-        "method": "POST",
+        "method": "HEAD",
         "url": "https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
@@ -130,7 +130,7 @@
           "parameters": [
             {
               "name": "output_format",
-              "value": "mp3_44100_128"
+              "value": "={{ JSON.stringify($json.script) }}\n"
             }
           ]
         },
@@ -142,9 +142,10 @@
               "value": "The first move is what sets everything in motion."
             },
             {
-              "name": "model_id",
+              "name": "s0XGIcqmceN2l7kjsqoZ",
               "value": "eleven_multilingual_v2"
-            }
+            },
+            {}
           ]
         },
         "options": {}
@@ -156,7 +157,13 @@
         0
       ],
       "id": "f3a087e0-c261-494a-8e9c-f141777ee4e0",
-      "name": "HTTP Request"
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3WarNCmL9HCtMzdN",
+          "name": "ElevenLabs"
+        }
+      }
     },
     {
       "parameters": {
@@ -210,6 +217,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-25T01:58:56.404Z",
-  "versionId": "00ca2b74-ae6a-4cf1-b90b-d172a5962c9c"
+  "updatedAt": "2026-06-25T02:21:01.214Z",
+  "versionId": "867c28e8-7590-4c5e-8ff0-50a052ea3021"
 }
