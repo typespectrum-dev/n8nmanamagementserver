@@ -90,7 +90,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Convert text to speech",
             "type": "main",
             "index": 0
           }
@@ -121,63 +121,31 @@
     },
     {
       "parameters": {
-        "method": "HEAD",
-        "url": "https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "output_format",
-              "value": "={{ JSON.stringify($json.script) }}\n"
-            }
-          ]
+        "resource": "speech",
+        "voice": {
+          "__rl": true,
+          "value": "vr5WKaGvRWsoaX5LCVax",
+          "mode": "list",
+          "cachedResultName": "Cherie - Smooth, Fluid and Advertisable"
         },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "text",
-              "value": "The first move is what sets everything in motion."
-            },
-            {
-              "name": "s0XGIcqmceN2l7kjsqoZ",
-              "value": "eleven_multilingual_v2"
-            },
-            {}
-          ]
-        },
-        "options": {}
+        "text": "={{ $json.script }}",
+        "additionalOptions": {},
+        "requestOptions": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
+      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+      "typeVersion": 1,
       "position": [
-        208,
+        224,
         0
       ],
-      "id": "f3a087e0-c261-494a-8e9c-f141777ee4e0",
-      "name": "HTTP Request",
+      "id": "8abdf527-0a8b-4f49-a1d1-2baac08aea72",
+      "name": "Convert text to speech",
       "credentials": {
-        "httpHeaderAuth": {
-          "id": "3WarNCmL9HCtMzdN",
-          "name": "ElevenLabs"
+        "elevenLabsApi": {
+          "id": "Aw8Z3cWnQltwLIkR",
+          "name": "ElevenLabs account"
         }
       }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        560,
-        96
-      ],
-      "id": "85097bcc-4ffc-40f8-9b47-fef1df2117aa",
-      "name": "HTTP Request1",
-      "disabled": true
     }
   ],
   "pinData": {
@@ -218,6 +186,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-25T05:10:44.445Z",
-  "versionId": "ae32cd9a-0183-43a4-8dc9-cd4d0900b2d3"
+  "updatedAt": "2026-06-26T05:25:24.710Z",
+  "versionId": "392c35b2-b208-437e-9312-2711f623d428"
 }
