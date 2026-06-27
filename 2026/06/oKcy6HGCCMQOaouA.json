@@ -170,7 +170,13 @@
         0
       ],
       "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
-      "name": "Upload a file"
+      "name": "Upload a file",
+      "credentials": {
+        "s3": {
+          "id": "lMpFToUlFsGHfghm",
+          "name": "S3 account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -211,6 +217,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-27T21:56:41.616Z",
-  "versionId": "4cac31d7-b7e3-4544-ad24-9852aa2fc684"
+  "updatedAt": "2026-06-27T22:16:16.758Z",
+  "versionId": "535ffb15-7e65-46b6-ad40-dc493127bb08"
 }
