@@ -129,7 +129,15 @@
           "cachedResultName": "Cherie - Smooth, Fluid and Advertisable"
         },
         "text": "={{ JSON.stringify($json.script) }}",
-        "additionalOptions": {},
+        "additionalOptions": {
+          "model": {
+            "mode": "list",
+            "value": "eleven_multilingual_v2"
+          },
+          "outputFormat": "mp3_44100_128",
+          "languageCode": "en",
+          "voiceSettings": "{\n  \"stability\": 1,\n  \"similarity_boost\": 1,\n  \"style\": 0,\n  \"use_speaker_boost\": true,\n  \"speed\": 1\n}"
+        },
         "requestOptions": {}
       },
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
@@ -165,6 +173,50 @@
           "item": 0
         }
       }
+    ],
+    "Convert text to speech": [
+      {
+        "json": {
+          "date": "Sat, 27 Jun 2026 20:21:26 GMT",
+          "server": "uvicorn",
+          "request-id": "5oSCcd7m5WlPdMEqRaB9",
+          "access-control-expose-headers": "request-id, history-item-id, character-cost, regeneration-count, generation-info, current-concurrent-requests, maximum-concurrent-requests",
+          "history-item-id": "XUVbchiGdsVGKeJDF97p",
+          "current-concurrent-requests": "1",
+          "workspace-concurrent-requests": "1",
+          "maximum-concurrent-requests": "5",
+          "character-cost": "1348",
+          "tts-latency-ms": "6185",
+          "content-length": "1515564",
+          "content-type": "audio/mpeg",
+          "vary": "Accept-Language",
+          "access-control-allow-origin": "*",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "POST, PATCH, OPTIONS, DELETE, GET, PUT",
+          "access-control-max-age": "600",
+          "strict-transport-security": "max-age=1800;",
+          "x-trace-id": "2e3449ebc5857de87a90bc57f661f4a9",
+          "x-region": "europe-west4",
+          "via": "1.1 google",
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+          "connection": "close"
+        },
+        "binary": {
+          "data": {
+            "mimeType": "audio/mp3",
+            "fileType": "audio",
+            "fileExtension": "mp3",
+            "data": "filesystem-v2",
+            "fileName": "audio.textToSpeech.mp3",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/9926/binary_data/5a640b29-30a0-429e-9e0a-3cb7fe1e2d84",
+            "fileSize": "1.52 MB",
+            "bytes": 1515564
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -186,6 +238,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-27T04:50:58.301Z",
-  "versionId": "36d871e2-c514-4761-9386-d38f4c821c57"
+  "updatedAt": "2026-06-27T20:26:36.968Z",
+  "versionId": "846a5402-7400-4447-b746-833c442f25b3"
 }
