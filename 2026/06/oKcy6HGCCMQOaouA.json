@@ -99,7 +99,13 @@
     },
     "Convert text to speech": {
       "main": [
-        []
+        [
+          {
+            "node": "Upload a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -151,6 +157,20 @@
           "name": "ElevenLabs account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
+      "name": "Upload a file"
     }
   ],
   "pinData": {
@@ -191,6 +211,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-27T21:27:53.945Z",
-  "versionId": "ff45da5a-6f45-4067-ab7a-f54cb7dda428"
+  "updatedAt": "2026-06-27T21:56:41.616Z",
+  "versionId": "4cac31d7-b7e3-4544-ad24-9852aa2fc684"
 }
