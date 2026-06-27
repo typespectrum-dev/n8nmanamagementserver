@@ -128,14 +128,14 @@
           "mode": "list",
           "cachedResultName": "Cherie - Smooth, Fluid and Advertisable"
         },
-        "text": "={{ $json.script }}",
+        "text": "={{ JSON.stringify($json.script) }}",
         "additionalOptions": {},
         "requestOptions": {}
       },
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
       "typeVersion": 1,
       "position": [
-        224,
+        240,
         0
       ],
       "id": "8abdf527-0a8b-4f49-a1d1-2baac08aea72",
@@ -186,6 +186,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-26T05:25:24.710Z",
-  "versionId": "392c35b2-b208-437e-9312-2711f623d428"
+  "updatedAt": "2026-06-27T04:50:58.301Z",
+  "versionId": "36d871e2-c514-4761-9386-d38f4c821c57"
 }
