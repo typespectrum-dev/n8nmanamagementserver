@@ -457,7 +457,7 @@
         "fieldsMapper": {
           "mappingMode": "defineBelow",
           "value": {
-            "Project URL": "=https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2F{{ $('Limit to 1').first().json.fields['Video Title'].replaceAll(\" \", \"_\") }}"
+            "Project URL": "=https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2F{{ $('Limit to 1').first().json.fields['Video Title'].replaceAll(\" \", \"_\") }}%2F"
           },
           "matchingColumns": [],
           "schema": [
@@ -1063,26 +1063,6 @@
         }
       }
     ],
-    "Update Project URL": [
-      {
-        "json": {
-          "id": 1,
-          "id_fields": {
-            "Id": 1
-          },
-          "fields": {
-            "CreatedAt": "2026-06-01 04:39:36+00:00",
-            "UpdatedAt": "2026-06-21 01:47:08+00:00",
-            "Progress": "Processing",
-            "Video Title": "Your Life as Every CIA Black Ops Rank",
-            "Project URL": "https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank"
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
     "When clicking ‘Execute workflow’": [
       {
         "json": {},
@@ -1280,6 +1260,26 @@
           "item": 0
         }
       }
+    ],
+    "Update Project URL": [
+      {
+        "json": {
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          },
+          "fields": {
+            "CreatedAt": "2026-06-01 04:39:36+00:00",
+            "UpdatedAt": "2026-06-28 01:19:32+00:00",
+            "Progress": "Processing",
+            "Video Title": "Your Life as Every CIA Black Ops Rank",
+            "Project URL": "https://minio.n8ntypespectrum.cfd/browser/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank%2F"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -1301,6 +1301,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T00:54:57.934Z",
-  "versionId": "36b5ca04-7eda-4c92-bddb-287c3a549c36"
+  "updatedAt": "2026-06-28T01:19:37.264Z",
+  "versionId": "95fa750c-9a3b-4e6c-bb39-e214675f3edb"
 }
