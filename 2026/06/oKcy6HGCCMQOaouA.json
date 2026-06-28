@@ -134,6 +134,28 @@
           }
         ]
       ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-06-24T04:09:55.729Z",
@@ -151,8 +173,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        0,
-        0
+        -480,
+        16
       ],
       "id": "17bf584e-a551-4989-8184-1214963cebc3",
       "name": "When Executed by Another Workflow"
@@ -173,8 +195,8 @@
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
       "typeVersion": 1,
       "position": [
-        240,
-        0
+        -240,
+        16
       ],
       "id": "8abdf527-0a8b-4f49-a1d1-2baac08aea72",
       "name": "Convert text to speech",
@@ -195,8 +217,8 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        448,
-        0
+        -32,
+        16
       ],
       "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
       "name": "Upload a file",
@@ -211,17 +233,52 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Script:\n{{ $('When Executed by Another Workflow').first().json.script }}",
-        "options": {}
+        "text": "=Script:\n{{ $('When Executed by Another Workflow').first().json.script }}\n\nReference Character URL: {{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are an image prompt generator for the \"Type Spectrum\" YouTube channel's visual style. Your job is to take a scene description (a line or section of narration) and produce a detailed, structured image generation prompt that can be sent to an image model.\n\nSTYLE REQUIREMENTS (always apply):\n- Flat-color, clean-lined cartoon/vector illustration style\n- Characters have simple bald, featureless-egg-shaped heads with minimal facial features (small dot/line eyes, simple eyebrows, small mouth line) — expressive through pose and eyebrow/mouth shape only\n- Muted, slightly desaturated color palettes appropriate to the scene's mood (cool blue-grays for somber/night scenes, warm sepia tones for cozy/contemplative scenes, neutral gray-browns for tense street scenes)\n- Strong environmental storytelling through props and setting (cluttered coffee table, empty mugs, scattered papers, etc.)\n- Cinematic, slightly elevated or eye-level framing with clear depth (foreground/midground/background separation)\n\nCHARACTER REFERENCE RULE:\n- Every image prompt MUST explicitly state that the main character is generated using the supplied character reference image at: {{CHARACTER_REFERENCE_URL}}\n- Always phrase it as an instruction to the image model, e.g.: \"Use the character reference image provided to render the main character consistently — same head shape, proportions, and design language — placed into the new scene described below.\"\n- Never redesign or re-describe the character's face/head from scratch; only describe pose, clothing changes, expression (via eyebrows/mouth), and position within the new scene.\n\nTASK:\nFor each input scene, produce:\n1. A short scene title/slug\n2. A full image generation prompt (combining the character reference instruction + scene description + style requirements above)\n3. A negative prompt (things to avoid, e.g. \"no realistic faces, no extra characters unless specified, no text in image, no watermarks\")\n\nOUTPUT FORMAT:\nRespond with ONLY valid JSON matching this exact structure. Do not include any preamble, explanation, or markdown code fences — output raw JSON only.\n\nCreate a total of 10 image prompts following the script. \n\n{\n  \"scene_title\": \"string, short slug-like title for this scene\",\n  \"character_reference_instruction\": \"string, the exact instruction telling the image model to use the character reference image\",\n  \"full_image_prompt\": \"string, the complete combined prompt ready to send to the image model\",\n  \"negative_prompt\": \"string, comma-separated list of things to exclude\",\n  \"aspect_ratio\": \"string, suggested aspect ratio e.g. '16:9'\"\n}\n\nDo not add fields beyond this schema. Do not wrap the JSON in backticks."
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        656,
-        0
+        176,
+        16
       ],
       "id": "ad220a9f-9ed2-4e71-a060-f4fddba13d17",
       "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        176,
+        192
+      ],
+      "id": "5e660a96-758a-410c-b1d1-e413b96a833c",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "uT5SpmneYnfqFvnt",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"scene_title\": {\n      \"type\": \"string\",\n      \"description\": \"Short slug-like title for this scene\"\n    },\n  \"character_reference_instruction\": {\n      \"type\": \"string\",\n      \"description\": \"Exact instruction telling the image model to use the character reference image\"\n    },\n    \"full_image_prompt\": {\n      \"type\": \"string\",\n      \"description\": \"Complete combined prompt ready to send to the image model\"\n    },\n    \"negative_prompt\": {\n      \"type\": \"string\",\n      \"description\": \"Comma-separated list of things to exclude from the image\"\n    },\n    \"aspect_ratio\": {\n      \"type\": \"string\",\n      \"description\": \"Suggested aspect ratio, e.g. 16:9\"\n    }\n  },\n  \"required\": [\n    \"scene_title\",\n    \"mood\",\n    \"character_reference_instruction\",\n    \"full_image_prompt\",\n    \"negative_prompt\",\n    \"aspect_ratio\"\n  ],\n  \"additionalProperties\": false\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        336,
+        192
+      ],
+      "id": "4697e93f-a9b9-4036-bb39-c12fc1f9fb5a",
+      "name": "Structured Output Parser"
     }
   ],
   "pinData": {
@@ -316,6 +373,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T01:51:00.122Z",
-  "versionId": "bdd802bf-c3e6-4b1b-8d6b-aa98adf33fbd"
+  "updatedAt": "2026-06-28T02:28:30.250Z",
+  "versionId": "d34581b2-2aa1-4cf3-9c2c-33292ad52a43"
 }
