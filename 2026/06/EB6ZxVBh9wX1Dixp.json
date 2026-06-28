@@ -265,6 +265,12 @@
               "name": "Videos Path",
               "value": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}",
               "type": "string"
+            },
+            {
+              "id": "1fc6cd55-b1f8-4598-82cc-05a7463066b3",
+              "name": "",
+              "value": "",
+              "type": "string"
             }
           ]
         },
@@ -530,9 +536,6 @@
               }
             ]
           }
-        },
-        "pairedItem": {
-          "item": 0
         }
       }
     ]
@@ -556,6 +559,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-24T06:03:10.850Z",
-  "versionId": "cef16614-58dc-4f15-84b7-b84f06cdea10"
+  "updatedAt": "2026-06-28T01:00:04.644Z",
+  "versionId": "88c703bf-3373-41cb-bf92-66280fef7f1b"
 }
