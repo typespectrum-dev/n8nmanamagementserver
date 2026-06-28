@@ -139,7 +139,7 @@
       "main": [
         [
           {
-            "node": "Call 'Video Generation Workflow'",
+            "node": "Execute Video Workflow",
             "type": "main",
             "index": 0
           }
@@ -605,6 +605,18 @@
               "name": "output",
               "value": "={{ $json.output }}",
               "type": "object"
+            },
+            {
+              "id": "99177e83-8c1b-4984-abb0-b60247ec7ff3",
+              "name": "id",
+              "value": "={{ $('Limit to 1').first().json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "642738dd-2e16-4412-9665-3f4106b06f4a",
+              "name": "fields['Video Title']",
+              "value": "={{ $('Limit to 1').first().json.fields['Video Title'].replaceAll(\" \", \"_\") }}",
+              "type": "string"
             }
           ]
         },
@@ -644,7 +656,7 @@
         -32
       ],
       "id": "531fa9f1-5938-48ac-bda8-fa371f3179db",
-      "name": "Call 'Video Generation Workflow'"
+      "name": "Execute Video Workflow"
     }
   ],
   "pinData": {
@@ -1143,7 +1155,7 @@
         }
       }
     ],
-    "Video Workflow Settings": [
+    "Execute Video Workflow": [
       {
         "json": {
           "Base ID": "p3l64neoyynn30b",
@@ -1204,7 +1216,7 @@
         }
       }
     ],
-    "Call 'Video Generation Workflow'": [
+    "Video Workflow Settings": [
       {
         "json": {
           "Base ID": "p3l64neoyynn30b",
@@ -1258,6 +1270,10 @@
                 "word_count": 272
               }
             ]
+          },
+          "id": "1",
+          "fields": {
+            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank"
           }
         },
         "pairedItem": {
@@ -1285,6 +1301,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-22T04:03:12.439Z",
-  "versionId": "ede42b58-8045-4248-bbb6-46387279ba64"
+  "updatedAt": "2026-06-28T00:54:57.934Z",
+  "versionId": "36b5ca04-7eda-4c92-bddb-287c3a549c36"
 }
