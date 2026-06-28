@@ -236,7 +236,7 @@
         "text": "=Script:\n{{ $('When Executed by Another Workflow').first().json.script }}\n\nReference Character URL: {{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=You are an image prompt generator for the \"Type Spectrum\" YouTube channel's visual style. Your job is to take a scene description (a line or section of narration) and produce a detailed, structured image generation prompt that can be sent to an image model.\n\nSTYLE REQUIREMENTS (always apply):\n- Flat-color, clean-lined cartoon/vector illustration style\n- Characters have simple bald, featureless-egg-shaped heads with minimal facial features (small dot/line eyes, simple eyebrows, small mouth line) — expressive through pose and eyebrow/mouth shape only\n- Muted, slightly desaturated color palettes appropriate to the scene's mood (cool blue-grays for somber/night scenes, warm sepia tones for cozy/contemplative scenes, neutral gray-browns for tense street scenes)\n- Strong environmental storytelling through props and setting (cluttered coffee table, empty mugs, scattered papers, etc.)\n- Cinematic, slightly elevated or eye-level framing with clear depth (foreground/midground/background separation)\n\nCHARACTER REFERENCE RULE:\n- Every image prompt MUST explicitly state that the main character is generated using the supplied character reference image at: {{CHARACTER_REFERENCE_URL}}\n- Always phrase it as an instruction to the image model, e.g.: \"Use the character reference image provided to render the main character consistently — same head shape, proportions, and design language — placed into the new scene described below.\"\n- Never redesign or re-describe the character's face/head from scratch; only describe pose, clothing changes, expression (via eyebrows/mouth), and position within the new scene.\n\nTASK:\nFor each input scene, produce:\n1. A short scene title/slug\n2. A full image generation prompt (combining the character reference instruction + scene description + style requirements above)\n3. A negative prompt (things to avoid, e.g. \"no realistic faces, no extra characters unless specified, no text in image, no watermarks\")\n\nOUTPUT FORMAT:\nRespond with ONLY valid JSON matching this exact structure. Do not include any preamble, explanation, or markdown code fences — output raw JSON only.\n\nCreate a total of 10 image prompts following the script. \n\n{\n  \"scene_title\": \"string, short slug-like title for this scene\",\n  \"character_reference_instruction\": \"string, the exact instruction telling the image model to use the character reference image\",\n  \"full_image_prompt\": \"string, the complete combined prompt ready to send to the image model\",\n  \"negative_prompt\": \"string, comma-separated list of things to exclude\",\n  \"aspect_ratio\": \"string, suggested aspect ratio e.g. '16:9'\"\n}\n\nDo not add fields beyond this schema. Do not wrap the JSON in backticks."
+          "systemMessage": "=You are an image prompt generator for the \"Type Spectrum\" YouTube channel's visual style. Your job is to take a scene description (a line or section of narration) and produce a detailed, structured image generation prompt that can be sent to an image model.\n\nSTYLE REQUIREMENTS (always apply):\n- Flat-color, clean-lined cartoon/vector illustration style\n- Characters have simple bald, featureless-egg-shaped heads with minimal facial features (small dot/line eyes, simple eyebrows, small mouth line) — expressive through pose and eyebrow/mouth shape only\n- Muted, slightly desaturated color palettes appropriate to the scene's mood (cool blue-grays for somber/night scenes, warm sepia tones for cozy/contemplative scenes, neutral gray-browns for tense street scenes)\n- Strong environmental storytelling through props and setting (cluttered coffee table, empty mugs, scattered papers, etc.)\n- Cinematic, slightly elevated or eye-level framing with clear depth (foreground/midground/background separation)\n\nCHARACTER REFERENCE RULE:\n- Every image prompt MUST explicitly state that the main character is generated using the supplied character reference image at: {{CHARACTER_REFERENCE_URL}}\n- Always phrase it as an instruction to the image model, e.g.: \"Use the character reference image provided to render the main character consistently — same head shape, proportions, and design language — placed into the new scene described below.\"\n- Never redesign or re-describe the character's face/head from scratch; only describe pose, clothing changes, expression (via eyebrows/mouth), and position within the new scene.\n\nTASK:\nFor each input scene, produce:\n1. A full image generation prompt (combining the character reference instruction + scene description + style requirements above)\n\nOUTPUT FORMAT:\nRespond with ONLY valid JSON matching this exact structure. Do not include any preamble, explanation, or markdown code fences — output raw JSON only.\n\nCreate a total of 10 image prompts following the script. \n\n{\n  \"character_reference_instruction\": \"string, the exact instruction telling the image model to use the character reference image\",\n  \"full_image_prompt\": \"string, the complete combined prompt ready to send to the image model\"\n}\n\nDo not add fields beyond this schema. Do not wrap the JSON in backticks."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -246,11 +246,12 @@
         16
       ],
       "id": "ad220a9f-9ed2-4e71-a060-f4fddba13d17",
-      "name": "AI Agent"
+      "name": "AI Agent",
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
-        "model": "openai/gpt-5.5",
+        "model": "anthropic/claude-haiku-4.5",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
@@ -270,7 +271,7 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"scene_title\": {\n      \"type\": \"string\",\n      \"description\": \"Short slug-like title for this scene\"\n    },\n  \"character_reference_instruction\": {\n      \"type\": \"string\",\n      \"description\": \"Exact instruction telling the image model to use the character reference image\"\n    },\n    \"full_image_prompt\": {\n      \"type\": \"string\",\n      \"description\": \"Complete combined prompt ready to send to the image model\"\n    },\n    \"negative_prompt\": {\n      \"type\": \"string\",\n      \"description\": \"Comma-separated list of things to exclude from the image\"\n    },\n    \"aspect_ratio\": {\n      \"type\": \"string\",\n      \"description\": \"Suggested aspect ratio, e.g. 16:9\"\n    }\n  },\n  \"required\": [\n    \"scene_title\",\n    \"mood\",\n    \"character_reference_instruction\",\n    \"full_image_prompt\",\n    \"negative_prompt\",\n    \"aspect_ratio\"\n  ],\n  \"additionalProperties\": false\n}"
+        "jsonSchemaExample": "{\n  \"character_reference_url\": \"string, the character reference image URL\",\n  \"full_image_prompt\": \"string, the complete combined prompt ready to send to the image model\",\n  \"prompt_number\": 1\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
@@ -374,6 +375,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T02:31:15.104Z",
-  "versionId": "9382ce40-c536-42ec-a10f-08ea5b4b0549"
+  "updatedAt": "2026-06-28T04:28:28.654Z",
+  "versionId": "47a07a7b-0172-43d2-86e8-3b0da7e0e8a5"
 }
