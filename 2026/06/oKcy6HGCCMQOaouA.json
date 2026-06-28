@@ -250,6 +250,7 @@
     },
     {
       "parameters": {
+        "model": "openai/gpt-5.5",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
@@ -373,6 +374,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T02:28:30.250Z",
-  "versionId": "d34581b2-2aa1-4cf3-9c2c-33292ad52a43"
+  "updatedAt": "2026-06-28T02:31:15.104Z",
+  "versionId": "9382ce40-c536-42ec-a10f-08ea5b4b0549"
 }
