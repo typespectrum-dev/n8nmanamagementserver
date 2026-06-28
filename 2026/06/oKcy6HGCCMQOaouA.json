@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-25T01:42:45.488Z",
-    "createdAt": "2026-06-25T01:42:33.059Z",
-    "versionId": "4d140756-b992-4af9-9977-9f1b808bd3fd",
+    "updatedAt": "2026-06-27T23:32:17.564Z",
+    "createdAt": "2026-06-27T23:13:59.881Z",
+    "versionId": "beb5e5e7-3629-424b-9660-4baf3225d3e0",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -35,11 +35,11 @@
         "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
         "typeVersion": 1,
         "position": [
-          208,
+          240,
           0
         ],
-        "id": "0f3702b9-3ee7-4de6-a945-318635b165cb",
-        "name": "Voiceover Request",
+        "id": "8abdf527-0a8b-4f49-a1d1-2baac08aea72",
+        "name": "Convert text to speech",
         "credentials": {
           "elevenLabsApi": {
             "id": "Aw8Z3cWnQltwLIkR",
@@ -49,16 +49,26 @@
       },
       {
         "parameters": {
-          "options": {}
+          "operation": "upload",
+          "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+          "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
+          "additionalFields": {}
         },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.4,
+        "type": "n8n-nodes-base.s3",
+        "typeVersion": 1,
         "position": [
-          512,
-          48
+          448,
+          0
         ],
-        "id": "f3a087e0-c261-494a-8e9c-f141777ee4e0",
-        "name": "HTTP Request"
+        "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
+        "name": "Upload a file",
+        "retryOnFail": true,
+        "credentials": {
+          "s3": {
+            "id": "lMpFToUlFsGHfghm",
+            "name": "S3 account"
+          }
+        }
       }
     ],
     "connections": {
@@ -66,25 +76,31 @@
         "main": [
           [
             {
-              "node": "Voiceover Request",
+              "node": "Convert text to speech",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Voiceover Request": {
+      "Convert text to speech": {
         "main": [
-          []
+          [
+            {
+              "node": "Upload a file",
+              "type": "main",
+              "index": 0
+            }
+          ]
         ]
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version 4d140756",
+    "name": "Version beb5e5e7",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "4d140756-b992-4af9-9977-9f1b808bd3fd",
+  "activeVersionId": "beb5e5e7-3629-424b-9660-4baf3225d3e0",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -173,7 +189,7 @@
       ],
       "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
       "name": "Upload a file",
-      "retryOnFail": true,
+      "retryOnFail": false,
       "credentials": {
         "s3": {
           "id": "lMpFToUlFsGHfghm",
@@ -220,6 +236,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-27T23:13:59.880Z",
-  "versionId": "beb5e5e7-3629-424b-9660-4baf3225d3e0"
+  "updatedAt": "2026-06-27T23:38:11.285Z",
+  "versionId": "4ca1dc9e-9484-43bf-beb5-bc1e7ffdd473"
 }
