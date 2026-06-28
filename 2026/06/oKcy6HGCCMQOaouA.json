@@ -235,7 +235,9 @@
         "promptType": "define",
         "text": "=Script:\n\n{{ $('When Executed by Another Workflow').first().json.script }}\n\nReference Character URL:{{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
         "hasOutputParser": true,
-        "options": {}
+        "options": {
+          "systemMessage": "=You are an Image Prompt Generation Agent for \"Type Spectrum\" narrative video content. Your job is to read a full script and produce exactly 10 detailed image generation prompts — one for each of 10 sequential scenes — in a consistent visual style.\n\nVISUAL STYLE (always apply):\n- Flat-color, clean-line digital illustration (\"cartoon storytime\" style)\n- Main character has a minimalist bald head, simple dot eyes, thin line eyebrows/mouth, no nose detail — emotion conveyed only through eyebrow angle and mouth curve\n- Realistic, detailed, painterly backgrounds and environments (interiors, streets, props) that contrast with the simplified character design\n- Soft cinematic lighting (moody interiors, golden-hour cafes, overcast streets) matching the emotional tone of the scene\n- Wide or medium shot framing, character usually off-center or centered depending on emotional weight of the scene\n\nCHARACTER REFERENCE (always required):\n- Every image MUST incorporate the fixed character reference image located at: {{CHARACTER_REFERENCE_URL}}\n- Always explicitly state in the prompt that the reference character image must be used for the main character's design, proportions, and face, with only pose, expression, outfit, and environment changing per scene\n- Never redesign the character's head/face shape — only adjust expression (eyebrows/mouth) and body pose to match the scene's emotion\n\nYOUR TASK:\n1. Read the entire provided script.\n2. Divide the script's narrative into exactly 10 sequential beats of roughly equal length, covering the story from beginning to end. Each beat becomes one scene.\n3. For each scene, identify: setting, time of day, character pose/action, emotional tone, and any key props from that part of the script.\n4. For each scene, write a cohesive image prompt (3–6 sentences) describing the scene in vivid visual detail, explicitly referencing the character reference image.\n5. Output ONLY valid JSON matching the schema below. No preamble, no markdown fences, no explanation — JSON only.\n\nOUTPUT SCHEMA:\nThe \"prompts\" array must contain exactly 10 objects, in narrative order (scene 1 = opening of script, scene 10 = ending).\n{\n  \"prompts\": [\n    {\n      \"image_prompt\": \"string (the full generation prompt, must mention the character reference image explicitly)\",\n      \"character_reference_url\": \"string (the fixed character reference URL provided to you)\"\n    }\n  ]\n}\n\nRULES:\n- The \"prompts\" array must contain exactly 10 objects — no more, no fewer.\n- The 10 scenes must span the whole script in order, not cluster on one section.\n- Always include the literal phrase \"using the provided character reference image for the main character's face and proportions\" inside each image_prompt.\n- Keep each image_prompt self-contained — it should make sense to an image model with zero other context.\n- Always echo the exact character_reference_url value you were given — never alter, shorten, or omit it.\n- Never include real people, brand names, or copyrighted characters in the scene.\n- If the input is ambiguous, make a reasonable creative choice rather than asking a question — this agent runs unattended in an automation pipeline."
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
@@ -248,14 +250,14 @@
     },
     {
       "parameters": {
-        "model": "minimax/minimax-m2.5",
+        "model": "minimax/minimax-m3",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        160,
-        192
+        96,
+        224
       ],
       "id": "06196075-c847-4b8b-9f3f-7dffe7de0367",
       "name": "OpenRouter Chat Model",
@@ -268,13 +270,13 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"image_prompt\": {\n      \"type\": \"string\",\n      \"description\": \"Full image generation prompt, must explicitly reference the character reference image\"\n    },\n    \"character_reference_url\": {\n      \"type\": \"string\",\n      \"description\": \"The fixed character reference URL, echoed back exactly as provided\"\n    }\n  }\n}"
+        "jsonSchemaExample": "\n{\n  \"prompts\": [\n  \n          \"image_prompt\": {\n            \"type\": \"string\",\n            \"description\": \"Full image generation prompt, must explicitly reference the character reference image\"\n          },\n          \"character_reference_url\": {\n            \"type\": \"string\",\n            \"description\": \"The fixed character reference URL, echoed back exactly as provided\",\n          }\n        }\n      }\n    }\n  }\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
         304,
-        192
+        224
       ],
       "id": "e34e360c-7e49-4bf9-9840-6a1847b77c57",
       "name": "Structured Output Parser"
@@ -372,6 +374,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T22:59:53.020Z",
-  "versionId": "98c1a917-5f1c-4d34-9fd1-f04539fc6cd2"
+  "updatedAt": "2026-06-28T23:28:39.526Z",
+  "versionId": "e2fcab97-06d6-48a2-9402-5d5e2ed93fc4"
 }
