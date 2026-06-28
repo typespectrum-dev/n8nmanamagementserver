@@ -126,7 +126,35 @@
     },
     "Upload a file": {
       "main": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -204,16 +232,52 @@
     },
     {
       "parameters": {
+        "promptType": "define",
+        "text": "=Script:\n\n{{ $('When Executed by Another Workflow').first().json.script }}\n\nReference Character URL:{{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
+        "hasOutputParser": true,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        112,
-        0
+        144,
+        32
       ],
       "id": "fda54757-ca75-4211-b0e3-412bb0e329c6",
       "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "minimax/minimax-m2.5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        160,
+        192
+      ],
+      "id": "06196075-c847-4b8b-9f3f-7dffe7de0367",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "uT5SpmneYnfqFvnt",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"image_prompt\": {\n      \"type\": \"string\",\n      \"description\": \"Full image generation prompt, must explicitly reference the character reference image\"\n    },\n    \"character_reference_url\": {\n      \"type\": \"string\",\n      \"description\": \"The fixed character reference URL, echoed back exactly as provided\"\n    }\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        304,
+        192
+      ],
+      "id": "e34e360c-7e49-4bf9-9840-6a1847b77c57",
+      "name": "Structured Output Parser"
     }
   ],
   "pinData": {
@@ -308,6 +372,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T21:58:06.419Z",
-  "versionId": "d615c14c-99b8-46b8-8b3b-1ccacae4d86a"
+  "updatedAt": "2026-06-28T22:59:53.020Z",
+  "versionId": "98c1a917-5f1c-4d34-9fd1-f04539fc6cd2"
 }
