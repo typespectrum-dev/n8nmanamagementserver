@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-27T23:32:17.564Z",
-    "createdAt": "2026-06-27T23:13:59.881Z",
-    "versionId": "beb5e5e7-3629-424b-9660-4baf3225d3e0",
+    "updatedAt": "2026-06-28T01:07:31.575Z",
+    "createdAt": "2026-06-27T23:38:11.286Z",
+    "versionId": "4ca1dc9e-9484-43bf-beb5-bc1e7ffdd473",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -62,7 +62,7 @@
         ],
         "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
         "name": "Upload a file",
-        "retryOnFail": true,
+        "retryOnFail": false,
         "credentials": {
           "s3": {
             "id": "lMpFToUlFsGHfghm",
@@ -96,11 +96,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version beb5e5e7",
+    "name": "Version 4ca1dc9e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "beb5e5e7-3629-424b-9660-4baf3225d3e0",
+  "activeVersionId": "4ca1dc9e-9484-43bf-beb5-bc1e7ffdd473",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -178,7 +178,7 @@
       "parameters": {
         "operation": "upload",
         "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
-        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
+        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.s3",
@@ -209,7 +209,61 @@
           "Worker Sheet ID": "mh5uzwjzhyyaim7",
           "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
           "Storage Bucket": "pov-guy",
-          "Videos Path": "pov-guy-channel/videos"
+          "Videos Path": "pov-guy-channel/videos",
+          "fields": {
+            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank"
+          }
+        }
+      }
+    ],
+    "Convert text to speech": [
+      {
+        "json": {
+          "date": "Sun, 28 Jun 2026 01:09:58 GMT",
+          "server": "uvicorn",
+          "request-id": "0OIAdOD27Z3Kgfl5vYwz",
+          "access-control-expose-headers": "request-id, history-item-id, character-cost, regeneration-count, generation-info, current-concurrent-requests, maximum-concurrent-requests",
+          "history-item-id": "w3bNTWRT6jnCipAGWGku",
+          "current-concurrent-requests": "2",
+          "workspace-concurrent-requests": "2",
+          "maximum-concurrent-requests": "5",
+          "character-cost": "1348",
+          "tts-latency-ms": "2467",
+          "content-length": "1539805",
+          "content-type": "audio/mpeg",
+          "vary": "Accept-Language",
+          "access-control-allow-origin": "*",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "POST, PATCH, OPTIONS, DELETE, GET, PUT",
+          "access-control-max-age": "600",
+          "strict-transport-security": "max-age=1800;",
+          "x-trace-id": "67acd1416d6786f892a5b4ffe94cb72d",
+          "x-region": "europe-west4",
+          "via": "1.1 google",
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+          "connection": "close"
+        },
+        "binary": {
+          "data": {
+            "mimeType": "audio/mp3",
+            "fileType": "audio",
+            "fileExtension": "mp3",
+            "data": "filesystem-v2",
+            "fileName": "audio.textToSpeech.mp3",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/10063/binary_data/675a79d6-4e4b-47e4-9bd2-3c20bc9ed583",
+            "fileSize": "1.54 MB",
+            "bytes": 1539805
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Upload a file": [
+      {
+        "json": {
+          "success": true
         },
         "pairedItem": {
           "item": 0
@@ -236,6 +290,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-27T23:38:11.285Z",
-  "versionId": "4ca1dc9e-9484-43bf-beb5-bc1e7ffdd473"
+  "updatedAt": "2026-06-28T01:21:10.201Z",
+  "versionId": "639cee39-6449-4f60-947d-67aa1b0a3248"
 }
