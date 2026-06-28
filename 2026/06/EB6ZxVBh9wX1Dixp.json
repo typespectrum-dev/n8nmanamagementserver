@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-22T04:01:18.739Z",
-    "createdAt": "2026-06-22T04:00:53.640Z",
-    "versionId": "6ce13af5-d68b-4d33-b30f-bece3488b35d",
+    "updatedAt": "2026-06-28T01:02:40.671Z",
+    "createdAt": "2026-06-28T01:02:06.779Z",
+    "versionId": "597cbebd-1775-47e1-8f0f-abb734bfe0e8",
     "workflowId": "EB6ZxVBh9wX1Dixp",
     "nodes": [
       {
@@ -13,20 +13,452 @@
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1,
         "position": [
-          0,
-          0
+          -1888,
+          -48
         ],
         "id": "97407ac6-7d3d-4310-a69e-ad38e939b3b9",
         "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "output.levels",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -1680,
+          -48
+        ],
+        "id": "3ad6f78c-d30c-4d13-9776-33bdfadb2b0c",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          -1472,
+          -48
+        ],
+        "id": "60f3f8cb-24f2-493f-a589-e1584007d221",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "8f1dbc75-9144-4fae-8cad-5a4c50962603",
+                "name": "script",
+                "value": "={{ $json.content }}",
+                "type": "string"
+              },
+              {
+                "id": "e1e8d4f5-fe71-410a-a145-fafff15e92b2",
+                "name": "level_number",
+                "value": "={{ $json.level_number }}",
+                "type": "number"
+              },
+              {
+                "id": "d6c3a4b1-8e0d-40c2-9259-7eee640d355d",
+                "name": "Title",
+                "value": "={{ $json.title }}",
+                "type": "string"
+              },
+              {
+                "id": "d9a4ae6a-5921-455e-ba6e-211de4b6174b",
+                "name": "Base ID",
+                "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+                "type": "string"
+              },
+              {
+                "id": "9514ce15-317a-40f6-bc98-b276f8325f65",
+                "name": "Worker Sheet ID",
+                "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+                "type": "string"
+              },
+              {
+                "id": "7bcc4ae5-bcdb-4fb1-849f-9b6577789a34",
+                "name": "Character Reference URL",
+                "value": "={{ $('When Executed by Another Workflow').first().json['Character Reference URL'] }}",
+                "type": "string"
+              },
+              {
+                "id": "45814488-27ba-4e5a-b4d3-458a75088eaa",
+                "name": "Storage Bucket",
+                "value": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+                "type": "string"
+              },
+              {
+                "id": "6508af4c-0097-4a4d-8013-79ec9b8a340c",
+                "name": "Videos Path",
+                "value": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}",
+                "type": "string"
+              },
+              {
+                "id": "1fc6cd55-b1f8-4598-82cc-05a7463066b3",
+                "name": "fields['Video Title']",
+                "value": "={{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1168,
+          -16
+        ],
+        "id": "3adcfaba-5c29-466e-bf45-77f08d85a731",
+        "name": "Chunk Settings"
+      },
+      {
+        "parameters": {
+          "authentication": "nocoDbApiToken",
+          "operation": "search",
+          "workspaceId": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "projectId": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+            "mode": "id"
+          },
+          "table": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+            "mode": "id"
+          },
+          "returnAll": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.nocoDb",
+        "typeVersion": 4,
+        "position": [
+          -928,
+          -16
+        ],
+        "id": "a38f50da-4da0-41a3-a4c5-98cd9db49ff5",
+        "name": "Ping Worker Status",
+        "credentials": {
+          "nocoDbApiToken": {
+            "id": "1gvRq0BbKFPkQsOh",
+            "name": "NocoDB Token account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "83229cac-306b-4c76-b644-757ac86894a5",
+                "leftValue": "={{ $json.fields['Worker Status'] }}",
+                "rightValue": "Ready",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -720,
+          -16
+        ],
+        "id": "f72a2724-74be-40a0-a423-4c7f86c3e184",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "amount": 20
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -512,
+          192
+        ],
+        "id": "91e0277a-a99c-4de4-a82a-7bb11b63adfe",
+        "name": "Wait",
+        "webhookId": "4c285fd2-f18c-4da1-9a86-bd6fe0110bcd"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "oKcy6HGCCMQOaouA",
+            "mode": "id",
+            "cachedResultUrl": "/workflow/oKcy6HGCCMQOaouA"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -432,
+          -336
+        ],
+        "id": "8e0947ea-e3fb-4ab9-add0-4b79d491fbbb",
+        "name": "Call 'Chunk Subworkflow'"
+      },
+      {
+        "parameters": {
+          "mode": "chooseBranch"
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -256,
+          -48
+        ],
+        "id": "b23732c6-a2c7-4d1a-9735-0fdcbd2fd6dc",
+        "name": "Merge"
+      },
+      {
+        "parameters": {
+          "authentication": "nocoDbApiToken",
+          "operation": "update",
+          "workspaceId": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "projectId": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+            "mode": "id"
+          },
+          "table": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+            "mode": "id"
+          },
+          "id": "={{ $json.id }}",
+          "fieldsMapper": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Worker Status": "Processing"
+            },
+            "matchingColumns": [
+              "Worker Status"
+            ],
+            "schema": [
+              {
+                "id": "Worker Status",
+                "displayName": "Worker Status",
+                "type": "string",
+                "display": true,
+                "defaultMatch": false,
+                "readOnly": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "n8n-nodes-base.nocoDb",
+        "typeVersion": 4,
+        "position": [
+          -496,
+          -32
+        ],
+        "id": "8ce897ab-3c34-432e-b2f6-b1c0ee62cbcd",
+        "name": "Change Worker Status to Processing",
+        "credentials": {
+          "nocoDbApiToken": {
+            "id": "1gvRq0BbKFPkQsOh",
+            "name": "NocoDB Token account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "chooseBranch"
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -608,
+          -336
+        ],
+        "id": "006df79b-0c1a-4095-bf61-276ecd8ae3a6",
+        "name": "Chunk Settings1"
       }
     ],
-    "connections": {},
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Split Out",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Chunk Settings",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Chunk Settings": {
+        "main": [
+          [
+            {
+              "node": "Ping Worker Status",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Chunk Settings1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ping Worker Status": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Change Worker Status to Processing",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Chunk Settings1",
+              "type": "main",
+              "index": 1
+            }
+          ],
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait": {
+        "main": [
+          [
+            {
+              "node": "Ping Worker Status",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'Chunk Subworkflow'": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Change Worker Status to Processing": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Chunk Settings1": {
+        "main": [
+          [
+            {
+              "node": "Call 'Chunk Subworkflow'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
     "authors": "Carmelo Iglesias",
-    "name": "Version 6ce13af5",
+    "name": "Version 597cbebd",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "6ce13af5-d68b-4d33-b30f-bece3488b35d",
+  "activeVersionId": "597cbebd-1775-47e1-8f0f-abb734bfe0e8",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -268,8 +700,8 @@
             },
             {
               "id": "1fc6cd55-b1f8-4598-82cc-05a7463066b3",
-              "name": "",
-              "value": "",
+              "name": "fields['Video Title']",
+              "value": "={{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}",
               "type": "string"
             }
           ]
@@ -535,6 +967,10 @@
                 "word_count": 272
               }
             ]
+          },
+          "id": "1",
+          "fields": {
+            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank"
           }
         }
       }
@@ -559,6 +995,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T01:00:04.644Z",
-  "versionId": "88c703bf-3373-41cb-bf92-66280fef7f1b"
+  "updatedAt": "2026-06-28T01:02:06.777Z",
+  "versionId": "597cbebd-1775-47e1-8f0f-abb734bfe0e8"
 }
