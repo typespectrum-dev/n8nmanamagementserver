@@ -356,7 +356,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.replicate.com/v1/models/qwen/qwen-image/predictions",
+        "url": "https://api.replicate.com/v1/models/google/nano-banana-pro/predictions",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -365,7 +365,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"input\": {\n    \"image\": \"{{ $json.character_reference_url }}\",\n    \"prompt\": {{ JSON.stringify($json.image_prompt) }},\n    \"go_fast\": true,\n    \"guidance\": 4,\n    \"strength\": 0.9,\n    \"image_size\": \"optimize_for_quality\",\n    \"lora_scale\": 1,\n    \"aspect_ratio\": \"16:9\",\n    \"output_format\": \"jpg\",\n    \"enhance_prompt\": false,\n    \"output_quality\": 80,\n    \"negative_prompt\": \" \",\n    \"num_inference_steps\": 50\n  }\n}",
+        "jsonBody": "={\n  \"input\": {\n    \"prompt\": {{ JSON.stringify($json.image_prompt) }},\n    \"resolution\": \"2K\",\n    \"image_input\": \"{{ $json.character_reference_url }}\",\n    \"aspect_ratio\": \"16:9\",\n    \"output_format\": \"jpg\",\n    \"safety_filter_level\": \"block_only_high\",\n    \"allow_fallback_model\": false\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -655,6 +655,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-29T00:42:38.819Z",
-  "versionId": "d1cf9446-9953-42dd-9c39-4d574d747b27"
+  "updatedAt": "2026-06-29T01:17:21.677Z",
+  "versionId": "6ec55e5f-87b6-4404-859d-c9e90df51d05"
 }
