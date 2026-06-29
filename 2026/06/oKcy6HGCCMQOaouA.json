@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-29T03:15:49.600Z",
-    "createdAt": "2026-06-29T02:22:45.275Z",
-    "versionId": "c96aeac1-427b-4c40-af05-0c606a5f0698",
+    "updatedAt": "2026-06-29T04:48:12.785Z",
+    "createdAt": "2026-06-29T04:48:07.397Z",
+    "versionId": "f5f284cf-7cf3-4110-b885-5e9a6e052849",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -123,7 +123,7 @@
       },
       {
         "parameters": {
-          "batchSize": 5,
+          "batchSize": 10,
           "options": {}
         },
         "type": "n8n-nodes-base.splitInBatches",
@@ -197,7 +197,7 @@
         "parameters": {
           "operation": "upload",
           "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
-          "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').first().json.prompt_number }}",
+          "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').first().json.prompt_number }}.jpg",
           "additionalFields": {}
         },
         "type": "n8n-nodes-base.s3",
@@ -342,11 +342,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version c96aeac1",
+    "name": "Version f5f284cf",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c96aeac1-427b-4c40-af05-0c606a5f0698",
+  "activeVersionId": "f5f284cf-7cf3-4110-b885-5e9a6e052849",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -596,7 +596,7 @@
     },
     {
       "parameters": {
-        "batchSize": 5,
+        "batchSize": 10,
         "options": {}
       },
       "type": "n8n-nodes-base.splitInBatches",
@@ -670,7 +670,7 @@
       "parameters": {
         "operation": "upload",
         "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
-        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').first().json.prompt_number }}",
+        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').first().json.prompt_number }}.jpg",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.s3",
@@ -947,6 +947,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-29T02:22:45.273Z",
-  "versionId": "c96aeac1-427b-4c40-af05-0c606a5f0698"
+  "updatedAt": "2026-06-29T04:48:07.393Z",
+  "versionId": "f5f284cf-7cf3-4110-b885-5e9a6e052849"
 }
