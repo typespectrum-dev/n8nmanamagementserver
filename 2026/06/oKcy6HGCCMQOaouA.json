@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-29T02:22:30.287Z",
-    "createdAt": "2026-06-29T02:22:18.368Z",
-    "versionId": "b78e2be2-03b2-4253-835d-0005b2547818",
+    "updatedAt": "2026-06-29T03:15:49.600Z",
+    "createdAt": "2026-06-29T02:22:45.275Z",
+    "versionId": "c96aeac1-427b-4c40-af05-0c606a5f0698",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -167,8 +167,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          -256,
-          32
+          -368,
+          0
         ],
         "id": "a7e6202d-6738-4f56-ab05-5a19b6e6e65b",
         "name": "HTTP Request",
@@ -342,11 +342,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version b78e2be2",
+    "name": "Version c96aeac1",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "b78e2be2-03b2-4253-835d-0005b2547818",
+  "activeVersionId": "c96aeac1-427b-4c40-af05-0c606a5f0698",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
