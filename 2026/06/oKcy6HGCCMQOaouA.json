@@ -156,6 +156,40 @@
           }
         ]
       ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-06-24T04:09:55.729Z",
@@ -173,8 +207,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -480,
-        16
+        -832,
+        0
       ],
       "id": "17bf584e-a551-4989-8184-1214963cebc3",
       "name": "When Executed by Another Workflow"
@@ -195,8 +229,8 @@
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
       "typeVersion": 1,
       "position": [
-        -240,
-        16
+        -592,
+        0
       ],
       "id": "8abdf527-0a8b-4f49-a1d1-2baac08aea72",
       "name": "Convert text to speech",
@@ -217,8 +251,8 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        -32,
-        16
+        -384,
+        0
       ],
       "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
       "name": "Upload a file",
@@ -242,8 +276,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        144,
-        32
+        -208,
+        16
       ],
       "id": "fda54757-ca75-4211-b0e3-412bb0e329c6",
       "name": "AI Agent"
@@ -256,8 +290,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        96,
-        224
+        -256,
+        208
       ],
       "id": "06196075-c847-4b8b-9f3f-7dffe7de0367",
       "name": "OpenRouter Chat Model",
@@ -270,16 +304,56 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "\n{\n  \"prompts\": [\n  \n          \"image_prompt\": {\n            \"type\": \"string\",\n            \"description\": \"Full image generation prompt, must explicitly reference the character reference image\"\n          },\n          \"character_reference_url\": {\n            \"type\": \"string\",\n            \"description\": \"The fixed character reference URL, echoed back exactly as provided\",\n          }\n        }\n      }\n    }\n  }\n}\n"
+        "jsonSchemaExample": "\n{\n  \"prompts\": [\n{  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 1 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 2 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 3 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 4 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 5 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 6 \n}, \n{  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 7 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 8 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 9 \n}, \n    {  \n          \"image_prompt\":\"A minimalist bald character with black dot eyes, thin line eyebrows, and a small flat mouth stands alone at the center of a cracked, rain-slicked crosswalk at dusk, hands at his sides, his expression caught between weariness and quiet resolve. Behind him, a loose semicircle of ordinary people in drab olive and grey coats watch in silence — one reading a folded newspaper — their realistically detailed faces contrasting with his simplified design. Use the provided character reference image for the main character's face and proportions, changing only pose, expression, and outfit. The worn storefront street, faded signage, and an old parked sedan are rendered in a painterly style under overcast evening light, framed as a wide, slightly low-angle medium shot in muted greens, browns, and cool greys.\", \n          \"character_reference_url\": \"https://example.com/ref-character.png\",\n            \"prompt_number\": 10 \n}\n  ]}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        304,
-        224
+        -48,
+        208
       ],
       "id": "e34e360c-7e49-4bf9-9840-6a1847b77c57",
       "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        320,
+        16
+      ],
+      "id": "bf8bb1b6-ec14-44a5-bc28-4ed1a8882adc",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.prompts",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        144,
+        16
+      ],
+      "id": "1c7013f2-c983-431d-8f02-4f51202f80c6",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        528,
+        112
+      ],
+      "id": "a7e6202d-6738-4f56-ab05-5a19b6e6e65b",
+      "name": "HTTP Request"
     }
   ],
   "pinData": {
@@ -353,6 +427,171 @@
           "item": 0
         }
       }
+    ],
+    "AI Agent": [
+      {
+        "json": {
+          "output": {
+            "prompts": [
+              {
+                "image_prompt": "Wide shot of a sunlit graduate seminar room in late afternoon, with warm golden-hour light spilling through tall windows onto rows of wooden tables. The main character sits mid-table among blurred fellow students, a professor's chalkboard sketched behind him, when an anonymous hand reaches in from off-frame to rest on his shoulder. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are slightly raised in mild surprise, mouth a flat horizontal line. Painterly, realistic background contrasts with the flat-color cartoon character design; soft cinematic lighting, muted earth tones, shallow depth of field on the surrounding students.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 1
+              },
+              {
+                "image_prompt": "Medium shot at the end of a marble embassy corridor, soft institutional overhead lighting, polished floors reflecting two figures. The main character stands close to an older recruiter in a dark suit whose face is partially turned away from us, the two in quiet conversation. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows sit neutral and attentive, mouth curved faintly downward in focused listening. Painterly realistic embassy interior background with a flagged alcove and brass fixtures, muted beige and gold palette, moody cinematic depth.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 2
+              },
+              {
+                "image_prompt": "Wide exterior shot of a nondescript beige office building in Northern Virginia under a flat overcast sky, an anonymous parking lot stretching out front. The main character stands at the foot of the entrance steps, head tilted up at the unremarkable facade. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows angle slightly downward with quiet anticipation, mouth a thin neutral line. Painterly realistic background of industrial concrete, tinted windows, distant trees, moody gray cinematic lighting that makes the building feel deliberately forgettable.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 3
+              },
+              {
+                "image_prompt": "Interior of a beige waiting room under harsh fluorescent light, scuffed industrial carpet, a closed wooden door across the space. The main character sits alone in a yellowed plastic chair against a blank wall, hands resting empty on his knees — no phone, no book, nothing. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are relaxed but his dot eyes are alert, mouth a thin patient line — the discipline of stillness. Painterly realistic background with subtle shadows creeping across the wall, the closed door subtly out of focus, claustrophobic cinematic framing.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 4
+              },
+              {
+                "image_prompt": "The waiting room door swings inward, a rectangle of brighter hallway light spilling across the carpet. A nameless man in a charcoal suit stands silhouetted in the doorway, his face unreadable in shadow, gesturing the main character forward. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. He is rising halfway out of the plastic chair, eyebrows lifted, mouth a small surprised curve. Painterly realistic background contrasts the dim waiting room with the brighter corridor beyond, dramatic cinematic lighting split between shadow and fluorescent glow.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 5
+              },
+              {
+                "image_prompt": "Medium shot of a clinical interview room, a single overhead lamp casting a cone of light onto a bare table scattered with forms and a clipboard. The main character sits across from an evaluator whose face is half lost in shadow, leaning forward with a pen poised. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows angle upward in discomfort, mouth pressed into a tense flat line — vulnerability under scrutiny. Painterly realistic background of stark white walls, no decorations, a clock visible on the back wall, moody cinematic chiaroscuro lighting.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 6
+              },
+              {
+                "image_prompt": "Wide shot of the main character walking down the concrete front steps of the office building, late afternoon golden light catching the edges of his jacket. His posture is slightly hunched, as if peeling off a layer of skin, but his stride is steady. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows sit soft and slightly raised, mouth curved upward in a fragile, almost disbelieving smile. Painterly realistic background of the beige building facade, the parking lot, autumn trees catching sunset, cinematic golden-hour warmth.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 7
+              },
+              {
+                "image_prompt": "Interior of a warm suburban family kitchen, evening light filtering through patterned curtains onto wooden cabinets and a fridge covered in photographs. The main character stands holding a coffee mug near the counter, while two older parents sit at the kitchen table looking up at him with trusting faces. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are drawn together with quiet guilt, mouth pressed into a thin line — the weight of a careful lie. Painterly realistic background with domestic clutter, soft warm tungsten lighting, cinematic shallow depth of field on the parents.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 8
+              },
+              {
+                "image_prompt": "Interior of a sparsely furnished apartment, gray daylight filtering through half-closed blinds across a small desk. The main character sits hunched before an open laptop, an empty inbox glowing on the screen, a forgotten mug of cold coffee beside him. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are deeply furrowed in worry, mouth turned down at the corners — three months of compounding doubt. Painterly realistic background of bare walls, a single houseplant, shadows long across the floor, cinematic cold daylight tone suggesting slow time passing.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 9
+              },
+              {
+                "image_prompt": "Close, dim interior shot late at night, the blue-white glow of a laptop screen illuminating the main character's face from below as he leans toward the monitor. An email with a single airline attachment is visible on the screen, no return date in sight. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows lift sharply in shock and resolve, mouth a small open oval — the irreversible click of a ticket to nowhere. Painterly realistic background of a darkened room, scattered papers catching the screen's light, cinematic noir-style lighting and tight framing.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 10
+              }
+            ]
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Split Out": [
+      {
+        "json": {
+          "image_prompt": "Wide shot of a sunlit graduate seminar room in late afternoon, with warm golden-hour light spilling through tall windows onto rows of wooden tables. The main character sits mid-table among blurred fellow students, a professor's chalkboard sketched behind him, when an anonymous hand reaches in from off-frame to rest on his shoulder. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are slightly raised in mild surprise, mouth a flat horizontal line. Painterly, realistic background contrasts with the flat-color cartoon character design; soft cinematic lighting, muted earth tones, shallow depth of field on the surrounding students.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 1
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Medium shot at the end of a marble embassy corridor, soft institutional overhead lighting, polished floors reflecting two figures. The main character stands close to an older recruiter in a dark suit whose face is partially turned away from us, the two in quiet conversation. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows sit neutral and attentive, mouth curved faintly downward in focused listening. Painterly realistic embassy interior background with a flagged alcove and brass fixtures, muted beige and gold palette, moody cinematic depth.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 2
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Wide exterior shot of a nondescript beige office building in Northern Virginia under a flat overcast sky, an anonymous parking lot stretching out front. The main character stands at the foot of the entrance steps, head tilted up at the unremarkable facade. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows angle slightly downward with quiet anticipation, mouth a thin neutral line. Painterly realistic background of industrial concrete, tinted windows, distant trees, moody gray cinematic lighting that makes the building feel deliberately forgettable.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 3
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Interior of a beige waiting room under harsh fluorescent light, scuffed industrial carpet, a closed wooden door across the space. The main character sits alone in a yellowed plastic chair against a blank wall, hands resting empty on his knees — no phone, no book, nothing. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are relaxed but his dot eyes are alert, mouth a thin patient line — the discipline of stillness. Painterly realistic background with subtle shadows creeping across the wall, the closed door subtly out of focus, claustrophobic cinematic framing.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 4
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "The waiting room door swings inward, a rectangle of brighter hallway light spilling across the carpet. A nameless man in a charcoal suit stands silhouetted in the doorway, his face unreadable in shadow, gesturing the main character forward. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. He is rising halfway out of the plastic chair, eyebrows lifted, mouth a small surprised curve. Painterly realistic background contrasts the dim waiting room with the brighter corridor beyond, dramatic cinematic lighting split between shadow and fluorescent glow.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 5
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Medium shot of a clinical interview room, a single overhead lamp casting a cone of light onto a bare table scattered with forms and a clipboard. The main character sits across from an evaluator whose face is half lost in shadow, leaning forward with a pen poised. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows angle upward in discomfort, mouth pressed into a tense flat line — vulnerability under scrutiny. Painterly realistic background of stark white walls, no decorations, a clock visible on the back wall, moody cinematic chiaroscuro lighting.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 6
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Wide shot of the main character walking down the concrete front steps of the office building, late afternoon golden light catching the edges of his jacket. His posture is slightly hunched, as if peeling off a layer of skin, but his stride is steady. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows sit soft and slightly raised, mouth curved upward in a fragile, almost disbelieving smile. Painterly realistic background of the beige building facade, the parking lot, autumn trees catching sunset, cinematic golden-hour warmth.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 7
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Interior of a warm suburban family kitchen, evening light filtering through patterned curtains onto wooden cabinets and a fridge covered in photographs. The main character stands holding a coffee mug near the counter, while two older parents sit at the kitchen table looking up at him with trusting faces. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are drawn together with quiet guilt, mouth pressed into a thin line — the weight of a careful lie. Painterly realistic background with domestic clutter, soft warm tungsten lighting, cinematic shallow depth of field on the parents.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 8
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Interior of a sparsely furnished apartment, gray daylight filtering through half-closed blinds across a small desk. The main character sits hunched before an open laptop, an empty inbox glowing on the screen, a forgotten mug of cold coffee beside him. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows are deeply furrowed in worry, mouth turned down at the corners — three months of compounding doubt. Painterly realistic background of bare walls, a single houseplant, shadows long across the floor, cinematic cold daylight tone suggesting slow time passing.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 9
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Close, dim interior shot late at night, the blue-white glow of a laptop screen illuminating the main character's face from below as he leans toward the monitor. An email with a single airline attachment is visible on the screen, no return date in sight. Use the provided character reference image for the main character's face and proportions — minimalist bald head, simple dot eyes, thin line eyebrows and mouth, no nose detail. His eyebrows lift sharply in shock and resolve, mouth a small open oval — the irreversible click of a ticket to nowhere. Painterly realistic background of a darkened room, scattered papers catching the screen's light, cinematic noir-style lighting and tight framing.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 10
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -374,6 +613,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T23:28:39.526Z",
-  "versionId": "e2fcab97-06d6-48a2-9402-5d5e2ed93fc4"
+  "updatedAt": "2026-06-28T23:54:43.363Z",
+  "versionId": "fe44c4dd-7dbf-4d4c-b19e-6fc396d92b98"
 }
