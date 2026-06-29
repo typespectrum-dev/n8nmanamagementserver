@@ -1740,6 +1740,88 @@
           "item": 9
         }
       }
+    ],
+    "Upload a file1": [
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 4
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 5
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 6
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 7
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 8
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 9
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -1761,6 +1843,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-29T05:28:08.142Z",
+  "updatedAt": "2026-06-29T05:37:50.621Z",
   "versionId": "f5f284cf-7cf3-4110-b885-5e9a6e052849"
 }
