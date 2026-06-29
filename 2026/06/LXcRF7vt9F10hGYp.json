@@ -93,13 +93,7 @@
     },
     "Set Status Queued -> Processing": {
       "main": [
-        [
-          {
-            "node": "Update Project URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Update Project URL": {
@@ -1301,6 +1295,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-28T01:19:37.264Z",
-  "versionId": "95fa750c-9a3b-4e6c-bb39-e214675f3edb"
+  "updatedAt": "2026-06-29T23:21:51.557Z",
+  "versionId": "bf239cf6-b304-4819-a64a-5d407ef28e4a"
 }
