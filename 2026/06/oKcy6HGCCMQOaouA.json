@@ -385,13 +385,14 @@
     },
     {
       "parameters": {
+        "url": "={{ $json.urls.stream }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        272,
-        96
+        320,
+        80
       ],
       "id": "86294175-1485-41ad-8e14-496ea1b269cb",
       "name": "HTTP Request1"
@@ -654,6 +655,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-29T00:26:27.554Z",
-  "versionId": "415c644b-6fab-4287-b2e1-5f045bc74ed7"
+  "updatedAt": "2026-06-29T00:42:38.819Z",
+  "versionId": "d1cf9446-9953-42dd-9c39-4d574d747b27"
 }
