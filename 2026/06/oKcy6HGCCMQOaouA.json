@@ -363,18 +363,7 @@
       "main": [
         [
           {
-            "node": "Upload a file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Upload a file": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
+            "node": "Upload the Voiceover",
             "type": "main",
             "index": 0
           }
@@ -418,7 +407,7 @@
       "main": [
         [
           {
-            "node": "Prepare Render Input",
+            "node": "Limit",
             "type": "main",
             "index": 0
           }
@@ -480,7 +469,40 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Create NCA Toolkit Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload the Voiceover": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Prepare Render Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create NCA Toolkit Body": {
+      "main": [
+        [
+          {
+            "node": "Render Chunk",
             "type": "main",
             "index": 0
           }
@@ -534,29 +556,6 @@
         "elevenLabsApi": {
           "id": "Aw8Z3cWnQltwLIkR",
           "name": "ElevenLabs account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "upload",
-        "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
-        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.s3",
-      "typeVersion": 1,
-      "position": [
-        -1376,
-        -176
-      ],
-      "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
-      "name": "Upload a file",
-      "retryOnFail": false,
-      "credentials": {
-        "s3": {
-          "id": "lMpFToUlFsGHfghm",
-          "name": "S3 account"
         }
       }
     },
@@ -708,31 +707,30 @@
     },
     {
       "parameters": {
-        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -144,
-        -352
-      ],
-      "id": "15e8524c-98e5-4fbf-b023-a62eba154c02",
-      "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
               "id": "e10fd273-ddea-4f80-9c99-00d293cde494",
               "name": "Voiceover Path",
-              "value": "https://minio-api.n8ntypespectrum.cfd/",
+              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
               "type": "string"
             },
             {
               "id": "9377ed83-066d-4e7c-8464-13dcdba91573",
-              "name": "",
-              "value": "",
+              "name": "Image Path",
+              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_",
+              "type": "string"
+            },
+            {
+              "id": "5d6f6ba9-9313-4780-9299-fc1ed4e54a0f",
+              "name": "Image Amount",
+              "value": "5",
+              "type": "string"
+            },
+            {
+              "id": "93005faa-e35d-4279-9858-be8f6c9ffbde",
+              "name": "Image Type",
+              "value": ".jpg",
               "type": "string"
             }
           ]
@@ -742,11 +740,71 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -352,
+        -224,
         -352
       ],
       "id": "50c9e436-8d8b-4443-9e5f-749e0a252e7b",
       "name": "Prepare Render Input"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -1376,
+        -176
+      ],
+      "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
+      "name": "Upload the Voiceover",
+      "retryOnFail": false,
+      "credentials": {
+        "s3": {
+          "id": "lMpFToUlFsGHfghm",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -384,
+        -352
+      ],
+      "id": "78603a4b-3def-4a21-812a-740b050d020f",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        -352
+      ],
+      "id": "15e8524c-98e5-4fbf-b023-a62eba154c02",
+      "name": "Create NCA Toolkit Body"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        144,
+        -352
+      ],
+      "id": "f3e4c496-9cea-499f-af28-a95f05b086b9",
+      "name": "Render Chunk"
     }
   ],
   "pinData": {
@@ -805,16 +863,6 @@
             "fileSize": "1.57 MB",
             "bytes": 1565719
           }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
-    "Upload a file": [
-      {
-        "json": {
-          "success": true
         },
         "pairedItem": {
           "item": 0
@@ -1361,6 +1409,29 @@
           "item": 4
         }
       }
+    ],
+    "Upload the Voiceover": [
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Prepare Render Input": [
+      {
+        "json": {
+          "Voiceover Path": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/voiceover.mp3",
+          "Image Path": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_",
+          "Image Amount": "5",
+          "Image Type": ".jpg"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -1382,6 +1453,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-30T06:30:10.273Z",
-  "versionId": "f1fb81a3-ad09-4eff-ab80-188a8799cb5d"
+  "updatedAt": "2026-06-30T06:54:40.660Z",
+  "versionId": "37e06264-3f35-4679-b63a-060bae1f8f94"
 }
