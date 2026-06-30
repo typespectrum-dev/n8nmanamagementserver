@@ -416,7 +416,13 @@
     },
     "Loop Over Items": {
       "main": [
-        [],
+        [
+          {
+            "node": "Prepare Render Input",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "HTTP Request",
@@ -464,6 +470,17 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Render Input": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
             "type": "main",
             "index": 0
           }
@@ -688,6 +705,48 @@
           "name": "S3 account"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -144,
+        -352
+      ],
+      "id": "15e8524c-98e5-4fbf-b023-a62eba154c02",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e10fd273-ddea-4f80-9c99-00d293cde494",
+              "name": "Voiceover Path",
+              "value": "https://minio-api.n8ntypespectrum.cfd/",
+              "type": "string"
+            },
+            {
+              "id": "9377ed83-066d-4e7c-8464-13dcdba91573",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -352,
+        -352
+      ],
+      "id": "50c9e436-8d8b-4443-9e5f-749e0a252e7b",
+      "name": "Prepare Render Input"
     }
   ],
   "pinData": {
@@ -1323,6 +1382,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-30T06:00:06.891Z",
-  "versionId": "a71ed65e-eda1-4c13-83df-a8519c1f1ead"
+  "updatedAt": "2026-06-30T06:30:10.273Z",
+  "versionId": "f1fb81a3-ad09-4eff-ab80-188a8799cb5d"
 }
