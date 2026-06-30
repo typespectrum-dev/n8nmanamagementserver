@@ -486,8 +486,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1920,
-        -32
+        -1824,
+        -176
       ],
       "id": "17bf584e-a551-4989-8184-1214963cebc3",
       "name": "When Executed by Another Workflow"
@@ -508,8 +508,8 @@
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
       "typeVersion": 1,
       "position": [
-        -1680,
-        -32
+        -1584,
+        -176
       ],
       "id": "8abdf527-0a8b-4f49-a1d1-2baac08aea72",
       "name": "Convert text to speech",
@@ -530,8 +530,8 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        -1472,
-        -32
+        -1376,
+        -176
       ],
       "id": "86a21f9b-62a4-4125-a40d-57f91393f551",
       "name": "Upload a file",
@@ -555,8 +555,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        -1296,
-        -16
+        -1200,
+        -160
       ],
       "id": "fda54757-ca75-4211-b0e3-412bb0e329c6",
       "name": "AI Agent"
@@ -569,8 +569,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        -1344,
-        176
+        -1248,
+        32
       ],
       "id": "06196075-c847-4b8b-9f3f-7dffe7de0367",
       "name": "OpenRouter Chat Model",
@@ -588,8 +588,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        -1136,
-        176
+        -1040,
+        32
       ],
       "id": "e34e360c-7e49-4bf9-9840-6a1847b77c57",
       "name": "Structured Output Parser"
@@ -602,8 +602,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -768,
-        -16
+        -672,
+        -160
       ],
       "id": "bf8bb1b6-ec14-44a5-bc28-4ed1a8882adc",
       "name": "Loop Over Items"
@@ -616,8 +616,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -944,
-        -16
+        -848,
+        -160
       ],
       "id": "1c7013f2-c983-431d-8f02-4f51202f80c6",
       "name": "Split Out"
@@ -640,8 +640,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -368,
-        0
+        -272,
+        -144
       ],
       "id": "a7e6202d-6738-4f56-ab05-5a19b6e6e65b",
       "name": "HTTP Request",
@@ -660,8 +660,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -96,
-        80
+        0,
+        -64
       ],
       "id": "86294175-1485-41ad-8e14-496ea1b269cb",
       "name": "HTTP Request1"
@@ -670,14 +670,14 @@
       "parameters": {
         "operation": "upload",
         "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
-        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').first().json.prompt_number }}.jpg",
+        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').item.json.prompt_number }}.jpg",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        128,
-        80
+        224,
+        -64
       ],
       "id": "c24b7f59-f1f5-45c8-8573-fd73a089e231",
       "name": "Upload a file1",
@@ -705,9 +705,601 @@
           "fields": {
             "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank"
           }
+        }
+      }
+    ],
+    "Convert text to speech": [
+      {
+        "json": {
+          "date": "Tue, 30 Jun 2026 05:52:45 GMT",
+          "server": "uvicorn",
+          "request-id": "AWhFt4Czt9cACVmwSuzx",
+          "access-control-expose-headers": "request-id, history-item-id, character-cost, regeneration-count, generation-info, current-concurrent-requests, maximum-concurrent-requests",
+          "history-item-id": "H9tCm6er7FCvpCQnxzPq",
+          "current-concurrent-requests": "1",
+          "workspace-concurrent-requests": "1",
+          "maximum-concurrent-requests": "5",
+          "character-cost": "1348",
+          "tts-latency-ms": "2597",
+          "content-length": "1565719",
+          "content-type": "audio/mpeg",
+          "vary": "Accept-Language",
+          "access-control-allow-origin": "*",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "POST, PATCH, OPTIONS, DELETE, GET, PUT",
+          "access-control-max-age": "600",
+          "strict-transport-security": "max-age=1800;",
+          "x-trace-id": "7c3828e692ea373e37cf9695e4b55381",
+          "x-region": "europe-west4",
+          "via": "1.1 google",
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+          "connection": "close"
+        },
+        "binary": {
+          "data": {
+            "mimeType": "audio/mp3",
+            "fileType": "audio",
+            "fileExtension": "mp3",
+            "data": "filesystem-v2",
+            "fileName": "audio.textToSpeech.mp3",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/11395/binary_data/6c66b28d-8d05-45e1-9047-674ddd60c87e",
+            "fileSize": "1.57 MB",
+            "bytes": 1565719
+          }
         },
         "pairedItem": {
           "item": 0
+        }
+      }
+    ],
+    "Upload a file": [
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "AI Agent": [
+      {
+        "json": {
+          "output": {
+            "prompts": [
+              {
+                "image_prompt": "A flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sits attentively in a wooden seminar chair inside a graduate-level classroom, using the provided character reference image for the main character's face and proportions. The character leans slightly forward, eyebrows neutral-curious and mouth curved in a faint polite smile, listening to an off-screen figure whose hand rests on the character's shoulder. The realistic, painterly background shows tall windows glowing with late-afternoon golden hour light, bookshelves heavy with international relations volumes, a chalkboard covered in geopolitical diagrams, and blurred classmates taking notes. Soft cinematic warm tones bathe the room, evoking the quiet momentousness of an unsuspecting recruit. A wide shot frames the character slightly off-center, emphasizing naive possibility before everything changes.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 1
+              },
+              {
+                "image_prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting alone in a hard plastic chair pressed against a beige institutional wall. The realistic, painterly background depicts a nondescript Northern Virginia office building lobby with industrial carpet, a stained ceiling tile grid under flickering fluorescents, a burnt coffee maker on a folding table in the corner, and absolutely no other people in sight. The character is framed in a medium-wide shot, perfectly centered, knees pressed together and hands folded in lap, eyebrows slightly drawn together and mouth a flat, patient line. A wall clock shows that six hours have passed. Moody, slightly washed-out lighting conveys the sterile isolation of the first test of stillness.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 2
+              },
+              {
+                "image_prompt": "Using the provided character reference image for the main character's face and proportions, depict a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting hunched forward in a small metal chair across from an empty second chair behind a bare desk. The realistic, painterly background shows a windowless evaluation room rendered in muted institutional grays and greens, with a single open file folder and a clipboard lying on the desk surface, harsh overhead fluorescent lighting casting hard shadows. The character's eyebrows are downturned and mouth curved downward in a raw, exposed expression, shoulders slumped, hands clasped between the knees. Cinematic soft shadows fall across the simplified face, emphasizing emotional vulnerability and the strange relief of having been completely seen. The medium shot frames the character slightly off-center, conveying the aftermath of confession and an odd, dependent gratitude.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 3
+              },
+              {
+                "image_prompt": "Using the provided character reference image for the main character's face and proportions, show a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth standing awkwardly at the edge of a wooden family dining table, holding a glass of water in both hands. The realistic, painterly background depicts a warm suburban home kitchen-dining room with oak cabinets, framed family photographs lining the wall, a hanging potted herb, and two older parental figures seated at the table with their backs partially turned, soft amber evening lamp light pooling across the scene. The character's eyebrows are lifted in forced reassurance and mouth curved into a tight, performative smile, posture rigid. The wide cinematic framing captures the bittersweet tension of a careful lie told to loved ones. Warm domestic tones contrast with the emotional weight of the secret being concealed.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 4
+              },
+              {
+                "image_prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting at a small desk in a sparse, dimly-lit apartment at night, leaning toward the cool blue glow of an open laptop screen. The realistic, painterly background shows bare plaster walls, a single unmade bed, a half-packed suitcase on the floor, and a thin layer of three months of accumulated dust on every surface. The character's eyebrows are slightly raised and mouth slightly open in quiet disbelief, one hand hovering near the chin, the other resting on the laptop's trackpad. The glowing screen displays a simple email interface with a plane ticket graphic and conspicuously no return date. The medium-wide shot frames the character off-center, with the cold blue screen light illuminating the simplified face against the dark room, capturing the precise moment destiny is confirmed.",
+                "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+                "prompt_number": 5
+              }
+            ]
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Split Out": [
+      {
+        "json": {
+          "image_prompt": "A flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sits attentively in a wooden seminar chair inside a graduate-level classroom, using the provided character reference image for the main character's face and proportions. The character leans slightly forward, eyebrows neutral-curious and mouth curved in a faint polite smile, listening to an off-screen figure whose hand rests on the character's shoulder. The realistic, painterly background shows tall windows glowing with late-afternoon golden hour light, bookshelves heavy with international relations volumes, a chalkboard covered in geopolitical diagrams, and blurred classmates taking notes. Soft cinematic warm tones bathe the room, evoking the quiet momentousness of an unsuspecting recruit. A wide shot frames the character slightly off-center, emphasizing naive possibility before everything changes.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 1
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting alone in a hard plastic chair pressed against a beige institutional wall. The realistic, painterly background depicts a nondescript Northern Virginia office building lobby with industrial carpet, a stained ceiling tile grid under flickering fluorescents, a burnt coffee maker on a folding table in the corner, and absolutely no other people in sight. The character is framed in a medium-wide shot, perfectly centered, knees pressed together and hands folded in lap, eyebrows slightly drawn together and mouth a flat, patient line. A wall clock shows that six hours have passed. Moody, slightly washed-out lighting conveys the sterile isolation of the first test of stillness.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 2
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Using the provided character reference image for the main character's face and proportions, depict a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting hunched forward in a small metal chair across from an empty second chair behind a bare desk. The realistic, painterly background shows a windowless evaluation room rendered in muted institutional grays and greens, with a single open file folder and a clipboard lying on the desk surface, harsh overhead fluorescent lighting casting hard shadows. The character's eyebrows are downturned and mouth curved downward in a raw, exposed expression, shoulders slumped, hands clasped between the knees. Cinematic soft shadows fall across the simplified face, emphasizing emotional vulnerability and the strange relief of having been completely seen. The medium shot frames the character slightly off-center, conveying the aftermath of confession and an odd, dependent gratitude.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 3
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Using the provided character reference image for the main character's face and proportions, show a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth standing awkwardly at the edge of a wooden family dining table, holding a glass of water in both hands. The realistic, painterly background depicts a warm suburban home kitchen-dining room with oak cabinets, framed family photographs lining the wall, a hanging potted herb, and two older parental figures seated at the table with their backs partially turned, soft amber evening lamp light pooling across the scene. The character's eyebrows are lifted in forced reassurance and mouth curved into a tight, performative smile, posture rigid. The wide cinematic framing captures the bittersweet tension of a careful lie told to loved ones. Warm domestic tones contrast with the emotional weight of the secret being concealed.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 4
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "image_prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting at a small desk in a sparse, dimly-lit apartment at night, leaning toward the cool blue glow of an open laptop screen. The realistic, painterly background shows bare plaster walls, a single unmade bed, a half-packed suitcase on the floor, and a thin layer of three months of accumulated dust on every surface. The character's eyebrows are slightly raised and mouth slightly open in quiet disbelief, one hand hovering near the chin, the other resting on the laptop's trackpad. The glowing screen displays a simple email interface with a plane ticket graphic and conspicuously no return date. The medium-wide shot frames the character off-center, with the cold blue screen light illuminating the simplified face against the dark room, capturing the precise moment destiny is confirmed.",
+          "character_reference_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "prompt_number": 5
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "HTTP Request": [
+      {
+        "json": {
+          "id": "2xepfekhhhrmy0cz2wbrr5matr",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "A flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sits attentively in a wooden seminar chair inside a graduate-level classroom, using the provided character reference image for the main character's face and proportions. The character leans slightly forward, eyebrows neutral-curious and mouth curved in a faint polite smile, listening to an off-screen figure whose hand rests on the character's shoulder. The realistic, painterly background shows tall windows glowing with late-afternoon golden hour light, bookshelves heavy with international relations volumes, a chalkboard covered in geopolitical diagrams, and blurred classmates taking notes. Soft cinematic warm tones bathe the room, evoking the quiet momentousness of an unsuspecting recruit. A wide shot frames the character slightly off-center, emphasizing naive possibility before everything changes.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.204Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/2xepfekhhhrmy0cz2wbrr5matr/cancel",
+            "get": "https://api.replicate.com/v1/predictions/2xepfekhhhrmy0cz2wbrr5matr",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-xkmppnjnqsyb2eyzfep6atrylclzgmgcyw57mohyhcj3dkfsnt2a",
+            "web": "https://replicate.com/p/2xepfekhhhrmy0cz2wbrr5matr"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": "1kay4kkhknrmw0cz2wbv8mdm5r",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting alone in a hard plastic chair pressed against a beige institutional wall. The realistic, painterly background depicts a nondescript Northern Virginia office building lobby with industrial carpet, a stained ceiling tile grid under flickering fluorescents, a burnt coffee maker on a folding table in the corner, and absolutely no other people in sight. The character is framed in a medium-wide shot, perfectly centered, knees pressed together and hands folded in lap, eyebrows slightly drawn together and mouth a flat, patient line. A wall clock shows that six hours have passed. Moody, slightly washed-out lighting conveys the sterile isolation of the first test of stillness.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.221Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/1kay4kkhknrmw0cz2wbv8mdm5r/cancel",
+            "get": "https://api.replicate.com/v1/predictions/1kay4kkhknrmw0cz2wbv8mdm5r",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-g6gkkfa2mbqz7ngss6agk73ddmrws2aoyx6pbr6vy66lmx5vsmdq",
+            "web": "https://replicate.com/p/1kay4kkhknrmw0cz2wbv8mdm5r"
+          }
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "id": "yxqsxtbhk5rmy0cz2wbrq869d4",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, depict a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting hunched forward in a small metal chair across from an empty second chair behind a bare desk. The realistic, painterly background shows a windowless evaluation room rendered in muted institutional grays and greens, with a single open file folder and a clipboard lying on the desk surface, harsh overhead fluorescent lighting casting hard shadows. The character's eyebrows are downturned and mouth curved downward in a raw, exposed expression, shoulders slumped, hands clasped between the knees. Cinematic soft shadows fall across the simplified face, emphasizing emotional vulnerability and the strange relief of having been completely seen. The medium shot frames the character slightly off-center, conveying the aftermath of confession and an odd, dependent gratitude.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.217Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/yxqsxtbhk5rmy0cz2wbrq869d4/cancel",
+            "get": "https://api.replicate.com/v1/predictions/yxqsxtbhk5rmy0cz2wbrq869d4",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-5mivvooqetdvo2ocgsukydnq6ciyei765gildmoeogddxwgim74q",
+            "web": "https://replicate.com/p/yxqsxtbhk5rmy0cz2wbrq869d4"
+          }
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "id": "gdj1mabhmhrmw0cz2wbtk3n38w",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, show a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth standing awkwardly at the edge of a wooden family dining table, holding a glass of water in both hands. The realistic, painterly background depicts a warm suburban home kitchen-dining room with oak cabinets, framed family photographs lining the wall, a hanging potted herb, and two older parental figures seated at the table with their backs partially turned, soft amber evening lamp light pooling across the scene. The character's eyebrows are lifted in forced reassurance and mouth curved into a tight, performative smile, posture rigid. The wide cinematic framing captures the bittersweet tension of a careful lie told to loved ones. Warm domestic tones contrast with the emotional weight of the secret being concealed.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.228Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/gdj1mabhmhrmw0cz2wbtk3n38w/cancel",
+            "get": "https://api.replicate.com/v1/predictions/gdj1mabhmhrmw0cz2wbtk3n38w",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-rs5rlhj3hdjjexcmopijfrau4xi2dzqxydvatvjaeg62jftbtnma",
+            "web": "https://replicate.com/p/gdj1mabhmhrmw0cz2wbtk3n38w"
+          }
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      },
+      {
+        "json": {
+          "id": "80gp3akhn1rmt0cz2wbr607860",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting at a small desk in a sparse, dimly-lit apartment at night, leaning toward the cool blue glow of an open laptop screen. The realistic, painterly background shows bare plaster walls, a single unmade bed, a half-packed suitcase on the floor, and a thin layer of three months of accumulated dust on every surface. The character's eyebrows are slightly raised and mouth slightly open in quiet disbelief, one hand hovering near the chin, the other resting on the laptop's trackpad. The glowing screen displays a simple email interface with a plane ticket graphic and conspicuously no return date. The medium-wide shot frames the character off-center, with the cold blue screen light illuminating the simplified face against the dark room, capturing the precise moment destiny is confirmed.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.232Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/80gp3akhn1rmt0cz2wbr607860/cancel",
+            "get": "https://api.replicate.com/v1/predictions/80gp3akhn1rmt0cz2wbr607860",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-rnttyypmflzri7q3yuap7xhpmqzsuhpygwklibqfv7kyehu6e7oq",
+            "web": "https://replicate.com/p/80gp3akhn1rmt0cz2wbr607860"
+          }
+        },
+        "pairedItem": {
+          "item": 4
+        }
+      }
+    ],
+    "HTTP Request1": [
+      {
+        "json": {
+          "id": "2xepfekhhhrmy0cz2wbrr5matr",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "A flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sits attentively in a wooden seminar chair inside a graduate-level classroom, using the provided character reference image for the main character's face and proportions. The character leans slightly forward, eyebrows neutral-curious and mouth curved in a faint polite smile, listening to an off-screen figure whose hand rests on the character's shoulder. The realistic, painterly background shows tall windows glowing with late-afternoon golden hour light, bookshelves heavy with international relations volumes, a chalkboard covered in geopolitical diagrams, and blurred classmates taking notes. Soft cinematic warm tones bathe the room, evoking the quiet momentousness of an unsuspecting recruit. A wide shot frames the character slightly off-center, emphasizing naive possibility before everything changes.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.204Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/2xepfekhhhrmy0cz2wbrr5matr/cancel",
+            "get": "https://api.replicate.com/v1/predictions/2xepfekhhhrmy0cz2wbrr5matr",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-xkmppnjnqsyb2eyzfep6atrylclzgmgcyw57mohyhcj3dkfsnt2a",
+            "web": "https://replicate.com/p/2xepfekhhhrmy0cz2wbrr5matr"
+          }
+        },
+        "binary": {
+          "data": {
+            "mimeType": "image/jpeg",
+            "fileType": "image",
+            "fileExtension": "jpg",
+            "data": "filesystem-v2",
+            "directory": "https://stream.replicate.com/v1/files/jbxs-xkmppnjnqsyb2eyzfep6atrylclzgmgcyw57mohyhcj3dkfsnt2a",
+            "fileName": "jbxs-xkmppnjnqsyb2eyzfep6atrylclzgmgcyw57mohyhcj3dkfsnt2a",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/11395/binary_data/1bda4280-a37a-495d-ba33-7ec41d2522cb",
+            "fileSize": "422 kB",
+            "bytes": 421707
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": "1kay4kkhknrmw0cz2wbv8mdm5r",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting alone in a hard plastic chair pressed against a beige institutional wall. The realistic, painterly background depicts a nondescript Northern Virginia office building lobby with industrial carpet, a stained ceiling tile grid under flickering fluorescents, a burnt coffee maker on a folding table in the corner, and absolutely no other people in sight. The character is framed in a medium-wide shot, perfectly centered, knees pressed together and hands folded in lap, eyebrows slightly drawn together and mouth a flat, patient line. A wall clock shows that six hours have passed. Moody, slightly washed-out lighting conveys the sterile isolation of the first test of stillness.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.221Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/1kay4kkhknrmw0cz2wbv8mdm5r/cancel",
+            "get": "https://api.replicate.com/v1/predictions/1kay4kkhknrmw0cz2wbv8mdm5r",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-g6gkkfa2mbqz7ngss6agk73ddmrws2aoyx6pbr6vy66lmx5vsmdq",
+            "web": "https://replicate.com/p/1kay4kkhknrmw0cz2wbv8mdm5r"
+          }
+        },
+        "binary": {
+          "data": {
+            "mimeType": "image/jpeg",
+            "fileType": "image",
+            "fileExtension": "jpg",
+            "data": "filesystem-v2",
+            "directory": "https://stream.replicate.com/v1/files/jbxs-g6gkkfa2mbqz7ngss6agk73ddmrws2aoyx6pbr6vy66lmx5vsmdq",
+            "fileName": "jbxs-g6gkkfa2mbqz7ngss6agk73ddmrws2aoyx6pbr6vy66lmx5vsmdq",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/11395/binary_data/856f74c9-978b-4476-82e5-0ad155f58ae8",
+            "fileSize": "344 kB",
+            "bytes": 344231
+          }
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "id": "yxqsxtbhk5rmy0cz2wbrq869d4",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, depict a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting hunched forward in a small metal chair across from an empty second chair behind a bare desk. The realistic, painterly background shows a windowless evaluation room rendered in muted institutional grays and greens, with a single open file folder and a clipboard lying on the desk surface, harsh overhead fluorescent lighting casting hard shadows. The character's eyebrows are downturned and mouth curved downward in a raw, exposed expression, shoulders slumped, hands clasped between the knees. Cinematic soft shadows fall across the simplified face, emphasizing emotional vulnerability and the strange relief of having been completely seen. The medium shot frames the character slightly off-center, conveying the aftermath of confession and an odd, dependent gratitude.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.217Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/yxqsxtbhk5rmy0cz2wbrq869d4/cancel",
+            "get": "https://api.replicate.com/v1/predictions/yxqsxtbhk5rmy0cz2wbrq869d4",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-5mivvooqetdvo2ocgsukydnq6ciyei765gildmoeogddxwgim74q",
+            "web": "https://replicate.com/p/yxqsxtbhk5rmy0cz2wbrq869d4"
+          }
+        },
+        "binary": {
+          "data": {
+            "mimeType": "image/jpeg",
+            "fileType": "image",
+            "fileExtension": "jpg",
+            "data": "filesystem-v2",
+            "directory": "https://stream.replicate.com/v1/files/jbxs-5mivvooqetdvo2ocgsukydnq6ciyei765gildmoeogddxwgim74q",
+            "fileName": "jbxs-5mivvooqetdvo2ocgsukydnq6ciyei765gildmoeogddxwgim74q",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/11395/binary_data/62a96185-3f23-4b53-a67c-c8068b7c8f69",
+            "fileSize": "295 kB",
+            "bytes": 295459
+          }
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "id": "gdj1mabhmhrmw0cz2wbtk3n38w",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, show a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth standing awkwardly at the edge of a wooden family dining table, holding a glass of water in both hands. The realistic, painterly background depicts a warm suburban home kitchen-dining room with oak cabinets, framed family photographs lining the wall, a hanging potted herb, and two older parental figures seated at the table with their backs partially turned, soft amber evening lamp light pooling across the scene. The character's eyebrows are lifted in forced reassurance and mouth curved into a tight, performative smile, posture rigid. The wide cinematic framing captures the bittersweet tension of a careful lie told to loved ones. Warm domestic tones contrast with the emotional weight of the secret being concealed.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.228Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/gdj1mabhmhrmw0cz2wbtk3n38w/cancel",
+            "get": "https://api.replicate.com/v1/predictions/gdj1mabhmhrmw0cz2wbtk3n38w",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-rs5rlhj3hdjjexcmopijfrau4xi2dzqxydvatvjaeg62jftbtnma",
+            "web": "https://replicate.com/p/gdj1mabhmhrmw0cz2wbtk3n38w"
+          }
+        },
+        "binary": {
+          "data": {
+            "mimeType": "image/jpeg",
+            "fileType": "image",
+            "fileExtension": "jpg",
+            "data": "filesystem-v2",
+            "directory": "https://stream.replicate.com/v1/files/jbxs-rs5rlhj3hdjjexcmopijfrau4xi2dzqxydvatvjaeg62jftbtnma",
+            "fileName": "jbxs-rs5rlhj3hdjjexcmopijfrau4xi2dzqxydvatvjaeg62jftbtnma",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/11395/binary_data/eab15942-08d4-4263-a922-e1c1b2e2e688",
+            "fileSize": "414 kB",
+            "bytes": 413685
+          }
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      },
+      {
+        "json": {
+          "id": "80gp3akhn1rmt0cz2wbr607860",
+          "model": "google/nano-banana-pro",
+          "version": "hidden",
+          "input": {
+            "allow_fallback_model": false,
+            "aspect_ratio": "16:9",
+            "image_input": [
+              "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg"
+            ],
+            "output_format": "jpg",
+            "prompt": "Using the provided character reference image for the main character's face and proportions, render a flat-color cartoon character with a minimalist bald head, dot eyes, and thin line eyebrows and mouth sitting at a small desk in a sparse, dimly-lit apartment at night, leaning toward the cool blue glow of an open laptop screen. The realistic, painterly background shows bare plaster walls, a single unmade bed, a half-packed suitcase on the floor, and a thin layer of three months of accumulated dust on every surface. The character's eyebrows are slightly raised and mouth slightly open in quiet disbelief, one hand hovering near the chin, the other resting on the laptop's trackpad. The glowing screen displays a simple email interface with a plane ticket graphic and conspicuously no return date. The medium-wide shot frames the character off-center, with the cold blue screen light illuminating the simplified face against the dark room, capturing the precise moment destiny is confirmed.",
+            "resolution": "2K",
+            "safety_filter_level": "block_only_high"
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-06-30T05:54:00.232Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/80gp3akhn1rmt0cz2wbr607860/cancel",
+            "get": "https://api.replicate.com/v1/predictions/80gp3akhn1rmt0cz2wbr607860",
+            "stream": "https://stream.replicate.com/v1/files/jbxs-rnttyypmflzri7q3yuap7xhpmqzsuhpygwklibqfv7kyehu6e7oq",
+            "web": "https://replicate.com/p/80gp3akhn1rmt0cz2wbr607860"
+          }
+        },
+        "binary": {
+          "data": {
+            "mimeType": "image/jpeg",
+            "fileType": "image",
+            "fileExtension": "jpg",
+            "data": "filesystem-v2",
+            "directory": "https://stream.replicate.com/v1/files/jbxs-rnttyypmflzri7q3yuap7xhpmqzsuhpygwklibqfv7kyehu6e7oq",
+            "fileName": "jbxs-rnttyypmflzri7q3yuap7xhpmqzsuhpygwklibqfv7kyehu6e7oq",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/11395/binary_data/da0a0e68-9ff7-4d46-b9d6-5ef7771f614f",
+            "fileSize": "269 kB",
+            "bytes": 268596
+          }
+        },
+        "pairedItem": {
+          "item": 4
+        }
+      }
+    ],
+    "Upload a file1": [
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      },
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 4
         }
       }
     ]
@@ -731,6 +1323,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-30T04:47:02.462Z",
-  "versionId": "8425a0fd-2ae8-41c5-bf67-28d54aa9399b"
+  "updatedAt": "2026-06-30T06:00:06.891Z",
+  "versionId": "a71ed65e-eda1-4c13-83df-a8519c1f1ead"
 }
