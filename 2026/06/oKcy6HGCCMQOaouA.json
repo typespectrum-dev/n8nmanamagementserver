@@ -502,7 +502,7 @@
       "main": [
         [
           {
-            "node": "Render Chunk",
+            "node": "HTTP Request2",
             "type": "main",
             "index": 0
           }
@@ -814,12 +814,12 @@
         144,
         -352
       ],
-      "id": "f3e4c496-9cea-499f-af28-a95f05b086b9",
-      "name": "Render Chunk",
+      "id": "94d2d669-aef6-4bbd-b556-a8559d9951f0",
+      "name": "HTTP Request2",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "19fw4lY8zqdfpsIP",
-          "name": "Header Auth account 2"
+          "id": "1pcpK3Uvkncck36Y",
+          "name": "Header Auth account"
         }
       }
     }
@@ -1470,6 +1470,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-01T01:27:19.727Z",
-  "versionId": "4a47e919-6e3b-439e-a5b6-9b01651324fa"
+  "updatedAt": "2026-07-01T04:46:30.889Z",
+  "versionId": "91e4a5ce-6655-4ef3-a473-c30e8a5aa04d"
 }
