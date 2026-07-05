@@ -489,13 +489,7 @@
     },
     "Limit": {
       "main": [
-        [
-          {
-            "node": "Prepare Render Input",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Create NCA Toolkit Body": {
@@ -740,8 +734,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -272,
-        -368
+        -224,
+        -416
       ],
       "id": "50c9e436-8d8b-4443-9e5f-749e0a252e7b",
       "name": "Prepare Render Input"
@@ -774,8 +768,8 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -448,
-        -368
+        -528,
+        -416
       ],
       "id": "78603a4b-3def-4a21-812a-740b050d020f",
       "name": "Limit"
@@ -788,7 +782,7 @@
       "typeVersion": 2,
       "position": [
         -64,
-        -368
+        -416
       ],
       "id": "15e8524c-98e5-4fbf-b023-a62eba154c02",
       "name": "Create NCA Toolkit Body"
@@ -812,10 +806,40 @@
       "typeVersion": 4.4,
       "position": [
         144,
-        -368
+        -416
       ],
       "id": "e88c69d3-c0d7-4bde-9398-7e6c0caee4d4",
       "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zFJo8K2PEmO7Ziev",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nca.n8ntypespectrum.cfd/v1/ffmpeg/compose",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"inputs\": [\n    {\n      \"file_url\": \"https://storage.googleapis.com/sgplabs-general-storage/Vertical%20Video.mp4\"\n    },\n    {\n      \"file_url\": \"https://storage.googleapis.com/sgplabs-general-storage/Vertical%20Video.mp4\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"filter\": \"[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"options\": [\n        {\n          \"option\": \"-map\",\n          \"argument\": \"[outv]\"\n        },\n        {\n          \"option\": \"-map\",\n          \"argument\": \"[outa]\"\n        },\n        {\n          \"option\": \"-c:v\",\n          \"argument\": \"libx264\"\n        },\n        {\n          \"option\": \"-crf\",\n          \"argument\": \"23\"\n        },\n        {\n          \"option\": \"-preset\",\n          \"argument\": \"medium\"\n        },\n        {\n          \"option\": \"-c:a\",\n          \"argument\": \"aac\"\n        },\n        {\n          \"option\": \"-b:a\",\n          \"argument\": \"128k\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"thumbnail\": true,\n    \"filesize\": true,\n    \"duration\": true,\n    \"bitrate\": true,\n    \"encoder\": true\n  },\n  \"id\": \"2323\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -384,
+        -416
+      ],
+      "id": "84f846e1-40de-4965-b7aa-deb967099201",
+      "name": "Get Voiceover Duration",
       "credentials": {
         "httpHeaderAuth": {
           "id": "zFJo8K2PEmO7Ziev",
@@ -1470,6 +1494,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-04T23:57:23.857Z",
-  "versionId": "336759e3-d457-4e62-b707-389dc1d0be85"
+  "updatedAt": "2026-07-05T00:03:42.665Z",
+  "versionId": "c1cc30d5-dc47-47ca-8db9-2769ced26637"
 }
