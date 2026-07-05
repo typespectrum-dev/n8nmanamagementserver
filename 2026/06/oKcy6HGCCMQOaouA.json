@@ -465,17 +465,6 @@
         ]
       ]
     },
-    "Prepare Render Input": {
-      "main": [
-        [
-          {
-            "node": "Create NCA Toolkit Body",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Upload the Voiceover": {
       "main": [
         [
@@ -489,14 +478,42 @@
     },
     "Limit": {
       "main": [
-        []
+        [
+          {
+            "node": "Get Voiceover Duration",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Create NCA Toolkit Body": {
       "main": [
         [
           {
-            "node": "HTTP Request2",
+            "node": "Render Chunk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Voiceover Duration": {
+      "main": [
+        [
+          {
+            "node": "Prepare Render Input for Chunk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Render Input for Chunk": {
+      "main": [
+        [
+          {
+            "node": "Create NCA Toolkit Body",
             "type": "main",
             "index": 0
           }
@@ -701,47 +718,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "e10fd273-ddea-4f80-9c99-00d293cde494",
-              "name": "Voiceover Path",
-              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
-              "type": "string"
-            },
-            {
-              "id": "9377ed83-066d-4e7c-8464-13dcdba91573",
-              "name": "Image Path",
-              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_",
-              "type": "string"
-            },
-            {
-              "id": "5d6f6ba9-9313-4780-9299-fc1ed4e54a0f",
-              "name": "Image Amount",
-              "value": "5",
-              "type": "string"
-            },
-            {
-              "id": "93005faa-e35d-4279-9858-be8f6c9ffbde",
-              "name": "Image Type",
-              "value": ".jpg",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -224,
-        -416
-      ],
-      "id": "50c9e436-8d8b-4443-9e5f-749e0a252e7b",
-      "name": "Prepare Render Input"
-    },
-    {
-      "parameters": {
         "operation": "upload",
         "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
         "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
@@ -768,7 +744,7 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -528,
+        -576,
         -416
       ],
       "id": "78603a4b-3def-4a21-812a-740b050d020f",
@@ -776,12 +752,12 @@
     },
     {
       "parameters": {
-        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+        "jsCode": "// n8n Code node — run mode: \"Run Once for All Items\"\n// Builds an NCA Toolkit /v1/ffmpeg/compose payload: concatenates image_1..image_N\n// and merges them with the voiceover. Each image is shown for an equal slice of the\n// voiceover length -> perImage = voiceoverDuration / imageAmount.\n// REQUIRES the voiceover duration (seconds) on the incoming item — feed an NCA\n// /v1/media/metadata node on the voiceover.mp3 into this node first.\n\n// ---- output video settings ----\nconst WIDTH  = 1080;\nconst HEIGHT = 1920;\nconst FPS    = 30;\nconst WEBHOOK_URL = ''; // optional: webhook URL for async (long) jobs\n\n// find the voiceover duration (seconds) from whatever the metadata node returned\nfunction findDuration(j) {\n  const candidates = [\n    j['Voiceover Duration'], j['voiceover_duration'], j['duration'],\n    j.metadata && j.metadata.duration,\n    j.format && j.format.duration,\n    j.response && j.response.duration,\n  ];\n  for (const c of candidates) {\n    const n = parseFloat(c);\n    if (!isNaN(n) && n > 0) return n;\n  }\n  return null;\n}\n\nreturn $input.all().map((entry, idx) => {\n  const j = entry.json;\n\n  const voiceover = j['Voiceover Path'];\n  const imageBase = j['Image Path'];   // e.g. \".../images/image_\"\n  const amount    = parseInt(j['Image Amount'], 10);\n  const ext       = j['Image Type'];   // e.g. \".jpg\" (includes the dot)\n\n  const duration = findDuration(j);\n  if (!duration) {\n    throw new Error('No voiceover duration found on the item. Run an NCA /v1/media/metadata node on the voiceover before this node.');\n  }\n  if (!amount || amount < 1) {\n    throw new Error('Invalid \"Image Amount\": ' + j['Image Amount']);\n  }\n\n  // seconds each image is held — derived from the real voiceover length\n  const perImage = (duration / amount).toFixed(6);\n\n  // inputs[0] = voiceover, inputs[1..N] = looped images each held for perImage seconds\n  const inputs = [{ file_url: voiceover }];\n  for (let i = 1; i <= amount; i++) {\n    inputs.push({\n      file_url: `${imageBase}${i}${ext}`,\n      options: [\n        { option: '-loop', argument: '1' },\n        { option: '-t',    argument: perImage },\n      ],\n    });\n  }\n\n  // normalize each image onto the same canvas (no distortion), then concat in order\n  const norm = (n) =>\n    `[${n}:v]scale=${WIDTH}:${HEIGHT}:force_original_aspect_ratio=decrease,` +\n    `pad=${WIDTH}:${HEIGHT}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=${FPS},format=yuv420p[v${n}]`;\n\n  const norms  = [];\n  const labels = [];\n  for (let i = 1; i <= amount; i++) { norms.push(norm(i)); labels.push(`[v${i}]`); }\n  const filter = `${norms.join(';')};${labels.join('')}concat=n=${amount}:v=1:a=0[outv]`;\n\n  const payload = {\n    inputs,\n    filters: [{ filter }],\n    outputs: [{\n      options: [\n        { option: '-map',     argument: '[outv]' },\n        { option: '-map',     argument: '0:a' },\n        { option: '-c:v',     argument: 'libx264' },\n        { option: '-preset',  argument: 'medium' },\n        { option: '-crf',     argument: '23' },\n        { option: '-pix_fmt', argument: 'yuv420p' },\n        { option: '-c:a',     argument: 'aac' },\n        { option: '-b:a',     argument: '192k' },\n        { option: '-shortest' },\n      ],\n    }],\n    metadata: { thumbnail: false, filesize: true, duration: true, bitrate: false, encoder: false },\n    id: `slideshow_${idx}_${Date.now()}`,\n  };\n  if (WEBHOOK_URL) payload.webhook_url = WEBHOOK_URL;\n\n  return { json: payload };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -64,
+        0,
         -416
       ],
       "id": "15e8524c-98e5-4fbf-b023-a62eba154c02",
@@ -790,12 +766,12 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://nca.n8ntypespectrum.cfd/v1/ffmpeg/compose",
+        "url": "https://nca.n8ntypespectrum.cfd/v1/media/metadata",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"inputs\": [\n    {\n      \"file_url\": \"https://storage.googleapis.com/sgplabs-general-storage/Vertical%20Video.mp4\"\n    },\n    {\n      \"file_url\": \"https://storage.googleapis.com/sgplabs-general-storage/Vertical%20Video.mp4\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"filter\": \"[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"options\": [\n        {\n          \"option\": \"-map\",\n          \"argument\": \"[outv]\"\n        },\n        {\n          \"option\": \"-map\",\n          \"argument\": \"[outa]\"\n        },\n        {\n          \"option\": \"-c:v\",\n          \"argument\": \"libx264\"\n        },\n        {\n          \"option\": \"-crf\",\n          \"argument\": \"23\"\n        },\n        {\n          \"option\": \"-preset\",\n          \"argument\": \"medium\"\n        },\n        {\n          \"option\": \"-c:a\",\n          \"argument\": \"aac\"\n        },\n        {\n          \"option\": \"-b:a\",\n          \"argument\": \"128k\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"thumbnail\": true,\n    \"filesize\": true,\n    \"duration\": true,\n    \"bitrate\": true,\n    \"encoder\": true\n  },\n  \"id\": \"2323\"\n}",
+        "jsonBody": "={ \"media_url\": \"https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3\" }",
         "options": {
           "redirect": {
             "redirect": {}
@@ -805,11 +781,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        144,
+        -416,
         -416
       ],
-      "id": "e88c69d3-c0d7-4bde-9398-7e6c0caee4d4",
-      "name": "HTTP Request2",
+      "id": "84f846e1-40de-4965-b7aa-deb967099201",
+      "name": "Get Voiceover Duration",
       "credentials": {
         "httpHeaderAuth": {
           "id": "zFJo8K2PEmO7Ziev",
@@ -819,13 +795,60 @@
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e10fd273-ddea-4f80-9c99-00d293cde494",
+              "name": "Voiceover Path",
+              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
+              "type": "string"
+            },
+            {
+              "id": "9377ed83-066d-4e7c-8464-13dcdba91573",
+              "name": "Image Path",
+              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_",
+              "type": "string"
+            },
+            {
+              "id": "5d6f6ba9-9313-4780-9299-fc1ed4e54a0f",
+              "name": "Image Amount",
+              "value": "5",
+              "type": "string"
+            },
+            {
+              "id": "93005faa-e35d-4279-9858-be8f6c9ffbde",
+              "name": "Image Type",
+              "value": ".jpg",
+              "type": "string"
+            },
+            {
+              "id": "d91f9aff-cb33-478c-b50c-49b02c5e2519",
+              "name": "Voiceover Duration",
+              "value": "={{ $json.response.duration }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -224,
+        -416
+      ],
+      "id": "50c9e436-8d8b-4443-9e5f-749e0a252e7b",
+      "name": "Prepare Render Input for Chunk"
+    },
+    {
+      "parameters": {
         "method": "POST",
         "url": "https://nca.n8ntypespectrum.cfd/v1/ffmpeg/compose",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"inputs\": [\n    {\n      \"file_url\": \"https://storage.googleapis.com/sgplabs-general-storage/Vertical%20Video.mp4\"\n    },\n    {\n      \"file_url\": \"https://storage.googleapis.com/sgplabs-general-storage/Vertical%20Video.mp4\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"filter\": \"[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"options\": [\n        {\n          \"option\": \"-map\",\n          \"argument\": \"[outv]\"\n        },\n        {\n          \"option\": \"-map\",\n          \"argument\": \"[outa]\"\n        },\n        {\n          \"option\": \"-c:v\",\n          \"argument\": \"libx264\"\n        },\n        {\n          \"option\": \"-crf\",\n          \"argument\": \"23\"\n        },\n        {\n          \"option\": \"-preset\",\n          \"argument\": \"medium\"\n        },\n        {\n          \"option\": \"-c:a\",\n          \"argument\": \"aac\"\n        },\n        {\n          \"option\": \"-b:a\",\n          \"argument\": \"128k\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"thumbnail\": true,\n    \"filesize\": true,\n    \"duration\": true,\n    \"bitrate\": true,\n    \"encoder\": true\n  },\n  \"id\": \"2323\"\n}",
+        "jsonBody": "={{ JSON.stringify($json) }}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -835,11 +858,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -384,
+        240,
         -416
       ],
-      "id": "84f846e1-40de-4965-b7aa-deb967099201",
-      "name": "Get Voiceover Duration",
+      "id": "e88c69d3-c0d7-4bde-9398-7e6c0caee4d4",
+      "name": "Render Chunk",
       "credentials": {
         "httpHeaderAuth": {
           "id": "zFJo8K2PEmO7Ziev",
@@ -1461,13 +1484,214 @@
         }
       }
     ],
-    "Prepare Render Input": [
+    "Get Voiceover Duration": [
+      {
+        "json": {
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/media/metadata",
+          "id": null,
+          "job_id": "e7d195fa-2d22-4776-9175-56df7c937199",
+          "message": "success",
+          "pid": 9,
+          "queue_id": 128216269686528,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": {
+            "audio_bitrate": 128000,
+            "audio_bitrate_kbps": 128,
+            "audio_channels": 1,
+            "audio_codec": "mp3",
+            "audio_codec_long": "MP3 (MPEG audio layer 3)",
+            "audio_sample_rate": 44100,
+            "audio_sample_rate_khz": 44.1,
+            "duration": 97.828571,
+            "duration_formatted": "00:01:37.83",
+            "filesize": 1565719,
+            "filesize_mb": 1.49,
+            "format": "mp3",
+            "has_audio": true,
+            "has_video": false,
+            "overall_bitrate": 128037,
+            "overall_bitrate_mbps": 0.13
+          },
+          "run_time": 1.001,
+          "total_time": 1.001
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Create NCA Toolkit Body": [
+      {
+        "json": {
+          "inputs": [
+            {
+              "file_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/voiceover.mp3"
+            },
+            {
+              "file_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_1.jpg",
+              "options": [
+                {
+                  "option": "-loop",
+                  "argument": "1"
+                },
+                {
+                  "option": "-t",
+                  "argument": "19.565714"
+                }
+              ]
+            },
+            {
+              "file_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_2.jpg",
+              "options": [
+                {
+                  "option": "-loop",
+                  "argument": "1"
+                },
+                {
+                  "option": "-t",
+                  "argument": "19.565714"
+                }
+              ]
+            },
+            {
+              "file_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_3.jpg",
+              "options": [
+                {
+                  "option": "-loop",
+                  "argument": "1"
+                },
+                {
+                  "option": "-t",
+                  "argument": "19.565714"
+                }
+              ]
+            },
+            {
+              "file_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_4.jpg",
+              "options": [
+                {
+                  "option": "-loop",
+                  "argument": "1"
+                },
+                {
+                  "option": "-t",
+                  "argument": "19.565714"
+                }
+              ]
+            },
+            {
+              "file_url": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_5.jpg",
+              "options": [
+                {
+                  "option": "-loop",
+                  "argument": "1"
+                },
+                {
+                  "option": "-t",
+                  "argument": "19.565714"
+                }
+              ]
+            }
+          ],
+          "filters": [
+            {
+              "filter": "[1:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[v1];[2:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[v2];[3:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[v3];[4:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[v4];[5:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[v5];[v1][v2][v3][v4][v5]concat=n=5:v=1:a=0[outv]"
+            }
+          ],
+          "outputs": [
+            {
+              "options": [
+                {
+                  "option": "-map",
+                  "argument": "[outv]"
+                },
+                {
+                  "option": "-map",
+                  "argument": "0:a"
+                },
+                {
+                  "option": "-c:v",
+                  "argument": "libx264"
+                },
+                {
+                  "option": "-preset",
+                  "argument": "medium"
+                },
+                {
+                  "option": "-crf",
+                  "argument": "23"
+                },
+                {
+                  "option": "-pix_fmt",
+                  "argument": "yuv420p"
+                },
+                {
+                  "option": "-c:a",
+                  "argument": "aac"
+                },
+                {
+                  "option": "-b:a",
+                  "argument": "192k"
+                },
+                {
+                  "option": "-shortest"
+                }
+              ]
+            }
+          ],
+          "metadata": {
+            "thumbnail": false,
+            "filesize": true,
+            "duration": true,
+            "bitrate": false,
+            "encoder": false
+          },
+          "id": "slideshow_0_1783214206992"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Prepare Render Input for Chunk": [
       {
         "json": {
           "Voiceover Path": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/voiceover.mp3",
           "Image Path": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel/videos/Your_Life_as_Every_CIA_Black_Ops_Rank/chunks/chunk_1/images/image_",
           "Image Amount": "5",
-          "Image Type": ".jpg"
+          "Image Type": ".jpg",
+          "Voiceover Duration": 97.828571
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Render Chunk": [
+      {
+        "json": {
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/ffmpeg/compose",
+          "id": "slideshow_0_1783214206992",
+          "job_id": "a9159402-906e-4c8d-975a-f6336ce37a16",
+          "message": "success",
+          "pid": 8,
+          "queue_id": 128216269686384,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": [
+            {
+              "duration": 97.801995,
+              "file_url": "http://minio:9000/nca-bucket/a9159402-906e-4c8d-975a-f6336ce37a16_output_0.mp4",
+              "filesize": 3794809
+            }
+          ],
+          "run_time": 24.744,
+          "total_time": 24.744
         },
         "pairedItem": {
           "item": 0
@@ -1494,6 +1718,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-05T00:03:42.665Z",
-  "versionId": "c1cc30d5-dc47-47ca-8db9-2769ced26637"
+  "updatedAt": "2026-07-05T01:24:58.814Z",
+  "versionId": "92237f10-02ee-47df-9902-f2c0cdc36fc5"
 }
