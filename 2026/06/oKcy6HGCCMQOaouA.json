@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-05T02:23:11.254Z",
-    "createdAt": "2026-07-05T02:18:35.767Z",
-    "versionId": "95ffe4fd-fbde-487b-bba7-5840aae5659c",
+    "updatedAt": "2026-07-06T05:00:52.980Z",
+    "createdAt": "2026-07-06T05:00:52.980Z",
+    "versionId": "5358df92-eb7e-4893-b295-bb3f3bc4025a",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -349,7 +349,7 @@
       },
       {
         "parameters": {
-          "url": "={{ $json.response[0].file_url.replaceAll(\"http://minio:9000\", \"https://minio.n8ntypespectrum.cfd/\") }}",
+          "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio.n8ntypespectrum.cfd/') }}",
           "authentication": "genericCredentialType",
           "genericAuthType": "httpHeaderAuth",
           "options": {
@@ -562,11 +562,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version 95ffe4fd",
-    "description": "",
-    "autosaved": true
+    "name": null,
+    "description": null,
+    "autosaved": false
   },
-  "activeVersionId": "95ffe4fd-fbde-487b-bba7-5840aae5659c",
+  "activeVersionId": "5358df92-eb7e-4893-b295-bb3f3bc4025a",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -756,7 +756,9 @@
   "id": "oKcy6HGCCMQOaouA",
   "isArchived": false,
   "meta": {
-    "templateCredsSetupCompleted": true
+    "templateCredsSetupCompleted": true,
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp"
   },
   "name": "Chunk Subworkflow",
   "nodes": [
@@ -1103,7 +1105,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.response[0].file_url.replaceAll(\"http://minio:9000\", \"https://minio.n8ntypespectrum.cfd/\") }}",
+        "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio.n8ntypespectrum.cfd/') }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "options": {
@@ -1978,6 +1980,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-06T04:47:23.652Z",
-  "versionId": "95ffe4fd-fbde-487b-bba7-5840aae5659c"
+  "updatedAt": "2026-07-06T05:00:52.978Z",
+  "versionId": "5358df92-eb7e-4893-b295-bb3f3bc4025a"
 }
