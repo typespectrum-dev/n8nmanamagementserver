@@ -439,7 +439,7 @@
     "binaryMode": "separate",
     "timeSavedMode": "fixed",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false
+    "availableInMCP": true
   },
   "shared": [
     {
@@ -453,6 +453,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-21T04:57:50.155Z",
+  "updatedAt": "2026-07-06T02:48:35.378Z",
   "versionId": "de6f3137-9477-4894-97bc-32489b0ab64e"
 }
