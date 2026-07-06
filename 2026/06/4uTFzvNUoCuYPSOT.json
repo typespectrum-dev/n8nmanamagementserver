@@ -1,36 +1,11 @@
 {
-  "active": true,
-  "activeVersion": {
-    "updatedAt": "2026-06-07T02:38:03.071Z",
-    "createdAt": "2026-06-07T02:37:55.572Z",
-    "versionId": "47aa6653-62d1-4b14-9cf1-15c6ff75fb2d",
-    "workflowId": "4uTFzvNUoCuYPSOT",
-    "nodes": [
-      {
-        "parameters": {
-          "inputSource": "passthrough"
-        },
-        "type": "n8n-nodes-base.executeWorkflowTrigger",
-        "typeVersion": 1.1,
-        "position": [
-          0,
-          0
-        ],
-        "id": "fca126cf-9059-4aa2-abc0-c3056374a5ef",
-        "name": "When Executed by Another Workflow"
-      }
-    ],
-    "connections": {},
-    "authors": "Carmelo Iglesias",
-    "name": "Version 47aa6653",
-    "description": "",
-    "autosaved": true
-  },
-  "activeVersionId": "47aa6653-62d1-4b14-9cf1-15c6ff75fb2d",
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2026-06-07T02:37:51.535Z",
   "id": "4uTFzvNUoCuYPSOT",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "My workflow",
   "nodes": [
@@ -68,6 +43,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-07T02:37:55.571Z",
-  "versionId": "47aa6653-62d1-4b14-9cf1-15c6ff75fb2d"
+  "updatedAt": "2026-07-06T02:32:37.421Z",
+  "versionId": "dc5deea2-38a9-434a-a693-30b4ca8cc54c"
 }
