@@ -61,7 +61,7 @@
   },
   "createdAt": "2026-07-06T02:25:17.683Z",
   "id": "kT30LWcrFrI50mce",
-  "isArchived": false,
+  "isArchived": true,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -279,6 +279,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-06T02:25:17.683Z",
-  "versionId": "fe3dd798-1fea-471f-b721-59f1b15b5632"
+  "updatedAt": "2026-07-06T02:48:06.306Z",
+  "versionId": "b6e5f169-e108-4917-999d-306d184a2e12"
 }
