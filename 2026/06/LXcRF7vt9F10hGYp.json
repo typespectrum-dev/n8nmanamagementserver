@@ -1287,7 +1287,8 @@
   "repo_path": "workflows/n8n-second/",
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "availableInMCP": true
   },
   "shared": [
     {
@@ -1301,6 +1302,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-30T04:02:20.270Z",
+  "updatedAt": "2026-07-06T02:48:32.238Z",
   "versionId": "a1672b86-fc49-45a4-bb16-b5cc85678457"
 }
