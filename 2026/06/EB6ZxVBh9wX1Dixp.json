@@ -1246,7 +1246,7 @@
             {
               "id": "e10fd273-ddea-4f80-9c99-00d293cde494",
               "name": "Chunk Path",
-              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/voiceover.mp3",
+              "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_",
               "type": "string"
             },
             {
@@ -1254,24 +1254,6 @@
               "name": "Chunk Amount",
               "value": "={{ $json.level }}",
               "type": "string"
-            },
-            {
-              "id": "5d6f6ba9-9313-4780-9299-fc1ed4e54a0f",
-              "name": "Image Amount",
-              "value": "5",
-              "type": "string"
-            },
-            {
-              "id": "93005faa-e35d-4279-9858-be8f6c9ffbde",
-              "name": "Image Type",
-              "value": ".jpg",
-              "type": "string"
-            },
-            {
-              "id": "d91f9aff-cb33-478c-b50c-49b02c5e2519",
-              "name": "Voiceover Duration",
-              "value": "={{ $json.response.duration }}",
-              "type": "number"
             }
           ]
         },
@@ -2120,6 +2102,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-08T07:00:09.174Z",
-  "versionId": "38526c4f-33fa-4af4-ba92-a25a8cfa231a"
+  "updatedAt": "2026-07-08T07:01:07.177Z",
+  "versionId": "218d612b-dfc1-45c0-9c67-af6b5b717a38"
 }
