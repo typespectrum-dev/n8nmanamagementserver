@@ -733,18 +733,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request2": {
-      "main": [
-        [
-          {
-            "node": "Upload Chunk",
+            "node": "Download Chunk",
             "type": "main",
             "index": 0
           }
@@ -756,6 +745,28 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Chunk": {
+      "main": [
+        [
+          {
+            "node": "Upload Chunk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Chunk": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
             "type": "main",
             "index": 0
           }
@@ -1093,34 +1104,6 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio-api.n8ntypespectrum.cfd/') }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "file"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        -384,
-        -432
-      ],
-      "id": "0d67fe94-4ad4-4734-9879-d75097311d8a",
-      "name": "HTTP Request2",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "zFJo8K2PEmO7Ziev",
-          "name": "Header Auth account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "operation": "upload",
         "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
         "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').item.json.prompt_number }}.jpg",
@@ -1146,7 +1129,7 @@
       "parameters": {
         "operation": "upload",
         "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
-        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}/images/image_{{ $('Loop Over Items').item.json.prompt_number }}.jpg",
+        "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_{{ $('When Executed by Another Workflow').first().json.level_number }}.mp4",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.s3",
@@ -1162,6 +1145,92 @@
         "s3": {
           "id": "lMpFToUlFsGHfghm",
           "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio-api.n8ntypespectrum.cfd/') }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -384,
+        -432
+      ],
+      "id": "0d67fe94-4ad4-4734-9879-d75097311d8a",
+      "name": "Download Chunk",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zFJo8K2PEmO7Ziev",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "workspaceId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "projectId": {
+          "__rl": true,
+          "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+          "mode": "id"
+        },
+        "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
+        "fieldsMapper": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Worker Status": "Ready"
+          },
+          "matchingColumns": [
+            "Worker Status"
+          ],
+          "schema": [
+            {
+              "id": "Worker Status",
+              "displayName": "Worker Status",
+              "type": "string",
+              "display": true,
+              "defaultMatch": false,
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 4,
+      "position": [
+        48,
+        -432
+      ],
+      "id": "e9e66fc5-cd0b-4dba-b57b-22cbad957391",
+      "name": "Update a row",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "1gvRq0BbKFPkQsOh",
+          "name": "NocoDB Token account"
         }
       }
     }
@@ -2019,6 +2088,46 @@
           "success": true
         }
       }
+    ],
+    "Download Chunk": [
+      {
+        "json": {
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/ffmpeg/compose",
+          "id": "slideshow_0_1783490111858",
+          "job_id": "1b1ff232-224b-4c57-b8f4-698d594462c9",
+          "message": "success",
+          "pid": 9,
+          "queue_id": 131489398179728,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": [
+            {
+              "duration": 97.801995,
+              "file_url": "http://minio:9000/nca-bucket/1b1ff232-224b-4c57-b8f4-698d594462c9_output_0.mp4",
+              "filesize": 6003468
+            }
+          ],
+          "run_time": 26.2,
+          "total_time": 26.2
+        },
+        "binary": {
+          "data": {
+            "mimeType": "binary/octet-stream",
+            "fileExtension": "mp4",
+            "data": "filesystem-v2",
+            "directory": "https://minio-api.n8ntypespectrum.cfd/nca-bucket/1b1ff232-224b-4c57-b8f4-698d594462c9_output_0.mp4",
+            "fileName": "1b1ff232-224b-4c57-b8f4-698d594462c9_output_0.mp4",
+            "id": "filesystem-v2:workflows/oKcy6HGCCMQOaouA/executions/16404/binary_data/3e8d2f2c-b8a8-4172-bafe-3c400e5f334b",
+            "fileSize": "6 MB",
+            "bytes": 6003468
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "repo_name": "n8nmanamagementserver",
@@ -2041,6 +2150,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-08T05:59:52.160Z",
-  "versionId": "e1bcda1d-337b-4197-a03f-9b4070799f3d"
+  "updatedAt": "2026-07-08T06:08:02.522Z",
+  "versionId": "2ff0adae-bd58-47eb-bd9b-7e06a3118aaf"
 }
