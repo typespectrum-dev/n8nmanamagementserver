@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-08T04:04:27.172Z",
-    "createdAt": "2026-07-08T04:04:27.172Z",
-    "versionId": "407882c4-c74b-4f57-8cc7-af9c704e2bc0",
+    "updatedAt": "2026-07-08T04:48:42.823Z",
+    "createdAt": "2026-07-08T04:36:53.846Z",
+    "versionId": "b063376f-3582-435a-9e00-7b9744ae7812",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -562,11 +562,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": null,
-    "description": null,
-    "autosaved": false
+    "name": "Version b063376f",
+    "description": "",
+    "autosaved": true
   },
-  "activeVersionId": "407882c4-c74b-4f57-8cc7-af9c704e2bc0",
+  "activeVersionId": "b063376f-3582-435a-9e00-7b9744ae7812",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1105,7 +1105,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.response[0].file_url.replaceAll(\"http://minio:9000\", \"https://minio-api.n8ntypespectrum.cfd\") }}",
+        "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio-api.n8ntypespectrum.cfd/') }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "options": {
@@ -1980,6 +1980,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-08T04:26:00.660Z",
-  "versionId": "0bc0db2a-320c-4b59-a8fe-80d1112ebb60"
+  "updatedAt": "2026-07-08T04:36:53.843Z",
+  "versionId": "b063376f-3582-435a-9e00-7b9744ae7812"
 }
