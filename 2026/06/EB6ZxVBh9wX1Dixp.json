@@ -1033,7 +1033,9 @@
     },
     {
       "parameters": {
-        "mode": "chooseBranch"
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
       },
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
@@ -1045,17 +1047,7 @@
       "name": "Chunk Settings1"
     },
     {
-      "id": "2b041447-5aac-4423-8d4a-b120703a7fd5",
-      "name": "Increment Retry Count",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -720,
-        192
-      ],
       "parameters": {
-        "mode": "manual",
-        "includeOtherFields": true,
         "assignments": {
           "assignments": [
             {
@@ -1066,18 +1058,19 @@
             }
           ]
         },
+        "includeOtherFields": true,
         "options": {}
-      }
-    },
-    {
-      "id": "2953e55c-217c-443e-9ef5-b33b651ae04f",
-      "name": "Retry Limit Check",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
+      },
+      "id": "2b041447-5aac-4423-8d4a-b120703a7fd5",
+      "name": "Increment Retry Count",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
         -720,
-        336
-      ],
+        192
+      ]
+    },
+    {
       "parameters": {
         "conditions": {
           "combinator": "and",
@@ -1100,9 +1093,20 @@
           ]
         },
         "options": {}
-      }
+      },
+      "id": "2953e55c-217c-443e-9ef5-b33b651ae04f",
+      "name": "Retry Limit Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -720,
+        336
+      ]
     },
     {
+      "parameters": {
+        "errorMessage": "Video Generation Workflow: worker status never became 'Ready' after 200 polling attempts. Stopping to avoid an infinite loop."
+      },
       "id": "e5550b0b-8f7d-4269-a031-0bc6766f4c85",
       "name": "Stop and Error",
       "type": "n8n-nodes-base.stopAndError",
@@ -1110,11 +1114,7 @@
       "position": [
         -512,
         448
-      ],
-      "parameters": {
-        "errorType": "errorMessage",
-        "errorMessage": "Video Generation Workflow: worker status never became 'Ready' after 200 polling attempts. Stopping to avoid an infinite loop."
-      }
+      ]
     }
   ],
   "pinData": {
@@ -1554,6 +1554,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-08T03:57:05.402Z",
-  "versionId": "d9980240-89d6-4dd4-a8b7-9cfcf4764ca7"
+  "updatedAt": "2026-07-08T06:04:43.825Z",
+  "versionId": "9355c29b-9226-40e2-84ee-35ab80d8aa74"
 }
