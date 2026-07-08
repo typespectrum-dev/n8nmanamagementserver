@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-06T05:00:52.980Z",
-    "createdAt": "2026-07-06T05:00:52.980Z",
-    "versionId": "5358df92-eb7e-4893-b295-bb3f3bc4025a",
+    "updatedAt": "2026-07-08T04:04:27.172Z",
+    "createdAt": "2026-07-08T04:04:27.172Z",
+    "versionId": "407882c4-c74b-4f57-8cc7-af9c704e2bc0",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -349,7 +349,7 @@
       },
       {
         "parameters": {
-          "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio.n8ntypespectrum.cfd/') }}",
+          "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio-api.n8ntypespectrum.cfd/') }}",
           "authentication": "genericCredentialType",
           "genericAuthType": "httpHeaderAuth",
           "options": {
@@ -566,7 +566,7 @@
     "description": null,
     "autosaved": false
   },
-  "activeVersionId": "5358df92-eb7e-4893-b295-bb3f3bc4025a",
+  "activeVersionId": "407882c4-c74b-4f57-8cc7-af9c704e2bc0",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1105,7 +1105,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio.n8ntypespectrum.cfd/') }}",
+        "url": "={{ $json.response[0].file_url.replaceAll(\"http://minio:9000\", \"https://minio-api.n8ntypespectrum.cfd\") }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "options": {
@@ -1980,6 +1980,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-06T05:00:52.978Z",
-  "versionId": "5358df92-eb7e-4893-b295-bb3f3bc4025a"
+  "updatedAt": "2026-07-08T04:26:00.660Z",
+  "versionId": "0bc0db2a-320c-4b59-a8fe-80d1112ebb60"
 }
