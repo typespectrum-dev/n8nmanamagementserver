@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-08T03:57:05.403Z",
-    "createdAt": "2026-07-08T03:57:05.403Z",
-    "versionId": "d9980240-89d6-4dd4-a8b7-9cfcf4764ca7",
+    "updatedAt": "2026-07-09T02:39:43.083Z",
+    "createdAt": "2026-07-09T02:24:42.857Z",
+    "versionId": "eac42b38-44f6-4184-b455-0efdff1a296c",
     "workflowId": "EB6ZxVBh9wX1Dixp",
     "nodes": [
       {
@@ -13,8 +13,8 @@
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1,
         "position": [
-          -1888,
-          -48
+          -1968,
+          -96
         ],
         "id": "97407ac6-7d3d-4310-a69e-ad38e939b3b9",
         "name": "When Executed by Another Workflow"
@@ -27,8 +27,8 @@
         "type": "n8n-nodes-base.splitOut",
         "typeVersion": 1,
         "position": [
-          -1680,
-          -48
+          -1744,
+          -112
         ],
         "id": "3ad6f78c-d30c-4d13-9776-33bdfadb2b0c",
         "name": "Split Out"
@@ -40,8 +40,8 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          -1472,
-          -48
+          -1456,
+          -112
         ],
         "id": "60f3f8cb-24f2-493f-a589-e1584007d221",
         "name": "Loop Over Items"
@@ -111,8 +111,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -1168,
-          -16
+          -1136,
+          432
         ],
         "id": "3adcfaba-5c29-466e-bf45-77f08d85a731",
         "name": "Chunk Settings"
@@ -142,8 +142,8 @@
         "type": "n8n-nodes-base.nocoDb",
         "typeVersion": 4,
         "position": [
-          -928,
-          -16
+          -896,
+          432
         ],
         "id": "a38f50da-4da0-41a3-a4c5-98cd9db49ff5",
         "name": "Ping Worker Status",
@@ -181,8 +181,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -720,
-          -16
+          -688,
+          432
         ],
         "id": "f72a2724-74be-40a0-a423-4c7f86c3e184",
         "name": "If"
@@ -194,8 +194,8 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          -512,
-          192
+          -480,
+          640
         ],
         "id": "91e0277a-a99c-4de4-a82a-7bb11b63adfe",
         "name": "Wait",
@@ -222,8 +222,8 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          -432,
-          -336
+          -400,
+          112
         ],
         "id": "8e0947ea-e3fb-4ab9-add0-4b79d491fbbb",
         "name": "Call 'Chunk Subworkflow'"
@@ -235,8 +235,8 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          -256,
-          -48
+          -224,
+          400
         ],
         "id": "b23732c6-a2c7-4d1a-9735-0fdcbd2fd6dc",
         "name": "Merge"
@@ -286,8 +286,8 @@
         "type": "n8n-nodes-base.nocoDb",
         "typeVersion": 4,
         "position": [
-          -496,
-          -32
+          -464,
+          416
         ],
         "id": "8ce897ab-3c34-432e-b2f6-b1c0ee62cbcd",
         "name": "Change Worker Status to Processing",
@@ -300,29 +300,21 @@
       },
       {
         "parameters": {
-          "mode": "chooseBranch"
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "options": {}
         },
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          -608,
-          -336
+          -576,
+          112
         ],
         "id": "006df79b-0c1a-4095-bf61-276ecd8ae3a6",
         "name": "Chunk Settings1"
       },
       {
-        "id": "2b041447-5aac-4423-8d4a-b120703a7fd5",
-        "name": "Increment Retry Count",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          -720,
-          192
-        ],
         "parameters": {
-          "mode": "manual",
-          "includeOtherFields": true,
           "assignments": {
             "assignments": [
               {
@@ -333,18 +325,19 @@
               }
             ]
           },
+          "includeOtherFields": true,
           "options": {}
-        }
+        },
+        "id": "2b041447-5aac-4423-8d4a-b120703a7fd5",
+        "name": "Increment Retry Count",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -688,
+          640
+        ]
       },
       {
-        "id": "2953e55c-217c-443e-9ef5-b33b651ae04f",
-        "name": "Retry Limit Check",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          -720,
-          336
-        ],
         "parameters": {
           "conditions": {
             "combinator": "and",
@@ -367,20 +360,245 @@
             ]
           },
           "options": {}
-        }
+        },
+        "id": "2953e55c-217c-443e-9ef5-b33b651ae04f",
+        "name": "Retry Limit Check",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -688,
+          784
+        ]
       },
       {
+        "parameters": {
+          "errorMessage": "Video Generation Workflow: worker status never became 'Ready' after 200 polling attempts. Stopping to avoid an infinite loop."
+        },
         "id": "e5550b0b-8f7d-4269-a031-0bc6766f4c85",
         "name": "Stop and Error",
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          -512,
-          448
+          -480,
+          896
+        ]
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -1184,
+          -128
         ],
+        "id": "907d01cf-9cac-4460-b0e4-596b3bed84cf",
+        "name": "Limit"
+      },
+      {
         "parameters": {
-          "errorType": "errorMessage",
-          "errorMessage": "Video Generation Workflow: worker status never became 'Ready' after 200 polling attempts. Stopping to avoid an infinite loop."
+          "jsCode": "// Inputs on incoming item:\n//   \"Chunk Path\"   -> base URL ending in \"chunk_\" (e.g. .../chunks/chunk_)\n//   \"Chunk Amount\" -> number of chunks (e.g. 8)\n\nconst CHUNK_START_INDEX = 1; // set to 0 if your chunks are 0-indexed\n\nconst item = $input.first().json;\n\nconst chunkPath = item['Chunk Path'];\nconst chunkAmount = Number(item['Chunk Amount']);\n\nif (!chunkPath) {\n  throw new Error('Missing \"Chunk Path\" input.');\n}\nif (!chunkAmount || chunkAmount < 1) {\n  throw new Error('\"Chunk Amount\" must be a number >= 1.');\n}\n\nconst video_urls = [];\nfor (let i = CHUNK_START_INDEX; i < CHUNK_START_INDEX + chunkAmount; i++) {\n  video_urls.push({ video_url: `${chunkPath}${i}.mp4` });\n}\n\nconst payload = {\n  video_urls,\n  id: `concat_${Date.now()}`\n};\n\nreturn [{ json: payload }];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -608,
+          -80
+        ],
+        "id": "392541e0-da7c-4bdd-b233-2445c7d161cd",
+        "name": "Create NCA Toolkit Body"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "e10fd273-ddea-4f80-9c99-00d293cde494",
+                "name": "Chunk Path",
+                "value": "=https://minio-api.n8ntypespectrum.cfd/{{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}/{{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/chunks/chunk_",
+                "type": "string"
+              },
+              {
+                "id": "9377ed83-066d-4e7c-8464-13dcdba91573",
+                "name": "=Chunk Amount",
+                "value": "={{ $json.level }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -832,
+          -80
+        ],
+        "id": "4df689cb-9f24-4753-8566-3cdc77ae3bca",
+        "name": "Prepare Render Input for Chunk"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://nca.n8ntypespectrum.cfd/v1/ffmpeg/compose",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify($json) }}",
+          "options": {
+            "redirect": {
+              "redirect": {}
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          -368,
+          -80
+        ],
+        "id": "439250cf-4f39-4431-971a-c76c8fd6bebe",
+        "name": "Render Chunk",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "zFJo8K2PEmO7Ziev",
+            "name": "Header Auth account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.response[0].file_url.replace(/^https?:\\/\\/minio:9000\\/?/, 'https://minio-api.n8ntypespectrum.cfd/') }}",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          -96,
+          -80
+        ],
+        "id": "caf7d0aa-d665-4a3f-8112-61eb9b89a250",
+        "name": "Download Chunk",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "zFJo8K2PEmO7Ziev",
+            "name": "Header Auth account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "nocoDbApiToken",
+          "operation": "update",
+          "workspaceId": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "projectId": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+            "mode": "id"
+          },
+          "table": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Channel Sheet ID'] }}",
+            "mode": "id"
+          },
+          "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
+          "fieldsMapper": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Worker Status": "=Done at {{ $now }}"
+            },
+            "matchingColumns": [
+              "Worker Status"
+            ],
+            "schema": [
+              {
+                "id": "Worker Status",
+                "displayName": "Worker Status",
+                "type": "string",
+                "display": true,
+                "defaultMatch": false,
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          }
+        },
+        "type": "n8n-nodes-base.nocoDb",
+        "typeVersion": 4,
+        "position": [
+          336,
+          -80
+        ],
+        "id": "d5ee13e2-4b79-407f-8214-e092d261c36c",
+        "name": "Update a row",
+        "credentials": {
+          "nocoDbApiToken": {
+            "id": "1gvRq0BbKFPkQsOh",
+            "name": "NocoDB Token account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -1248,
+          -368
+        ],
+        "id": "3a5525fc-61fc-4df6-a9e5-15888ac8acf2",
+        "name": "Limit1"
+      },
+      {
+        "parameters": {
+          "mode": "chooseBranch"
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -992,
+          -128
+        ],
+        "id": "7adbf552-7b16-48f5-855d-7584d0427fcc",
+        "name": "Merge1"
+      },
+      {
+        "parameters": {
+          "operation": "upload",
+          "bucketName": "={{ $('When Executed by Another Workflow').first().json['Storage Bucket'] }}",
+          "fileName": "={{ $('When Executed by Another Workflow').first().json['Videos Path'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}/{{ $('When Executed by Another Workflow').first().json.fields['Video Title'] }}.mp4",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.s3",
+        "typeVersion": 1,
+        "position": [
+          128,
+          -80
+        ],
+        "id": "82f1f1ee-af9d-4dec-9222-91cc0082c061",
+        "name": "Upload Final Video",
+        "retryOnFail": false,
+        "credentials": {
+          "s3": {
+            "id": "lMpFToUlFsGHfghm",
+            "name": "S3 account"
+          }
         }
       }
     ],
@@ -398,7 +616,13 @@
       },
       "Loop Over Items": {
         "main": [
-          [],
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ],
           [
             {
               "node": "Chunk Settings",
@@ -413,6 +637,11 @@
           [
             {
               "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Limit1",
               "type": "main",
               "index": 0
             }
@@ -552,14 +781,102 @@
             }
           ]
         ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "Merge1",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Create NCA Toolkit Body": {
+        "main": [
+          [
+            {
+              "node": "Render Chunk",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Prepare Render Input for Chunk": {
+        "main": [
+          [
+            {
+              "node": "Create NCA Toolkit Body",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Render Chunk": {
+        "main": [
+          [
+            {
+              "node": "Download Chunk",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Download Chunk": {
+        "main": [
+          [
+            {
+              "node": "Upload Final Video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit1": {
+        "main": [
+          [
+            {
+              "node": "Merge1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge1": {
+        "main": [
+          [
+            {
+              "node": "Prepare Render Input for Chunk",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Upload Final Video": {
+        "main": [
+          [
+            {
+              "node": "Update a row",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": null,
-    "description": null,
-    "autosaved": false
+    "name": "Version eac42b38",
+    "description": "",
+    "autosaved": true
   },
-  "activeVersionId": "d9980240-89d6-4dd4-a8b7-9cfcf4764ca7",
+  "activeVersionId": "eac42b38-44f6-4184-b455-0efdff1a296c",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1345,7 +1662,7 @@
           "value": "={{ $('When Executed by Another Workflow').first().json['Channel Sheet ID'] }}",
           "mode": "id"
         },
-        "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
+        "id": "={{ $('When Executed by Another Workflow').first().json.id }}",
         "fieldsMapper": {
           "mappingMode": "defineBelow",
           "value": {
@@ -2005,14 +2322,6 @@
     "Split Out": [
       {
         "json": {
-          "level_number": 1,
-          "title": "The Prospect",
-          "content": "The letter doesn't come in the mail. It's a tap on the shoulder during a graduate seminar on international relations, or a quiet conversation at the end of an embassy internship. You are twenty-four, you speak three languages, and you have no criminal record. You think you're being chosen for your intellect. You aren't. You're being chosen because you have no tether to the world that can't be cut.\n\nYou arrive at a nondescript office building in Northern Virginia. The air smells of industrial carpet cleaner and burnt coffee. You sit in a plastic chair for six hours. No phone. No book. Just you and a wall. This is the first test: the capacity for stillness. When the door finally opens, the man who greets you doesn't give a name. He gives you a psychological evaluation that lasts three days. They ask about your childhood, your sexual preferences, the time you stole a candy bar at age seven, and how you feel about the concept of \"the greater good.\"\n\nBy the time you leave, you feel exposed, raw, and oddly grateful. They know everything about you, which means you don't have to hide from them. You are told to go home, tell your parents you got a job in \"logistics\" for the Department of State, and wait. Three months of silence follow. You start to doubt it was real. Then, a plane ticket appears in your inbox. No return date.",
-          "word_count": 216
-        }
-      },
-      {
-        "json": {
           "level_number": 2,
           "title": "The Student",
           "content": "You are at The Farm. Officially, it's Peary, a military installation in Virginia, but to you, it is the world. Your life is now a sequence of \"evolutions.\" You spend your mornings learning the \"Standardized Reporting\" format—how to write a cable so dry and factual it could put a reader to sleep, yet so precise it could trigger a drone strike.\n\nIn the afternoons, you learn the trade. You learn the \"Dead Drop\"—finding a loose brick in a park wall where a thumb drive can be left. You learn the \"Brush Pass\"—exchanging a newspaper with a stranger in a crowded metro station without breaking stride. You learn the \"Bumper Lock\"—following a car through heavy traffic without ever being closer than three vehicles away, yet never losing sight of their taillights.\n\nThen come the \"Red Cells.\" You are dropped in the middle of a city with fifty dollars and a fabricated identity. You are hunted by instructors who know every trick you've just been taught. You spend forty-eight hours sleeping in dumpsters and shivering in 24-hour diners, watching the door. You realize that your greatest asset isn't a weapon; it's the ability to look like someone who doesn't belong where they are, yet somehow fits perfectly. You graduate in a small, windowless room. No ceremony. No family. Just a laminated badge and a plane ticket to a country you can't point to on a map without a classified briefing.",
@@ -2049,6 +2358,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-09T02:30:06.133Z",
-  "versionId": "eac42b38-44f6-4184-b455-0efdff1a296c"
+  "updatedAt": "2026-07-09T02:40:51.009Z",
+  "versionId": "ae45d0c9-3745-4070-885a-77e6fc8fb774"
 }
