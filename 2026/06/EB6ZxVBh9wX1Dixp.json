@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-09T02:39:43.083Z",
-    "createdAt": "2026-07-09T02:24:42.857Z",
-    "versionId": "eac42b38-44f6-4184-b455-0efdff1a296c",
+    "updatedAt": "2026-07-09T04:56:04.260Z",
+    "createdAt": "2026-07-09T04:55:41.182Z",
+    "versionId": "82b4bad7-fc1e-457d-8882-57abc7ed3adf",
     "workflowId": "EB6ZxVBh9wX1Dixp",
     "nodes": [
       {
@@ -314,76 +314,6 @@
         "name": "Chunk Settings1"
       },
       {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "b1a2c3d4-1111-4a2b-9c3d-000000000001",
-                "name": "retryCount",
-                "type": "number",
-                "value": "={{ $node[\"Increment Retry Count\"] === undefined ? 1 : $node[\"Increment Retry Count\"].json[\"retryCount\"] + 1 }}"
-              }
-            ]
-          },
-          "includeOtherFields": true,
-          "options": {}
-        },
-        "id": "2b041447-5aac-4423-8d4a-b120703a7fd5",
-        "name": "Increment Retry Count",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          -688,
-          640
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "combinator": "and",
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "strict",
-              "version": 2
-            },
-            "conditions": [
-              {
-                "id": "e5f6a7b8-2222-4c5d-8e6f-000000000002",
-                "leftValue": "={{ $json.retryCount }}",
-                "rightValue": 200,
-                "operator": {
-                  "type": "number",
-                  "operation": "lte"
-                }
-              }
-            ]
-          },
-          "options": {}
-        },
-        "id": "2953e55c-217c-443e-9ef5-b33b651ae04f",
-        "name": "Retry Limit Check",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          -688,
-          784
-        ]
-      },
-      {
-        "parameters": {
-          "errorMessage": "Video Generation Workflow: worker status never became 'Ready' after 200 polling attempts. Stopping to avoid an infinite loop."
-        },
-        "id": "e5550b0b-8f7d-4269-a031-0bc6766f4c85",
-        "name": "Stop and Error",
-        "type": "n8n-nodes-base.stopAndError",
-        "typeVersion": 1,
-        "position": [
-          -480,
-          896
-        ]
-      },
-      {
         "parameters": {},
         "type": "n8n-nodes-base.limit",
         "typeVersion": 1,
@@ -513,7 +443,7 @@
             "value": "={{ $('When Executed by Another Workflow').first().json['Channel Sheet ID'] }}",
             "mode": "id"
           },
-          "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
+          "id": "={{ $('When Executed by Another Workflow').first().json.id }}",
           "fieldsMapper": {
             "mappingMode": "defineBelow",
             "value": {
@@ -691,7 +621,7 @@
           ],
           [
             {
-              "node": "Increment Retry Count",
+              "node": "Wait",
               "type": "main",
               "index": 0
             }
@@ -747,35 +677,6 @@
           [
             {
               "node": "Call 'Chunk Subworkflow'",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Increment Retry Count": {
-        "main": [
-          [
-            {
-              "node": "Retry Limit Check",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Retry Limit Check": {
-        "main": [
-          [
-            {
-              "node": "Wait",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Stop and Error",
               "type": "main",
               "index": 0
             }
@@ -872,11 +773,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version eac42b38",
+    "name": "Version 82b4bad7",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "eac42b38-44f6-4184-b455-0efdff1a296c",
+  "activeVersionId": "82b4bad7-fc1e-457d-8882-57abc7ed3adf",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -966,7 +867,7 @@
         ],
         [
           {
-            "node": "Increment Retry Count",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -1022,35 +923,6 @@
         [
           {
             "node": "Call 'Chunk Subworkflow'",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Increment Retry Count": {
-      "main": [
-        [
-          {
-            "node": "Retry Limit Check",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Retry Limit Check": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Stop and Error",
             "type": "main",
             "index": 0
           }
@@ -1461,76 +1333,6 @@
       ],
       "id": "006df79b-0c1a-4095-bf61-276ecd8ae3a6",
       "name": "Chunk Settings1"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b1a2c3d4-1111-4a2b-9c3d-000000000001",
-              "name": "retryCount",
-              "type": "number",
-              "value": "={{ $node[\"Increment Retry Count\"] === undefined ? 1 : $node[\"Increment Retry Count\"].json[\"retryCount\"] + 1 }}"
-            }
-          ]
-        },
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "id": "2b041447-5aac-4423-8d4a-b120703a7fd5",
-      "name": "Increment Retry Count",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -688,
-        640
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "combinator": "and",
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "e5f6a7b8-2222-4c5d-8e6f-000000000002",
-              "leftValue": "={{ $json.retryCount }}",
-              "rightValue": 200,
-              "operator": {
-                "type": "number",
-                "operation": "lte"
-              }
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "2953e55c-217c-443e-9ef5-b33b651ae04f",
-      "name": "Retry Limit Check",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        -688,
-        784
-      ]
-    },
-    {
-      "parameters": {
-        "errorMessage": "Video Generation Workflow: worker status never became 'Ready' after 200 polling attempts. Stopping to avoid an infinite loop."
-      },
-      "id": "e5550b0b-8f7d-4269-a031-0bc6766f4c85",
-      "name": "Stop and Error",
-      "type": "n8n-nodes-base.stopAndError",
-      "typeVersion": 1,
-      "position": [
-        -480,
-        896
-      ]
     },
     {
       "parameters": {},
@@ -2358,6 +2160,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-09T02:40:51.009Z",
-  "versionId": "ae45d0c9-3745-4070-885a-77e6fc8fb774"
+  "updatedAt": "2026-07-09T04:55:41.180Z",
+  "versionId": "82b4bad7-fc1e-457d-8882-57abc7ed3adf"
 }
