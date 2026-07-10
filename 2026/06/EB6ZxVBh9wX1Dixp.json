@@ -1622,7 +1622,7 @@
             {
               "id": "9377ed83-066d-4e7c-8464-13dcdba91573",
               "name": "=Chunk Amount",
-              "value": "={{ $json.level }}",
+              "value": "={{ $json.level_number }}",
               "type": "string"
             }
           ]
@@ -1939,7 +1939,91 @@
       "name": "Aggregate"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "Base ID": "p3l64neoyynn30b",
+          "Channel Sheet ID": "m5s88g69xzb08wl",
+          "Worker Sheet ID": "mh5uzwjzhyyaim7",
+          "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "Storage Bucket": "pov-guy",
+          "Videos Path": "pov-guy-channel/videos",
+          "output": {
+            "levels": [
+              {
+                "level_number": 1,
+                "title": "The Walk-in",
+                "content": "You are sitting in a grey, windowless room in a Boring, Virginia office park. There is no agency seal on the wall. There is only a laminated sign that says \"HR Recruitment\" and a clock that ticks with a heavy, mechanical thud. You have already passed the polygraph—four hours of sweating under a fluorescent light while a technician in a short-sleeved shirt asked if you had ever betrayed your country, or if you intended to. You have passed the psych eval, where a woman with a soft voice tried to find the exact crack in your childhood where a secret could be planted.\n\nNow, you are being handed a blue folder. Inside is a non-disclosure agreement that carries the weight of a federal prison sentence. You sign it. The recruiter doesn't shake your hand; he simply takes the pen and tells you to go to a parking lot in a suburb you've never heard of at 0400 hours. This is the \"Walk-in\" phase. You are a GS-7, a probationary trainee. You are nothing. You tell your parents you got a job in \"logistics consulting.\" You tell your girlfriend the hours will be long, but the benefits are good. You are already lying, and the most frightening part is how easy the first lie feels. It tastes like copper in the back of your throat. You go home, pack a bag with no logos, no labels, and no electronics, and you wait for the sun to go down for the last time as a private citizen.",
+                "word_count": 218
+              },
+              {
+                "level_number": 2,
+                "title": "The Farmhand",
+                "content": "Level two, the Trainee at Camp Peary. You are standing in the mud in the middle of a swampy stretch of Virginia woods. They call this \"The Farm.\" For the next six months, you are not a person; you are a set of skills being forcefully uploaded into a biological machine. You spend fourteen hours a day learning \"The Trade.\" You learn how to drive a car at sixty miles per hour in reverse, slamming the J-turn until your neck snaps back and your teeth rattle. You learn how to pick a five-pin tumbler lock with a tension wrench and a rake in under thirty seconds while wearing heavy gloves.\n\nYou learn the \"Paramilitary\" side—the side the analysts at Langley pretend doesn't exist. You crawl through cold water with an M4 carbine, learning to transition to a sidearm without thinking. You learn the \"bump\"—how to accidentally collide with a target in a crowded marketplace to plant a tracking device or lift a wallet. Your instructors are men with no last names and eyes that never seem to blink. They push you until you vomit, then make you recite your cover story while you're cleaning the floor. By the end of Level Two, you have a new name, a new history, and a new face. You look in the mirror and realize you don't remember what you used to talk about at dinner parties. All you can think about is the \"dead drop\" you have to service at midnight without being spotted by the instructors playing the role of hostile surveillance.",
+                "word_count": 222
+              },
+              {
+                "level_number": 3,
+                "title": "The Case Officer",
+                "content": "Level three, the Junior Case Officer. You are assigned to a \"denied area\" station, perhaps in Eastern Europe or Southeast Asia. You are officially a \"Political Attaché\" at the Embassy. You spend your days reading boring cables about trade wheat prices, but your real work begins after dark. You are a \"Streetman.\" Your job is to find people with access—foreign generals, disgruntled scientists, mid-level bureaucrats—and turn them.\n\nYou learn the cycle: Spotting, Assessing, Developing, Recruiting. You spend months befriending a lonely colonel over drinks, listening to him complain about his wife and his lack of a promotion. You are his best friend, his confessor, his psychiatrist. And then, one night, you pivot. You show him the photos of his gambling debts, or you offer him the money that will send his daughter to a university in the West. You watch the moment his soul breaks. You watch him realize he is now a traitor. You feel a surge of power, followed immediately by a cold, hollow sensation. You have just destroyed a man's life to gain a window into a ministry you don't even care about. You go back to your apartment, sweep for bugs, and sleep with a 9mm under your pillow. You are twenty-six years old, and you have forgotten how to trust a smile.",
+                "word_count": 205
+              },
+              {
+                "level_number": 4,
+                "title": "The Ground Branch Operative",
+                "content": "Level four, the Paramilitary Operations Officer. The suit and the embassy parties are gone. You have moved from the Directorate of Operations to the Special Activities Center (SAC), specifically Ground Branch. You are no longer convincing people to talk; you are the scalpel used when talking has failed. You are deployed to a \"black site\" or a concealed firebase in a country the U.S. denies being in. You wear local clothes, grow a thick, dusty beard, and carry \"sterile\" weapons—firearms with no serial numbers, manufactured in factories that don't officially exist.\n\nYour life is defined by the \"HVI\"—High Value Individual. You spend weeks living in the dirt, watching a compound through a long-range thermal lens. You eat cold rations and piss into a bottle. When the \"Go\" order comes, it's a blur of suppressed gunfire and infrared strobes. You enter a room, clear the corners, and see the target. You don't read him his rights. You bag him, zip-tie his wrists, and drag him to a waiting helicopter that has no markings. You are the shadow in the night. The adrenaline is the only thing that makes you feel alive now. The \"consulting\" job you told your family about has become a series of \"extended business trips\" to places you can't name. You miss birthdays, funerals, and anniversaries. You are becoming a ghost.",
+                "word_count": 209
+              },
+              {
+                "level_number": 5,
+                "title": "The Chief of Base",
+                "content": "Level five, the Chief of Base (COB). You have been promoted out of the mud and back into the shadows, but this time, you are the one holding the leash. You run a small, undeclared outpost in a high-threat environment. You move from the tactical to the visceral. You are responsible for a team of six operatives and twenty local assets. Every morning, you wake up knowing that if one of your assets is caught, they will be tortured and executed on camera. You have to decide if the intelligence they are providing is worth their life.\n\nYou become a master of \"disposable human beings.\" You sit in a darkened room, looking at satellite feeds, directing men into harm's way via encrypted radio. When an operation goes \"kinetic\"—when the gunfire starts and the local police start closing in—you are the one who has to decide whether to send a rescue team and risk a diplomatic nightmare or to \"burn\" the team and cut ties. You learn to speak in euphemisms. You don't say \"kill\"; you say \"neutralize.\" You don't say \"betray\"; you say \"terminate the relationship.\" You have a direct line to the Seventh Floor at Langley, and you realize that your primary job isn't to win; it's to provide \"plausible deniability\" for the people above you.",
+                "word_count": 205
+              },
+              {
+                "level_number": 6,
+                "title": "The Echo Archer",
+                "content": "Level six, the Targeted Killing Program Manager. You are back at Headquarters, but you don't work in the main building. You work in a SCIF (Sensitive Compartmented Information Facility) three stories underground. You are part of the \"Clean-up Crew.\" Your world is a grid of coordinates and a screen filled with the grainy, grey-and-white feed of a Predator drone orbiting five miles above a village you couldn't find on a map two years ago.\n\nYou are the \"Echo Archer.\" You hold the \"Kill Chain.\" You spend your days staring at a man's life from the air. You see him play with his children. You see him eat dinner. You wait for him to step away from the crowd, to walk into an open field or a lonely road. You are the judge, the jury, and the silent executioner. When it's time, you don't pull a trigger; you click a mouse. There is a silent flash on the screen, a delay of few seconds, and then the plume of dust. You watch the heat signatures fade from white to grey as the bodies cool. Then you stand up, badge out of the turnstile, and drive home through Virginia traffic. You stop at a grocery store to buy milk, looking at the people around you, wondering how they would react if they knew you just ended a life before your morning coffee.",
+                "word_count": 210
+              },
+              {
+                "level_number": 7,
+                "title": "The Chief of Station",
+                "content": "Level seven, the Chief of Station (COS). You are the king of your own secret country. You are the senior-most agency official in a major foreign capital. You are the shadow ambassador. You meet with heads of state in the middle of the night. You handle the \"special channel\"—the messages that the State Department isn't allowed to see. You are no longer just an operative; you are a politician of the dark.\n\nYou manage a budget of tens of millions of dollars in \"black funds\"—cash that leaves no paper trail, used to buy elections, fund insurgencies, or bribe foreign kings. You realize that the \"National Interest\" is a flexible concept. You have seen regimes you helped build crumble, and you have seen monsters you funded become allies. You are exhausted. The weight of the secrets you carry has physically changed you. You have a tremor in your hand that you hide by gripping your coffee mug tightly. You realize that you have spent thirty years manipulating the world, and yet, the world seems more broken than when you started. You have achieved total power in the shadows, but you have no one to share it with. Your first wife left you a decade ago. Your children call you by your first name. You are a vault filled with gold that no one is allowed to spend.",
+                "word_count": 208
+              },
+              {
+                "level_number": 8,
+                "title": "The Seventh Floor",
+                "content": "Level eight, the Deputy Director for Operations. You are one of the \"Princes of Langley.\" You sit in an office with mahogany furniture and a view of the woods. You are the bridge between the secret world and the white world of the White House. You spend your days in the Situation Room, briefing the President. You have mastered the art of \"Strategic Ambiguity.\" You tell the truth, but never the whole truth.\n\nYou are now the architect of the very cycles you once lived through. You authorize the \"Walk-ins,\" knowing most will fail. You approve the \"Farm\" curriculum, knowing it will break the trainees. You sign the \"Finding\"—the presidential authorization for covert action—that will send young men to die in deserts for goals that will be obsolete in five years. You see the entire board now. You realize that the Black Ops world isn't about winning a war; it's about managing the chaos of a planet that is constantly trying to tear itself apart. You are the gardener of a forest of thorns. You feel nothing when you hear of a casualty. You only feel a slight irritation at the paperwork it will require.",
+                "word_count": 183
+              },
+              {
+                "level_number": 9,
+                "title": "The Asset",
+                "content": "Level nine, the Retiree. You are sixty-five years old. You are sitting on a porch in a quiet town in North Carolina. You have a pension and a medal you can never show anyone. You have a \"handler\" who calls you once a month just to check in—not because they care, but because they need to know if your mind is starting to go. You are the greatest threat to the organization now, because you remember everything.\n\nYou watch the news and see a coup in a country you used to live in. You see a familiar face in the background of a press conference—a man you recruited thirty years ago, now a gray-haired dictator. You realize you are the only person on earth who knows why he is there. You feel a sudden, sharp pang of irrelevance. The world is moving on, fueled by new secrets, new lies, and new young men in grey rooms. You look at your hands and see the scars from The Farm, the callouses from the M4, the wedding ring from a marriage that didn't survive the \"logistics consulting\" job. You are a library of ghosts.",
+                "word_count": 183
+              },
+              {
+                "level_number": 10,
+                "title": "The Recruiter",
+                "content": "Level ten, the Final Cycle. You are back in a boring, windowless room in an office park in Virginia. You are no longer the one in the chair; you are the one behind the desk. You are the Recruiter. Across from you sits a young man, twenty-two years old, with bright eyes and a resume full of potential. He wants to serve his country. He wants adventure. He wants to matter.\n\nYou look at him, and for a split second, you see yourself thirty-five years ago. You could tell him. You could tell him about the hollow feeling in the grocery store, the sound of the drone strike, the faces of the men you betrayed. You could tell him that he will lose his name and his soul in exchange for a front-row seat to the end of the world.\n\nInstead, you open a blue folder. You push it across the desk toward him. You hand him a pen.\n\n\"Sign here,\" you say, your voice flat and professional. \"And welcome to the team.\"",
+                "word_count": 168
+              }
+            ]
+          },
+          "id": "1",
+          "fields": {
+            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "repo_name": "n8nmanamagementserver",
   "repo_owner": "typespectrum-dev",
   "repo_path": "workflows/n8n-second/",
@@ -1960,6 +2044,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T04:42:22.815Z",
-  "versionId": "ae2071b3-0a25-448a-9231-907dc99e1a5f"
+  "updatedAt": "2026-07-10T05:11:00.275Z",
+  "versionId": "815e1fcb-1e0a-4a80-a3a4-2d8dc332746a"
 }
