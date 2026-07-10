@@ -1338,36 +1338,7 @@
       }
     }
   ],
-  "pinData": {
-    "When Executed by Another Workflow": [
-      {
-        "json": {
-          "script": "You are sitting in a bland, windowless room in a hotel in a city that smells like diesel and wet stone. You aren't an officer yet. You aren't even on the payroll. You are a \"person of interest.\" To the Agency, you are an asset—a tool with a pulse.\n\nYou're here because you have something they want: access. Maybe you're a mid-level bureaucrat in a failing ministry, or a logistics coordinator for a shipping firm that accidentally moves precursors for nerve gas. You think you're doing this for the money, but the money is a secondary hook. The primary hook is the man across the table. He's American, polite, and listens better than anyone you've ever met. He makes you feel like the most important person in the world. He calls this a \"developmental relationship.\"\n\nYou hand over a thumb drive. It contains a list of names—men you've had lunch with for years. Your palms are slick. You realize that once you push that drive across the scarred wood of the table, your old life is over. You are now a source. You learn the first rule of the shadow world: information is the only currency that matters, and its value drops to zero the moment it's spent. You walk out into the cold air, feeling a strange mix of terror and intoxicating importance. You have no idea that the man you just spoke to has already written a report detailing your psychological flaws and how to exploit them if you ever get cold feet.",
-          "level_number": 1,
-          "Title": "The Asset",
-          "Base ID": "p3l64neoyynn30b",
-          "Worker Sheet ID": "mh5uzwjzhyyaim7",
-          "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
-          "Storage Bucket": "pov-guy",
-          "Videos Path": "pov-guy-channel/videos",
-          "fields": {
-            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank",
-            "CreatedAt": "2026-06-02 04:20:10+00:00",
-            "UpdatedAt": "2026-07-10 03:52:47+00:00",
-            "Worker Status": "Ready"
-          },
-          "id": 1,
-          "id_fields": {
-            "Id": 1
-          }
-        },
-        "binary": {},
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "repo_name": "n8nmanamagementserver",
   "repo_owner": "typespectrum-dev",
   "repo_path": "workflows/n8n-second/",
@@ -1388,6 +1359,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T04:18:46.650Z",
+  "updatedAt": "2026-07-10T04:42:34.546Z",
   "versionId": "87810757-cc79-4f1d-9989-0769fc11c63e"
 }
