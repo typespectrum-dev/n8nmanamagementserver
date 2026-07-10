@@ -1639,7 +1639,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://nca.n8ntypespectrum.cfd/v1/ffmpeg/compose",
+        "url": "https://nca.n8ntypespectrum.cfd/v1/video/concantenate",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -2652,6 +2652,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-09T23:58:58.029Z",
-  "versionId": "867ca61e-6343-4efd-b20b-19768fb884b6"
+  "updatedAt": "2026-07-10T00:15:09.591Z",
+  "versionId": "ae2071b3-0a25-448a-9231-907dc99e1a5f"
 }
