@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-09T23:30:37.687Z",
-    "createdAt": "2026-07-09T23:29:59.796Z",
-    "versionId": "88537cac-ce15-449a-893e-2ec5664d6a79",
+    "updatedAt": "2026-07-10T02:20:02.745Z",
+    "createdAt": "2026-07-10T00:15:09.594Z",
+    "versionId": "ae2071b3-0a25-448a-9231-907dc99e1a5f",
     "workflowId": "EB6ZxVBh9wX1Dixp",
     "nodes": [
       {
@@ -316,7 +316,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -608,
+          -128,
           -544
         ],
         "id": "392541e0-da7c-4bdd-b233-2445c7d161cd",
@@ -345,7 +345,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -784,
+          -304,
           -544
         ],
         "id": "4df689cb-9f24-4753-8566-3cdc77ae3bca",
@@ -354,7 +354,7 @@
       {
         "parameters": {
           "method": "POST",
-          "url": "https://nca.n8ntypespectrum.cfd/v1/ffmpeg/compose",
+          "url": "https://nca.n8ntypespectrum.cfd/v1/video/concantenate",
           "authentication": "genericCredentialType",
           "genericAuthType": "httpHeaderAuth",
           "sendBody": true,
@@ -369,7 +369,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          -416,
+          64,
           -544
         ],
         "id": "439250cf-4f39-4431-971a-c76c8fd6bebe",
@@ -397,7 +397,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          -224,
+          256,
           -544
         ],
         "id": "caf7d0aa-d665-4a3f-8112-61eb9b89a250",
@@ -455,7 +455,7 @@
         "type": "n8n-nodes-base.nocoDb",
         "typeVersion": 4,
         "position": [
-          224,
+          704,
           -544
         ],
         "id": "d5ee13e2-4b79-407f-8214-e092d261c36c",
@@ -474,7 +474,7 @@
         "type": "n8n-nodes-base.limit",
         "typeVersion": 1,
         "position": [
-          -1248,
+          -1040,
           -560
         ],
         "id": "3a5525fc-61fc-4df6-a9e5-15888ac8acf2",
@@ -487,7 +487,7 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          -992,
+          -512,
           -544
         ],
         "id": "7adbf552-7b16-48f5-855d-7584d0427fcc",
@@ -503,7 +503,7 @@
         "type": "n8n-nodes-base.s3",
         "typeVersion": 1,
         "position": [
-          -32,
+          448,
           -544
         ],
         "id": "82f1f1ee-af9d-4dec-9222-91cc0082c061",
@@ -568,7 +568,7 @@
         "typeVersion": 4,
         "position": [
           -960,
-          -272
+          -320
         ],
         "id": "33b45230-da78-4d0e-8edd-7d936c9f0fe8",
         "name": "Ping Worker Status1",
@@ -591,11 +591,11 @@
             "conditions": [
               {
                 "id": "83229cac-306b-4c76-b644-757ac86894a5",
-                "leftValue": "={{ $json.fields['Worker Status'] }}",
-                "rightValue": "Ready",
+                "leftValue": "={{ JSON.stringify($json.data) }}",
+                "rightValue": "Processing",
                 "operator": {
                   "type": "string",
-                  "operation": "equals"
+                  "operation": "contains"
                 }
               }
             ],
@@ -606,8 +606,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -528,
-          -272
+          -496,
+          -320
         ],
         "id": "c2461ef2-9132-4f5a-b14b-501b4df95860",
         "name": "If1"
@@ -619,8 +619,8 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          -16,
-          -256
+          -48,
+          -320
         ],
         "id": "4c5b4ba3-0c72-4b77-b8e5-b5b061bfbb4a",
         "name": "Wait1",
@@ -632,25 +632,21 @@
         "typeVersion": 1,
         "position": [
           -256,
-          -256
+          -320
         ],
         "id": "733f8133-c932-48d7-b7ed-1fb5467ac0a5",
         "name": "Limit3"
       },
       {
         "parameters": {
-          "fieldsToAggregate": {
-            "fieldToAggregate": [
-              {}
-            ]
-          },
+          "aggregate": "aggregateAllItemData",
           "options": {}
         },
         "type": "n8n-nodes-base.aggregate",
         "typeVersion": 1,
         "position": [
           -704,
-          -272
+          -320
         ],
         "id": "35d6449d-7abe-41f3-b757-adb7575fc091",
         "name": "Aggregate"
@@ -919,12 +915,18 @@
       },
       "If1": {
         "main": [
-          [],
           [
             {
               "node": "Limit3",
               "type": "main",
               "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Merge1",
+              "type": "main",
+              "index": 1
             }
           ]
         ]
@@ -964,11 +966,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version 88537cac",
+    "name": "Version ae2071b3",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "88537cac-ce15-449a-893e-2ec5664d6a79",
+  "activeVersionId": "ae2071b3-0a25-448a-9231-907dc99e1a5f",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
