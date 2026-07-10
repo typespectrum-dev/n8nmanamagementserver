@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-09T02:33:51.458Z",
-    "createdAt": "2026-07-08T06:08:02.524Z",
-    "versionId": "2ff0adae-bd58-47eb-bd9b-7e06a3118aaf",
+    "updatedAt": "2026-07-10T03:08:15.706Z",
+    "createdAt": "2026-07-10T02:24:51.072Z",
+    "versionId": "c5d86641-d36e-41e0-8643-a4eb24ce0baf",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -417,7 +417,7 @@
             "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
             "mode": "id"
           },
-          "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
+          "id": "={{ $('When Executed by Another Workflow').first().json.fields.Id }}",
           "fieldsMapper": {
             "mappingMode": "defineBelow",
             "value": {
@@ -665,11 +665,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version 2ff0adae",
+    "name": "Version c5d86641",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "2ff0adae-bd58-47eb-bd9b-7e06a3118aaf",
+  "activeVersionId": "c5d86641-d36e-41e0-8643-a4eb24ce0baf",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1338,7 +1338,36 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "script": "You are not an employee. You are a resource. You are sitting in a cafe in a city that smells like diesel and roasted chickpeas, waiting for a man whose name you will never know to tell you what your life is worth. You were chosen because you have access, or a grievance, or a debt that has grown teeth. Perhaps you are a low-level clerk in a ministry of defense, or a technician at a power plant, or the cousin of a general. \n\nThe man arrives. He sits. He doesn't look like a spy; he looks like a tired accountant on a business trip. He speaks your language with a slight, unplaceable accent. He doesn't offer you a job; he offers you a \"partnership.\" He gives you a specialized piece of hardware—a modified bridge-line router or a thumb drive that looks like a cheap knockoff—and tells you to plug it into a specific terminal. \n\nYou feel the sweat slicking your palms. You are a \"Stay-Behind\" or a \"Local National.\" If you are caught, your government will execute you as a traitor. If you succeed, the man in the suit will give you an envelope of cash that feels heavy in your pocket but light against the weight of what you've just done. You go home and look at your family. You realize for the first time that you are a ghost in your own house. You are the lowest rung on the ladder, a disposable sensor in a dark room.",
+          "level_number": 1,
+          "Title": "The Asset",
+          "Base ID": "p3l64neoyynn30b",
+          "Worker Sheet ID": "mh5uzwjzhyyaim7",
+          "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "Storage Bucket": "pov-guy",
+          "Videos Path": "pov-guy-channel/videos",
+          "fields": {
+            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank",
+            "CreatedAt": "2026-06-02 04:20:10+00:00",
+            "UpdatedAt": "2026-07-10 03:08:58+00:00",
+            "Worker Status": "Ready"
+          },
+          "id": 1,
+          "id_fields": {
+            "Id": 1
+          }
+        },
+        "binary": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "repo_name": "n8nmanamagementserver",
   "repo_owner": "typespectrum-dev",
   "repo_path": "workflows/n8n-second/",
@@ -1359,6 +1388,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T02:24:51.070Z",
+  "updatedAt": "2026-07-10T03:13:24.272Z",
   "versionId": "c5d86641-d36e-41e0-8643-a4eb24ce0baf"
 }
