@@ -1298,7 +1298,7 @@
           "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
           "mode": "id"
         },
-        "id": "={{ $('When Executed by Another Workflow').first().json.fields.Id }}",
+        "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
         "fieldsMapper": {
           "mappingMode": "defineBelow",
           "value": {
@@ -1388,6 +1388,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T03:13:24.272Z",
-  "versionId": "c5d86641-d36e-41e0-8643-a4eb24ce0baf"
+  "updatedAt": "2026-07-10T03:52:12.024Z",
+  "versionId": "a0864a22-f8fe-497b-befb-9b6d5224f1ad"
 }
