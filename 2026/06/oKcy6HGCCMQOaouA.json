@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-10T03:08:15.706Z",
-    "createdAt": "2026-07-10T02:24:51.072Z",
-    "versionId": "c5d86641-d36e-41e0-8643-a4eb24ce0baf",
+    "updatedAt": "2026-07-10T04:19:06.764Z",
+    "createdAt": "2026-07-10T04:18:46.652Z",
+    "versionId": "87810757-cc79-4f1d-9989-0769fc11c63e",
     "workflowId": "oKcy6HGCCMQOaouA",
     "nodes": [
       {
@@ -417,7 +417,7 @@
             "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
             "mode": "id"
           },
-          "id": "={{ $('When Executed by Another Workflow').first().json.fields.Id }}",
+          "id": "={{ $('When Executed by Another Workflow').first().json.id }}",
           "fieldsMapper": {
             "mappingMode": "defineBelow",
             "value": {
@@ -665,11 +665,11 @@
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version c5d86641",
+    "name": "Version 87810757",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c5d86641-d36e-41e0-8643-a4eb24ce0baf",
+  "activeVersionId": "87810757-cc79-4f1d-9989-0769fc11c63e",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1298,7 +1298,7 @@
           "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
           "mode": "id"
         },
-        "id": "={{ $('When Executed by Another Workflow').first().json['Id'] }}",
+        "id": "={{ $('When Executed by Another Workflow').first().json.id }}",
         "fieldsMapper": {
           "mappingMode": "defineBelow",
           "value": {
@@ -1342,7 +1342,7 @@
     "When Executed by Another Workflow": [
       {
         "json": {
-          "script": "You are not an employee. You are a resource. You are sitting in a cafe in a city that smells like diesel and roasted chickpeas, waiting for a man whose name you will never know to tell you what your life is worth. You were chosen because you have access, or a grievance, or a debt that has grown teeth. Perhaps you are a low-level clerk in a ministry of defense, or a technician at a power plant, or the cousin of a general. \n\nThe man arrives. He sits. He doesn't look like a spy; he looks like a tired accountant on a business trip. He speaks your language with a slight, unplaceable accent. He doesn't offer you a job; he offers you a \"partnership.\" He gives you a specialized piece of hardware—a modified bridge-line router or a thumb drive that looks like a cheap knockoff—and tells you to plug it into a specific terminal. \n\nYou feel the sweat slicking your palms. You are a \"Stay-Behind\" or a \"Local National.\" If you are caught, your government will execute you as a traitor. If you succeed, the man in the suit will give you an envelope of cash that feels heavy in your pocket but light against the weight of what you've just done. You go home and look at your family. You realize for the first time that you are a ghost in your own house. You are the lowest rung on the ladder, a disposable sensor in a dark room.",
+          "script": "You are sitting in a bland, windowless room in a hotel in a city that smells like diesel and wet stone. You aren't an officer yet. You aren't even on the payroll. You are a \"person of interest.\" To the Agency, you are an asset—a tool with a pulse.\n\nYou're here because you have something they want: access. Maybe you're a mid-level bureaucrat in a failing ministry, or a logistics coordinator for a shipping firm that accidentally moves precursors for nerve gas. You think you're doing this for the money, but the money is a secondary hook. The primary hook is the man across the table. He's American, polite, and listens better than anyone you've ever met. He makes you feel like the most important person in the world. He calls this a \"developmental relationship.\"\n\nYou hand over a thumb drive. It contains a list of names—men you've had lunch with for years. Your palms are slick. You realize that once you push that drive across the scarred wood of the table, your old life is over. You are now a source. You learn the first rule of the shadow world: information is the only currency that matters, and its value drops to zero the moment it's spent. You walk out into the cold air, feeling a strange mix of terror and intoxicating importance. You have no idea that the man you just spoke to has already written a report detailing your psychological flaws and how to exploit them if you ever get cold feet.",
           "level_number": 1,
           "Title": "The Asset",
           "Base ID": "p3l64neoyynn30b",
@@ -1353,7 +1353,7 @@
           "fields": {
             "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank",
             "CreatedAt": "2026-06-02 04:20:10+00:00",
-            "UpdatedAt": "2026-07-10 03:08:58+00:00",
+            "UpdatedAt": "2026-07-10 03:52:47+00:00",
             "Worker Status": "Ready"
           },
           "id": 1,
@@ -1388,6 +1388,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T03:52:12.024Z",
-  "versionId": "a0864a22-f8fe-497b-befb-9b6d5224f1ad"
+  "updatedAt": "2026-07-10T04:18:46.650Z",
+  "versionId": "87810757-cc79-4f1d-9989-0769fc11c63e"
 }
