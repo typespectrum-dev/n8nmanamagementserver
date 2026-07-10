@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-09T04:56:04.260Z",
-    "createdAt": "2026-07-09T04:55:41.182Z",
-    "versionId": "82b4bad7-fc1e-457d-8882-57abc7ed3adf",
+    "updatedAt": "2026-07-09T23:30:37.687Z",
+    "createdAt": "2026-07-09T23:29:59.796Z",
+    "versionId": "88537cac-ce15-449a-893e-2ec5664d6a79",
     "workflowId": "EB6ZxVBh9wX1Dixp",
     "nodes": [
       {
@@ -181,7 +181,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -688,
+          -656,
           432
         ],
         "id": "f72a2724-74be-40a0-a423-4c7f86c3e184",
@@ -194,8 +194,8 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          -480,
-          640
+          -256,
+          608
         ],
         "id": "91e0277a-a99c-4de4-a82a-7bb11b63adfe",
         "name": "Wait",
@@ -222,8 +222,8 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          -400,
-          112
+          240,
+          720
         ],
         "id": "8e0947ea-e3fb-4ab9-add0-4b79d491fbbb",
         "name": "Call 'Chunk Subworkflow'"
@@ -235,8 +235,8 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          -224,
-          400
+          16,
+          256
         ],
         "id": "b23732c6-a2c7-4d1a-9735-0fdcbd2fd6dc",
         "name": "Merge"
@@ -286,8 +286,8 @@
         "type": "n8n-nodes-base.nocoDb",
         "typeVersion": 4,
         "position": [
-          -464,
-          416
+          -304,
+          256
         ],
         "id": "8ce897ab-3c34-432e-b2f6-b1c0ee62cbcd",
         "name": "Change Worker Status to Processing",
@@ -299,27 +299,12 @@
         }
       },
       {
-        "parameters": {
-          "mode": "combine",
-          "combineBy": "combineByPosition",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.merge",
-        "typeVersion": 3.2,
-        "position": [
-          -576,
-          112
-        ],
-        "id": "006df79b-0c1a-4095-bf61-276ecd8ae3a6",
-        "name": "Chunk Settings1"
-      },
-      {
         "parameters": {},
         "type": "n8n-nodes-base.limit",
         "typeVersion": 1,
         "position": [
-          -1184,
-          -128
+          -1200,
+          -112
         ],
         "id": "907d01cf-9cac-4460-b0e4-596b3bed84cf",
         "name": "Limit"
@@ -332,7 +317,7 @@
         "typeVersion": 2,
         "position": [
           -608,
-          -80
+          -544
         ],
         "id": "392541e0-da7c-4bdd-b233-2445c7d161cd",
         "name": "Create NCA Toolkit Body"
@@ -360,8 +345,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -832,
-          -80
+          -784,
+          -544
         ],
         "id": "4df689cb-9f24-4753-8566-3cdc77ae3bca",
         "name": "Prepare Render Input for Chunk"
@@ -384,8 +369,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          -368,
-          -80
+          -416,
+          -544
         ],
         "id": "439250cf-4f39-4431-971a-c76c8fd6bebe",
         "name": "Render Chunk",
@@ -412,8 +397,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          -96,
-          -80
+          -224,
+          -544
         ],
         "id": "caf7d0aa-d665-4a3f-8112-61eb9b89a250",
         "name": "Download Chunk",
@@ -470,8 +455,8 @@
         "type": "n8n-nodes-base.nocoDb",
         "typeVersion": 4,
         "position": [
-          336,
-          -80
+          224,
+          -544
         ],
         "id": "d5ee13e2-4b79-407f-8214-e092d261c36c",
         "name": "Update a row",
@@ -490,7 +475,7 @@
         "typeVersion": 1,
         "position": [
           -1248,
-          -368
+          -560
         ],
         "id": "3a5525fc-61fc-4df6-a9e5-15888ac8acf2",
         "name": "Limit1"
@@ -503,7 +488,7 @@
         "typeVersion": 3.2,
         "position": [
           -992,
-          -128
+          -544
         ],
         "id": "7adbf552-7b16-48f5-855d-7584d0427fcc",
         "name": "Merge1"
@@ -518,8 +503,8 @@
         "type": "n8n-nodes-base.s3",
         "typeVersion": 1,
         "position": [
-          128,
-          -80
+          -32,
+          -544
         ],
         "id": "82f1f1ee-af9d-4dec-9222-91cc0082c061",
         "name": "Upload Final Video",
@@ -530,6 +515,145 @@
             "name": "S3 account"
           }
         }
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -496,
+          160
+        ],
+        "id": "006df79b-0c1a-4095-bf61-276ecd8ae3a6",
+        "name": "Chunk Settings2"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -432,
+          496
+        ],
+        "id": "0d00e14a-9fae-45fa-aa70-5082633b027c",
+        "name": "Limit2"
+      },
+      {
+        "parameters": {
+          "authentication": "nocoDbApiToken",
+          "operation": "search",
+          "workspaceId": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "projectId": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Base ID'] }}",
+            "mode": "id"
+          },
+          "table": {
+            "__rl": true,
+            "value": "={{ $('When Executed by Another Workflow').first().json['Worker Sheet ID'] }}",
+            "mode": "id"
+          },
+          "returnAll": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.nocoDb",
+        "typeVersion": 4,
+        "position": [
+          -960,
+          -272
+        ],
+        "id": "33b45230-da78-4d0e-8edd-7d936c9f0fe8",
+        "name": "Ping Worker Status1",
+        "credentials": {
+          "nocoDbApiToken": {
+            "id": "1gvRq0BbKFPkQsOh",
+            "name": "NocoDB Token account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "83229cac-306b-4c76-b644-757ac86894a5",
+                "leftValue": "={{ $json.fields['Worker Status'] }}",
+                "rightValue": "Ready",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -528,
+          -272
+        ],
+        "id": "c2461ef2-9132-4f5a-b14b-501b4df95860",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "amount": 20
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -16,
+          -256
+        ],
+        "id": "4c5b4ba3-0c72-4b77-b8e5-b5b061bfbb4a",
+        "name": "Wait1",
+        "webhookId": "4c285fd2-f18c-4da1-9a86-bd6fe0110bcd"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -256,
+          -256
+        ],
+        "id": "733f8133-c932-48d7-b7ed-1fb5467ac0a5",
+        "name": "Limit3"
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {}
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -704,
+          -272
+        ],
+        "id": "35d6449d-7abe-41f3-b757-adb7575fc091",
+        "name": "Aggregate"
       }
     ],
     "connections": {
@@ -587,7 +711,7 @@
               "index": 0
             },
             {
-              "node": "Chunk Settings1",
+              "node": "Chunk Settings2",
               "type": "main",
               "index": 0
             }
@@ -609,19 +733,14 @@
         "main": [
           [
             {
-              "node": "Change Worker Status to Processing",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Chunk Settings1",
+              "node": "Chunk Settings2",
               "type": "main",
               "index": 1
             }
           ],
           [
             {
-              "node": "Wait",
+              "node": "Limit2",
               "type": "main",
               "index": 0
             }
@@ -643,7 +762,7 @@
         "main": [
           [
             {
-              "node": "Merge",
+              "node": "Loop Over Items",
               "type": "main",
               "index": 0
             }
@@ -654,7 +773,7 @@
         "main": [
           [
             {
-              "node": "Loop Over Items",
+              "node": "Call 'Chunk Subworkflow'",
               "type": "main",
               "index": 0
             }
@@ -672,24 +791,13 @@
           ]
         ]
       },
-      "Chunk Settings1": {
-        "main": [
-          [
-            {
-              "node": "Call 'Chunk Subworkflow'",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Limit": {
         "main": [
           [
             {
-              "node": "Merge1",
+              "node": "Ping Worker Status1",
               "type": "main",
-              "index": 1
+              "index": 0
             }
           ]
         ]
@@ -770,14 +878,97 @@
             }
           ]
         ]
+      },
+      "Chunk Settings2": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Change Worker Status to Processing",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit2": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ping Worker Status1": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Limit3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "Ping Worker Status1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit3": {
+        "main": [
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carmelo Iglesias",
-    "name": "Version 82b4bad7",
+    "name": "Version 88537cac",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "82b4bad7-fc1e-457d-8882-57abc7ed3adf",
+  "activeVersionId": "88537cac-ce15-449a-893e-2ec5664d6a79",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1041,12 +1232,18 @@
     },
     "If1": {
       "main": [
-        [],
         [
           {
             "node": "Limit3",
             "type": "main",
             "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -1404,7 +1601,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -608,
+        -128,
         -544
       ],
       "id": "392541e0-da7c-4bdd-b233-2445c7d161cd",
@@ -1433,7 +1630,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -784,
+        -304,
         -544
       ],
       "id": "4df689cb-9f24-4753-8566-3cdc77ae3bca",
@@ -1457,7 +1654,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -416,
+        64,
         -544
       ],
       "id": "439250cf-4f39-4431-971a-c76c8fd6bebe",
@@ -1485,7 +1682,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -224,
+        256,
         -544
       ],
       "id": "caf7d0aa-d665-4a3f-8112-61eb9b89a250",
@@ -1543,7 +1740,7 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 4,
       "position": [
-        224,
+        704,
         -544
       ],
       "id": "d5ee13e2-4b79-407f-8214-e092d261c36c",
@@ -1562,7 +1759,7 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -1248,
+        -1040,
         -560
       ],
       "id": "3a5525fc-61fc-4df6-a9e5-15888ac8acf2",
@@ -1575,7 +1772,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -992,
+        -512,
         -544
       ],
       "id": "7adbf552-7b16-48f5-855d-7584d0427fcc",
@@ -1591,7 +1788,7 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        -32,
+        448,
         -544
       ],
       "id": "82f1f1ee-af9d-4dec-9222-91cc0082c061",
@@ -1656,7 +1853,7 @@
       "typeVersion": 4,
       "position": [
         -960,
-        -272
+        -320
       ],
       "id": "33b45230-da78-4d0e-8edd-7d936c9f0fe8",
       "name": "Ping Worker Status1",
@@ -1679,11 +1876,11 @@
           "conditions": [
             {
               "id": "83229cac-306b-4c76-b644-757ac86894a5",
-              "leftValue": "={{ $json.fields['Worker Status'] }}",
-              "rightValue": "Ready",
+              "leftValue": "={{ JSON.stringify($json.data) }}",
+              "rightValue": "Processing",
               "operator": {
                 "type": "string",
-                "operation": "equals"
+                "operation": "contains"
               }
             }
           ],
@@ -1694,8 +1891,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -528,
-        -272
+        -496,
+        -320
       ],
       "id": "c2461ef2-9132-4f5a-b14b-501b4df95860",
       "name": "If1"
@@ -1707,8 +1904,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -16,
-        -256
+        -48,
+        -320
       ],
       "id": "4c5b4ba3-0c72-4b77-b8e5-b5b061bfbb4a",
       "name": "Wait1",
@@ -1720,25 +1917,21 @@
       "typeVersion": 1,
       "position": [
         -256,
-        -256
+        -320
       ],
       "id": "733f8133-c932-48d7-b7ed-1fb5467ac0a5",
       "name": "Limit3"
     },
     {
       "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {}
-          ]
-        },
+        "aggregate": "aggregateAllItemData",
         "options": {}
       },
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
         -704,
-        -272
+        -320
       ],
       "id": "35d6449d-7abe-41f3-b757-adb7575fc091",
       "name": "Aggregate"
@@ -2459,6 +2652,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-09T23:29:59.794Z",
-  "versionId": "88537cac-ce15-449a-893e-2ec5664d6a79"
+  "updatedAt": "2026-07-09T23:58:58.029Z",
+  "versionId": "867ca61e-6343-4efd-b20b-19768fb884b6"
 }
