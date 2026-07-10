@@ -1939,7 +1939,79 @@
       "name": "Aggregate"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "Base ID": "p3l64neoyynn30b",
+          "Channel Sheet ID": "m5s88g69xzb08wl",
+          "Worker Sheet ID": "mh5uzwjzhyyaim7",
+          "Character Reference URL": "https://minio-api.n8ntypespectrum.cfd/pov-guy/pov-guy-channel%2FCharacter%20Image.jpg",
+          "Storage Bucket": "pov-guy",
+          "Videos Path": "pov-guy-channel/videos",
+          "output": {
+            "levels": [
+              {
+                "level_number": 1,
+                "title": "The Asset",
+                "content": "You are not an employee. You are a resource. You are sitting in a cafe in a city that smells like diesel and roasted chickpeas, waiting for a man whose name you will never know to tell you what your life is worth. You were chosen because you have access, or a grievance, or a debt that has grown teeth. Perhaps you are a low-level clerk in a ministry of defense, or a technician at a power plant, or the cousin of a general. \n\nThe man arrives. He sits. He doesn't look like a spy; he looks like a tired accountant on a business trip. He speaks your language with a slight, unplaceable accent. He doesn't offer you a job; he offers you a \"partnership.\" He gives you a specialized piece of hardware—a modified bridge-line router or a thumb drive that looks like a cheap knockoff—and tells you to plug it into a specific terminal. \n\nYou feel the sweat slicking your palms. You are a \"Stay-Behind\" or a \"Local National.\" If you are caught, your government will execute you as a traitor. If you succeed, the man in the suit will give you an envelope of cash that feels heavy in your pocket but light against the weight of what you've just done. You go home and look at your family. You realize for the first time that you are a ghost in your own house. You are the lowest rung on the ladder, a disposable sensor in a dark room.",
+                "word_count": 196
+              },
+              {
+                "level_number": 2,
+                "title": "The Logistics Officer",
+                "content": "The adrenaline of the field has been replaced by the hum of fluorescent lights and the smell of stale coffee in a windowless room in Northern Virginia. You are now a staffer, a \"Blue Badger.\" You have passed the polygraph, the background checks, and the psychological evaluations that peeled your psyche back like an onion. You are a Junior Case Officer, but for now, you are a glorified travel agent for ghosts.\n\nYour world is \"The Farm.\" You spend eighteen hours a day learning the \"Tradecraft Manual.\" You practice dead drops at 3:00 AM in a park in suburban Maryland, wondering if the person walking their dog is an instructor or a civilian. You learn how to \"dry clean\" yourself—taking three hours of circuitous transit routes to ensure you aren't being followed to a five-minute meeting. \n\nYou spend your weeks filing \"Operational Leads.\" You arrange the \"STU\" (Secure Telephone Unit) lines. You coordinate the shipment of \"sterile\" equipment—laptops with no serial numbers, clothes with the tags cut out, medicine with labels in Cyrillic. You are learning that 90% of black ops is paperwork. If a team is going into a denied area, you are the one making sure their blood type is on file and their \"exfiltration\" route has a backup. You are a cog, but you are a cog in a machine that moves the world. You haven't seen the sun in three days.",
+                "word_count": 211
+              },
+              {
+                "level_number": 3,
+                "title": "The Case Officer",
+                "content": "You have earned your \"Stars and Stripes.\" You are back overseas, but this time you are the one sitting in the cafe. You are a \"Primary.\" You operate out of a \"Station,\" hidden inside an embassy under \"Official Cover.\" Your diplomatic passport says you are a junior cultural attaché, but your real job is human gardening. \n\nYou spend your nights in bars and back alleys, looking for \"The Vulnerable.\" You are searching for M.I.C.E.—Money, Ideology, Coercion, or Ego. You find a colonel with a gambling problem. You find a scientist who feels underappreciated by his regime. You spend months \"grooming\" them. You are a professional friend. You listen to their problems, you buy them expensive dinners, and slowly, you turn them into traitors.\n\nThe first time you \"turn\" an asset, you feel a surge of power that is almost intoxicating. You are playing a high-stakes game of chess where the pieces are people's lives. You have \"The Book\" on your assets—their mistresses, their debts, their secret fears. You are their confessor and their god. But then, one night, an asset doesn't show up to a dead drop. The \"Signal Site\" remains empty. You wait. You go back to the embassy and sit in the \"SCIF\" (Sensitive Compartmented Information Facility), staring at the walls. You know that if he's been caught, it was your fault. You didn't see the tail. You didn't check the \"brush pass.\" You learn the first rule of the rank: everyone is a resource until they are a liability.",
+                "word_count": 237
+              },
+              {
+                "level_number": 4,
+                "title": "The Ground Branch Operator",
+                "content": "The suits and the diplomatic parties are gone. You have moved from the Directorate of Operations to the Special Activities Center (SAC). Specifically, you are in the Political Action Group. You are \"Ground Branch.\" You are a former Tier 1 operator—SEAL Team Six, Delta, or SAS—who was recruited because you can speak three languages and kill a man with a rolled-up magazine.\n\nYou are \"Black.\" You operate under \"Non-Official Cover\" (NOC). If you are captured, the United States government will deny your existence. You don't have a diplomatic passport anymore. You have a fake identity with a paper trail twenty years deep. You are a \"Contractor\" for a shell company that exports timber.\n\nYou are on the ground in a country the news says we aren't in. Your job is \"Preparation of the Environment.\" You are training local militias, setting up \"Safe Houses,\" and mapping out the \"Internal Defense\" of a city that's about to be hit. You live in a house with five other guys who have no last names. You eat local food, wear local clothes, and carry a weapon that can't be traced back to a factory in Connecticut. You have lived in the dirt for six months. You have forgotten what your real voice sounds like because you only speak the local dialect. You are a sharp instrument, kept in a velvet-lined box until it's time to cut.",
+                "word_count": 222
+              },
+              {
+                "level_number": 5,
+                "title": "The Targeter",
+                "content": "You've come back from the field, but you didn't go back to the embassy. You've been promoted to the \"Counterterrorism Center\" (CTC). You are a Targeter. You sit in a room in a building that doesn't appear on any map, surrounded by \"High-Side\" monitors. \n\nYou are a weaver of data. You take \"SIGINT\" (Signals Intelligence) from the NSA, \"IMINT\" (Imagery Intelligence) from the sate-lites, and \"HUMINT\" (Human Intelligence) from the Case Officers you used to be. You are building \"Life Patterns.\" You watch a house in the tribal areas of Pakistan for six weeks. You know what time the target wakes up. You know what color his prayer rug is. You know he has a daughter who likes to play with a yellow ball.\n\nThis rank is where the moral weight begins to crush. You are the one who signs the \"Targeting Package.\" You are the one who says, \"This is the guy.\" You watch the drone feed. It's silent. There is no sound of an explosion, just a flash of white and the screen turning to static for a second as the dust clears. You see the yellow ball in the rubble. You get up, walk to the breakroom, and pour a cup of lukewarm coffee. You have \"neutralized a high-value target.\" You feel nothing. If you felt something, you couldn't do the job.",
+                "word_count": 210
+              },
+              {
+                "level_number": 6,
+                "title": "The Chief of Station",
+                "content": "You are the King of the Hill in a foreign capital. You are the \"COS.\" You are the bridge between the \"Dark Side\" and the \"Light Side.\" In the mornings, you meet with the Ambassador, playing the role of the refined diplomat. In the afternoons, you go into the SCIF and manage a \"Portfolio\" of secrets that would cause three wars if they were ever leaked.\n\nYou are no longer doing the work; you are managing the people who do. You have \"Discretionary Funds\" that could buy a small island. You manage the \"Liason Relationships\"—the delicate, dirty dance with the host country's intelligence service. They know who you are, and you know who they are. You trade \"Intelligence Products\" like baseball cards. \"I'll give you the transcript of the Iranian's phone calls if you let us use your interrogation facility for forty-eight hours.\"\n\nYou spend your life in a state of constant paranoia. Every gift from a foreign official is swept for bugs. Every conversation is a layer of subtext. You realize that your \"friends\" in the local government are bugging your house, and you are bugging theirs. It's a polite theater of betrayal. You have achieved total professional success, and you have never been more alone. Your spouse thinks you work in trade development. Your children think you're boring. You are the only one who knows that the \"accidental\" car crash of a certain opposition leader was actually a \"kinetic event\" you authorized last Tuesday.",
+                "word_count": 232
+              },
+              {
+                "level_number": 7,
+                "title": "The Deputy Director of Operations",
+                "content": "You are back at Langley, on the seventh floor. You are the \"DDO.\" You are the architect. You don't look at individual targets anymore; you look at \"Theaters.\" You manage the \"Black Budget.\" You are the one who goes to the \"Gang of Eight\"—the senior leaders of Congress—to give them \"Plausible Deniability.\"\n\nYou speak in \"Euphemisms.\" You don't use words like \"assassination\" or \"coup.\" You use terms like \"Executive Action,\" \"Governance Support,\" and \"Stability Operations.\" You are a master of the \"Finding\"—the presidential authorization that allows the Agency to break the law in the name of the state.\n\nAt this rank, you realize that the world is not a mess to be fixed, but a garden to be pruned. You see the twenty-year horizon. You are willing to sacrifice an entire generation of assets in one country to secure a pipeline in another. You have become a creature of pure cold logic. You have attended the \"Memorial Wall\" ceremonies for people whose names you had to look up on a spreadsheet. You see the \"Stars\" carved into the marble—the nameless dead. You look at them and you don't feel grief; you feel the cost of doing business. You are the keeper of the national conscience, and yours is a very heavy burden.",
+                "word_count": 202
+              },
+              {
+                "level_number": 8,
+                "title": "The Ghost",
+                "content": "You have retired. Or perhaps you were \"Consulted out.\" You are no longer in the building, but you are never really gone. You are a \"Senior Advisor\" for a private intelligence firm, or a \"Fellow\" at a prestigious think tank. You are the person the current Director calls when things go \"Sideways.\"\n\nYou spend your days playing golf with senators and CEOs. You are \"The Gray Man.\" You have lived three lives, had six names, and seen the underside of every major historical event of the last thirty years. You look at the news and you see the \"Story,\" and then you see the \"Truth\" hidden behind it. You see the \"False Flag\" that everyone thinks is a revolution. You see the \"Suicide\" that was actually a \"Terminated Contract.\"\n\nYou sit on a porch in Virginia, watching the sun set over the trees. Your phone rings. It's a young Case Officer, just starting out, asking for your \"Perspective\" on an asset in a country you haven't thought about in a decade. You give him a piece of advice—something about the psychology of the local culture, or a specific way to hide a \"Dead Drop\" in a particular city.\n\nAs you hang up, you see a man in a cafe in a faraway city. He looks nervous. He's waiting for a man in a suit who looks like a tired accountant. You realize that the cycle is perfect. The names change, the technology evolves, but the game is eternal. You close your eyes and you are back at Level One, sitting in that cafe, waiting for your life to begin, or end. You are the Agency. You are the shadow that the light requires to exist. And you are finally, truly, silent.",
+                "word_count": 278
+              }
+            ]
+          },
+          "id": "1",
+          "fields": {
+            "Video Title": "Your_Life_as_Every_CIA_Black_Ops_Rank"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "repo_name": "n8nmanamagementserver",
   "repo_owner": "typespectrum-dev",
   "repo_path": "workflows/n8n-second/",
@@ -1960,6 +2032,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T00:58:06.536Z",
+  "updatedAt": "2026-07-10T03:12:03.091Z",
   "versionId": "ae2071b3-0a25-448a-9231-907dc99e1a5f"
 }
