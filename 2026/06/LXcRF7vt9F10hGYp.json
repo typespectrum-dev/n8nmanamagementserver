@@ -27,13 +27,7 @@
     },
     "Get Video Ideas": {
       "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Check For Processing": {
@@ -297,7 +291,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -4624,
+        -4592,
         -32
       ],
       "id": "3b61fc6a-ee8f-42b9-9c11-55c671e3db1c",
@@ -680,6 +674,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T03:52:42.993Z",
-  "versionId": "a1672b86-fc49-45a4-bb16-b5cc85678457"
+  "updatedAt": "2026-07-11T22:29:20.047Z",
+  "versionId": "ac08804a-eabb-4365-a5f9-4a295a72fe20"
 }
