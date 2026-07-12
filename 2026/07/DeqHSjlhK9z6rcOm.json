@@ -1,0 +1,320 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Example Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Images": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Download Stock Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Project": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Term Generation": {
+      "main": [
+        [
+          {
+            "node": "Request Stock Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Stock Videos": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Stock Video": {
+      "main": [
+        [
+          {
+            "node": "Upload to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Example Script": {
+      "main": [
+        [
+          {
+            "node": "Search Term Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 3 Flash": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Search Term Generation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-12T00:54:12.292Z",
+  "id": "DeqHSjlhK9z6rcOm",
+  "isArchived": false,
+  "meta": null,
+  "name": "Real B-Roll Stock Videos",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        48,
+        48
+      ],
+      "id": "dc9ed32e-4b19-4ea0-a75d-a290d301b1c5",
+      "name": "When clicking 'Execute workflow'"
+    },
+    {
+      "parameters": {
+        "batchSize": 10,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1088,
+        48
+      ],
+      "id": "2b0c3e70-c261-4239-a40d-4a7232b6d5cc",
+      "name": "Loop Over Images"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "YOUR_BUCKET_NAME_HERE",
+        "fileName": "=real-broll/stock-videos/video_{{ $itemIndex + 1 }}.mp4",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        112
+      ],
+      "id": "ffc92f52-5d8f-4ac2-853d-e59caa971781",
+      "name": "Upload to Project"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Script }}",
+        "options": {
+          "systemMessage": "=You are a stock footage search term agent. Your job is to analyze the provided script and return a single search query optimized for finding relevant results on a stock media platform (like Pexels, Shutterstock, or Unsplash).\nRules:\n\nOutput ONLY the search term, nothing else. No explanations, no quotes, no labels.\nThe search term should be 2 to 5 words.\nCRITICAL: Never use brand names, app names, or product names. Stock libraries do not have branded content. Instead, describe what the visual scene would look like:\n\n❌ \"Instagram\" → ✅ \"smartphone social media feed\"\n❌ \"TikTok\" → ✅ \"short video smartphone scrolling\"\n❌ \"ChatGPT\" → ✅ \"AI chatbot conversation screen\"\n❌ \"Tesla\" → ✅ \"electric car driving\"\n❌ \"YouTube\" → ✅ \"watching video online\"\n\n\nThink like a photographer: describe the subject, action, or setting that would visually represent the script's topic.\nPrefer concrete, visual nouns over abstract concepts:\n\n❌ \"productivity\" → ✅ \"person working laptop\"\n❌ \"growth\" → ✅ \"business chart upward\"\n❌ \"innovation\" → ✅ \"technology futuristic\"\n\n\nIf the script discusses a process or action, describe what that action looks like on camera.\nAim for terms that would return high-quality, visually relevant stock footage or photos."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        48
+      ],
+      "id": "de38e6ff-3060-4075-8dea-5728a94fd0ee",
+      "name": "Search Term Generation"
+    },
+    {
+      "parameters": {
+        "url": "https://api.pexels.com/videos/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "query",
+              "value": "={{ $json.output }}"
+            },
+            {
+              "name": "per_page",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        48
+      ],
+      "id": "6ae046ba-bf29-42b5-b0e5-4b5db26b8dc7",
+      "name": "Request Stock Videos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "videos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        928,
+        48
+      ],
+      "id": "e62d5b4a-3b9f-4a81-8ddb-9e6c5e58da1d",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.video_files[0].link }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        112
+      ],
+      "id": "6fa0bbd2-bf75-4e42-a4e3-b6e80d01bf53",
+      "name": "Download Stock Video"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bdd19b7f-8acd-449e-a671-ce6a67c65b85",
+              "name": "Script",
+              "value": "Bitcoin was created in 2009 by an anonymous person or group known as Satoshi Nakamoto. It was the first decentralized digital currency, operating without a central bank or single administrator. Transactions are verified by network nodes through cryptography and recorded on a public ledger called the blockchain. Each block contains a hash of the previous block, forming an unbreakable chain of records. New bitcoins are created through a process called mining, where powerful computers solve complex mathematical puzzles. The total supply of Bitcoin is capped at 21 million coins, making it a deflationary asset by design. Bitcoin can be divided into smaller units called satoshis, with one satoshi equaling one hundred millionth of a single bitcoin. Over the years, Bitcoin has evolved from a niche internet experiment into a globally recognized store of value. Major companies and institutional investors have added Bitcoin to their balance sheets as a hedge against inflation. El Salvador became the first country to adopt Bitcoin as legal tender in 2021. The Bitcoin network processes transactions without intermediaries, enabling peer-to-peer transfers across borders. Its price has experienced dramatic volatility, reaching all-time highs and sharp corrections throughout its history. Despite criticism over energy consumption, many mining operations have shifted toward renewable energy sources. Bitcoin's decentralized nature means no single entity can control or shut down the network. It remains the largest cryptocurrency by market capitalization and continues to shape the future of digital finance.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        48
+      ],
+      "id": "d45c3959-dd16-45af-9eb2-d98d799a6db3",
+      "name": "Example Script"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        400,
+        208
+      ],
+      "id": "235dabb9-d85a-49ad-bf22-9d107ba03403",
+      "name": "Gemini 3 Flash"
+    },
+    {
+      "parameters": {
+        "content": "## Get Stock Videos based on Script",
+        "height": 320,
+        "width": 1040,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8b8e4c79-eca3-404b-a100-dcad2f33ca49",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Download Stock Videos",
+        "height": 368,
+        "width": 608,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1056,
+        0
+      ],
+      "id": "cbdb4dbe-f427-416d-b52f-c8e3f06dfe0d",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-12T00:54:12.292Z",
+      "createdAt": "2026-07-12T00:54:12.292Z",
+      "role": "workflow:owner",
+      "workflowId": "DeqHSjlhK9z6rcOm",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-12T00:54:12.292Z",
+  "versionId": "e309076a-b400-45b9-bc4c-99e68eda19dc"
+}
