@@ -727,6 +727,17 @@
           }
         ]
       ]
+    },
+    "Download 2D Infographic7": {
+      "main": [
+        [
+          {
+            "node": "Donut Chart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-07-12T01:04:17.857Z",
@@ -1271,7 +1282,7 @@
     {
       "parameters": {
         "content": "# Pie Chart\n",
-        "height": 352,
+        "height": 464,
         "width": 944,
         "color": 3
       },
@@ -1841,15 +1852,15 @@
     {
       "parameters": {
         "content": "# Timeline\n",
-        "height": 352,
+        "height": 512,
         "width": 880,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        64,
-        1152
+        32,
+        1328
       ],
       "id": "974a45ab-c584-470b-87ba-e53cc23139df",
       "name": "Sticky Note9"
@@ -1955,8 +1966,8 @@
     {
       "parameters": {
         "content": "# Comparison\n",
-        "height": 352,
-        "width": 944,
+        "height": 128,
+        "width": 992,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -2363,6 +2374,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-12T01:04:54.987Z",
-  "versionId": "cd8badae-2796-48ea-a03f-489301fcb0f4"
+  "updatedAt": "2026-07-12T03:51:03.042Z",
+  "versionId": "27a2f798-f2e2-4463-8174-59d6da825499"
 }
