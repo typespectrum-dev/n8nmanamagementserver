@@ -1,0 +1,520 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Lipsync Image": {
+      "main": [
+        [
+          {
+            "node": "Upload Lipsync Image to Heygen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Download Lipsync Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate Voiceover",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Voiceover": {
+      "main": [
+        [
+          {
+            "node": "Download Voiceover",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Voiceover": {
+      "main": [
+        [
+          {
+            "node": "Upload Voiceover to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Lipsync Image to Heygen": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Voiceover to Project": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Request Lipsync Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Lipsync Generation": {
+      "main": [
+        [
+          {
+            "node": "Poll Lipsync Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Lipsync Status": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Download Video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Poll Lipsync Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Video": {
+      "main": [
+        [
+          {
+            "node": "Upload Lipsync Video to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-12T06:20:51.137Z",
+  "id": "AXroqeg23Kx7ghtt",
+  "isArchived": false,
+  "meta": null,
+  "name": "AI Avatar",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        128
+      ],
+      "id": "31488012-cbb7-4d2b-bc99-a5b9c16090c3",
+      "name": "When clicking 'Execute workflow'"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.imageUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -608,
+        64
+      ],
+      "id": "3cfb72fb-7a53-4b05-9e5b-1c7b65674126",
+      "name": "Download Lipsync Image"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "23ac63c2-f9c3-4a5b-8907-456fd7a7c6ef",
+              "name": "imageUrl",
+              "value": "YOUR_IMAGE_URL_HERE",
+              "type": "string"
+            },
+            {
+              "id": "5d6babd0-1ffa-479e-a74c-7f3730099ca0",
+              "name": "Script",
+              "value": "The collapse of the U.S. economy would send shockwaves across global financial markets, triggering massive unemployment, bank failures, and a sharp decline in consumer spending. Supply chains would fracture as businesses shuttered, leaving shelves bare and essential services strained beyond capacity. The dollar's value would plummet, eroding savings and making imports prohibitively expensive for everyday Americans. Government safety nets would be overwhelmed as millions sought assistance simultaneously, stretching federal and state budgets to their breaking point. Recovery from such a catastrophic downturn could take a generation, reshaping the nation's economic and political landscape for decades to come.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -832,
+        128
+      ],
+      "id": "f6450190-8e5e-4b05-aab6-c9dd58286dc7",
+      "name": "Settings"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Prefer",
+              "value": "wait"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"version\": \"jaaari/kokoro-82m:f559560eb822dc509045f3921a1921234918b91739db4bf3daab2169b71c7a13\",\n  \"input\": {\n    \"text\": {{ JSON.stringify($json.Script) }},\n    \"speed\": 1,\n    \"voice\": \"am_echo\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -656,
+        304
+      ],
+      "id": "ab4ac786-46a3-4471-ac71-87dadaa7fc16",
+      "name": "Generate Voiceover"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.output }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -448,
+        304
+      ],
+      "id": "97f90efd-9453-4afa-b59d-a6a32ff35828",
+      "name": "Download Voiceover"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "viral-methods",
+        "fileName": "=ai-avatar/voiceover.wav",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        304
+      ],
+      "id": "250dac56-94c6-4711-97ca-c626db7b5e36",
+      "name": "Upload Voiceover to Project"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.heygen.com/v1/talking_photo",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -368,
+        64
+      ],
+      "id": "0c9685a8-9204-4f9e-8f98-a6a8e960ff4b",
+      "name": "Upload Lipsync Image to Heygen"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -112,
+        128
+      ],
+      "id": "6f522337-ffb9-4f69-adf3-a3160bc834a6",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.heygen.com/v2/video/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"talking_photo\",\n        \"talking_photo_id\": \"{{ $json.data.talking_photo_id }}\"\n      },\n      \"voice\": {\n        \"type\": \"audio\",\n        \"audio_url\": \"YOUR_VOICEOVER_AUDIO_URL_HERE\"\n      }\n    }\n  ],\n  \"test\": true,\n  \"caption\": false,\n  \"dimension\": {\n    \"width\": 1280,\n    \"height\": 720\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        128
+      ],
+      "id": "93bb7e5e-16df-48e2-bdfd-8262878fe976",
+      "name": "Request Lipsync Generation"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.heygen.com/v1/video_status.get?video_id={{ $('Request Lipsync Generation').first().json.data.video_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        128
+      ],
+      "id": "638b2709-f86b-4806-b24c-7075cc26960c",
+      "name": "Poll Lipsync Status"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d79a9355-b1b6-4f5b-9584-7ee956af7f45",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        128
+      ],
+      "id": "20c28e8c-968a-4ffa-9946-a97bd3d64d7c",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 25
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        608,
+        192
+      ],
+      "id": "e852d9dc-2fda-4b11-8934-cb1aa4704e14",
+      "name": "Wait",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.video_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        608,
+        16
+      ],
+      "id": "936ae961-f2f8-48ea-86b8-1f6424dc1f1b",
+      "name": "Download Video"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "viral-methods",
+        "fileName": "=ai-avatar/lipsync.mp4",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        784,
+        16
+      ],
+      "id": "8199b7b6-5605-4036-9511-ebbd138dc61a",
+      "name": "Upload Lipsync Video to Project"
+    },
+    {
+      "parameters": {
+        "content": "## Voiceover",
+        "height": 224,
+        "width": 624,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        256
+      ],
+      "id": "6398f89c-3228-4cb2-a660-b63067b420ff",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Upload Reference to Heygen",
+        "height": 208,
+        "width": 464,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        32
+      ],
+      "id": "f1af93c0-b3b3-4ff2-8d6b-bb324de32f48",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Generate AI Avatar Talking Head",
+        "height": 400,
+        "width": 976,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "47dc9d50-ee38-43e3-8c35-f8e0fc790254",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-12T06:20:51.137Z",
+      "createdAt": "2026-07-12T06:20:51.137Z",
+      "role": "workflow:owner",
+      "workflowId": "AXroqeg23Kx7ghtt",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-12T06:20:51.137Z",
+  "versionId": "66d04134-b113-44d4-aff1-b4ae73fc7094"
+}
