@@ -1,0 +1,406 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Request Video Gen": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Video": {
+      "main": [
+        [
+          {
+            "node": "Save Video to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Download Video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Check Video Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Video Status": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Request Video Gen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Check Video Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-11T23:42:52.963Z",
+  "id": "nmNdSFMUSDbku1ae",
+  "isArchived": false,
+  "meta": null,
+  "name": "Img2Vid Subworkflow",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/lightricks/ltx-2-distilled/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"input\": {\n    \"image\": \"https://YOUR_MINIO_DOMAIN_HERE/YOUR_BUCKET_HERE/image2video%2Fimages%2Fimage_{{ $json['output.image_prompts'].prompt_number }}.jpg\",\n    \"prompt\": {{ JSON.stringify($json['output.image_prompts'].video_prompt) }},\n    \"num_frames\": 41,\n    \"aspect_ratio\": \"16:9\",\n    \"enhance_prompt\": false,\n    \"image_strength\": 1\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -800,
+        16
+      ],
+      "id": "a5654547-337c-4f35-b07e-2853d163e79d",
+      "name": "Request Video Gen"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.output }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e398d768-f62a-4a84-9915-97e63ef2af8b",
+      "name": "Download Video"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "YOUR_BUCKET_NAME_HERE",
+        "fileName": "=image2video/videos/video_{{ $('When Executed by Another Workflow').item.json['output.image_prompts'].prompt_number }}.mp4\n\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        176,
+        0
+      ],
+      "id": "24e635f3-a99b-4de2-9907-1531e7ee1cb8",
+      "name": "Save Video to Project"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5bbe2396-2346-4e5a-b7b0-22665abadd2b",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "succeeded",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -304,
+        16
+      ],
+      "id": "94164f00-d430-4d82-bcbe-1182cd95f2e3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -128,
+        80
+      ],
+      "id": "73819c19-a22d-40eb-8b72-462d8bb92464",
+      "name": "Wait1",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.urls.get }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -480,
+        16
+      ],
+      "id": "867c7610-fc60-410c-b617-4dde1cd99eba",
+      "name": "Check Video Status"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -976,
+        16
+      ],
+      "id": "793a9008-721a-4744-83b7-febba7155816",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -656,
+        16
+      ],
+      "id": "46e767df-79c9-4cf3-91ad-c739e0fae3c9",
+      "name": "Wait",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "output.image_prompts": {
+            "prompt_number": 1,
+            "image_prompt": "A wide-angle cinematic shot of a dark, futuristic room where thin, floating holographic puzzle pieces of glowing blue circuits and golden currency symbols drift in the air. A silhouette of a person stands in the center, looking overwhelmed by the vast, unsolvable complexity of the puzzle. The lighting is low-key with high-contrast shadows. Shimmering data streams cascade from the ceiling like digital rain. 8k resolution, photorealistic, intricate textures, dramatic atmosphere.",
+            "video_prompt": "The holographic puzzle pieces slowly rotate and drift through the air while digital data streams flicker in the background."
+          },
+          "output.total_images": 10
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "output.image_prompts": {
+            "prompt_number": 2,
+            "image_prompt": "A high-stress trading floor scene with a focus on an investor's face, sweat glistening on their forehead. The screens in the background are bathed in a harsh, aggressive red light as stock tickers plummet. The camera angle is a tight close-up to capture the raw emotion of rising panic. Digital noise and blurred motion of other traders create a sense of chaos. Deep shadows and saturated reds dominate the color palette. Highly detailed, cinematic film grain.",
+            "video_prompt": "The red light on the investor's face flickers intensely as blurred shadows of people dash past in the background."
+          },
+          "output.total_images": 10
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "output.image_prompts": {
+            "prompt_number": 3,
+            "image_prompt": "A metaphorical shot of a person sitting perfectly still in a high-backed leather chair in the middle of a blurred, chaotic stock exchange. While others are running in streaks of motion around them, the central figure remains sharp and focused. The lighting is a cool, steady blue on the seated figure, contrasted with the frantic warm blurs of the crowd. Symbolizing discipline and stoicism. 4k, hyper-detailed, long exposure effect for the crowd.",
+            "video_prompt": "The central figure blinks slowly and remains perfectly still while the blurred crowd continues to rush around them in a time-lapse effect."
+          },
+          "output.total_images": 10
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      }
+    ],
+    "Request Video Gen": [
+      {
+        "json": {
+          "id": "EXAMPLE_PREDICTION_ID_1",
+          "model": "lightricks/ltx-2-distilled",
+          "version": "hidden",
+          "input": {
+            "aspect_ratio": "16:9",
+            "enhance_prompt": false,
+            "image": "https://YOUR_MINIO_DOMAIN_HERE/YOUR_BUCKET_HERE/image2video%2Fimages%2Fimage_1.jpg",
+            "image_strength": 1,
+            "num_frames": 41,
+            "prompt": "The holographic puzzle pieces slowly rotate and drift through the air while digital data streams flicker in the background."
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-02-20T15:34:14.49Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/EXAMPLE_PREDICTION_ID_1/cancel",
+            "get": "https://api.replicate.com/v1/predictions/EXAMPLE_PREDICTION_ID_1",
+            "stream": "https://stream.replicate.com/v1/files/YOUR_STREAM_ID_HERE",
+            "web": "https://replicate.com/p/EXAMPLE_PREDICTION_ID_1"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": "EXAMPLE_PREDICTION_ID_2",
+          "model": "lightricks/ltx-2-distilled",
+          "version": "hidden",
+          "input": {
+            "aspect_ratio": "16:9",
+            "enhance_prompt": false,
+            "image": "https://YOUR_MINIO_DOMAIN_HERE/YOUR_BUCKET_HERE/image2video%2Fimages%2Fimage_2.jpg",
+            "image_strength": 1,
+            "num_frames": 41,
+            "prompt": "The red light on the investor's face flickers intensely as blurred shadows of people dash past in the background."
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-02-20T15:34:14.481Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/EXAMPLE_PREDICTION_ID_2/cancel",
+            "get": "https://api.replicate.com/v1/predictions/EXAMPLE_PREDICTION_ID_2",
+            "stream": "https://stream.replicate.com/v1/files/YOUR_STREAM_ID_HERE",
+            "web": "https://replicate.com/p/EXAMPLE_PREDICTION_ID_2"
+          }
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "id": "EXAMPLE_PREDICTION_ID_3",
+          "model": "lightricks/ltx-2-distilled",
+          "version": "hidden",
+          "input": {
+            "aspect_ratio": "16:9",
+            "enhance_prompt": false,
+            "image": "https://YOUR_MINIO_DOMAIN_HERE/YOUR_BUCKET_HERE/image2video%2Fimages%2Fimage_3.jpg",
+            "image_strength": 1,
+            "num_frames": 41,
+            "prompt": "The central figure blinks slowly and remains perfectly still while the blurred crowd continues to rush around them in a time-lapse effect."
+          },
+          "logs": "",
+          "output": null,
+          "data_removed": false,
+          "error": null,
+          "source": "api",
+          "status": "starting",
+          "created_at": "2026-02-20T15:34:14.471Z",
+          "urls": {
+            "cancel": "https://api.replicate.com/v1/predictions/EXAMPLE_PREDICTION_ID_3/cancel",
+            "get": "https://api.replicate.com/v1/predictions/EXAMPLE_PREDICTION_ID_3",
+            "stream": "https://stream.replicate.com/v1/files/YOUR_STREAM_ID_HERE",
+            "web": "https://replicate.com/p/EXAMPLE_PREDICTION_ID_3"
+          }
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      }
+    ]
+  },
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-11T23:42:52.963Z",
+      "createdAt": "2026-07-11T23:42:52.963Z",
+      "role": "workflow:owner",
+      "workflowId": "nmNdSFMUSDbku1ae",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-11T23:42:52.963Z",
+  "versionId": "ffe0e72e-6dc4-4b9b-90b7-8bb0835caae0"
+}
