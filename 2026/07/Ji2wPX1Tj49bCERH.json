@@ -1,0 +1,577 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Example Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Images": {
+      "main": [
+        [
+          {
+            "node": "Upload to Project",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add BG Blur (16/9)": {
+      "main": [
+        [
+          {
+            "node": "Download Rendered Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Payload": {
+      "main": [
+        [
+          {
+            "node": "Add BG Blur (16/9)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Rendered Image": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Term Generation": {
+      "main": [
+        [
+          {
+            "node": "Google Image Scraper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Search Term Generation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Example Script": {
+      "main": [
+        [
+          {
+            "node": "Search Term Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Image Scraper": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-12T05:31:37.143Z",
+  "id": "Ji2wPX1Tj49bCERH",
+  "isArchived": false,
+  "meta": null,
+  "name": "Real B-Roll Images",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1168,
+        80
+      ],
+      "id": "80cff9cf-5cc4-4013-8c6d-a3611e04a7ac",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "batchSize": 5,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -240,
+        80
+      ],
+      "id": "a7ca27da-a038-495b-b6ae-90eae3235bcb",
+      "name": "Loop Over Images"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=YOUR_NCA_TOOLKIT_URL/v1/ffmpeg/compose",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        208,
+        208
+      ],
+      "id": "08e39fe0-e75b-403f-8ddf-1949b825f51f",
+      "name": "Add BG Blur (16/9)",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Get the input item\nconst item = $input.item.json;\n// Extract the image URL from the JSON\nconst imageUrl = item.originalImageUrl; // e.g., \"https://schneebesenundrosenkohl.de/storage/2023/08/Griesssbrei.jpg\"\n\n// Target size\nconst width = 1920;\nconst height = 1080;\n\n// High-res for smooth blur\nconst highResWidth = 8000;\nconst highResHeight = Math.round(highResWidth * height / width);\n\n// Blur settings\nconst blurRadiusHigh = Math.round(20 * (highResWidth / width));\nconst blurPower = 3;\n\n// FFmpeg payload for single image processing\nconst payload = {\n  \"inputs\": [\n    {\n      \"file_url\": imageUrl,\n      \"options\": [\n        { \"option\": \"-err_detect\", \"argument\": \"aggressive\" },\n        { \"option\": \"-fflags\", \"argument\": \"discardcorrupt\" },\n        { \"option\": \"-max_error_rate\", \"argument\": \"1.0\" },\n        { \"option\": \"-probesize\", \"argument\": \"100000000\" },\n        { \"option\": \"-analyzeduration\", \"argument\": \"100000000\" }\n      ]\n    }\n  ],\n  \"filters\": [\n    {\n      \"filter\": \"[0:v]format=rgba[formatted];[formatted]split=2[fg][bgraw];[bgraw]scale=\" + highResWidth + \":\" + highResHeight + \":force_original_aspect_ratio=increase,crop=\" + highResWidth + \":\" + highResHeight + \"[bgscaled];[bgscaled]boxblur=luma_radius=\" + blurRadiusHigh + \":luma_power=\" + blurPower + \"[bg];[fg]scale=\" + highResWidth + \":\" + highResHeight + \":force_original_aspect_ratio=decrease,pad=\" + highResWidth + \":\" + highResHeight + \":(ow-iw)/2:(oh-ih)/2:color=0x00000000,format=yuva420p[fgpadded];[bg][fgpadded]overlay=0:0,setsar=1,scale=\" + width + \":\" + height + \"[outv]\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"options\": [\n        { \"option\": \"-map\", \"argument\": \"[outv]\" },\n        { \"option\": \"-c:v\", \"argument\": \"mjpeg\" },\n        { \"option\": \"-q:v\", \"argument\": \"2\" },\n        { \"option\": \"-f\", \"argument\": \"image2\" },\n        { \"option\": \"-frames:v\", \"argument\": \"1\" },\n        { \"option\": \"-pix_fmt\", \"argument\": \"yuvj420p\" }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"filesize\": true,\n    \"encoder\": true\n  },\n  \"id\": \"preprocess-image-to-jpeg\"\n};\n\n// Return as single item for FFmpeg node\nreturn { json: payload };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        208
+      ],
+      "id": "768737f9-52c5-4db4-b065-eaa5b5665372",
+      "name": "Create Payload"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response[0].file_url.replaceAll(\"http://minio:9000\", \"YOUR_MINIO_PUBLIC_URL\") }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        208
+      ],
+      "id": "eb4b9206-86f9-493d-a29f-13ed30680270",
+      "name": "Download Rendered Image"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "YOUR_BUCKET_NAME_HERE",
+        "fileName": "=real-broll/images/image_{{ $itemIndex + 1 }}.jpg\n\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ed8144f4-0677-402c-b545-f6da39f88ab2",
+      "name": "Upload to Project"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Script }}",
+        "options": {
+          "systemMessage": "=You are an image search term extraction agent. Your only job is to analyze the provided script and return a single, highly relevant Google image search term that best represents the core topic of the script.\n\nRules:\n- Output ONLY the search term, nothing else.\n- No explanations, no quotes, no punctuation, no labels, no prefixes like \"Search term:\" — just the raw search term.\n- The search term should be 1 to 3 words maximum.\n- Prefer short, simple, and broad terms over long or overly specific ones. Shorter is almost always better for image search.\n- Think about what term would return the most visually relevant and high-quality images on Google Images.\n- Do NOT combine multiple concepts into one search term. Pick the single most dominant subject.\n- If the script is about a well-known topic, a single word is often the best choice.\n- The search term must be suitable for Google Image search and return visually useful results."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -784,
+        80
+      ],
+      "id": "5647d025-3d52-4ec8-afa9-6d7a3bdf824a",
+      "name": "Search Term Generation"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -784,
+        240
+      ],
+      "id": "d6bd0c72-4972-4e6f-a409-bf303b66c134",
+      "name": "OpenRouter Chat Model"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "31d6c122-85e0-45e2-b520-0e73181b4b38",
+              "name": "Script",
+              "value": "Bitcoin was created in 2009 by an anonymous person or group known as Satoshi Nakamoto. It was the first decentralized digital currency, operating without a central bank or single administrator. Transactions are verified by network nodes through cryptography and recorded on a public ledger called the blockchain. Each block contains a hash of the previous block, forming an unbreakable chain of records. New bitcoins are created through a process called mining, where powerful computers solve complex mathematical puzzles. The total supply of Bitcoin is capped at 21 million coins, making it a deflationary asset by design. Bitcoin can be divided into smaller units called satoshis, with one satoshi equaling one hundred millionth of a single bitcoin. Over the years, Bitcoin has evolved from a niche internet experiment into a globally recognized store of value. Major companies and institutional investors have added Bitcoin to their balance sheets as a hedge against inflation. El Salvador became the first country to adopt Bitcoin as legal tender in 2021. The Bitcoin network processes transactions without intermediaries, enabling peer-to-peer transfers across borders. Its price has experienced dramatic volatility, reaching all-time highs and sharp corrections throughout its history. Despite criticism over energy consumption, many mining operations have shifted toward renewable energy sources. Bitcoin's decentralized nature means no single entity can control or shut down the network. It remains the largest cryptocurrency by market capitalization and continues to shape the future of digital finance.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -944,
+        80
+      ],
+      "id": "92f6bee6-f1a8-411b-8708-022092eca638",
+      "name": "Example Script"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/devisty~google-image-search/run-sync-get-dataset-items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"num\": 20,\n  \"page\": 1,\n  \"q\": {{ JSON.stringify($json.output) }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -464,
+        80
+      ],
+      "id": "197f35d3-3bb3-4711-8272-cf25e32443a1",
+      "name": "Google Image Scraper"
+    },
+    {
+      "parameters": {
+        "content": "## Scrape Google Images",
+        "height": 352,
+        "width": 896,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1216,
+        32
+      ],
+      "id": "eab3b398-a3b8-4f56-b75d-eac1ad1c4b3c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Download Images",
+        "height": 272,
+        "width": 640,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        160
+      ],
+      "id": "91de9d38-8d4f-4bc3-a5b3-e938dfaccf0d",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Search Term Generation": [
+      {
+        "json": {
+          "output": "Bitcoin"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Example Script": [
+      {
+        "json": {
+          "Script": "Bitcoin was created in 2009 by an anonymous person or group known as Satoshi Nakamoto. It was the first decentralized digital currency, operating without a central bank or single administrator. Transactions are verified by network nodes through cryptography and recorded on a public ledger called the blockchain. Each block contains a hash of the previous block, forming an unbreakable chain of records. New bitcoins are created through a process called mining, where powerful computers solve complex mathematical puzzles. The total supply of Bitcoin is capped at 21 million coins, making it a deflationary asset by design. Bitcoin can be divided into smaller units called satoshis, with one satoshi equaling one hundred millionth of a single bitcoin. Over the years, Bitcoin has evolved from a niche internet experiment into a globally recognized store of value. Major companies and institutional investors have added Bitcoin to their balance sheets as a hedge against inflation. El Salvador became the first country to adopt Bitcoin as legal tender in 2021. The Bitcoin network processes transactions without intermediaries, enabling peer-to-peer transfers across borders. Its price has experienced dramatic volatility, reaching all-time highs and sharp corrections throughout its history. Despite criticism over energy consumption, many mining operations have shifted toward renewable energy sources. Bitcoin's decentralized nature means no single entity can control or shut down the network. It remains the largest cryptocurrency by market capitalization and continues to shape the future of digital finance."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Google Image Scraper": [
+      {
+        "json": {
+          "title": "Bitcoin - Wikipedia",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDUlTkeEEByiZIM11LiVXNrbt_Apsyz5E0gNyLOeGcZHB6jIbt&s",
+          "originalImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/250px-Bitcoin.svg.png",
+          "contextLink": "https://en.wikipedia.org/wiki/Bitcoin",
+          "height": 250,
+          "width": 250
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin: The Brutal Truths Revealed",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTptqnU11xLw24b8aHXxrlD8KcDR3Blezyjyu8Yp7oAc7HN59WP&s",
+          "originalImageUrl": "https://www.brookings.edu/wp-content/uploads/2021/06/shutterstock_1708749826_small.jpg?quality=75&w=1500",
+          "contextLink": "https://www.brookings.edu/articles/the-brutal-truth-about-bitcoin/",
+          "height": 1000,
+          "width": 1500
+        }
+      },
+      {
+        "json": {
+          "title": "What Is Bitcoin? - Experian",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4WgOGy6gxlmZ5a_XWj4PMEVsVpnaMRzRpIiklS3Me4ygf7SRI&s",
+          "originalImageUrl": "https://www.experian.com/blogs/ask-experian/wp-content/uploads/Bitcoin.jpg",
+          "contextLink": "https://www.experian.com/blogs/ask-experian/what-is-bitcoin-and-should-you-buy-it/",
+          "height": 900,
+          "width": 1400
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin price will hit a new record as AI destroys jobs, Arthur ...",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRWn-8hvZenHQDxSSVcQrXVDKZtfwH5PF-x4SMgLD-MLzxmfMb&s",
+          "originalImageUrl": "https://s.yimg.com/ny/api/res/1.2/k5RhUvpDbbpOcfNR0Wkkig--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQxOQ--/https://media.zenfs.com/en/dlnews_702/2b0550d6e0a9b2ba28d8e996d86d784e",
+          "contextLink": "https://finance.yahoo.com/news/bitcoin-price-hit-record-ai-164847560.html",
+          "height": 419,
+          "width": 640
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin: An Asset, Currency Or Collectible?",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbqEudTAVo4C4rBIEqAbWkd25Wl8OTgheRjCAxxYcSQ4cf48A&s",
+          "originalImageUrl": "https://imageio.forbes.com/specials-images/dam/imageserve/865708330/960x0.jpg?height=474&width=711&fit=bounds",
+          "contextLink": "https://www.forbes.com/sites/dantedisparte/2017/11/28/bitcoin-an-asset-currency-or-collectible/",
+          "height": 474,
+          "width": 711
+        }
+      },
+      {
+        "json": {
+          "title": "Amazon.com: 3Pcs Bitcoin Coin - Gold Silver and Bronze Physical ...",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAps2GzToagy5Lut6CazTzLJuV_30bntF7fcxPpW4GGsjeP1k&s",
+          "originalImageUrl": "https://m.media-amazon.com/images/I/71cu980UfuL._AC_UF894,1000_QL80_.jpg",
+          "contextLink": "https://www.amazon.com/3Pcs-Bitcoin-Coin-Cryptocurrency-Collectable/dp/B093KJF27Z",
+          "height": 904,
+          "width": 894
+        }
+      },
+      {
+        "json": {
+          "title": "Is Bitcoin Secure? | Bitcoin Security | BitGo",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZlo2mjnNz2WBqy4qta4dBvVypfxQP2YLiWuWJO6HO-f5W5I&s",
+          "originalImageUrl": "https://images.ctfassets.net/knkqyfncynw3/339wNlkHZ2flbufzPX5Hhy/b07c460eeafa565a6b671fc066a95ca8/Bitcoin.png?w=1100&q=70&fm=jpg&fl=progressive",
+          "contextLink": "https://www.bitgo.com/resources/blog/bitcoin-security/",
+          "height": 619,
+          "width": 1100
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin hits new all-time record high | Reuters",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8cFwEqILRfnCEjYkKigdJCYSHe9C7dO-JWdvxY5rE2Kh0s4b&s",
+          "originalImageUrl": "https://www.reuters.com/resizer/v2/OHRVOCXQWVNYDFN2BDMRNO6B3Y.jpg?auth=d966b5290f69e1623f6b1ca95c1daf490d9b3e25e11383dff6b13a999e98b0b8&width=1920&quality=80",
+          "contextLink": "https://www.reuters.com/business/bitcoin-hovers-near-all-time-high-2025-10-06/",
+          "height": 1280,
+          "width": 1920
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin (BTC) - Price, Chart, Info | CryptoSlate",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6xR5FsQE-oVr2L_wgK_IBq5wuZYrVAPRX9Wwv9WLe-u0PHU_M&s",
+          "originalImageUrl": "https://cryptoslate.com/wp-content/uploads/2018/08/bitcoin-social.jpg",
+          "contextLink": "https://cryptoslate.com/coins/bitcoin/",
+          "height": 630,
+          "width": 1200
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin, XRP Prices Rise After Crypto Bill Talks. Why It's Not ...",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB2Lm8SKpBrGoc268rfzaHMojRijbRE4I_AX63a0z9IYBoGQUk&s",
+          "originalImageUrl": "https://images.barrons.com/im-60861735?width=1280&size=1",
+          "contextLink": "https://www.barrons.com/articles/bitcoin-xrp-price-ether-crypto-bill-coinbase-2a691e44",
+          "height": 1280,
+          "width": 1280
+        }
+      },
+      {
+        "json": {
+          "title": "Brevan Howard's crypto fund slumped 30% in 2025 amid bitcoin rout",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHCWq67o5uB9yN4xDSUuu3GDGSpzWK071nyqt0zyN5YpT0aQ&s",
+          "originalImageUrl": "https://images.ft.com/v3/image/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F9b93f3da-8fe2-4192-b14d-2cc3ed8532af.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1",
+          "contextLink": "https://www.ft.com/content/8fc6edbb-adb8-46a2-84f4-e2b0bbc50aa2",
+          "height": 394,
+          "width": 700
+        }
+      },
+      {
+        "json": {
+          "title": "What is Bitcoin Cryptocurrency?",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWkBsKEM3cfUQylwFfEdkiGZ8gUWpmVsm0Yl1WsAS8NQD-V_mC&s",
+          "originalImageUrl": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg",
+          "contextLink": "https://www.openaccessgovernment.org/what-is-bitcoin-cryptocurrency/42401/",
+          "height": 1080,
+          "width": 1920
+        }
+      },
+      {
+        "json": {
+          "title": "Invest like an icon | Blockchain",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6BXUuLBO8rCOcg27MVWclfRGvfiQ_PQuQje2GncTxE3psNjo&s",
+          "originalImageUrl": "https://www.blockchain.com/static/img/poppy/home/hero/hero-sm-v2.png",
+          "contextLink": "https://www.blockchain.com/",
+          "height": 714,
+          "width": 750
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin Bull Bobby Lee Warns Bitcoin Could Break Below Key $60,000 Level",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEvoFgnIp8N-gZzVPelfGJjhLGqZpYY8Qie8yrv1RuqaC8hK8g&s",
+          "originalImageUrl": "https://i.ytimg.com/vi/ZRj4PmlPv6Q/maxresdefault.jpg",
+          "contextLink": "https://www.youtube.com/watch?v=ZRj4PmlPv6Q",
+          "height": 720,
+          "width": 1280
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin Won Over Wall Street and Now It's Paying the Price",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6cZmBsbfphFIgwbq0tKSyNo9Q1U7nty9MCfBbalvEfjXhpxo&s",
+          "originalImageUrl": "https://s.yimg.com/ny/api/res/1.2/sp84tODjAyAv2XxYfNCfmw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM3NA--/https://media.zenfs.com/en/bloomberg_holding_pen_162/a67d14bbf4f0ffe8c4767dc751e11434",
+          "contextLink": "https://finance.yahoo.com/news/bitcoin-won-over-wall-street-124511013.html",
+          "height": 374,
+          "width": 639
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin is still about $70,000 too high",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4B7yxxFOKI3nTJaXgNihNOCOtFQBr_cMDCwnx4I5rK99N-DY&s",
+          "originalImageUrl": "https://images.ft.com/v3/image/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F46f3dbba-3182-41de-85a1-26fae2884a39.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1",
+          "contextLink": "https://www.ft.com/content/2b030926-2012-4446-b22d-e549e10e7086",
+          "height": 394,
+          "width": 700
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin Isn't Money - Econlib",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyWopYz8i9BMGwCjGsw4xuteBpvPkaKUoBs_LDMSpX6i1-aJZm&s",
+          "originalImageUrl": "https://www.econlib.org/wp-content/uploads/2025/02/Screen-Shot-2025-02-11-at-10.44.21-AM.png",
+          "contextLink": "https://www.econlib.org/bitcoin-isnt-money/",
+          "height": 630,
+          "width": 1421
+        }
+      },
+      {
+        "json": {
+          "title": "Bitcoin: what has caused the cryptocurrency's latest revival ...",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnUKmx9HaqMNc54Trvrs4VsvvJp0it0Cuim1kvgZmz8uxVbM&s",
+          "originalImageUrl": "https://i.guim.co.uk/img/media/0d5555496583f2d44b226401e0bf82e28904eb39/0_217_5472_3283/master/5472.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=e6acfa5c5d916c08579c7fd912df2904",
+          "contextLink": "https://www.theguardian.com/technology/2024/mar/05/bitcoin-cryptocurrency-new-record-value-explainer",
+          "height": 900,
+          "width": 1200
+        }
+      },
+      {
+        "json": {
+          "title": "Is Bitcoin Trading Like Tech Stocks? | Morningstar Canada",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFEPDRX3P1N_bOd4pm55DPcekupnh7S0pPZsjGLUlyo8pq6uY&s",
+          "originalImageUrl": "https://cloudfront-us-east-1.images.arcpublishing.com/morningstar/HJOV4OFFLRAV7ABK6K6ROOMQXI.png",
+          "contextLink": "https://global.morningstar.com/en-ca/markets/is-bitcoin-trading-like-tech-stocks",
+          "height": 1350,
+          "width": 2400
+        }
+      },
+      {
+        "json": {
+          "title": "What is Bitcoin (BTC)? - BISON App",
+          "thumbnailImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDP2lPj_ImT5q2wIYRhmMdsxRCzcwJW6q-WKLAAG91hAcPFYY&s",
+          "originalImageUrl": "https://bisonapp.com/wp-content/uploads/2026/02/EN-Was-ist-Bitcoin-2.png",
+          "contextLink": "https://bisonapp.com/academy/en/lessons/what-is-bitcoin",
+          "height": 1240,
+          "width": 1200
+        }
+      }
+    ]
+  },
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-12T05:31:37.143Z",
+      "createdAt": "2026-07-12T05:31:37.143Z",
+      "role": "workflow:owner",
+      "workflowId": "Ji2wPX1Tj49bCERH",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-12T05:31:37.143Z",
+  "versionId": "381bda9f-c315-4025-94b7-9392f132f845"
+}
