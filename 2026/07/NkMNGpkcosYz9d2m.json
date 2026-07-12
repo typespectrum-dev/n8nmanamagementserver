@@ -1,0 +1,483 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Prompt Generation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Example Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Image Prompt Generation",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Prompt Generation": {
+      "main": [
+        [
+          {
+            "node": "Split Out Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Image Gen": {
+      "main": [
+        [
+          {
+            "node": "Download Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image": {
+      "main": [
+        [
+          {
+            "node": "Save Image to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Image to Project": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Prompts": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Images": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Request Image Gen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Videos": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 'Img2Vid Subworkflow'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Example Script": {
+      "main": [
+        [
+          {
+            "node": "Image Prompt Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Img2Vid Subworkflow'": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-11T23:41:23.873Z",
+  "id": "NkMNGpkcosYz9d2m",
+  "isArchived": false,
+  "meta": null,
+  "name": "Image2Video",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        64,
+        48
+      ],
+      "id": "dab9fbe4-022b-4653-90bd-efd0ec9d64fa",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Script }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are an expert AI Image (to video) Prompt Generator. Your task is to analyze the input script provided by the user and generate exactly 10 distinct, high-quality image prompts that visualize the key scenes of the story. and you also have to generate prompts that I will later use to create videos based on the input images. The videos will be 5 to 10 seconds long so don't describe a long action just something subtle that could happen with the thing on the image. \n\n**Input:**\nThe user message will contain solely the script or story text.\n\n**Output Requirements:**\n1. You must generate exactly 10 image and video prompts.\n2. The output must be provided in strict JSON format.\n3. The JSON object must contain a field for the total count of images and a list of items.\n4. Each item in the list must correspond to a specific scene and contain two keys: 'prompt_number' (an integer) and 'image_prompt' (a descriptive string for an image generator).\n\n**Guidelines for Image Prompts:**\n- Focus on visual elements: lighting, camera angle, color palette, setting, and character actions.\n- Ensure the prompts follow the narrative arc of the input script from beginning to end.\n- Be descriptive and specific (e.g., \"cinematic shot, 4k, highly detailed\"). Each prompt has to be 5-7 sentences long.\n\n**Response Format:**\nReturn only the JSON object. Do not include conversational filler, markdown code blocks (unless required by the interface), or explanations outside the JSON structure."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        48
+      ],
+      "id": "753e5564-c937-491d-a6d3-4da496aa700b",
+      "name": "Image Prompt Generation"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        416,
+        208
+      ],
+      "id": "fa16e77d-7927-4b07-8a5b-79040ab6a644",
+      "name": "OpenRouter Chat Model"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"total_images\": 10,\n  \"image_prompts\": [\n    {\n      \"prompt_number\": 1,\n      \"image_prompt\": \"A wide establishing shot of a futuristic cyberpunk city at night, neon lights reflecting in puddles, rain falling heavily, cinematic lighting, 4k resolution.\",\n      \"video_prompt\": \"the city is glowing in a beautiful light.\"\n    },\n    {\n      \"prompt_number\": 2,\n      \"image_prompt\": \"Close-up of a robot's face, metallic skin, glowing blue eyes, expression of sadness, dark alleyway background, dramatic shadows.\",\n      \"video_prompt\": \"the robot is looking at the camera slightly confused.\"\n    },\n    {\n      \"prompt_number\": 3,\n      \"image_prompt\": \"A high-speed chase scene through a busy market, hovercrafts flying overhead, motion blur, vibrant colors, chaos and excitement.\",\n      \"video_prompt\": \"race between the cars, action.\"\n    }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        608,
+        208
+      ],
+      "id": "a0bcc971-a00b-4acc-ab40-006a120d924b",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/prunaai/z-image-turbo/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Prefer",
+              "value": "wait"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"input\": {\n    \"width\": 1024,\n    \"height\": 576,\n    \"prompt\": {{ JSON.stringify($json['output.image_prompts'].image_prompt) }},\n    \"go_fast\": false,\n    \"output_format\": \"jpg\",\n    \"guidance_scale\": 0,\n    \"output_quality\": 80,\n    \"num_inference_steps\": 8\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1152,
+        224
+      ],
+      "id": "3f754563-81a3-49e6-a368-81058a1342f5",
+      "name": "Request Image Gen"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.output }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1328,
+        224
+      ],
+      "id": "7468b02d-8673-4f20-b8d5-18ed18b15c33",
+      "name": "Download Image"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "YOUR_BUCKET_NAME_HERE",
+        "fileName": "=image2video/images/image_{{ $('Loop Over Images').item.json['output.image_prompts'].prompt_number }}.jpg",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1504,
+        224
+      ],
+      "id": "41979a1d-e3bf-4884-bf50-5768b872231e",
+      "name": "Save Image to Project"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.image_prompts",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "output.total_images",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        736,
+        48
+      ],
+      "id": "2531845b-cbd9-4104-8021-bdb282898fee",
+      "name": "Split Out Prompts"
+    },
+    {
+      "parameters": {
+        "batchSize": 10,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        960,
+        112
+      ],
+      "id": "19322260-0e2a-4c16-949d-1632b25887ad",
+      "name": "Loop Over Images"
+    },
+    {
+      "parameters": {
+        "batchSize": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1728,
+        64
+      ],
+      "id": "1214030a-5c6b-4c1a-8d3b-a72a72211ada",
+      "name": "Loop Over Videos"
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1504,
+        64
+      ],
+      "id": "b68d6d14-20df-41e7-a2b7-2d83ca472bf0",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "content": "## Image Generation",
+        "height": 432,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        880,
+        0
+      ],
+      "id": "8668abd2-3967-4d7c-9c9c-0564ac09307a",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Setup",
+        "height": 352,
+        "width": 864,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bc70c492-3379-4f5d-aee6-48002b5d7cc8",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Video Generation",
+        "height": 320,
+        "width": 448,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        0
+      ],
+      "id": "a8680dc3-76e6-4d76-9cf1-1b2efa9ea476",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5c109f8b-7115-49e3-b262-fdf8518dd1ee",
+              "name": "Script",
+              "value": "The world of high-stakes finance often feels like a giant puzzle that nobody actually knows how to solve. We are told to buy low and sell high, yet our emotions usually tell us to do the exact opposite. When the market turns red, panic sets in like a sudden fever. You see the numbers dropping and your first instinct is to pull everything out to save what is left. But history teaches us that the most successful investors are often the ones who can sit perfectly still while everyone else is running for the exits. Wealth isn't built in a day, but it can certainly be lost in a second of pure indecision. You have to look past the daily noise and focus on the decade ahead. Diversification isn't just a fancy word; it is your only real shield against the unexpected storms of the economy. Think of your portfolio as a garden that requires patience and steady hands rather than constant interference. Every market correction is simply a chance for the patient to thrive at the expense of the frantic. If you can master your own psychology, you have already won half the battle. Stay disciplined, keep your eyes on the horizon, and let time do the heavy lifting for you. This is the secret to long-term growth that most people ignore until it is far too late.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        256,
+        48
+      ],
+      "id": "7774d499-ef45-43df-b2ae-1d0f322a3718",
+      "name": "Example Script"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "nmNdSFMUSDbku1ae",
+          "mode": "id",
+          "cachedResultUrl": "/workflow/nmNdSFMUSDbku1ae"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2016,
+        128
+      ],
+      "id": "ea95e544-9793-416b-b8dd-1866af779ee5",
+      "name": "Call 'Img2Vid Subworkflow'"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2256,
+        32
+      ],
+      "id": "c5f653e7-9741-49a8-960f-080754ecb749",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-11T23:41:23.873Z",
+      "createdAt": "2026-07-11T23:41:23.873Z",
+      "role": "workflow:owner",
+      "workflowId": "NkMNGpkcosYz9d2m",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-11T23:43:49.605Z",
+  "versionId": "f304ad32-0bb2-4a0d-b4d5-c0641c910bda"
+}
