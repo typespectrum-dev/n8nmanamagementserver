@@ -1,0 +1,2368 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Poll 2D Infographic": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vertical Bar Chart": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds1": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Animated Counter": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds2": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Radial Progress": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds3": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Reveal": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic4": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds4": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pie Chart": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic5": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds5": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Donut Chart": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic6": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds6": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Line Graph": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic7": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds7": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stacked Area Chart": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic8": {
+      "main": [
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds8": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Funnel Chart": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic9": {
+      "main": [
+        [
+          {
+            "node": "If9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If9": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds9": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Timeline": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic10": {
+      "main": [
+        [
+          {
+            "node": "If10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If10": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds10": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comparison": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic11": {
+      "main": [
+        [
+          {
+            "node": "If11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If11": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds11": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Horizontal Bar Race": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic12": {
+      "main": [
+        [
+          {
+            "node": "If12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If12": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds12": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pre-selected Style (Ghadzi)": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2D Infographic13": {
+      "main": [
+        [
+          {
+            "node": "If13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If13": {
+      "main": [
+        [
+          {
+            "node": "Download 2D Infographic13",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds13": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pre-selected Style (Vox)": {
+      "main": [
+        [
+          {
+            "node": "Poll 2D Infographic13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Pre-selected Style (Vox)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-12T01:04:17.857Z",
+  "id": "o9b31rv4fPOlg0xp",
+  "isArchived": false,
+  "meta": null,
+  "name": "2D Infographics",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1376,
+        1840
+      ],
+      "id": "29e8213a-6992-456b-be06-84f096be68d3",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        80
+      ],
+      "id": "9cd1faa6-6c0b-44db-8e00-3c65efeb4e7b",
+      "name": "Poll 2D Infographic"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        80
+      ],
+      "id": "78a3b52f-3876-4179-8bd0-0d7da4b48ccd",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2720,
+        64
+      ],
+      "id": "77b5b136-1e5a-4e02-9837-4b0a5e00a7b0",
+      "name": "Download 2D Infographic"
+    },
+    {
+      "parameters": {
+        "content": "# Vertical Bar Chart\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        0
+      ],
+      "id": "dfa25b3e-94d4-4471-b7df-b3972e58f4d2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"vertical-bar-chart\",\n  \"data\": {\n    \"bar_values\": [\n      100,\n      250,\n      180,\n      320,\n      275\n    ],\n    \"bar_labels\": [\n      \"Jan\",\n      \"Feb\",\n      \"Mar\",\n      \"Apr\",\n      \"May\"\n    ],\n    \"title_text\": \"Monthly Revenue\",\n    \"bar_colors\": [\n      \"#3B82F6\",\n      \"#10B981\",\n      \"#F59E0B\",\n      \"#EF4444\",\n      \"#8B5CF6\"\n    ],\n    \"show_value_labels\": true,\n    \"show_grid_lines\": true,\n    \"animation_duration\": 90\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        80
+      ],
+      "id": "0c73132a-3662-4514-a262-fbcf4e0314c6",
+      "name": "Vertical Bar Chart"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        160
+      ],
+      "id": "3ccaa21f-cece-43f5-bd39-dedc48164274",
+      "name": "Wait 5 Seconds",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        80
+      ],
+      "id": "0e68f22b-9004-42ac-a2a5-4d9284aa8718",
+      "name": "Poll 2D Infographic1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        80
+      ],
+      "id": "cb6fe9bf-ea29-45da-a623-e2861605daa2",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        64
+      ],
+      "id": "037f60f5-57c2-4de9-9837-31941c9cf82c",
+      "name": "Download 2D Infographic1"
+    },
+    {
+      "parameters": {
+        "content": "# Animated Counter",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f6b6d871-a411-4245-949e-e2d5eadc5473",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        160
+      ],
+      "id": "e307e10b-53c1-4454-afe5-50b423260f7a",
+      "name": "Wait 5 Seconds1",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"animated-counter\",\n  \"data\": {\n    \"end_value\": 1000000,\n    \"start_value\": 0,\n    \"prefix\": \"$\",\n    \"suffix\": \"+\",\n    \"label_text\": \"Whats Up Skool\",\n    \"number_font_size\": 200,\n    \"use_commas\": true,\n    \"animation_easing\": \"ease-out\",\n    \"animation_duration\": 180\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        80
+      ],
+      "id": "6458a824-8238-4d95-870f-43ef4cfbf08e",
+      "name": "Animated Counter"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        464
+      ],
+      "id": "74053da3-e52a-426f-8a89-585abff6e63b",
+      "name": "Poll 2D Infographic2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        464
+      ],
+      "id": "840c96b2-9a73-4111-bdc0-32a8bd116487",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        448
+      ],
+      "id": "d5e377aa-881b-4633-b217-6c4df3763d9b",
+      "name": "Download 2D Infographic2"
+    },
+    {
+      "parameters": {
+        "content": "# Radial Progress\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        384
+      ],
+      "id": "935a0f87-3555-4150-905e-0c8d5b01a3da",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        544
+      ],
+      "id": "e768e1a8-a425-4aab-b844-b375ddaf1692",
+      "name": "Wait 5 Seconds2",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"radial-progress\",\n  \"data\": {\n    \"percentage_value\": 75,\n    \"progress_color\": \"#10B981\",\n    \"progress_gradient\": [\n      \"#10B981\",\n      \"#3B82F6\"\n    ],\n    \"rounded_caps\": true,\n    \"glow_effect\": true,\n    \"label_text\": \"Project Completion\",\n    \"animation_duration\": 60\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        464
+      ],
+      "id": "8a8dd78e-9431-447a-90ee-9a60816b95ea",
+      "name": "Radial Progress"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        80
+      ],
+      "id": "a7e1edba-7119-4f2e-94ec-f2823d8db47d",
+      "name": "Poll 2D Infographic3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        80
+      ],
+      "id": "96a77358-7ed8-4ed3-a373-f4e851bacc06",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        64
+      ],
+      "id": "27b6aea1-05c9-4c9f-a306-29bdb581f82d",
+      "name": "Download 2D Infographic3"
+    },
+    {
+      "parameters": {
+        "content": "# Text Reveal\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        0
+      ],
+      "id": "ff042652-12ac-4a61-bd48-de2a235ba142",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        160
+      ],
+      "id": "6addf9c7-1d2e-485a-8049-9a63753867cf",
+      "name": "Wait 5 Seconds3",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"text-reveal\",\n  \"data\": {\n    \"text_content\": \"Welcome to the future of video\",\n    \"reveal_type\": \"word-by-word\",\n    \"text_font_size\": 72,\n    \"text_color\": \"#111827\",\n    \"animation_duration\": 90,\n    \"highlight_words\": [\n      \"future\"\n    ],\n    \"highlight_color\": \"#3B82F6\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        80
+      ],
+      "id": "c8d1bd29-4869-4b8c-9ace-c53dd5cf4caf",
+      "name": "Text Reveal"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        464
+      ],
+      "id": "dcca2f67-474f-49f4-96f4-160e115bb570",
+      "name": "Poll 2D Infographic4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        464
+      ],
+      "id": "389f9bf0-01fe-4aff-b44b-ed263f86d564",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        448
+      ],
+      "id": "c9e9eb17-c89c-4765-a63e-2d571f6d803f",
+      "name": "Download 2D Infographic4"
+    },
+    {
+      "parameters": {
+        "content": "# Pie Chart\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        384
+      ],
+      "id": "d8d0ac29-b1ad-4d73-9f6c-88aa0e22cc92",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        544
+      ],
+      "id": "0db25149-b0b2-4416-a772-5885274f3251",
+      "name": "Wait 5 Seconds4",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"pie-chart\",\n  \"data\": {\n    \"segment_values\": [\n      35,\n      25,\n      20,\n      15,\n      5\n    ],\n    \"segment_labels\": [\n      \"Product A\",\n      \"Product B\",\n      \"Product C\",\n      \"Product D\",\n      \"Other\"\n    ],\n    \"title_text\": \"Sales Distribution\",\n    \"animation_duration\": 90,\n    \"show_percentages\": true\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        464
+      ],
+      "id": "f098fc43-d88c-4d02-8dec-022cd8b6078f",
+      "name": "Pie Chart"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        464
+      ],
+      "id": "51649ddd-bcd1-4e9b-9efc-80e21686abbf",
+      "name": "Poll 2D Infographic5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        464
+      ],
+      "id": "29f1c5da-14a2-464c-abed-b9a1294057b7",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2720,
+        448
+      ],
+      "id": "c83c5e15-15dc-4e01-88f8-01d4df6e74ad",
+      "name": "Download 2D Infographic5"
+    },
+    {
+      "parameters": {
+        "content": "# Donut Chart\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        384
+      ],
+      "id": "08326d1c-2351-41fd-b533-114f82a22615",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        544
+      ],
+      "id": "bea378f5-6db9-4491-bb99-84e1ef3fbe48",
+      "name": "Wait 5 Seconds5",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"donut-chart\",\n  \"data\": {\n    \"segment_values\": [\n      75,\n      25\n    ],\n    \"segment_labels\": [\n      \"Complete\",\n      \"Remaining\"\n    ],\n    \"inner_radius\": 70,\n    \"center_text\": \"75%\",\n    \"center_subtext\": \"Complete\",\n    \"rounded_caps\": true,\n    \"segment_colors\": [\n      \"#10B981\",\n      \"#E5E7EB\"\n    ],\n    \"animation_duration\": 90\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        464
+      ],
+      "id": "2777afd0-fea5-47f7-a4f6-6272b131e025",
+      "name": "Donut Chart"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        848
+      ],
+      "id": "274b3693-d840-43cf-9ea0-95f56324ef0a",
+      "name": "Poll 2D Infographic6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        848
+      ],
+      "id": "58f93e23-0955-437a-b630-bd9a19b4882f",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        832
+      ],
+      "id": "7ca2b554-5eda-477e-ab5d-89eca8886e22",
+      "name": "Download 2D Infographic6"
+    },
+    {
+      "parameters": {
+        "content": "# Line Graph\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        768
+      ],
+      "id": "bc8d47ac-7a67-409e-83f5-cf0565820746",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        928
+      ],
+      "id": "35d26b8c-dbd3-4059-9087-2d1ed49c3d9c",
+      "name": "Wait 5 Seconds6",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"line-graph\",\n  \"data\": {\n    \"data_points\": [\n      {\n        \"name\": \"Revenue\",\n        \"points\": [\n          {\n            \"x\": 0,\n            \"y\": 100\n          },\n          {\n            \"x\": 1,\n            \"y\": 150\n          },\n          {\n            \"x\": 2,\n            \"y\": 130\n          },\n          {\n            \"x\": 3,\n            \"y\": 200\n          },\n          {\n            \"x\": 4,\n            \"y\": 280\n          }\n        ]\n      },\n      {\n        \"name\": \"Expenses\",\n        \"points\": [\n          {\n            \"x\": 0,\n            \"y\": 80\n          },\n          {\n            \"x\": 1,\n            \"y\": 90\n          },\n          {\n            \"x\": 2,\n            \"y\": 100\n          },\n          {\n            \"x\": 3,\n            \"y\": 110\n          },\n          {\n            \"x\": 4,\n            \"y\": 120\n          }\n        ]\n      }\n    ],\n    \"x_axis_labels\": [\n      \"Jan\",\n      \"Feb\",\n      \"Mar\",\n      \"Apr\",\n      \"May\"\n    ],\n    \"line_colors\": [\n      \"#3B82F6\",\n      \"#EF4444\"\n    ],\n    \"show_area_fill\": true,\n    \"curve_type\": \"smooth\",\n    \"title_text\": \"Revenue vs Expenses\",\n    \"animation_duration\": 90\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        112,
+        672
+      ],
+      "id": "fe48b1f7-7bdd-4ea6-bd8f-156c9087c352",
+      "name": "Line Graph"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        848
+      ],
+      "id": "aee6ce5f-2f9f-49e7-838f-e1f0a58cdddc",
+      "name": "Poll 2D Infographic7"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        848
+      ],
+      "id": "6df1a1a1-5368-43af-a16e-e04accc0e3e5",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        832
+      ],
+      "id": "a530dd45-a7ea-4ab8-9e0a-2c163f665d35",
+      "name": "Download 2D Infographic7"
+    },
+    {
+      "parameters": {
+        "content": "# Stacked Area Chart\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        768
+      ],
+      "id": "05cc9433-af15-48af-bf75-24c45eaa9219",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        928
+      ],
+      "id": "6b91fb64-f24f-4f36-8b33-65aca8b057ff",
+      "name": "Wait 5 Seconds7",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"stacked-area\",\n  \"data\": {\n    \"series_data\": [\n      {\n        \"name\": \"Product A\",\n        \"values\": [\n          100,\n          120,\n          115,\n          140,\n          160,\n          180\n        ]\n      },\n      {\n        \"name\": \"Product B\",\n        \"values\": [\n          80,\n          90,\n          100,\n          120,\n          110,\n          130\n        ]\n      },\n      {\n        \"name\": \"Product C\",\n        \"values\": [\n          60,\n          70,\n          80,\n          90,\n          100,\n          110\n        ]\n      }\n    ],\n    \"x_axis_labels\": [\n      \"Jan\",\n      \"Feb\",\n      \"Mar\",\n      \"Apr\",\n      \"May\",\n      \"Jun\"\n    ],\n    \"series_colors\": [\n      \"#3B82F6\",\n      \"#10B981\",\n      \"#F59E0B\"\n    ],\n    \"stacking_type\": \"normal\",\n    \"curve_type\": \"smooth\",\n    \"show_legend\": true,\n    \"animation_type\": \"wipe\",\n    \"title_text\": \"Revenue by Product\",\n    \"animation_duration\": 90\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        848
+      ],
+      "id": "c88f709e-a3d8-4932-8b55-9de74620cbe8",
+      "name": "Stacked Area Chart"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        848
+      ],
+      "id": "919c6602-5160-42c3-9d60-7ce20a4e64f5",
+      "name": "Poll 2D Infographic8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        848
+      ],
+      "id": "4f2f58c1-c4d5-41a5-9abd-8c3ca0e2a801",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2720,
+        832
+      ],
+      "id": "1ad6aaaa-906a-45df-bd21-307ac0de2d54",
+      "name": "Download 2D Infographic8"
+    },
+    {
+      "parameters": {
+        "content": "# Funnel Chart\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        768
+      ],
+      "id": "46d40ac3-e5e5-4e55-83a9-7afef1d2f999",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        928
+      ],
+      "id": "d3dc4866-9e94-4f50-bfd5-6ebd44b30f1f",
+      "name": "Wait 5 Seconds8",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"funnel-chart\",\n  \"data\": {\n    \"stages\": [\n      {\n        \"label\": \"Website Visits\",\n        \"value\": 10000\n      },\n      {\n        \"label\": \"Product Views\",\n        \"value\": 5000\n      },\n      {\n        \"label\": \"Add to Cart\",\n        \"value\": 2000\n      },\n      {\n        \"label\": \"Checkout Started\",\n        \"value\": 1000\n      },\n      {\n        \"label\": \"Purchase\",\n        \"value\": 500\n      }\n    ],\n    \"color_mode\": \"gradient\",\n    \"gradient_start_color\": \"#3B82F6\",\n    \"gradient_end_color\": \"#10B981\",\n    \"show_conversion_rates\": true,\n    \"value_display\": \"both\",\n    \"stage_shape\": \"trapezoid\",\n    \"animation_type\": \"top-down\",\n    \"title_text\": \"Sales Funnel\",\n    \"animation_duration\": 90\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        848
+      ],
+      "id": "2a5bf343-d254-436f-88e8-8535aabd1b90",
+      "name": "Funnel Chart"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        1232
+      ],
+      "id": "70ffc43b-a5ad-469c-bf75-52f60c958aa2",
+      "name": "Poll 2D Infographic9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        1232
+      ],
+      "id": "0fb09c02-e9e5-4bc6-bbaf-363881c34505",
+      "name": "If9"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        1216
+      ],
+      "id": "b0931833-43a5-4b34-a787-d2a41b211f22",
+      "name": "Download 2D Infographic9"
+    },
+    {
+      "parameters": {
+        "content": "# Timeline\n",
+        "height": 352,
+        "width": 880,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        64,
+        1152
+      ],
+      "id": "974a45ab-c584-470b-87ba-e53cc23139df",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        1312
+      ],
+      "id": "74f74751-1c94-4951-a7e2-5430b6ab995d",
+      "name": "Wait 5 Seconds9",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"timeline\",\n  \"data\": {\n    \"events\": [\n      {\n        \"date\": \"2020\",\n        \"title\": \"Company Founded\",\n        \"description\": \"Started in a garage\"\n      },\n      {\n        \"date\": \"2021\",\n        \"title\": \"First Product\",\n        \"description\": \"Launched MVP\"\n      },\n      {\n        \"date\": \"2022\",\n        \"title\": \"Series A\",\n        \"description\": \"Raised $10M\"\n      },\n      {\n        \"date\": \"2023\",\n        \"title\": \"100K Users\",\n        \"description\": \"Major milestone\"\n      },\n      {\n        \"date\": \"2024\",\n        \"title\": \"Global Expansion\",\n        \"description\": \"Opened 5 offices\"\n      }\n    ],\n    \"orientation\": \"horizontal\",\n    \"card_position\": \"alternating\",\n    \"marker_color\": \"#3B82F6\",\n    \"show_progress_fill\": true,\n    \"animation_duration\": 90\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        1232
+      ],
+      "id": "37c58825-95a1-4236-a0bf-67027014d1a4",
+      "name": "Timeline"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        1232
+      ],
+      "id": "dd531e3a-5487-42c5-acd2-5636f75e65ad",
+      "name": "Poll 2D Infographic10"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        1232
+      ],
+      "id": "de4e771d-3bcc-49df-bc8a-1d8ed7483e6e",
+      "name": "If10"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        1216
+      ],
+      "id": "c1766016-d18a-43a8-9260-ab52db3dd8df",
+      "name": "Download 2D Infographic10"
+    },
+    {
+      "parameters": {
+        "content": "# Comparison\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        1152
+      ],
+      "id": "56591220-2f26-4239-ac92-b8edcca7f657",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        1312
+      ],
+      "id": "77107a89-1e48-40f5-9580-dcf1a5384391",
+      "name": "Wait 5 Seconds10",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"comparison\",\n  \"data\": {\n    \"item_a_label\": \"iPhone 15\",\n    \"item_b_label\": \"Galaxy S24\",\n    \"item_a_color\": \"#000000\",\n    \"item_b_color\": \"#1428A0\",\n    \"comparison_metrics\": [\n      {\n        \"label\": \"Price\",\n        \"value_a\": 999,\n        \"value_b\": 899,\n        \"unit\": \"$\",\n        \"higher_is_better\": false\n      },\n      {\n        \"label\": \"Battery\",\n        \"value_a\": 3349,\n        \"value_b\": 4000,\n        \"unit\": \"mAh\"\n      },\n      {\n        \"label\": \"Storage\",\n        \"value_a\": 128,\n        \"value_b\": 256,\n        \"unit\": \"GB\"\n      }\n    ],\n    \"show_winner_indicator\": true,\n    \"divider_style\": \"vs-badge\",\n    \"animation_duration\": 60\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        1232
+      ],
+      "id": "b151890b-bf71-4828-bb90-2ade951dfe1e",
+      "name": "Comparison"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        1232
+      ],
+      "id": "676693e2-bf3f-470a-b5b1-2d828bac0954",
+      "name": "Poll 2D Infographic11"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        1232
+      ],
+      "id": "3e6db6fa-736a-45ff-9521-7b12b1acfd60",
+      "name": "If11"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2720,
+        1216
+      ],
+      "id": "8c3b2522-8ede-454f-913b-212f3ddaef92",
+      "name": "Download 2D Infographic11"
+    },
+    {
+      "parameters": {
+        "content": "# Horizontal Bar Race\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        1152
+      ],
+      "id": "91878895-0194-49e2-b0ef-803e36300328",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        1312
+      ],
+      "id": "654840da-64d6-4044-b8e8-cd373ddf51e5",
+      "name": "Wait 5 Seconds11",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"horizontal-bar-race\",\n  \"data\": {\n    \"time_series_data\": [\n      {\n        \"timestamp\": \"2020\",\n        \"values\": {\n          \"Apple\": 1000,\n          \"Google\": 900,\n          \"Microsoft\": 850,\n          \"Amazon\": 700,\n          \"Meta\": 500\n        }\n      },\n      {\n        \"timestamp\": \"2021\",\n        \"values\": {\n          \"Apple\": 1200,\n          \"Google\": 1100,\n          \"Microsoft\": 1000,\n          \"Amazon\": 950,\n          \"Meta\": 600\n        }\n      },\n      {\n        \"timestamp\": \"2022\",\n        \"values\": {\n          \"Apple\": 1500,\n          \"Microsoft\": 1300,\n          \"Google\": 1250,\n          \"Amazon\": 1100,\n          \"Meta\": 450\n        }\n      }\n    ],\n    \"category_labels\": [\n      \"Apple\",\n      \"Google\",\n      \"Microsoft\",\n      \"Amazon\",\n      \"Meta\"\n    ],\n    \"bar_colors\": {\n      \"Apple\": \"#000000\",\n      \"Google\": \"#4285F4\",\n      \"Microsoft\": \"#00A4EF\",\n      \"Amazon\": \"#FF9900\",\n      \"Meta\": \"#1877F2\"\n    },\n    \"title_text\": \"Tech Company Market Cap\",\n    \"max_bars_visible\": 5,\n    \"animation_duration_per_frame\": 30\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        1232
+      ],
+      "id": "38ef1ce1-9baf-4304-bd6f-75f2af683f40",
+      "name": "Horizontal Bar Race"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        752,
+        1616
+      ],
+      "id": "1224e196-c6ec-470d-a729-c90874605790",
+      "name": "Poll 2D Infographic12"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        928,
+        1616
+      ],
+      "id": "62e2987f-0083-448b-ad44-180f7f6e8033",
+      "name": "If12"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        1600
+      ],
+      "id": "df05be74-23d1-4872-b31a-2781d8692f59",
+      "name": "Download 2D Infographic12"
+    },
+    {
+      "parameters": {
+        "content": "# Pre-selected Style (Ghadzi)",
+        "height": 352,
+        "width": 944,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1536
+      ],
+      "id": "59f78e9e-58e5-487b-9487-946a6168b71c",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1072,
+        1696
+      ],
+      "id": "24c089ca-f8a9-4c39-bef9-3616cf99cc69",
+      "name": "Wait 5 Seconds12",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"pie-chart\",\n  \"style\": \"ghadzi\",\n  \"data\": {\n    \"segment_values\": [\n      35,\n      25,\n      20,\n      15,\n      5\n    ],\n    \"segment_labels\": [\n      \"Product A\",\n      \"Product B\",\n      \"Product C\",\n      \"Product D\",\n      \"Other\"\n    ],\n    \"title_text\": \"Sales Distribution\",\n    \"animation_duration\": 90,\n    \"show_percentages\": true\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        544,
+        1616
+      ],
+      "id": "6b099403-bb09-4f8c-80a9-cfe9e8252f52",
+      "name": "Pre-selected Style (Ghadzi)"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org/render/status/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        1616
+      ],
+      "id": "d2036c40-f93c-46c5-965d-b149231127e5",
+      "name": "Poll 2D Infographic13"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddd0cad4-26f0-43bd-bcd0-083816f6143c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        1616
+      ],
+      "id": "fdbf896e-2607-4c84-b8c5-afc30ddf85ed",
+      "name": "If13"
+    },
+    {
+      "parameters": {
+        "url": "=https://broll-animation.nickwinter.org{{ $json.output_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2240,
+        1600
+      ],
+      "id": "7754fa18-c98b-4be1-9b1d-0d4aed9e6bcf",
+      "name": "Download 2D Infographic13"
+    },
+    {
+      "parameters": {
+        "content": "# Pre-selected Style (Vox)",
+        "height": 352,
+        "width": 944,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1472,
+        1536
+      ],
+      "id": "a4bafa90-b61c-4e16-83e9-7a3a539ba6cf",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2064,
+        1696
+      ],
+      "id": "261bdeec-bc57-4243-adaf-a0e925b90c94",
+      "name": "Wait 5 Seconds13",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://broll-animation.nickwinter.org/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template\": \"pie-chart\",\n  \"style\": \"vox\",\n  \"data\": {\n    \"segment_values\": [\n      35,\n      25,\n      20,\n      15,\n      5\n    ],\n    \"segment_labels\": [\n      \"Product A\",\n      \"Product B\",\n      \"Product C\",\n      \"Product D\",\n      \"Other\"\n    ],\n    \"title_text\": \"Sales Distribution\",\n    \"animation_duration\": 90,\n    \"show_percentages\": true\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1536,
+        1616
+      ],
+      "id": "84841610-fb2a-4628-b435-690114c7a72d",
+      "name": "Pre-selected Style (Vox)"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-12T01:04:17.857Z",
+      "createdAt": "2026-07-12T01:04:17.857Z",
+      "role": "workflow:owner",
+      "workflowId": "o9b31rv4fPOlg0xp",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-12T01:04:54.987Z",
+  "versionId": "cd8badae-2796-48ea-a03f-489301fcb0f4"
+}
