@@ -412,7 +412,13 @@
         80
       ],
       "id": "82cdecfb-d49e-4ac3-b3c5-8dcb74fddc86",
-      "name": "Globe Zoom In"
+      "name": "Globe Zoom In",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Ij0Bd54ofxOLOsBx",
+          "name": "Replicate API"
+        }
+      }
     },
     {
       "parameters": {
@@ -1197,6 +1203,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-13T01:38:23.793Z",
-  "versionId": "a53d8338-9019-4c58-9917-080a4890e2e2"
+  "updatedAt": "2026-07-13T03:58:01.119Z",
+  "versionId": "c2f6ed9f-d94b-486e-86de-fc2e13397a65"
 }
