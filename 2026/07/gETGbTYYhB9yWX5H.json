@@ -1,0 +1,1202 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Globe Zoom In": {
+      "main": [
+        [
+          {
+            "node": "Poll Job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Download MP4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds": {
+      "main": [
+        [
+          {
+            "node": "Poll Job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globe Zoom Out": {
+      "main": [
+        [
+          {
+            "node": "Poll Job1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Download MP41",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds1": {
+      "main": [
+        [
+          {
+            "node": "Poll Job1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fly To": {
+      "main": [
+        [
+          {
+            "node": "Poll Job2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Download MP42",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds2": {
+      "main": [
+        [
+          {
+            "node": "Poll Job2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Orbit": {
+      "main": [
+        [
+          {
+            "node": "Poll Job3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Download MP43",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds3": {
+      "main": [
+        [
+          {
+            "node": "Poll Job3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pan": {
+      "main": [
+        [
+          {
+            "node": "Poll Job4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job4": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Download MP44",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds4": {
+      "main": [
+        [
+          {
+            "node": "Poll Job4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route Trace": {
+      "main": [
+        [
+          {
+            "node": "Poll Job5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job5": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Download MP45",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds5": {
+      "main": [
+        [
+          {
+            "node": "Poll Job5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Zoom Reveal": {
+      "main": [
+        [
+          {
+            "node": "Poll Job6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Job6": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Download MP46",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Seconds6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Seconds6": {
+      "main": [
+        [
+          {
+            "node": "Poll Job6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-13T01:38:23.793Z",
+  "id": "gETGbTYYhB9yWX5H",
+  "isArchived": false,
+  "meta": null,
+  "name": "3D Map Animations",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        496
+      ],
+      "id": "cdeae0a3-1594-4f0c-8d3b-2e80daf5c923",
+      "name": "When clicking 'Execute workflow'"
+    },
+    {
+      "parameters": {
+        "content": "# Globe Zoom In\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "442b0a3a-9656-45c1-b910-2f1cfbfb2d70",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"globe_zoom_in\",\n  \"frames\": 144,\n  \"target\": {\n    \"lat\": 48.8584,\n    \"lng\": 2.2945\n  },\n  \"target_zoom\": 16,\n  \"end_pitch\": 60,\n  \"end_bearing\": 45\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        80
+      ],
+      "id": "82cdecfb-d49e-4ac3-b3c5-8dcb74fddc86",
+      "name": "Globe Zoom In"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        80
+      ],
+      "id": "0af1a69b-19df-4f09-91bd-475d1651265e",
+      "name": "Poll Job"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1afc3b4e-939c-4e4f-8e96-27485a6fa765",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        80
+      ],
+      "id": "f7a92919-b2c0-4b8a-ac8a-606618280105",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        64
+      ],
+      "id": "8e8a15a6-2112-47d4-971b-10f8736c7fac",
+      "name": "Download MP4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        160
+      ],
+      "id": "6c826b55-e7b8-4bd9-acdf-733647dd03f4",
+      "name": "Wait 5 Seconds",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "# Globe Zoom Out\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        0
+      ],
+      "id": "5165509d-79c1-4cab-9fd9-b7961c89fb37",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"globe_zoom_out\",\n  \"frames\": 168,\n  \"target\": {\n    \"lat\": 40.7128,\n    \"lng\": -74.006\n  },\n  \"start_zoom\": 16,\n  \"start_pitch\": 60,\n  \"start_bearing\": 30\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        80
+      ],
+      "id": "3906ca24-211b-410c-9c17-cbd089ce7fd8",
+      "name": "Globe Zoom Out"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        80
+      ],
+      "id": "520fc3e4-74a0-41d6-b446-03378b4e3730",
+      "name": "Poll Job1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ced7951f-2f76-4043-b8c0-f4e76fe0f8ae",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        80
+      ],
+      "id": "5b2a8944-1363-4b34-a310-053c7d5c543f",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        64
+      ],
+      "id": "e50219c7-f43f-456e-a1db-f0ca62976ff6",
+      "name": "Download MP41"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        160
+      ],
+      "id": "b5eae1d9-b98d-4102-b32e-d73dbd8fa029",
+      "name": "Wait 5 Seconds1",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "# Fly To\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        0
+      ],
+      "id": "5d9b4876-35af-4de3-af8b-41ece2be8ede",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"fly_to\",\n  \"frames\": 216,\n  \"from\": {\n    \"lat\": 37.7749,\n    \"lng\": -122.4194\n  },\n  \"to\": {\n    \"lat\": 34.0522,\n    \"lng\": -118.2437\n  },\n  \"from_zoom\": 11,\n  \"to_zoom\": 13,\n  \"arc_height\": 0.65,\n  \"follow_bearing\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        80
+      ],
+      "id": "823bc66c-1d30-4a03-a3fd-8cf51f5d2762",
+      "name": "Fly To"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        80
+      ],
+      "id": "4445535e-526a-40b9-bf1b-abd8caf77590",
+      "name": "Poll Job2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a6267db9-793b-4ba4-88af-05127979ac2f",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        80
+      ],
+      "id": "972561c8-886c-4c7e-8975-2b1d1bd3d1e6",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2720,
+        64
+      ],
+      "id": "c43c850b-9e5b-4da4-84c8-7d72c383a456",
+      "name": "Download MP42"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        160
+      ],
+      "id": "eb50a20d-7839-4db3-ac76-80e93316ea78",
+      "name": "Wait 5 Seconds2",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "# Orbit\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        384
+      ],
+      "id": "b12defc3-ba5c-47a2-a96e-204770faa51f",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"orbit\",\n  \"frames\": 180,\n  \"center\": {\n    \"lat\": 51.5074,\n    \"lng\": -0.1278\n  },\n  \"zoom\": 15,\n  \"pitch\": 65,\n  \"start_bearing\": 0,\n  \"end_bearing\": 360,\n  \"direction\": \"cw\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        464
+      ],
+      "id": "be49fcb6-f5dc-494e-8eea-9717c60ede96",
+      "name": "Orbit"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        464
+      ],
+      "id": "fea29758-e943-403a-a15f-d625c0434a65",
+      "name": "Poll Job3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dc45ba72-9ee9-4d10-be08-bd470291d15d",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        464
+      ],
+      "id": "f73fcee5-182e-4848-82f3-75e32365e034",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        448
+      ],
+      "id": "7980c64b-22f6-408c-9a51-8f7ba66f7ef2",
+      "name": "Download MP43"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        544
+      ],
+      "id": "614ba5c0-3cbb-4663-9d7d-3f6e3646236b",
+      "name": "Wait 5 Seconds3",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "# Pan\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        384
+      ],
+      "id": "c597bebb-2b6f-450b-bdc0-342ec668ce00",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"pan\",\n  \"frames\": 120,\n  \"from\": {\n    \"lat\": 35.6895,\n    \"lng\": 139.6917\n  },\n  \"to\": {\n    \"lat\": 35.6762,\n    \"lng\": 139.6503\n  },\n  \"zoom\": 13,\n  \"pitch\": 40,\n  \"bearing\": -20,\n  \"label_mode\": \"include_only\",\n  \"label_allowlist\": [\n    \"Tokyo\"\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        464
+      ],
+      "id": "5992c9da-3e3b-4474-b561-4ffc75d71ed5",
+      "name": "Pan"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1248,
+        464
+      ],
+      "id": "27711781-4893-42cf-a1ef-5a4e32db017d",
+      "name": "Poll Job4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "84136350-c6e4-4249-bf0e-1da900977cab",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        464
+      ],
+      "id": "de19a887-9deb-4256-96b0-a9a3da3cc418",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        448
+      ],
+      "id": "03dfc24e-085e-40c3-a26d-bf19164ceb8f",
+      "name": "Download MP44"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        544
+      ],
+      "id": "2e471208-3a9d-42b1-9db6-44ce71296c9e",
+      "name": "Wait 5 Seconds4",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "# Route Trace\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        384
+      ],
+      "id": "b82816a3-6f88-42c7-ac87-b7c22001fc49",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"route_trace\",\n  \"frames\": 180,\n  \"route\": [\n    [\n      -122.4194,\n      37.7749\n    ],\n    [\n      -121.8863,\n      37.3382\n    ],\n    [\n      -121.4944,\n      38.5816\n    ]\n  ],\n  \"line_color\": \"#ff5a1f\",\n  \"line_width\": 5,\n  \"route_mode\": \"path\",\n  \"route_profile\": \"driving\",\n  \"route_snap_to_roads\": true,\n  \"route_head_style\": \"car\",\n  \"route_icon_size\": 30,\n  \"follow_camera\": true,\n  \"follow_camera_lag\": 0.12,\n  \"follow_camera_smoothing\": 0.8,\n  \"follow_camera_lookahead\": 0.07,\n  \"destination_pin\": true,\n  \"destination_label\": \"Sacramento\",\n  \"destination_pin_color\": \"#ef4444\",\n  \"zoom\": 8,\n  \"pitch\": 45\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        464
+      ],
+      "id": "16a88aa4-4e82-4939-9c55-8a1d6f9711aa",
+      "name": "Route Trace"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        464
+      ],
+      "id": "b86f8a05-ef9c-4cc3-9909-3d7849170117",
+      "name": "Poll Job5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "714a1c4a-09ec-4eb4-a59e-808f5d51db90",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        464
+      ],
+      "id": "f3006c83-fa1b-4595-9ca6-400cb1d43c8c",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2720,
+        448
+      ],
+      "id": "a1563b0f-50eb-4218-ab2d-7b340a8fbc93",
+      "name": "Download MP45"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2544,
+        544
+      ],
+      "id": "62a6a74d-2073-46de-8d11-95a3c7d99534",
+      "name": "Wait 5 Seconds5",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "# Zoom Reveal\n",
+        "height": 352,
+        "width": 944,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        768
+      ],
+      "id": "000de2eb-94b5-4f0b-bff6-35f6997cbb9e",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://geomap-api.nickwinter.org/api/v1/render",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"animation_type\": \"zoom_reveal\",\n  \"frames\": 120,\n  \"center\": {\n    \"lat\": 25.7617,\n    \"lng\": -80.1918\n  },\n  \"start_zoom\": 9,\n  \"end_zoom\": 15,\n  \"pitch\": 50,\n  \"bearing\": 10,\n  \"bearing_drift\": 15,\n  \"label_mode\": \"include_only\",\n  \"label_allowlist\": [\n    \"Miami\",\n    \"United States\"\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        848
+      ],
+      "id": "b350d887-93d6-47a0-9535-6a8688ceec39",
+      "name": "Zoom Reveal"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        848
+      ],
+      "id": "c4ea776c-5210-4f10-a63a-b1dd448602aa",
+      "name": "Poll Job6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "165e023d-d34c-4f6a-a2bf-ac7756b5c908",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        848
+      ],
+      "id": "6ac50590-33f1-495b-adea-1499cb4ff059",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "url": "=https://geomap-api.nickwinter.org/api/v1/jobs/{{ $json.job_id }}/download",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        832
+      ],
+      "id": "9dc3c969-ad12-401a-a6eb-cddbad4be838",
+      "name": "Download MP46"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        928
+      ],
+      "id": "488edf28-03cb-4c8f-8c96-fd6f044baf4c",
+      "name": "Wait 5 Seconds6",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-13T01:38:23.793Z",
+      "createdAt": "2026-07-13T01:38:23.793Z",
+      "role": "workflow:owner",
+      "workflowId": "gETGbTYYhB9yWX5H",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-13T01:38:23.793Z",
+  "versionId": "a53d8338-9019-4c58-9917-080a4890e2e2"
+}
