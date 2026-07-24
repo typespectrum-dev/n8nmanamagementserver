@@ -1,0 +1,635 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Example Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Progress": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Prompt Generation": {
+      "main": [
+        [
+          {
+            "node": "Split Out Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Prompt Generation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Image Prompt Generation",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Image Gen": {
+      "main": [
+        [
+          {
+            "node": "Download Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image": {
+      "main": [
+        [
+          {
+            "node": "Save Image to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Image to Project": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Prompts": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Images",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Images": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Request Image Gen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Example Script": {
+      "main": [
+        [
+          {
+            "node": "Image Prompt Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Videos": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Sketch Explainer Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Download",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Poll Progress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download": {
+      "main": [
+        [
+          {
+            "node": "Save Video to Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sketch Explainer Request": {
+      "main": [
+        [
+          {
+            "node": "Poll Progress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Video to Project": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-24T05:21:12.538Z",
+  "id": "UEmGpCjtZiiTVX93",
+  "isArchived": false,
+  "meta": null,
+  "name": "Sketch Explainers",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1616,
+        32
+      ],
+      "id": "244e1cdf-71ec-4f30-aed7-1aea9c5133eb",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "=http://YOUR_SKETCHREVEAL_API_DOMAIN_HERE/api/v1/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        64
+      ],
+      "id": "13562bbc-1066-486c-8274-6bc0afb73129",
+      "name": "Poll Progress"
+    },
+    {
+      "parameters": {
+        "url": "=http://YOUR_SKETCHREVEAL_API_DOMAIN_HERE{{ $json.download_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        48
+      ],
+      "id": "d05ef28e-bb8d-4581-96cf-98afd9d07ecd",
+      "name": "Download"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Script }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are an expert simple Cartoon Drawings Image Prompt Generator. Your task is to analyze the input script provided by the user and generate exactly 10 distinct, high-quality image prompts that visualize the key scenes of the story.\n\n**Input:**\nThe user message will contain solely the script or story text.\n\n**Output Requirements:**\n1. You must generate exactly 10 image prompts.\n2. The output must be provided in strict JSON format.\n3. The JSON object must contain a field for the total count of images and a list of items.\n4. Each item in the list must correspond to a specific scene and contain two keys: 'prompt_number' (an integer) and 'image_prompt' (a descriptive string for an image generator).\n\n**Guidelines for Image Prompts:**\n- Focus on visual elements: lighting, camera angle, color palette, setting, and character actions.\n- Ensure the prompts follow the narrative arc of the input script from beginning to end.\n- Be descriptive and specific (e.g., \"Cartoon drawing Style\" \"Simple Lines\".\n\n**Response Format:**\nReturn only the JSON object. Do not include conversational filler, markdown code blocks (unless required by the interface), or explanations outside the JSON structure."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -1280,
+        32
+      ],
+      "id": "e5b4a6d9-0c94-42f0-87ef-7e9fff0cd645",
+      "name": "Image Prompt Generation"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1280,
+        192
+      ],
+      "id": "65d3930f-a86b-4f68-a3bd-ed6ab952376d",
+      "name": "OpenRouter Chat Model"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"total_images\": 10,\n  \"image_prompts\": [\n    {\n      \"prompt_number\": 1,\n      \"image_prompt\": \"A wide establishing shot of a futuristic cyberpunk city at night, neon lights reflecting in puddles, rain falling heavily, cinematic lighting, 4k resolution.\"\n    },\n    {\n      \"prompt_number\": 2,\n      \"image_prompt\": \"Close-up of a robot's face, metallic skin, glowing blue eyes, expression of sadness, dark alleyway background, dramatic shadows.\"\n    },\n    {\n      \"prompt_number\": 3,\n      \"image_prompt\": \"A high-speed chase scene through a busy market, hovercrafts flying overhead, motion blur, vibrant colors, chaos and excitement.\"\n    }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -1088,
+        192
+      ],
+      "id": "5da8a9e9-2dc9-4d32-9670-ec3f8370787f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/prunaai/z-image-turbo/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Prefer",
+              "value": "wait"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"input\": {\n    \"width\": 1024,\n    \"height\": 576,\n    \"prompt\": {{ JSON.stringify($json['output.image_prompts'].image_prompt) }},\n    \"go_fast\": false,\n    \"output_format\": \"jpg\",\n    \"guidance_scale\": 0,\n    \"output_quality\": 80,\n    \"num_inference_steps\": 8\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -544,
+        208
+      ],
+      "id": "6820d28a-633f-446c-a735-9b7fccd6984e",
+      "name": "Request Image Gen"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.output }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -368,
+        208
+      ],
+      "id": "ae58056f-0bac-4143-a107-708c15280bef",
+      "name": "Download Image"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "YOUR_BUCKET_NAME_HERE",
+        "fileName": "=sketch-explainers/images/image_{{ $('Loop Over Images').item.json['output.image_prompts'].prompt_number }}.jpg",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        208
+      ],
+      "id": "a7d19de5-546f-4f80-b05b-47f0ad9a1e72",
+      "name": "Save Image to Project"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.image_prompts",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "output.total_images",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        32
+      ],
+      "id": "85462a70-0c80-4ed0-b998-022268a669fb",
+      "name": "Split Out Prompts"
+    },
+    {
+      "parameters": {
+        "batchSize": 10,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -736,
+        96
+      ],
+      "id": "6e0562be-8f36-4acd-ad16-d44ebac294f6",
+      "name": "Loop Over Images"
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -192,
+        48
+      ],
+      "id": "50523c97-ece9-4d36-941f-39cdefb655e9",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "content": "## Image Generation",
+        "height": 384,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -816,
+        32
+      ],
+      "id": "ca2750c5-00f4-4085-8e13-b5f6e2ea8a85",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Setup",
+        "height": 320,
+        "width": 864,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1696,
+        16
+      ],
+      "id": "fd7bf991-7706-4d33-87aa-48a2e2d841ef",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5c109f8b-7115-49e3-b262-fdf8518dd1ee",
+              "name": "Script",
+              "value": "The world of high-stakes finance often feels like a giant puzzle that nobody actually knows how to solve. We are told to buy low and sell high, yet our emotions usually tell us to do the exact opposite. When the market turns red, panic sets in like a sudden fever. You see the numbers dropping and your first instinct is to pull everything out to save what is left. But history teaches us that the most successful investors are often the ones who can sit perfectly still while everyone else is running for the exits. Wealth isn't built in a day, but it can certainly be lost in a second of pure indecision. You have to look past the daily noise and focus on the decade ahead. Diversification isn't just a fancy word; it is your only real shield against the unexpected storms of the economy. Think of your portfolio as a garden that requires patience and steady hands rather than constant interference. Every market correction is simply a chance for the patient to thrive at the expense of the frantic. If you can master your own psychology, you have already won half the battle. Stay disciplined, keep your eyes on the horizon, and let time do the heavy lifting for you. This is the secret to long-term growth that most people ignore until it is far too late.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1440,
+        32
+      ],
+      "id": "315f2549-17f6-4045-914d-84d85fe2d788",
+      "name": "Example Script"
+    },
+    {
+      "parameters": {
+        "batchSize": 5,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        32,
+        48
+      ],
+      "id": "7ec7c7c0-15eb-4530-86a1-f2fafc630870",
+      "name": "Loop Over Videos"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "YOUR_BUCKET_NAME_HERE",
+        "fileName": "=sketch-explainers/videos/video_{{ $('Loop Over Videos').item.json['output.image_prompts'].prompt_number }}.mp4\n\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        944,
+        160
+      ],
+      "id": "6383f07a-b9f4-4e6a-a8d1-9ed8f4631a67",
+      "name": "Save Video to Project"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5bbe2396-2346-4e5a-b7b0-22665abadd2b",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        544,
+        64
+      ],
+      "id": "1c8e6775-dd63-4c9f-96d3-146cea5f28b4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        688,
+        144
+      ],
+      "id": "e2caf94e-f0d6-411b-ad44-52d9d0732ea7",
+      "name": "Wait1",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "content": "## Sketch Explainer Sauce",
+        "height": 336,
+        "width": 1152,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bc70d600-bd52-45f9-94f2-8397f5bf0c59",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://YOUR_SKETCHREVEAL_API_DOMAIN_HERE/api/v1/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "image_url",
+              "value": "=https://YOUR_MINIO_DOMAIN_HERE/YOUR_BUCKET_NAME_HERE/sketch-explainers%2Fimages%2Fimage_{{ $itemIndex + 1 }}.jpg"
+            },
+            {
+              "name": "total_frames",
+              "value": "50"
+            },
+            {
+              "name": "fps",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        240,
+        64
+      ],
+      "id": "5e9d9ef5-9795-4144-9baf-5867600fd4fb",
+      "name": "Sketch Explainer Request"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-24T05:21:12.538Z",
+      "createdAt": "2026-07-24T05:21:12.538Z",
+      "role": "workflow:owner",
+      "workflowId": "UEmGpCjtZiiTVX93",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-24T05:21:12.538Z",
+  "versionId": "5096d48b-5b42-442f-84d5-774fe15b6f3a"
+}
