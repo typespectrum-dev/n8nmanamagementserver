@@ -184,17 +184,6 @@
         ]
       ]
     },
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Script Writer",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenRouter Chat Model1": {
       "ai_languageModel": [
         [
@@ -227,6 +216,17 @@
           }
         ]
       ]
+    },
+    "CLI Proxy Web Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Script Writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-06-08T02:03:48.173Z",
@@ -249,26 +249,6 @@
       ],
       "id": "9ca45d02-cfd1-4b19-b5a0-5b7bcabf30f4",
       "name": "When Executed by Another Workflow"
-    },
-    {
-      "parameters": {
-        "model": "google/gemini-3-flash-preview",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        -272,
-        0
-      ],
-      "id": "bd54a469-2f74-4ea4-a520-fcac6cb9a1d0",
-      "name": "OpenRouter Chat Model",
-      "credentials": {
-        "openRouterApi": {
-          "id": "uT5SpmneYnfqFvnt",
-          "name": "OpenRouter account"
-        }
-      }
     },
     {
       "parameters": {
@@ -338,6 +318,24 @@
       ],
       "id": "569f967f-6207-4f0a-b9eb-4fb3ad63db5a",
       "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-rtkqvnmzpl.cliProxyWebChatModel",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        -16
+      ],
+      "id": "4d5af9a5-5091-426e-ac23-ea35c1470079",
+      "name": "CLI Proxy Web Chat Model"
     }
   ],
   "pinData": {},
@@ -363,6 +361,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-07-10T00:58:38.334Z",
-  "versionId": "de6f3137-9477-4894-97bc-32489b0ab64e"
+  "updatedAt": "2026-07-26T05:22:28.376Z",
+  "versionId": "987995a8-ad6b-4c53-8b92-7ab6fb64095d"
 }
