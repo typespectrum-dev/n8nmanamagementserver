@@ -1,0 +1,999 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Rendered Vid URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Audio": {
+      "main": [
+        [
+          {
+            "node": "Heygen Vidgen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Audio (NCA Toolkit)": {
+      "main": [
+        [
+          {
+            "node": "Get Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Heygen Vidgen": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Poll Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "NCA Toolkit Get Duration",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Status": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rendered Vid URL": {
+      "main": [
+        [
+          {
+            "node": "Extract Audio (NCA Toolkit)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NCA Toolkit Get Duration": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Random Fullscreen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Render Video": {
+      "main": [
+        [
+          {
+            "node": "Download Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classic Webcam": {
+      "main": [
+        [
+          {
+            "node": "Render Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Close Webcam": {
+      "main": [
+        [
+          {
+            "node": "Render Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Random Corner": {
+      "main": [
+        [
+          {
+            "node": "Render Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Random Fullscreen": {
+      "main": [
+        [
+          {
+            "node": "Render Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-26T06:01:13.259Z",
+  "id": "vaZNUnfucTd3nLkg",
+  "isArchived": false,
+  "meta": null,
+  "name": "Avatar Integration",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1408,
+        208
+      ],
+      "id": "eb352813-2345-45c5-81d1-50c4cef341a0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -864,
+        208
+      ],
+      "id": "c61b791b-38cd-4be6-a3d0-b97f2b1251a2",
+      "name": "Get Audio"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nca-toolkit.nickwinter.org/v1/media/transform/mp3",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "media_url",
+              "value": "={{ $json.url }}"
+            },
+            {
+              "name": "bitrate",
+              "value": "320k"
+            },
+            {
+              "name": "id",
+              "value": "extract-audio"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1008,
+        208
+      ],
+      "id": "a2cbf20a-f01c-451b-964d-95577e3a551d",
+      "name": "Extract Audio (NCA Toolkit)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://avatar-talking-head.nickwinter.org/api/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "avatar_name",
+              "value": "test1"
+            },
+            {
+              "name": "orientation",
+              "value": "landscape"
+            },
+            {
+              "name": "resolution",
+              "value": "720p"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "audio",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -672,
+        208
+      ],
+      "id": "d5597726-92ac-447a-8778-324b3ffb9e5f",
+      "name": "Heygen Vidgen"
+    },
+    {
+      "parameters": {
+        "content": "## Extract Audio",
+        "height": 224,
+        "width": 320,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1072,
+        160
+      ],
+      "id": "0c5e54e8-89e4-4c1c-8c7c-9908f0dedaf9",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Avatar",
+        "height": 272,
+        "width": 720,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        160
+      ],
+      "id": "686b6354-4106-42b4-9324-9005b77589cc",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        208
+      ],
+      "id": "212a7ac7-30fe-4f55-b849-ada41f896ddc",
+      "name": "Wait",
+      "webhookId": "d9b604df-6163-44c9-a9ea-4324db1303e3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f10a0dff-4ae7-4803-9948-438488cda1e5",
+              "leftValue": "={{ $json.progress }}",
+              "rightValue": "100%",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -176,
+        208
+      ],
+      "id": "d08ae4ea-e114-49a3-990e-dcfe76e2538c",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "=https://avatar-talking-head.nickwinter.org/api/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -336,
+        208
+      ],
+      "id": "5140b5dd-a163-497f-a836-41c4966d43e4",
+      "name": "Poll Status"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0cbe5e18-634a-48f4-a3ad-0474638ab64e",
+              "name": "url",
+              "value": "https://minio-second-api.nickwinter.org/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank%2FYour_Life_as_Every_CIA_Black_Ops_Rank.mp4",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1232,
+        208
+      ],
+      "id": "350f766e-4a06-4424-8712-7e65a6decb82",
+      "name": "Rendered Vid URL"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nca-toolkit.nickwinter.org/v1/media/metadata",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "media_url",
+              "value": "=https://avatar-talking-head.nickwinter.org{{ $json.download_url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        64,
+        288
+      ],
+      "id": "f829ba39-ece2-4d19-8d98-69cb2c571740",
+      "name": "NCA Toolkit Get Duration"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        208,
+        208
+      ],
+      "id": "1d7a09ad-4e03-4d43-9206-0dc2a666709b",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6034ea8e-3643-4fea-ada8-31203c0cbc29",
+              "name": "Main Video URL",
+              "value": "={{ $('Rendered Vid URL').last().json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "a1d7bc5c-7726-42b7-8783-6da862cad965",
+              "name": "Avatar Video URL",
+              "value": "=https://avatar-talking-head.nickwinter.org{{ $json.download_url }}",
+              "type": "string"
+            },
+            {
+              "id": "ba94f47b-95fa-4bc1-a623-2b3c6b72c286",
+              "name": "Duration",
+              "value": "={{ $json.response.duration }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        208
+      ],
+      "id": "46cff50d-2b58-42f3-b1f5-92915374272a",
+      "name": "Settings"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nca-toolkit.nickwinter.org/v1/ffmpeg/compose",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        768,
+        208
+      ],
+      "id": "5144f035-1d8e-40f1-8e91-309a0707a2b3",
+      "name": "Render Video"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response[0].file_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        928,
+        208
+      ],
+      "id": "2a39382f-c45d-4eae-b163-c82bc4432b54",
+      "name": "Download Video"
+    },
+    {
+      "parameters": {
+        "jsCode": "// SETTINGS — tweak these (everything else is derived)\n// ============================================================\nconst SETTINGS = {\n  // ----- MODE -----\n  displayMode: 'always-on',     // 'always-on' | 'random'\n  position:    'corner',        // 'corner' | 'fullscreen'\n\n  // ----- CORNER PLACEMENT -----\n  corner:  'bottom-right',      // 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'\n  marginX: 40,                  // px from left/right edge\n  marginY: 40,                  // px from top/bottom edge\n\n  // ----- SIZE & SHAPE -----\n  sizePercent: 50,              // % of main video width\n  shape:       'circle',        // 'circle' | 'square'\n\n  // ----- ZOOM & CROP -----\n  zoom:        1.0,             // 1.0 = no zoom; 1.5 / 2.0 = tighter framing\n  cropOffsetX: 0,               // +right / -left of avatar source\n  cropOffsetY: 0,               // +up / -down of avatar source\n\n  // ----- RANDOM TIMING (only used when displayMode = 'random') -----\n  overlayCoveragePercent: 30,   // % of video covered by avatar\n  averageSegmentLength:   15,   // average seconds per appearance\n  segmentLengthVariance:  0.3,  // ±30% around the average\n  minGapBetweenSegments:  5,    // minimum quiet seconds between appearances\n  startWithAvatar:        false,// true = video starts with avatar visible\n  endWithAvatar:          false,// true = video ends with avatar visible\n\n  // ----- ENCODING -----\n  videoCodec: 'libx264', videoCRF: '20', videoPreset: 'medium',\n  audioCodec: 'aac',     audioBitrate: '192k',\n};\n\n\n// ============================================================\n// HELPERS\n// ============================================================\nconst randRange = (min, max) => min + Math.random() * (max - min);\nconst round = (n, d = 3) => +n.toFixed(d);\n\nfunction cornerXY(mX, mY) {\n  return {\n    'top-left':     `x=${mX}:y=${mY}`,\n    'top-right':    `x=W-w-${mX}:y=${mY}`,\n    'bottom-left':  `x=${mX}:y=H-h-${mY}`,\n    'bottom-right': `x=W-w-${mX}:y=H-h-${mY}`,\n  }[SETTINGS.corner] || `x=W-w-${mX}:y=H-h-${mY}`;\n}\n\nfunction buildSegmentPlan(duration) {\n  const targetOverlay = duration * (SETTINGS.overlayCoveragePercent / 100);\n  const avg = SETTINGS.averageSegmentLength;\n  const N = Math.max(1, Math.round(targetOverlay / avg));\n\n  const lengths = [];\n  for (let i = 0; i < N; i++) {\n    const v = SETTINGS.segmentLengthVariance;\n    lengths.push(Math.max(1, avg * (1 + randRange(-v, v))));\n  }\n  const scale = targetOverlay / lengths.reduce((a, b) => a + b, 0);\n  for (let i = 0; i < N; i++) lengths[i] *= scale;\n\n  // Layout: [gap0][seg0][gap1][seg1]...[segN-1][gapN]\n  // gap0=0 if startWithAvatar, gapN=0 if endWithAvatar, others >= minGapBetweenSegments\n  const numGaps = N + 1;\n  const minGap = SETTINGS.minGapBetweenSegments;\n  const gapMins = new Array(numGaps).fill(minGap);\n  if (SETTINGS.startWithAvatar) gapMins[0] = 0;\n  if (SETTINGS.endWithAvatar)   gapMins[numGaps - 1] = 0;\n\n  const totalSeg = lengths.reduce((a, b) => a + b, 0);\n  const totalGap = duration - totalSeg;\n  const minGapTotal = gapMins.reduce((a, b) => a + b, 0);\n  if (totalGap < minGapTotal) {\n    throw new Error(\n      `Not enough room. Need ${minGapTotal.toFixed(1)}s of gaps, only ${totalGap.toFixed(1)}s available. ` +\n      `Lower overlayCoveragePercent or minGapBetweenSegments.`\n    );\n  }\n\n  const flexible = [];\n  for (let i = 0; i < numGaps; i++) {\n    const pinned = (SETTINGS.startWithAvatar && i === 0) ||\n                   (SETTINGS.endWithAvatar   && i === numGaps - 1);\n    if (!pinned) flexible.push(i);\n  }\n  const extra = totalGap - minGapTotal;\n  const weights = flexible.map(() => Math.random());\n  const wSum = weights.reduce((a, b) => a + b, 0) || 1;\n  const gaps = new Array(numGaps).fill(0);\n  flexible.forEach((idx, i) => {\n    gaps[idx] = gapMins[idx] + (weights[i] / wSum) * extra;\n  });\n\n  const segments = [];\n  let cursor = gaps[0];\n  for (let i = 0; i < N; i++) {\n    const len = lengths[i];\n    const startTime = cursor;\n    const endTime = startTime + len;\n    const overlayStart = randRange(0, Math.max(0, duration - len));\n    segments.push({\n      startTime: round(startTime),\n      endTime: round(endTime),\n      length: round(len),\n      overlayStart: round(overlayStart),\n      overlayEnd: round(overlayStart + len),\n    });\n    cursor = endTime + gaps[i + 1];\n  }\n  return segments;\n}\n\n// ============================================================\n// FILTER BUILDER\n// ============================================================\nfunction buildFilter(duration) {\n  const z    = SETTINGS.zoom;\n  const offX = SETTINGS.cropOffsetX;\n  const offY = SETTINGS.cropOffsetY;\n  const isFs = SETTINGS.position === 'fullscreen';\n  const parts = [];\n\n  // 1. Crop avatar with zoom + offset.\n  if (isFs) {\n    parts.push(\n      `[1:v]crop='iw/${z}':'ih/${z}':` +\n      `'(iw-iw/${z})/2+${offX}':'(ih-ih/${z})/2-${offY}'[ov_zoom]`\n    );\n  } else {\n    parts.push(\n      `[1:v]crop='min(iw,ih)/${z}':'min(iw,ih)/${z}':` +\n      `'(iw-min(iw,ih)/${z})/2+${offX}':` +\n      `'(ih-min(iw,ih)/${z})/2-${offY}'[ov_zoom]`\n    );\n  }\n\n  // 2. Scale.\n  if (isFs) {\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=` +\n      `w='iw*max(main_w/iw,main_h/ih)':` +\n      `h='ih*max(main_w/iw,main_h/ih)'[ov_scaled][vmain]`\n    );\n  } else {\n    const s = SETTINGS.sizePercent / 100;\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=w='main_w*${s}':h='main_w*${s}'[ov_scaled][vmain]`\n    );\n  }\n\n  // 3. Optional circle alpha mask (corner mode only).\n  let avatarLabel = '[ov_scaled]';\n  if (!isFs && SETTINGS.shape === 'circle') {\n    parts.push(\n      `[ov_scaled]format=yuva420p,geq=` +\n      `lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':` +\n      `a='if(gt(hypot(X-W/2,Y-H/2),min(W,H)/2),0,255)'[ov_shaped]`\n    );\n    avatarLabel = '[ov_shaped]';\n  }\n\n  // 4. Position string.\n  const xy = isFs\n    ? `x='(W-w)/2':y='(H-h)/2'`\n    : cornerXY(SETTINGS.marginX, SETTINGS.marginY);\n\n  // 5. Always-on or random placement.\n  if (SETTINGS.displayMode === 'always-on') {\n    parts.push(`[vmain]${avatarLabel}overlay=${xy}[vout]`);\n    return { filterString: parts.join(';'), plan: null };\n  }\n\n  const segments = buildSegmentPlan(duration);\n  const N = segments.length;\n  const splitOuts = segments.map((_, i) => `[c${i}]`).join('');\n  parts.push(`${avatarLabel}split=${N}${splitOuts}`);\n\n  segments.forEach((s, i) => {\n    parts.push(\n      `[c${i}]trim=start=${s.overlayStart}:end=${s.overlayEnd},` +\n      `setpts=PTS-STARTPTS+${s.startTime}/TB[r${i}]`\n    );\n  });\n\n  let prev = '[vmain]';\n  segments.forEach((s, i) => {\n    const out = i === N - 1 ? '[vout]' : `[t${i}]`;\n    parts.push(\n      `${prev}[r${i}]overlay=${xy}:enable='between(t,${s.startTime},${s.endTime})'${out}`\n    );\n    prev = out;\n  });\n\n  const totalOverlay = segments.reduce((a, s) => a + s.length, 0);\n  const plan = {\n    numSegments: N,\n    totalOverlayTime: round(totalOverlay, 2),\n    actualCoveragePercent: round((totalOverlay / duration) * 100, 1),\n    segments,\n  };\n  return { filterString: parts.join(';'), plan };\n}\n\n// ============================================================\n// PAYLOAD BUILDER\n// ============================================================\nfunction buildPayload(mainUrl, avatarUrl, duration) {\n  const { filterString, plan } = buildFilter(duration);\n  const payload = {\n    inputs: [\n      { file_url: mainUrl },\n      { file_url: avatarUrl },\n    ],\n    filters: [{ filter: filterString }],\n    outputs: [\n      {\n        options: [\n          { option: '-map', argument: '[vout]' },\n          { option: '-map', argument: '0:a' },   // main audio only; avatar audio dropped\n          { option: '-c:v', argument: SETTINGS.videoCodec },\n          { option: '-crf', argument: SETTINGS.videoCRF },\n          { option: '-preset', argument: SETTINGS.videoPreset },\n          { option: '-c:a', argument: SETTINGS.audioCodec },\n          { option: '-b:a', argument: SETTINGS.audioBitrate },\n        ],\n      },\n    ],\n    metadata: {\n      thumbnail: true, filesize: true, duration: true, bitrate: true, encoder: true,\n    },\n    id: `avatar_${SETTINGS.displayMode}_${SETTINGS.position}_${Date.now()}`,\n  };\n  return { payload, plan };\n}\n\n// ============================================================\n// MAIN\n// ============================================================\nconst results = [];\nfor (const item of $input.all()) {\n  const data = item.json;\n  const mainUrl = data['Main Video URL'];\n  const avatarUrl = data['Avatar Video URL'];\n  const duration = data['Duration'] !== undefined ? Number(data['Duration']) : null;\n\n  if (!mainUrl || !avatarUrl) {\n    throw new Error('Both \"Main Video URL\" and \"Avatar Video URL\" are required on the input.');\n  }\n  if (SETTINGS.displayMode === 'random' && (!duration || !isFinite(duration) || duration <= 0)) {\n    throw new Error(\n      '\"Duration\" (in seconds) is required on the input when displayMode = \"random\".'\n    );\n  }\n\n  const { payload, plan } = buildPayload(mainUrl, avatarUrl, duration);\n  results.push({ json: { payload, ...(plan ? { plan } : {}) } });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        16
+      ],
+      "id": "2a0b5e57-d61d-44f7-ad94-4bc871e45d2a",
+      "name": "Classic Webcam"
+    },
+    {
+      "parameters": {
+        "jsCode": "// SETTINGS — tweak these (everything else is derived)\n// ============================================================\nconst SETTINGS = {\n  displayMode: 'always-on',\n  position:    'corner',\n\n  corner:  'bottom-right',\n  marginX: 30,\n  marginY: 30,\n\n  sizePercent: 120,\n  shape:       'circle',\n\n  zoom:        2.2,             // zoom 1.7x — face only\n  cropOffsetX: 0,\n  cropOffsetY: 50,             // shift view UP to lock onto the face\n\n  overlayCoveragePercent: 30,\n  averageSegmentLength:   15,\n  segmentLengthVariance:  0.3,\n  minGapBetweenSegments:  5,\n  startWithAvatar:        false,\n  endWithAvatar:          false,\n\n  videoCodec: 'libx264', videoCRF: '20', videoPreset: 'medium',\n  audioCodec: 'aac',     audioBitrate: '192k',\n};\n\n\n// ============================================================\n// HELPERS\n// ============================================================\nconst randRange = (min, max) => min + Math.random() * (max - min);\nconst round = (n, d = 3) => +n.toFixed(d);\n\nfunction cornerXY(mX, mY) {\n  return {\n    'top-left':     `x=${mX}:y=${mY}`,\n    'top-right':    `x=W-w-${mX}:y=${mY}`,\n    'bottom-left':  `x=${mX}:y=H-h-${mY}`,\n    'bottom-right': `x=W-w-${mX}:y=H-h-${mY}`,\n  }[SETTINGS.corner] || `x=W-w-${mX}:y=H-h-${mY}`;\n}\n\nfunction buildSegmentPlan(duration) {\n  const targetOverlay = duration * (SETTINGS.overlayCoveragePercent / 100);\n  const avg = SETTINGS.averageSegmentLength;\n  const N = Math.max(1, Math.round(targetOverlay / avg));\n\n  const lengths = [];\n  for (let i = 0; i < N; i++) {\n    const v = SETTINGS.segmentLengthVariance;\n    lengths.push(Math.max(1, avg * (1 + randRange(-v, v))));\n  }\n  const scale = targetOverlay / lengths.reduce((a, b) => a + b, 0);\n  for (let i = 0; i < N; i++) lengths[i] *= scale;\n\n  // Layout: [gap0][seg0][gap1][seg1]...[segN-1][gapN]\n  // gap0=0 if startWithAvatar, gapN=0 if endWithAvatar, others >= minGapBetweenSegments\n  const numGaps = N + 1;\n  const minGap = SETTINGS.minGapBetweenSegments;\n  const gapMins = new Array(numGaps).fill(minGap);\n  if (SETTINGS.startWithAvatar) gapMins[0] = 0;\n  if (SETTINGS.endWithAvatar)   gapMins[numGaps - 1] = 0;\n\n  const totalSeg = lengths.reduce((a, b) => a + b, 0);\n  const totalGap = duration - totalSeg;\n  const minGapTotal = gapMins.reduce((a, b) => a + b, 0);\n  if (totalGap < minGapTotal) {\n    throw new Error(\n      `Not enough room. Need ${minGapTotal.toFixed(1)}s of gaps, only ${totalGap.toFixed(1)}s available. ` +\n      `Lower overlayCoveragePercent or minGapBetweenSegments.`\n    );\n  }\n\n  const flexible = [];\n  for (let i = 0; i < numGaps; i++) {\n    const pinned = (SETTINGS.startWithAvatar && i === 0) ||\n                   (SETTINGS.endWithAvatar   && i === numGaps - 1);\n    if (!pinned) flexible.push(i);\n  }\n  const extra = totalGap - minGapTotal;\n  const weights = flexible.map(() => Math.random());\n  const wSum = weights.reduce((a, b) => a + b, 0) || 1;\n  const gaps = new Array(numGaps).fill(0);\n  flexible.forEach((idx, i) => {\n    gaps[idx] = gapMins[idx] + (weights[i] / wSum) * extra;\n  });\n\n  const segments = [];\n  let cursor = gaps[0];\n  for (let i = 0; i < N; i++) {\n    const len = lengths[i];\n    const startTime = cursor;\n    const endTime = startTime + len;\n    const overlayStart = randRange(0, Math.max(0, duration - len));\n    segments.push({\n      startTime: round(startTime),\n      endTime: round(endTime),\n      length: round(len),\n      overlayStart: round(overlayStart),\n      overlayEnd: round(overlayStart + len),\n    });\n    cursor = endTime + gaps[i + 1];\n  }\n  return segments;\n}\n\n// ============================================================\n// FILTER BUILDER\n// ============================================================\nfunction buildFilter(duration) {\n  const z    = SETTINGS.zoom;\n  const offX = SETTINGS.cropOffsetX;\n  const offY = SETTINGS.cropOffsetY;\n  const isFs = SETTINGS.position === 'fullscreen';\n  const parts = [];\n\n  // 1. Crop avatar with zoom + offset.\n  if (isFs) {\n    parts.push(\n      `[1:v]crop='iw/${z}':'ih/${z}':` +\n      `'(iw-iw/${z})/2+${offX}':'(ih-ih/${z})/2-${offY}'[ov_zoom]`\n    );\n  } else {\n    parts.push(\n      `[1:v]crop='min(iw,ih)/${z}':'min(iw,ih)/${z}':` +\n      `'(iw-min(iw,ih)/${z})/2+${offX}':` +\n      `'(ih-min(iw,ih)/${z})/2-${offY}'[ov_zoom]`\n    );\n  }\n\n  // 2. Scale.\n  if (isFs) {\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=` +\n      `w='iw*max(main_w/iw,main_h/ih)':` +\n      `h='ih*max(main_w/iw,main_h/ih)'[ov_scaled][vmain]`\n    );\n  } else {\n    const s = SETTINGS.sizePercent / 100;\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=w='main_w*${s}':h='main_w*${s}'[ov_scaled][vmain]`\n    );\n  }\n\n  // 3. Optional circle alpha mask (corner mode only).\n  let avatarLabel = '[ov_scaled]';\n  if (!isFs && SETTINGS.shape === 'circle') {\n    parts.push(\n      `[ov_scaled]format=yuva420p,geq=` +\n      `lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':` +\n      `a='if(gt(hypot(X-W/2,Y-H/2),min(W,H)/2),0,255)'[ov_shaped]`\n    );\n    avatarLabel = '[ov_shaped]';\n  }\n\n  // 4. Position string.\n  const xy = isFs\n    ? `x='(W-w)/2':y='(H-h)/2'`\n    : cornerXY(SETTINGS.marginX, SETTINGS.marginY);\n\n  // 5. Always-on or random placement.\n  if (SETTINGS.displayMode === 'always-on') {\n    parts.push(`[vmain]${avatarLabel}overlay=${xy}[vout]`);\n    return { filterString: parts.join(';'), plan: null };\n  }\n\n  const segments = buildSegmentPlan(duration);\n  const N = segments.length;\n  const splitOuts = segments.map((_, i) => `[c${i}]`).join('');\n  parts.push(`${avatarLabel}split=${N}${splitOuts}`);\n\n  segments.forEach((s, i) => {\n    parts.push(\n      `[c${i}]trim=start=${s.overlayStart}:end=${s.overlayEnd},` +\n      `setpts=PTS-STARTPTS+${s.startTime}/TB[r${i}]`\n    );\n  });\n\n  let prev = '[vmain]';\n  segments.forEach((s, i) => {\n    const out = i === N - 1 ? '[vout]' : `[t${i}]`;\n    parts.push(\n      `${prev}[r${i}]overlay=${xy}:enable='between(t,${s.startTime},${s.endTime})'${out}`\n    );\n    prev = out;\n  });\n\n  const totalOverlay = segments.reduce((a, s) => a + s.length, 0);\n  const plan = {\n    numSegments: N,\n    totalOverlayTime: round(totalOverlay, 2),\n    actualCoveragePercent: round((totalOverlay / duration) * 100, 1),\n    segments,\n  };\n  return { filterString: parts.join(';'), plan };\n}\n\n// ============================================================\n// PAYLOAD BUILDER\n// ============================================================\nfunction buildPayload(mainUrl, avatarUrl, duration) {\n  const { filterString, plan } = buildFilter(duration);\n  const payload = {\n    inputs: [\n      { file_url: mainUrl },\n      { file_url: avatarUrl },\n    ],\n    filters: [{ filter: filterString }],\n    outputs: [\n      {\n        options: [\n          { option: '-map', argument: '[vout]' },\n          { option: '-map', argument: '0:a' },   // main audio only; avatar audio dropped\n          { option: '-c:v', argument: SETTINGS.videoCodec },\n          { option: '-crf', argument: SETTINGS.videoCRF },\n          { option: '-preset', argument: SETTINGS.videoPreset },\n          { option: '-c:a', argument: SETTINGS.audioCodec },\n          { option: '-b:a', argument: SETTINGS.audioBitrate },\n        ],\n      },\n    ],\n    metadata: {\n      thumbnail: true, filesize: true, duration: true, bitrate: true, encoder: true,\n    },\n    id: `avatar_${SETTINGS.displayMode}_${SETTINGS.position}_${Date.now()}`,\n  };\n  return { payload, plan };\n}\n\n// ============================================================\n// MAIN\n// ============================================================\nconst results = [];\nfor (const item of $input.all()) {\n  const data = item.json;\n  const mainUrl = data['Main Video URL'];\n  const avatarUrl = data['Avatar Video URL'];\n  const duration = data['Duration'] !== undefined ? Number(data['Duration']) : null;\n\n  if (!mainUrl || !avatarUrl) {\n    throw new Error('Both \"Main Video URL\" and \"Avatar Video URL\" are required on the input.');\n  }\n  if (SETTINGS.displayMode === 'random' && (!duration || !isFinite(duration) || duration <= 0)) {\n    throw new Error(\n      '\"Duration\" (in seconds) is required on the input when displayMode = \"random\".'\n    );\n  }\n\n  const { payload, plan } = buildPayload(mainUrl, avatarUrl, duration);\n  results.push({ json: { payload, ...(plan ? { plan } : {}) } });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        144
+      ],
+      "id": "2381763f-a0ef-4956-8e0a-d0606bdba093",
+      "name": "Close Webcam"
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * n8n Code Node — Random Corner Pops — square avatar at random times, top-right\n * ============================================================\n * Use case: Sparse hype moments. Avatar shows up occasionally to drive home a point. Square = faster encoding.\n * Input shape: [{ \"Main Video URL\": \"...\", \"Avatar Video URL\": \"...\", \"Duration\": \"1200\" }]\n *\n * Avatar audio is dropped — only main video audio is kept.\n */\n\n// ============================================================\n// SETTINGS — tweak these (everything else is derived)\n// ============================================================\nconst SETTINGS = {\n  displayMode: 'random',        // requires Duration on input\n  position:    'corner',\n\n  corner:  'top-right',\n  marginX: 30,\n  marginY: 30,\n\n  sizePercent: 80,\n  shape:       'square',        // faster than circle\n\n  zoom:        1.5,\n  cropOffsetX: 0,\n  cropOffsetY: 0,\n\n  overlayCoveragePercent: 25,   // avatar visible 25% of the time\n  averageSegmentLength:   8,    // ~8s per appearance\n  segmentLengthVariance:  0.4,  // each segment 60-140% of avg\n  minGapBetweenSegments:  10,   // at least 10s of main between appearances\n  startWithAvatar:        true,\n  endWithAvatar:          false,\n\n  videoCodec: 'libx264', videoCRF: '20', videoPreset: 'medium',\n  audioCodec: 'aac',     audioBitrate: '192k',\n};\n\n\n// ============================================================\n// HELPERS\n// ============================================================\nconst randRange = (min, max) => min + Math.random() * (max - min);\nconst round = (n, d = 3) => +n.toFixed(d);\n\nfunction cornerXY(mX, mY) {\n  return {\n    'top-left':     `x=${mX}:y=${mY}`,\n    'top-right':    `x=W-w-${mX}:y=${mY}`,\n    'bottom-left':  `x=${mX}:y=H-h-${mY}`,\n    'bottom-right': `x=W-w-${mX}:y=H-h-${mY}`,\n  }[SETTINGS.corner] || `x=W-w-${mX}:y=H-h-${mY}`;\n}\n\nfunction buildSegmentPlan(duration) {\n  const targetOverlay = duration * (SETTINGS.overlayCoveragePercent / 100);\n  const avg = SETTINGS.averageSegmentLength;\n  const N = Math.max(1, Math.round(targetOverlay / avg));\n\n  const lengths = [];\n  for (let i = 0; i < N; i++) {\n    const v = SETTINGS.segmentLengthVariance;\n    lengths.push(Math.max(1, avg * (1 + randRange(-v, v))));\n  }\n  const scale = targetOverlay / lengths.reduce((a, b) => a + b, 0);\n  for (let i = 0; i < N; i++) lengths[i] *= scale;\n\n  // Layout: [gap0][seg0][gap1][seg1]...[segN-1][gapN]\n  // gap0=0 if startWithAvatar, gapN=0 if endWithAvatar, others >= minGapBetweenSegments\n  const numGaps = N + 1;\n  const minGap = SETTINGS.minGapBetweenSegments;\n  const gapMins = new Array(numGaps).fill(minGap);\n  if (SETTINGS.startWithAvatar) gapMins[0] = 0;\n  if (SETTINGS.endWithAvatar)   gapMins[numGaps - 1] = 0;\n\n  const totalSeg = lengths.reduce((a, b) => a + b, 0);\n  const totalGap = duration - totalSeg;\n  const minGapTotal = gapMins.reduce((a, b) => a + b, 0);\n  if (totalGap < minGapTotal) {\n    throw new Error(\n      `Not enough room. Need ${minGapTotal.toFixed(1)}s of gaps, only ${totalGap.toFixed(1)}s available. ` +\n      `Lower overlayCoveragePercent or minGapBetweenSegments.`\n    );\n  }\n\n  const flexible = [];\n  for (let i = 0; i < numGaps; i++) {\n    const pinned = (SETTINGS.startWithAvatar && i === 0) ||\n                   (SETTINGS.endWithAvatar   && i === numGaps - 1);\n    if (!pinned) flexible.push(i);\n  }\n  const extra = totalGap - minGapTotal;\n  const weights = flexible.map(() => Math.random());\n  const wSum = weights.reduce((a, b) => a + b, 0) || 1;\n  const gaps = new Array(numGaps).fill(0);\n  flexible.forEach((idx, i) => {\n    gaps[idx] = gapMins[idx] + (weights[i] / wSum) * extra;\n  });\n\n  const segments = [];\n  let cursor = gaps[0];\n  for (let i = 0; i < N; i++) {\n    const len = lengths[i];\n    const startTime = cursor;\n    const endTime = startTime + len;\n    segments.push({\n      startTime: round(startTime),\n      endTime: round(endTime),\n      length: round(len),\n    });\n    cursor = endTime + gaps[i + 1];\n  }\n  return segments;\n}\n\n// ============================================================\n// FILTER BUILDER\n// ============================================================\nfunction buildFilter(duration) {\n  const z    = SETTINGS.zoom;\n  const offX = SETTINGS.cropOffsetX;\n  const offY = SETTINGS.cropOffsetY;\n  const isFs = SETTINGS.position === 'fullscreen';\n  const parts = [];\n\n  // 1. Crop avatar with zoom + offset.\n  if (isFs) {\n    parts.push(\n      `[1:v]crop='iw/${z}':'ih/${z}':` +\n      `'(iw-iw/${z})/2+${offX}':'(ih-ih/${z})/2-${offY}'[ov_zoom]`\n    );\n  } else {\n    parts.push(\n      `[1:v]crop='min(iw,ih)/${z}':'min(iw,ih)/${z}':` +\n      `'(iw-min(iw,ih)/${z})/2+${offX}':` +\n      `'(ih-min(iw,ih)/${z})/2-${offY}'[ov_zoom]`\n    );\n  }\n\n  // 2. Scale.\n  if (isFs) {\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=` +\n      `w='iw*max(main_w/iw,main_h/ih)':` +\n      `h='ih*max(main_w/iw,main_h/ih)'[ov_scaled][vmain]`\n    );\n  } else {\n    const s = SETTINGS.sizePercent / 100;\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=w='main_w*${s}':h='main_w*${s}'[ov_scaled][vmain]`\n    );\n  }\n\n  // 3. Optional circle alpha mask (corner mode only).\n  let avatarLabel = '[ov_scaled]';\n  if (!isFs && SETTINGS.shape === 'circle') {\n    parts.push(\n      `[ov_scaled]format=yuva420p,geq=` +\n      `lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':` +\n      `a='if(gt(hypot(X-W/2,Y-H/2),min(W,H)/2),0,255)'[ov_shaped]`\n    );\n    avatarLabel = '[ov_shaped]';\n  }\n\n  // 4. Position string.\n  const xy = isFs\n    ? `x='(W-w)/2':y='(H-h)/2'`\n    : cornerXY(SETTINGS.marginX, SETTINGS.marginY);\n\n  // 5. Always-on or random placement.\n  if (SETTINGS.displayMode === 'always-on') {\n    parts.push(`[vmain]${avatarLabel}overlay=${xy}[vout]`);\n    return { filterString: parts.join(';'), plan: null };\n  }\n\n  // Random mode — single overlay at native timing, gated by enable expression.\n  // Avatar plays in sync with the main video (its frames at time t stay at time t),\n  // so lips remain perfectly aligned with the main audio. We just show/hide.\n  const segments = buildSegmentPlan(duration);\n  const enableExpr = segments\n    .map(s => `between(t,${s.startTime},${s.endTime})`)\n    .join('+');\n  parts.push(`[vmain]${avatarLabel}overlay=${xy}:enable='${enableExpr}'[vout]`);\n\n  const totalOverlay = segments.reduce((a, s) => a + s.length, 0);\n  const plan = {\n    numSegments: segments.length,\n    totalOverlayTime: round(totalOverlay, 2),\n    actualCoveragePercent: round((totalOverlay / duration) * 100, 1),\n    segments,\n  };\n  return { filterString: parts.join(';'), plan };\n}\n\n// ============================================================\n// PAYLOAD BUILDER\n// ============================================================\nfunction buildPayload(mainUrl, avatarUrl, duration) {\n  const { filterString, plan } = buildFilter(duration);\n  const payload = {\n    inputs: [\n      { file_url: mainUrl },\n      { file_url: avatarUrl },\n    ],\n    filters: [{ filter: filterString }],\n    outputs: [\n      {\n        options: [\n          { option: '-map', argument: '[vout]' },\n          { option: '-map', argument: '0:a' },   // main audio only; avatar audio dropped\n          { option: '-c:v', argument: SETTINGS.videoCodec },\n          { option: '-crf', argument: SETTINGS.videoCRF },\n          { option: '-preset', argument: SETTINGS.videoPreset },\n          { option: '-c:a', argument: SETTINGS.audioCodec },\n          { option: '-b:a', argument: SETTINGS.audioBitrate },\n        ],\n      },\n    ],\n    metadata: {\n      thumbnail: true, filesize: true, duration: true, bitrate: true, encoder: true,\n    },\n    id: `avatar_${SETTINGS.displayMode}_${SETTINGS.position}_${Date.now()}`,\n  };\n  return { payload, plan };\n}\n\n// ============================================================\n// MAIN\n// ============================================================\nconst results = [];\nfor (const item of $input.all()) {\n  const data = item.json;\n  const mainUrl = data['Main Video URL'];\n  const avatarUrl = data['Avatar Video URL'];\n  const duration = data['Duration'] !== undefined ? Number(data['Duration']) : null;\n\n  if (!mainUrl || !avatarUrl) {\n    throw new Error('Both \"Main Video URL\" and \"Avatar Video URL\" are required on the input.');\n  }\n  if (SETTINGS.displayMode === 'random' && (!duration || !isFinite(duration) || duration <= 0)) {\n    throw new Error(\n      '\"Duration\" (in seconds) is required on the input when displayMode = \"random\".'\n    );\n  }\n\n  const { payload, plan } = buildPayload(mainUrl, avatarUrl, duration);\n  results.push({ json: { payload, ...(plan ? { plan } : {}) } });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        272
+      ],
+      "id": "92de55d2-fb08-45c7-a9e9-fd177fc2e7f5",
+      "name": "Random Corner"
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * n8n Code Node — Random Fullscreen Cuts — full takeover at random times\n * ============================================================\n * Use case: B-roll-style cuts: main plays, then jumps to fullscreen avatar for a few seconds, then back. High-energy editing.\n * Input shape: [{ \"Main Video URL\": \"...\", \"Avatar Video URL\": \"...\", \"Duration\": \"1200\" }]\n *\n * Avatar audio is dropped — only main video audio is kept.\n */\n\n// ============================================================\n// SETTINGS — tweak these (everything else is derived)\n// ============================================================\nconst SETTINGS = {\n  displayMode: 'random',\n  position:    'fullscreen',\n\n  // ----- MAIN VIDEO DIMENSIONS (used in fullscreen mode) -----\n  // Set these to match your main video's actual resolution.\n  // Default 1920x1080 covers most \"Full HD\" / 1080p main videos.\n  // Avatar will be scaled to exactly these dimensions.\n  mainVideoWidth:  1920,\n  mainVideoHeight: 1080,\n\n  corner:  'bottom-right',\n  marginX: 40,\n  marginY: 40,\n\n  sizePercent: 22,\n  shape:       'circle',\n\n  zoom:        1.0,\n  cropOffsetX: 0,\n  cropOffsetY: 0,\n\n  overlayCoveragePercent: 20,   // 20% fullscreen avatar cuts\n  averageSegmentLength:   6,    // short, punchy cuts\n  segmentLengthVariance:  0.5,\n  minGapBetweenSegments:  8,\n  startWithAvatar:        true, // open the video on the avatar\n  endWithAvatar:          true, // close the video on the avatar\n\n  videoCodec: 'libx264', videoCRF: '20', videoPreset: 'medium',\n  audioCodec: 'aac',     audioBitrate: '192k',\n};\n\n\n// ============================================================\n// HELPERS\n// ============================================================\nconst randRange = (min, max) => min + Math.random() * (max - min);\nconst round = (n, d = 3) => +n.toFixed(d);\n\nfunction cornerXY(mX, mY) {\n  return {\n    'top-left':     `x=${mX}:y=${mY}`,\n    'top-right':    `x=W-w-${mX}:y=${mY}`,\n    'bottom-left':  `x=${mX}:y=H-h-${mY}`,\n    'bottom-right': `x=W-w-${mX}:y=H-h-${mY}`,\n  }[SETTINGS.corner] || `x=W-w-${mX}:y=H-h-${mY}`;\n}\n\nfunction buildSegmentPlan(duration) {\n  const targetOverlay = duration * (SETTINGS.overlayCoveragePercent / 100);\n  const avg = SETTINGS.averageSegmentLength;\n  const N = Math.max(1, Math.round(targetOverlay / avg));\n\n  const lengths = [];\n  for (let i = 0; i < N; i++) {\n    const v = SETTINGS.segmentLengthVariance;\n    lengths.push(Math.max(1, avg * (1 + randRange(-v, v))));\n  }\n  const scale = targetOverlay / lengths.reduce((a, b) => a + b, 0);\n  for (let i = 0; i < N; i++) lengths[i] *= scale;\n\n  // Layout: [gap0][seg0][gap1][seg1]...[segN-1][gapN]\n  // gap0=0 if startWithAvatar, gapN=0 if endWithAvatar, others >= minGapBetweenSegments\n  const numGaps = N + 1;\n  const minGap = SETTINGS.minGapBetweenSegments;\n  const gapMins = new Array(numGaps).fill(minGap);\n  if (SETTINGS.startWithAvatar) gapMins[0] = 0;\n  if (SETTINGS.endWithAvatar)   gapMins[numGaps - 1] = 0;\n\n  const totalSeg = lengths.reduce((a, b) => a + b, 0);\n  const totalGap = duration - totalSeg;\n  const minGapTotal = gapMins.reduce((a, b) => a + b, 0);\n  if (totalGap < minGapTotal) {\n    throw new Error(\n      `Not enough room. Need ${minGapTotal.toFixed(1)}s of gaps, only ${totalGap.toFixed(1)}s available. ` +\n      `Lower overlayCoveragePercent or minGapBetweenSegments.`\n    );\n  }\n\n  const flexible = [];\n  for (let i = 0; i < numGaps; i++) {\n    const pinned = (SETTINGS.startWithAvatar && i === 0) ||\n                   (SETTINGS.endWithAvatar   && i === numGaps - 1);\n    if (!pinned) flexible.push(i);\n  }\n  const extra = totalGap - minGapTotal;\n  const weights = flexible.map(() => Math.random());\n  const wSum = weights.reduce((a, b) => a + b, 0) || 1;\n  const gaps = new Array(numGaps).fill(0);\n  flexible.forEach((idx, i) => {\n    gaps[idx] = gapMins[idx] + (weights[i] / wSum) * extra;\n  });\n\n  const segments = [];\n  let cursor = gaps[0];\n  for (let i = 0; i < N; i++) {\n    const len = lengths[i];\n    const startTime = cursor;\n    const endTime = startTime + len;\n    segments.push({\n      startTime: round(startTime),\n      endTime: round(endTime),\n      length: round(len),\n    });\n    cursor = endTime + gaps[i + 1];\n  }\n  return segments;\n}\n\n// ============================================================\n// FILTER BUILDER\n// ============================================================\nfunction buildFilter(duration) {\n  const z    = SETTINGS.zoom;\n  const offX = SETTINGS.cropOffsetX;\n  const offY = SETTINGS.cropOffsetY;\n  const isFs = SETTINGS.position === 'fullscreen';\n  const parts = [];\n\n  // 1. Crop avatar with zoom + offset.\n  if (isFs) {\n    parts.push(\n      `[1:v]crop='iw/${z}':'ih/${z}':` +\n      `'(iw-iw/${z})/2+${offX}':'(ih-ih/${z})/2-${offY}'[ov_zoom]`\n    );\n  } else {\n    parts.push(\n      `[1:v]crop='min(iw,ih)/${z}':'min(iw,ih)/${z}':` +\n      `'(iw-min(iw,ih)/${z})/2+${offX}':` +\n      `'(ih-min(iw,ih)/${z})/2-${offY}'[ov_zoom]`\n    );\n  }\n\n  // 2. Scale.\n  if (isFs) {\n    // Scale avatar to exact main video dimensions using ABSOLUTE pixel values.\n    // No scale2ref, no main_w/main_h variables — those don't reliably resolve\n    // in NCA's FFmpeg for fullscreen scaling. Plain `scale=W:H` always works.\n    // Set mainVideoWidth/mainVideoHeight in SETTINGS to match your main video.\n    parts.push(\n      `[ov_zoom]scale=${SETTINGS.mainVideoWidth}:${SETTINGS.mainVideoHeight}[ov_scaled]`\n    );\n    // Pass main through unchanged so the rest of the chain has [vmain].\n    parts.push(`[0:v]null[vmain]`);\n  } else {\n    const s = SETTINGS.sizePercent / 100;\n    parts.push(\n      `[ov_zoom][0:v]scale2ref=w='main_w*${s}':h='main_w*${s}'[ov_scaled][vmain]`\n    );\n  }\n\n  // 3. Optional circle alpha mask (corner mode only).\n  let avatarLabel = '[ov_scaled]';\n  if (!isFs && SETTINGS.shape === 'circle') {\n    parts.push(\n      `[ov_scaled]format=yuva420p,geq=` +\n      `lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':` +\n      `a='if(gt(hypot(X-W/2,Y-H/2),min(W,H)/2),0,255)'[ov_shaped]`\n    );\n    avatarLabel = '[ov_shaped]';\n  }\n\n  // 4. Position string.\n  const xy = isFs\n    ? `x=0:y=0`\n    : cornerXY(SETTINGS.marginX, SETTINGS.marginY);\n\n  // 5. Always-on or random placement.\n  if (SETTINGS.displayMode === 'always-on') {\n    parts.push(`[vmain]${avatarLabel}overlay=${xy}[vout]`);\n    return { filterString: parts.join(';'), plan: null };\n  }\n\n  // Random mode — single overlay at native timing, gated by enable expression.\n  // Avatar plays in sync with the main video (its frames at time t stay at time t),\n  // so lips remain perfectly aligned with the main audio. We just show/hide.\n  const segments = buildSegmentPlan(duration);\n  const enableExpr = segments\n    .map(s => `between(t,${s.startTime},${s.endTime})`)\n    .join('+');\n  parts.push(`[vmain]${avatarLabel}overlay=${xy}:enable='${enableExpr}'[vout]`);\n\n  const totalOverlay = segments.reduce((a, s) => a + s.length, 0);\n  const plan = {\n    numSegments: segments.length,\n    totalOverlayTime: round(totalOverlay, 2),\n    actualCoveragePercent: round((totalOverlay / duration) * 100, 1),\n    segments,\n  };\n  return { filterString: parts.join(';'), plan };\n}\n\n// ============================================================\n// PAYLOAD BUILDER\n// ============================================================\nfunction buildPayload(mainUrl, avatarUrl, duration) {\n  const { filterString, plan } = buildFilter(duration);\n  const payload = {\n    inputs: [\n      { file_url: mainUrl },\n      { file_url: avatarUrl },\n    ],\n    filters: [{ filter: filterString }],\n    outputs: [\n      {\n        options: [\n          { option: '-map', argument: '[vout]' },\n          { option: '-map', argument: '0:a' },   // main audio only; avatar audio dropped\n          { option: '-c:v', argument: SETTINGS.videoCodec },\n          { option: '-crf', argument: SETTINGS.videoCRF },\n          { option: '-preset', argument: SETTINGS.videoPreset },\n          { option: '-c:a', argument: SETTINGS.audioCodec },\n          { option: '-b:a', argument: SETTINGS.audioBitrate },\n        ],\n      },\n    ],\n    metadata: {\n      thumbnail: true, filesize: true, duration: true, bitrate: true, encoder: true,\n    },\n    id: `avatar_${SETTINGS.displayMode}_${SETTINGS.position}_${Date.now()}`,\n  };\n  return { payload, plan };\n}\n\n// ============================================================\n// MAIN\n// ============================================================\nconst results = [];\nfor (const item of $input.all()) {\n  const data = item.json;\n  const mainUrl = data['Main Video URL'];\n  const avatarUrl = data['Avatar Video URL'];\n  const duration = data['Duration'] !== undefined ? Number(data['Duration']) : null;\n\n  if (!mainUrl || !avatarUrl) {\n    throw new Error('Both \"Main Video URL\" and \"Avatar Video URL\" are required on the input.');\n  }\n  if (SETTINGS.displayMode === 'random' && (!duration || !isFinite(duration) || duration <= 0)) {\n    throw new Error(\n      '\"Duration\" (in seconds) is required on the input when displayMode = \"random\".'\n    );\n  }\n\n  const { payload, plan } = buildPayload(mainUrl, avatarUrl, duration);\n  results.push({ json: { payload, ...(plan ? { plan } : {}) } });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        400
+      ],
+      "id": "33616807-dffc-4ab3-acb6-c34c9f4fe545",
+      "name": "Random Fullscreen"
+    },
+    {
+      "parameters": {
+        "content": "## Add Avatar",
+        "height": 544,
+        "width": 720,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "df80be01-ac99-4a26-a2a0-c5670d0c6400",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {}
+      }
+    ],
+    "Random Corner": [
+      {
+        "json": {
+          "payload": {
+            "inputs": [
+              {
+                "file_url": "https://minio-second-api.nickwinter.org/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank%2FYour_Life_as_Every_CIA_Black_Ops_Rank.mp4"
+              },
+              {
+                "file_url": "https://avatar-talking-head.nickwinter.org/api/downloads/5395f9f3-8ba4-47b9-9214-2a971bd74c9b.mp4"
+              }
+            ],
+            "filters": [
+              {
+                "filter": "[1:v]crop='min(iw,ih)/1':'min(iw,ih)/1':'(iw-min(iw,ih)/1)/2+0':'(ih-min(iw,ih)/1)/2-0'[ov_zoom];[ov_zoom][0:v]scale2ref=w='main_w*0.18':h='main_w*0.18'[ov_scaled][vmain];[vmain][ov_scaled]overlay=x=W-w-30:y=30:enable='between(t,15.06,23.801)+between(t,48.575,55.706)+between(t,71.257,81.263)+between(t,93.855,99.87)+between(t,123.524,132.305)+between(t,158.027,164.003)'[vout]"
+              }
+            ],
+            "outputs": [
+              {
+                "options": [
+                  {
+                    "option": "-map",
+                    "argument": "[vout]"
+                  },
+                  {
+                    "option": "-map",
+                    "argument": "0:a"
+                  },
+                  {
+                    "option": "-c:v",
+                    "argument": "libx264"
+                  },
+                  {
+                    "option": "-crf",
+                    "argument": "20"
+                  },
+                  {
+                    "option": "-preset",
+                    "argument": "medium"
+                  },
+                  {
+                    "option": "-c:a",
+                    "argument": "aac"
+                  },
+                  {
+                    "option": "-b:a",
+                    "argument": "192k"
+                  }
+                ]
+              }
+            ],
+            "metadata": {
+              "thumbnail": true,
+              "filesize": true,
+              "duration": true,
+              "bitrate": true,
+              "encoder": true
+            },
+            "id": "avatar_random_corner_1777401676952"
+          },
+          "plan": {
+            "numSegments": 6,
+            "totalOverlayTime": 46.65,
+            "actualCoveragePercent": 25,
+            "segments": [
+              {
+                "startTime": 15.06,
+                "endTime": 23.801,
+                "length": 8.741
+              },
+              {
+                "startTime": 48.575,
+                "endTime": 55.706,
+                "length": 7.131
+              },
+              {
+                "startTime": 71.257,
+                "endTime": 81.263,
+                "length": 10.007
+              },
+              {
+                "startTime": 93.855,
+                "endTime": 99.87,
+                "length": 6.015
+              },
+              {
+                "startTime": 123.524,
+                "endTime": 132.305,
+                "length": 8.781
+              },
+              {
+                "startTime": 158.027,
+                "endTime": 164.003,
+                "length": 5.976
+              }
+            ]
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Get Audio": [
+      {
+        "json": {
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/media/transform/mp3",
+          "id": "extract-audio",
+          "job_id": "1e8452d6-b89c-4228-8ef3-99e53fddad00",
+          "message": "success",
+          "pid": 399843,
+          "queue_id": 139805169469664,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": "https://minio-epyc-api.nickwinter.org/82fc676a-9392-4d5c-8e1e-40b52139b792/1e8452d6-b89c-4228-8ef3-99e53fddad00.mp3",
+          "run_time": 2.354,
+          "total_time": 2.354
+        },
+        "binary": {
+          "data": {
+            "mimeType": "binary/octet-stream",
+            "fileExtension": "mp3",
+            "data": "filesystem-v2",
+            "directory": "https://minio-epyc-api.nickwinter.org/82fc676a-9392-4d5c-8e1e-40b52139b792/1e8452d6-b89c-4228-8ef3-99e53fddad00.mp3",
+            "fileName": "1e8452d6-b89c-4228-8ef3-99e53fddad00.mp3",
+            "id": "filesystem-v2:workflows/k4xNbixeyDhznIqm/executions/321258/binary_data/7f1949c0-3371-4115-85f6-725be806650a",
+            "fileSize": "7.47 MB",
+            "bytes": 7466987
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Extract Audio (NCA Toolkit)": [
+      {
+        "json": {
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/media/transform/mp3",
+          "id": "extract-audio",
+          "job_id": "1e8452d6-b89c-4228-8ef3-99e53fddad00",
+          "message": "success",
+          "pid": 399843,
+          "queue_id": 139805169469664,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": "https://minio-epyc-api.nickwinter.org/82fc676a-9392-4d5c-8e1e-40b52139b792/1e8452d6-b89c-4228-8ef3-99e53fddad00.mp3",
+          "run_time": 2.354,
+          "total_time": 2.354
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Heygen Vidgen": [
+      {
+        "json": {
+          "job_id": "5395f9f3-8ba4-47b9-9214-2a971bd74c9b",
+          "status": "queued",
+          "orientation": "landscape"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Wait": [
+      {
+        "json": {
+          "job_id": "5395f9f3-8ba4-47b9-9214-2a971bd74c9b",
+          "status": "queued",
+          "orientation": "landscape"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Poll Status": [
+      {
+        "json": {
+          "job_id": "5395f9f3-8ba4-47b9-9214-2a971bd74c9b",
+          "status": "complete",
+          "avatar_name": "test1",
+          "avatar_index": 0,
+          "title": "Strategy Walkthrough - Apr 28, 8:05 AM",
+          "resolution": "720p",
+          "orientation": "landscape",
+          "progress": "100%",
+          "created_at": "2026-04-28 08:05:13",
+          "updated_at": "2026-04-28 12:39:11",
+          "completed_at": "2026-04-28T12:39:11.501Z",
+          "current_step": "download_video",
+          "last_completed_step": "download_video",
+          "failed_step": null,
+          "expected_duration_sec": null,
+          "download_retry_count": 0,
+          "manual_retry_count": 1,
+          "retry_available": true,
+          "retry_reason": null,
+          "retry_step": "download_video",
+          "download_url": "/api/downloads/5395f9f3-8ba4-47b9-9214-2a971bd74c9b.mp4",
+          "view_url": "/api/downloads/5395f9f3-8ba4-47b9-9214-2a971bd74c9b.mp4/view"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Rendered Vid URL": [
+      {
+        "json": {
+          "url": "https://minio-second-api.nickwinter.org/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank%2FYour_Life_as_Every_CIA_Black_Ops_Rank.mp4"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "NCA Toolkit Get Duration": [
+      {
+        "json": {
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/media/metadata",
+          "id": null,
+          "job_id": "800c6471-13bd-44e3-9b90-f3a8a6ca24bc",
+          "message": "success",
+          "pid": 8,
+          "queue_id": 139805169453136,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": {
+            "audio_bitrate": 127361,
+            "audio_bitrate_kbps": 127,
+            "audio_channels": 2,
+            "audio_codec": "aac",
+            "audio_codec_long": "AAC (Advanced Audio Coding)",
+            "audio_sample_rate": 48000,
+            "audio_sample_rate_khz": 48,
+            "duration": 186.604,
+            "duration_formatted": "00:03:6.60",
+            "filesize": 38326173,
+            "filesize_mb": 36.55,
+            "format": "mov,mp4,m4a,3gp,3g2,mj2",
+            "fps": 25,
+            "has_audio": true,
+            "has_video": true,
+            "height": 720,
+            "overall_bitrate": 1643101,
+            "overall_bitrate_mbps": 1.64,
+            "pixel_format": "yuv420p",
+            "resolution": "1280x720",
+            "video_bitrate": 1510393,
+            "video_bitrate_mbps": 1.51,
+            "video_codec": "h264",
+            "video_codec_long": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "width": 1280
+          },
+          "run_time": 0.462,
+          "total_time": 0.462
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Merge": [
+      {
+        "json": {
+          "job_id": "800c6471-13bd-44e3-9b90-f3a8a6ca24bc",
+          "status": "complete",
+          "avatar_name": "test1",
+          "avatar_index": 0,
+          "title": "Strategy Walkthrough - Apr 28, 8:05 AM",
+          "resolution": "720p",
+          "orientation": "landscape",
+          "progress": "100%",
+          "created_at": "2026-04-28 08:05:13",
+          "updated_at": "2026-04-28 12:39:11",
+          "completed_at": "2026-04-28T12:39:11.501Z",
+          "current_step": "download_video",
+          "last_completed_step": "download_video",
+          "failed_step": null,
+          "expected_duration_sec": null,
+          "download_retry_count": 0,
+          "manual_retry_count": 1,
+          "retry_available": true,
+          "retry_reason": null,
+          "retry_step": "download_video",
+          "download_url": "/api/downloads/5395f9f3-8ba4-47b9-9214-2a971bd74c9b.mp4",
+          "view_url": "/api/downloads/5395f9f3-8ba4-47b9-9214-2a971bd74c9b.mp4/view",
+          "build_number": 219,
+          "code": 200,
+          "endpoint": "/v1/media/metadata",
+          "id": null,
+          "message": "success",
+          "pid": 8,
+          "queue_id": 139805169453136,
+          "queue_length": 0,
+          "queue_time": 0,
+          "response": {
+            "audio_bitrate": 127361,
+            "audio_bitrate_kbps": 127,
+            "audio_channels": 2,
+            "audio_codec": "aac",
+            "audio_codec_long": "AAC (Advanced Audio Coding)",
+            "audio_sample_rate": 48000,
+            "audio_sample_rate_khz": 48,
+            "duration": 186.604,
+            "duration_formatted": "00:03:6.60",
+            "filesize": 38326173,
+            "filesize_mb": 36.55,
+            "format": "mov,mp4,m4a,3gp,3g2,mj2",
+            "fps": 25,
+            "has_audio": true,
+            "has_video": true,
+            "height": 720,
+            "overall_bitrate": 1643101,
+            "overall_bitrate_mbps": 1.64,
+            "pixel_format": "yuv420p",
+            "resolution": "1280x720",
+            "video_bitrate": 1510393,
+            "video_bitrate_mbps": 1.51,
+            "video_codec": "h264",
+            "video_codec_long": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "width": 1280
+          },
+          "run_time": 0.462,
+          "total_time": 0.462
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 0
+          },
+          {
+            "item": 0,
+            "input": 1
+          },
+          {
+            "item": 0,
+            "input": 1
+          }
+        ]
+      }
+    ],
+    "Settings": [
+      {
+        "json": {
+          "Main Video URL": "https://minio-second-api.nickwinter.org/pov-guy/pov-guy-channel%2Fvideos%2FYour_Life_as_Every_CIA_Black_Ops_Rank%2FYour_Life_as_Every_CIA_Black_Ops_Rank.mp4",
+          "Avatar Video URL": "https://avatar-talking-head.nickwinter.org/api/downloads/5395f9f3-8ba4-47b9-9214-2a971bd74c9b.mp4",
+          "Duration": 186.604
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-26T06:01:13.259Z",
+      "createdAt": "2026-07-26T06:01:13.259Z",
+      "role": "workflow:owner",
+      "workflowId": "vaZNUnfucTd3nLkg",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-26T06:01:13.259Z",
+  "versionId": "bd9ccfff-9190-434a-969b-46baf69de3b9"
+}
