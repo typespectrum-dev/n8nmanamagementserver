@@ -1,0 +1,436 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Avatar Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NCA Toolkit Get Duration": {
+      "main": [
+        [
+          {
+            "node": "Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Poll Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "NCA Toolkit Get Duration",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get audio": {
+      "main": [
+        [
+          {
+            "node": "Request AI Avatar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request AI Avatar": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll Status": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avatar Settings": {
+      "main": [
+        [
+          {
+            "node": "get audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    " Add Webcam Sauce": {
+      "main": [
+        [
+          {
+            "node": "Download Final AI Avatar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "Webcam Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webcam Settings": {
+      "main": [
+        [
+          {
+            "node": " Add Webcam Sauce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-26T06:01:59.479Z",
+  "id": "vjIc7UPfK0Ny8AT0",
+  "isArchived": false,
+  "meta": null,
+  "name": "Realistic Avatar",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1232,
+        16
+      ],
+      "id": "cd490d7b-91d5-4e48-99d8-0d631f8d6dbc",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nca-toolkit.nickwinter.org/v1/media/metadata",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "media_url",
+              "value": "=https://avatar-talking-head.nickwinter.org{{ $json.download_url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4359ff6c-eff1-485a-9fcb-19ed3dce51d2",
+      "name": "NCA Toolkit Get Duration"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -512,
+        16
+      ],
+      "id": "4aca7d61-cdca-4da9-920b-ebda9a53fb78",
+      "name": "Wait",
+      "webhookId": "d9b604df-6163-44c9-a9ea-4324db1303e3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f10a0dff-4ae7-4803-9948-438488cda1e5",
+              "leftValue": "={{ $json.progress }}",
+              "rightValue": "100%",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -208,
+        16
+      ],
+      "id": "21415d22-124e-42f1-811b-9abfe01f5c3f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json['Audio URL'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -896,
+        16
+      ],
+      "id": "255ea5f0-cf2a-4d4e-9d36-6b36690c11f5",
+      "name": "get audio"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://avatar-talking-head.nickwinter.org/api/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "avatar_name",
+              "value": "={{ $('Avatar Settings').last().json['Avatar Name'] }}"
+            },
+            {
+              "name": "resolution",
+              "value": "720p"
+            },
+            {
+              "name": "title",
+              "value": "=random_title"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "audio",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -704,
+        16
+      ],
+      "id": "a7239675-6364-474b-a9eb-daa85276685d",
+      "name": "Request AI Avatar"
+    },
+    {
+      "parameters": {
+        "url": "=https://avatar-talking-head.nickwinter.org/api/jobs/{{ $json.job_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -368,
+        16
+      ],
+      "id": "9bab8d5b-fb00-4fca-825a-0cff14f40caa",
+      "name": "Poll Status"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eaef3bb5-a49a-44b5-9aee-c0bcf206c411",
+              "name": "Avatar Name",
+              "value": "test1",
+              "type": "string"
+            },
+            {
+              "id": "2efadaac-0865-43fb-9148-4942b3c71b69",
+              "name": "Audio URL",
+              "value": "https://minio-second-api.nickwinter.org/viral-methods/ai-avatar%2Fvoiceover.wav",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1056,
+        16
+      ],
+      "id": "b7118ae0-9ac6-4a56-8736-d06287942840",
+      "name": "Avatar Settings"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nca-toolkit.nickwinter.org/v1/ffmpeg/compose",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        608,
+        0
+      ],
+      "id": "3d8e1445-3885-4887-8150-33f0348f9998",
+      "name": " Add Webcam Sauce"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response[0].file_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        816,
+        0
+      ],
+      "id": "83f25afd-fae5-4f56-978f-4fd647258d00",
+      "name": "Download Final AI Avatar"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0de7415-534d-412d-bfe2-8450b729a429",
+              "name": "file_url",
+              "value": "=https://avatar-talking-head.nickwinter.org{{ $('Poll Status').last().json.download_url }}",
+              "type": "string"
+            },
+            {
+              "id": "a5d0380b-cb50-46e6-af84-8efab7379474",
+              "name": "duration",
+              "value": "={{ $json.response.duration }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        0
+      ],
+      "id": "6d8a3264-b808-4e42-aca2-f05335ed0cf4",
+      "name": "Input"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// n8n Code Node: Webcam Effect Payload Generator\n// ============================================================\n// PURPOSE: Takes a clean video and generates an NCA Toolkit\n//          FFmpeg compose payload that makes it look like it\n//          was recorded on a cheap webcam.\n//\n// ─────────────────────────────────────────────────────────────\n// ⚙️  ADJUST THESE — values from 0.0 (none) to 1.0 (maximum)\n// ─────────────────────────────────────────────────────────────\n\nconst INTENSITY = {\n  noise:       0.2,   // Film grain / sensor noise\n  exposure:    0.3,   // Overexposure + brightness flicker\n  contrast:    0.3,   // Contrast & gamma push\n  blur:        0.3,   // Soft focus / cheap lens blur\n  compression: 0.3,   // Compression artefacts (higher = worse quality)\n  stutter:     0.6,   // Frequency of frame-freeze stutters\n  reverb:      0.5,   // Room reverb / mic echo\n};\n\n// ─────────────────────────────────────────────────────────────\n// Everything below is automatic — no need to touch it\n// ─────────────────────────────────────────────────────────────\n\nconst videoUrl      = $input.first().json.file_url;\nconst videoDuration = $input.first().json.duration || 120;\nconst fps = 30;\n\n// Clamp helper so values outside 0–1 never break the math\nconst clamp = (v) => Math.min(1, Math.max(0, v));\nconst i     = Object.fromEntries(\n  Object.entries(INTENSITY).map(([k, v]) => [k, clamp(v)])\n);\n\n// ────────────────────────────────────────────────────────────\n// LERP the 0-1 intensities into the real parameter ranges\n// lerp(min, max, t)  →  min at t=0, max at t=1\n// ────────────────────────────────────────────────────────────\n\nconst lerp  = (min, max, t) => min + (max - min) * t;\nconst lerpR = (min, max, t) => +(lerp(min, max, t)).toFixed(4);\nconst lerpI = (min, max, t) => Math.round(lerp(min, max, t));\n\n// Still randomised within a narrow band around the chosen intensity\nconst band = (min, max, t, spread = 0.15) => {\n  const centre = lerp(min, max, t);\n  const half   = (max - min) * spread;\n  return Math.min(max, Math.max(min, centre + (Math.random() * 2 - 1) * half));\n};\n\nconst config = {\n  // — Grain / noise —\n  noiseStrength: Math.round(band(10, 17, i.noise)),\n\n  // — Exposure —\n  baseBrightness:    +band(0.005, 0.08,  i.exposure).toFixed(4),\n  brightnessOscAmp:  +band(0.002, 0.025, i.exposure).toFixed(4),\n  brightnessOscHz:   +band(0.05,  0.5,   i.exposure).toFixed(3),\n  brightnessOscHz2:  +band(0.3,   1.0,   i.exposure).toFixed(3),\n  brightnessOscAmp2: +band(0.001, 0.012, i.exposure).toFixed(4),\n\n  // — Contrast & gamma —\n  contrast: +band(1.00, 1.20, i.contrast).toFixed(2),\n  gamma:    +band(0.95, 1.15, i.contrast).toFixed(2),\n\n  // — Blur —\n  blurSigma: +band(0.1, 0.9, i.blur).toFixed(2),\n\n  // — Compression (higher intensity = worse quality) —\n  crf:          lerpI(18, 34, i.compression),\n  maxBitrate:   `${lerpI(1500, 600, i.compression)}k`,\n  audioBitrate: '96k',\n\n  // — Stutter —\n  stutterIntervalMin: lerpI(120, 20, i.stutter),\n  stutterIntervalMax: lerpI(180, 35, i.stutter),\n  stutterDurMin:      lerpR(0.1, 1.0, i.stutter),\n  stutterDurMax:      lerpR(0.2, 1.5, i.stutter),\n\n  // — Reverb —\n  reverbInGain:  +band(0.85, 0.72, i.reverb).toFixed(2),\n  reverbOutGain: +band(0.92, 0.80, i.reverb).toFixed(2),\n  reverbDelay1:  Math.round(band(8,  35,  i.reverb)),\n  reverbDelay2:  Math.round(band(20, 60,  i.reverb)),\n  reverbDelay3:  Math.round(band(45, 100, i.reverb)),\n  reverbDecay1:  +band(0.10, 0.55, i.reverb).toFixed(2),\n  reverbDecay2:  +band(0.06, 0.35, i.reverb).toFixed(2),\n  reverbDecay3:  +band(0.02, 0.20, i.reverb).toFixed(2),\n};\n\n// ────────────────────────────────────────────────────────────\n// STUTTER TIMESTAMPS\n// ────────────────────────────────────────────────────────────\n\nconst stutterPoints = [];\n\nif (i.stutter > 0) {\n  let cursor = config.stutterIntervalMin\n              + Math.random() * (config.stutterIntervalMax - config.stutterIntervalMin);\n\n  while (cursor < videoDuration - 5) {\n    const dur = config.stutterDurMin\n              + Math.random() * (config.stutterDurMax - config.stutterDurMin);\n    stutterPoints.push({\n      time:     +cursor.toFixed(2),\n      duration: +dur.toFixed(2),\n    });\n    cursor += config.stutterIntervalMin\n            + Math.random() * (config.stutterIntervalMax - config.stutterIntervalMin);\n  }\n}\n\n// ────────────────────────────────────────────────────────────\n// FILTER GRAPH\n// ────────────────────────────────────────────────────────────\n\nconst brightnessExpr = [\n  config.baseBrightness,\n  `${config.brightnessOscAmp}*sin(t*${config.brightnessOscHz}*2*PI)`,\n  `${config.brightnessOscAmp2}*sin(t*${config.brightnessOscHz2}*2*PI)`,\n].join('+');\n\nconst webcamFx = [\n  `gblur=sigma=${config.blurSigma}`,\n  `noise=alls=${config.noiseStrength}:allf=t`,\n  `eq=eval=frame:brightness='${brightnessExpr}':contrast=${config.contrast}:gamma=${config.gamma}`,\n].join(',');\n\nconst filters = [];\n\n// ── Video: stutter + webcam FX ───────────────────────────────\n\nif (stutterPoints.length === 0) {\n  filters.push({ filter: `[0:v]${webcamFx}[outv]` });\n\n} else {\n  const segLabels = [];\n  let segIdx = 0;\n  let prevEnd = 0;\n\n  for (const sp of stutterPoints) {\n    const freezeStart = sp.time;\n    const freezeEnd   = +(sp.time + sp.duration).toFixed(3);\n    const oneFrameEnd = +(freezeStart + 1 / fps).toFixed(4);\n    const loopCount   = Math.max(1, Math.round(sp.duration * fps) - 1);\n\n    if (freezeStart > prevEnd) {\n      filters.push({\n        filter: `[0:v]trim=${prevEnd.toFixed(3)}:${freezeStart.toFixed(3)},setpts=PTS-STARTPTS[vs${segIdx}]`\n      });\n      segLabels.push(`[vs${segIdx}]`);\n      segIdx++;\n    }\n\n    filters.push({\n      filter: `[0:v]trim=${freezeStart.toFixed(3)}:${oneFrameEnd},setpts=PTS-STARTPTS,loop=${loopCount}:1:0,setpts=N/${fps}/TB[vs${segIdx}]`\n    });\n    segLabels.push(`[vs${segIdx}]`);\n    segIdx++;\n\n    prevEnd = freezeEnd;\n  }\n\n  filters.push({\n    filter: `[0:v]trim=${prevEnd.toFixed(3)},setpts=PTS-STARTPTS[vs${segIdx}]`\n  });\n  segLabels.push(`[vs${segIdx}]`);\n\n  filters.push({\n    filter: `${segLabels.join('')}concat=n=${segLabels.length}:v=1:a=0[vstut]`\n  });\n  filters.push({ filter: `[vstut]${webcamFx}[outv]` });\n}\n\n// ── Audio: each filter gets its own object + intermediate label ──\n//\n// NCA Toolkit was stripping the '=' from 'aecho=...' when it\n// appeared inside a comma-chained filter string. Giving every\n// audio filter its own filter object (with explicit [labels])\n// avoids that parsing issue entirely.\n\nif (i.reverb > 0) {\n  // Step 1 — cut sub-bass rumble\n  filters.push({ filter: `[0:a]highpass=f=80[ahp]` });\n\n  // Step 2 — room reverb (own object so 'aecho=' is never inside a chain)\n  const echoArgs = [\n    config.reverbInGain,\n    config.reverbOutGain,\n    `${config.reverbDelay1}|${config.reverbDelay2}|${config.reverbDelay3}`,\n    `${config.reverbDecay1}|${config.reverbDecay2}|${config.reverbDecay3}`,\n  ].join(':');\n  filters.push({ filter: `[ahp]aecho=${echoArgs}[areverb]` });\n\n  // Step 3 — pull back level so wet reflections don't clip\n  filters.push({ filter: `[areverb]volume=0.95[outa]` });\n\n} else {\n  // Reverb disabled — clean pass-through\n  filters.push({ filter: `[0:a]acopy[outa]` });\n}\n\n// ────────────────────────────────────────────────────────────\n// ASSEMBLE PAYLOAD\n// ────────────────────────────────────────────────────────────\n\nconst payload = {\n  inputs:  [{ file_url: videoUrl }],\n  filters,\n  outputs: [{\n    options: [\n      { option: '-map',     argument: '[outv]' },\n      { option: '-map',     argument: '[outa]' },\n      { option: '-c:v',     argument: 'libx264' },\n      { option: '-crf',     argument: String(config.crf) },\n      { option: '-maxrate', argument: config.maxBitrate },\n      { option: '-bufsize', argument: '1000k' },\n      { option: '-preset',  argument: 'medium' },\n      { option: '-c:a',     argument: 'aac' },\n      { option: '-b:a',     argument: config.audioBitrate },\n      { option: '-ar',      argument: '44100' },\n    ]\n  }],\n  metadata: {\n    thumbnail: true,\n    filesize:  true,\n    duration:  true,\n    bitrate:   true,\n    encoder:   true,\n  },\n  id: `webcam-fx-${Date.now()}`,\n};\n\nreturn [{\n  json: {\n    payload,\n    stutterPoints,\n    config,\n    intensity: INTENSITY,\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        0
+      ],
+      "id": "29a762ee-bdcc-4a1d-9670-9bb268e8cb25",
+      "name": "Webcam Settings"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "repo_name": "n8nmanamagementserver",
+  "repo_owner": "typespectrum-dev",
+  "repo_path": "workflows/n8n-second/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-26T06:01:59.479Z",
+      "createdAt": "2026-07-26T06:01:59.479Z",
+      "role": "workflow:owner",
+      "workflowId": "vjIc7UPfK0Ny8AT0",
+      "projectId": "CBMgvnupThQ6ZdzY"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-26T06:01:59.479Z",
+  "versionId": "61d599c5-2f94-485c-90fc-06fdfc9e538c"
+}
